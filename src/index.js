@@ -1,17 +1,36 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import AltBar from './AltBar'
+import OrtaAlan from './OrtaAlan'
+import UstBar from './UstBar'
+import threeline from './images/three-line.png'
+import iconLogo from './images/logo.jpeg'
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import AnaSayfa from './AnaSayfa'
+import Kategoriler from './Kategoriler'
+import Kesfet from './Kesfet'
+
+class App extends React.Component{
+    render(){
+        return(
+            <Router>
+                <div className="app">
+                    <UstBar image={threeline} icon={iconLogo}/>
+                    <OrtaAlan>
+                    </OrtaAlan>
+                    <AltBar/>
+                    <Routes>
+                        <Route path='/anasayfa' component={AnaSayfa} />
+                        <Route path='/kategoriler' component={Kategoriler} />
+                        <Route path='/kesfet' component={Kesfet} />
+                    </Routes>
+                </div>
+            </Router>
+        )
+    }
+}
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+    <App/>,
+    document.querySelector('#root')
+)
