@@ -12,25 +12,9 @@ import Kategoriler from './Kategoriler'
 import Kesfet from './Kesfet'
 import GirisEkrani from './GirisEkrani'
 
-class App extends React.Component{
-    
-    //arrow fonk. şeklinde yazmazsak fonksiyonu bind ile bağlamamız gerekiyor,
-
-    //state'i local storage'a göre güncelleyemiyom :'(  ve if öncesinde setItemde sıkıntı var ilk
-    //çalıştığında hep true dönüyor 
-
+class Deneme extends React.Component{
     render(){
-        
-        if(localStorage.getItem("durum") === true || localStorage.getItem("durum") === null){
-                localStorage.setItem("durum",true)
-                return(
-                    <div className="app">
-                        <GirisEkrani/>
-                    </div>
-                )
-        }
-        else{
-                return(
+        return(
                 <div className="app">
                 <UstBar image={threeline} icon={iconLogo} />
                     <Routes>
@@ -39,9 +23,9 @@ class App extends React.Component{
                         <Route path='/kategoriler' element={<Kategoriler />} />
                         <Route path='/kesfet' element={<Kesfet />} />
                     </Routes>
-                <AltBar /></div>
-                )
-            }
+                <AltBar />
+                </div>
+        )
     }
 }
-export default App;
+export default Deneme;

@@ -21,7 +21,7 @@ body{
 	    position:fixed;
 	    width:90%;
         height:95%;
-        border-radius: 50px;
+        border-radius: 25px;
 
     }
     .ui[class*="left labeled"].button>.label {
