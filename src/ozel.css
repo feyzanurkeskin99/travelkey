@@ -10,22 +10,18 @@ body{
 }
 @media only screen and (max-width : 900px)  { 
 
-    .giris-ekrani{
-        margin-top: 20px;
-        background-image: url("images/giris.png");
-        background-color: white;
+    .giris-ekrani {
+        background-image: url(/static/media/giris.49edbf39.png);
+        background-color: #fff;
         background-repeat: no-repeat;
-        background-position:  center center;
+        background-position: 50%;
         background-attachment: fixed;
         background-size: cover;
         display: flex;
         align-items: center;
         justify-content: center;
-	    position:fixed;
-	    width:90%;
-        height:95%;
-        border-radius: 25px;
-
+        width: 100vw;
+        height: 100vh;
     }
     .ui[class*="left labeled"].button>.label {
         border-radius: 5px!important;
