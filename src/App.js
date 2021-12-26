@@ -30,7 +30,6 @@ function App (){
                 <UstBar image={threeline} icon={iconLogo} />
                     <Routes>
                         <Route path='/' element={ <AnaSayfa />} />
-                        <Route path='/travelkey' element={<AnaSayfa />} />
                         <Route path='/kategoriler' element={<Kategoriler />} />
                         <Route path='/kesfet' element={<Kesfet />} />
                         <Route path='/giris' element={ <GirisEkrani/>} />

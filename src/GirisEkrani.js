@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Button, Icon, Label } from "semantic-ui-react";
 import {Link,NavLink,useNavigate,BrowserRouter,	Routes,	Route} from "react-router-dom";
+
 function GirisEkrani() {
 	let navigate = useNavigate();
 	function updateState() {

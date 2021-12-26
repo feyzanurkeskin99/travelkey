@@ -2,7 +2,7 @@
   "name": "travelkey",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://feyzanurkeskin99.github.io/travelkey",
+  "homepage": "https://seyyah.tk",
   "dependencies": {
     "@testing-library/jest-dom": "^5.15.0",
     "@testing-library/react": "^11.2.7",
@@ -25,7 +25,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "echo seyyah.tk > ./build/CNAME && gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
