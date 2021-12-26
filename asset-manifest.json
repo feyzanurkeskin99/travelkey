@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/travelkey/static/css/main.bec7de29.chunk.css",
-    "main.js": "/travelkey/static/js/main.e4708087.chunk.js",
-    "main.js.map": "/travelkey/static/js/main.e4708087.chunk.js.map",
-    "runtime-main.js": "/travelkey/static/js/runtime-main.a723a165.js",
-    "runtime-main.js.map": "/travelkey/static/js/runtime-main.a723a165.js.map",
-    "static/css/2.97d3d5a4.chunk.css": "/travelkey/static/css/2.97d3d5a4.chunk.css",
-    "static/js/2.78a1949e.chunk.js": "/travelkey/static/js/2.78a1949e.chunk.js",
-    "static/js/2.78a1949e.chunk.js.map": "/travelkey/static/js/2.78a1949e.chunk.js.map",
-    "index.html": "/travelkey/index.html",
-    "static/css/2.97d3d5a4.chunk.css.map": "/travelkey/static/css/2.97d3d5a4.chunk.css.map",
-    "static/css/main.bec7de29.chunk.css.map": "/travelkey/static/css/main.bec7de29.chunk.css.map",
-    "static/js/2.78a1949e.chunk.js.LICENSE.txt": "/travelkey/static/js/2.78a1949e.chunk.js.LICENSE.txt",
-    "static/media/semantic.min.css": "/travelkey/static/media/outline-icons.ddae9b1b.woff",
-    "static/media/ozel.css": "/travelkey/static/media/giris.49edbf39.png",
-    "static/media/logo.efae5fb3.jpeg": "/travelkey/static/media/logo.efae5fb3.jpeg"
+    "main.css": "/static/css/main.12641e12.chunk.css",
+    "main.js": "/static/js/main.6df9f56f.chunk.js",
+    "main.js.map": "/static/js/main.6df9f56f.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.c7620997.js",
+    "runtime-main.js.map": "/static/js/runtime-main.c7620997.js.map",
+    "static/css/2.7dce832d.chunk.css": "/static/css/2.7dce832d.chunk.css",
+    "static/js/2.c7fc60c2.chunk.js": "/static/js/2.c7fc60c2.chunk.js",
+    "static/js/2.c7fc60c2.chunk.js.map": "/static/js/2.c7fc60c2.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.7dce832d.chunk.css.map": "/static/css/2.7dce832d.chunk.css.map",
+    "static/css/main.12641e12.chunk.css.map": "/static/css/main.12641e12.chunk.css.map",
+    "static/js/2.c7fc60c2.chunk.js.LICENSE.txt": "/static/js/2.c7fc60c2.chunk.js.LICENSE.txt",
+    "static/media/semantic.min.css": "/static/media/outline-icons.ddae9b1b.woff",
+    "static/media/ozel.css": "/static/media/giris.49edbf39.png",
+    "static/media/logo.efae5fb3.jpeg": "/static/media/logo.efae5fb3.jpeg"
   },
   "entrypoints": [
-    "static/js/runtime-main.a723a165.js",
-    "static/css/2.97d3d5a4.chunk.css",
-    "static/js/2.78a1949e.chunk.js",
-    "static/css/main.bec7de29.chunk.css",
-    "static/js/main.e4708087.chunk.js"
+    "static/js/runtime-main.c7620997.js",
+    "static/css/2.7dce832d.chunk.css",
+    "static/js/2.c7fc60c2.chunk.js",
+    "static/css/main.12641e12.chunk.css",
+    "static/js/main.6df9f56f.chunk.js"
   ]
 }
