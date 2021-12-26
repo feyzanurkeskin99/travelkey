@@ -2,14 +2,14 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Icon } from 'semantic-ui-react'
 
-class Kesfet extends React.Component{
-    render(){
+const Kesfet =()=>{
         return(
             <div className="ortaalan">
-                <p className="ortaalanText">Kesfet</p>
+                <p className="ortaalanText">
+                    Keşfet
+                </p>
             </div>
         )
-    }
 }
 
 export default Kesfet;

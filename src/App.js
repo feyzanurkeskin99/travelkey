@@ -5,43 +5,39 @@ import OrtaAlan from './OrtaAlan'
 import UstBar from './UstBar'
 import threeline from './images/three-line.png'
 import iconLogo from './images/logo.jpeg'
-import {BrowserRouter , Routes, Route} from 'react-router-dom'
+import {BrowserRouter , Routes, Route,useNavigate} from 'react-router-dom'
 import './ozel.css'
 import AnaSayfa from './AnaSayfa'
 import Kategoriler from './Kategoriler'
 import Kesfet from './Kesfet'
 import GirisEkrani from './GirisEkrani'
 
-class App extends React.Component{
-    
-    //arrow fonk. şeklinde yazmazsak fonksiyonu bind ile bağlamamız gerekiyor,
+function App (){
 
-    //state'i local storage'a göre güncelleyemiyom :'(  ve if öncesinde setItemde sıkıntı var ilk
-    //çalıştığında hep true dönüyor 
+     let navigate = useNavigate();
+        if (!localStorage.getItem("city")) {
+            return(
+                <div className="app">
+                    <Routes>
+                        <Route path='*' element={ <GirisEkrani /> } />
 
-    render(){
-        
-        if(localStorage.getItem("durum") === true || localStorage.getItem("durum") === null){
-                localStorage.setItem("durum",true)
-                return(
-                    <div className="app">
-                        <GirisEkrani/>
-                    </div>
+                    </Routes>
+               </div>
                 )
-        }
-        else{
-                return(
+        } else {
+            return(
                 <div className="app">
                 <UstBar image={threeline} icon={iconLogo} />
                     <Routes>
-                        <Route path='/anasayfa' element={<AnaSayfa />} />
+                        <Route path='/' element={ <AnaSayfa />} />
                         <Route path='/travelkey' element={<AnaSayfa />} />
                         <Route path='/kategoriler' element={<Kategoriler />} />
                         <Route path='/kesfet' element={<Kesfet />} />
+                        <Route path='/giris' element={ <GirisEkrani/>} />
                     </Routes>
                 <AltBar /></div>
                 )
-            }
+        }
     }
-}
+
 export default App;

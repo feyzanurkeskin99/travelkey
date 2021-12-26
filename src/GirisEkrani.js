@@ -1,36 +1,25 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import React from "react";
+import ReactDOM from "react-dom";
 import { Button, Icon, Label } from "semantic-ui-react";
-import {Link , NavLink} from 'react-router-dom'
-import {BrowserRouter , Routes, Route} from 'react-router-dom'
-import AnaSayfa from './AnaSayfa'
+import {Link,NavLink,useNavigate,BrowserRouter,	Routes,	Route} from "react-router-dom";
+function GirisEkrani() {
+	let navigate = useNavigate();
+	function updateState() {
+		localStorage.setItem("city", "81");
+		navigate("/", { replace: true });
+	}
 
-import App from './App'
-
-class GirisEkrani extends React.Component{
-
-    updateState (){
-        localStorage.setItem("durum", false)
-        return(
-            <div className="app">
-                <App />
-            </div>
-        )
-    }
-    
-    render(){
-        return(
-            <div className="giris-ekrani">
-                <div className="giris-button">
-                    <Button as='div' labelPosition='left' onClick={this.updateState}>
-                        <Label as='a' basic pointing='right'>
-                            Haydi Şehir Seçelim..
-                        </Label>
-                    </Button>
-                </div>
-            </div>
-        )
-    }
+	return (
+		<div className="giris-ekrani">
+			<div className="giris-button">
+				<Button as="div" labelPosition="left" onClick={updateState}>
+					<Label as="a" basic pointing="right">
+						Haydi Şehir Seçelim..
+					</Label>
+				</Button>
+			</div>
+		</div>
+	);
 }
 
 export default GirisEkrani;
