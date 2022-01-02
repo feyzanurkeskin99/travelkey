@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import ReactDOM from 'react-dom'
 import AltBar from './AltBar'
 import OrtaAlan from './OrtaAlan'
@@ -11,31 +11,36 @@ import AnaSayfa from './AnaSayfa'
 import Kategoriler from './Kategoriler'
 import Kesfet from './Kesfet'
 import GirisEkrani from './GirisEkrani'
+import { AppContext } from './Context'
 
 function App (){
-
-     let navigate = useNavigate();
-        if (!localStorage.getItem("city")) {
+    const [city, setCity] = useState(localStorage.getItem("city") || "sehirsec");
+        if (city=="sehirsec") {
             return(
+                <AppContext.Provider value={{city, setCity}}>
                 <div className="app">
                     <Routes>
                         <Route path='*' element={ <GirisEkrani /> } />
-
                     </Routes>
                </div>
+               </AppContext.Provider>  
                 )
         } else {
             return(
+                <AppContext.Provider value={{city, setCity}}>
                 <div className="app">
-                <UstBar image={threeline} icon={iconLogo} />
+                <UstBar/>
                     <Routes>
                         <Route path='/' element={ <AnaSayfa />} />
+                        <Route path='/travelkey' element={<AnaSayfa />} />
                         <Route path='/kategoriler' element={<Kategoriler />} />
                         <Route path='/kesfet' element={<Kesfet />} />
                         <Route path='/giris' element={ <GirisEkrani/>} />
                     </Routes>
-                <AltBar /></div>
-                )
+                <AltBar />
+                </div>
+            </AppContext.Provider>  
+              )
         }
     }
 

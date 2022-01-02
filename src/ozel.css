@@ -1,6 +1,13 @@
 body{
     background-color: #ffffff!important;
 }
+:root{
+    --birincil:#004359ff;
+    --light:#008dbdff;
+    --ikincil:#24c7ffff;
+    --overlay:#dedddaff;
+
+}
 .app {
     display: flex;
     flex-direction: column;
@@ -34,7 +41,7 @@ body{
     .altbar {
         display: flex;
         justify-content: space-around;
-        background-color: #5E5D65;
+        background-color: var(--birincil);
         width: 90%;
         height: 9%;
         border-radius: 15px;
@@ -54,7 +61,7 @@ body{
         display: flex;
         align-items: center;
         justify-content: center;
-        color:black;
+        fill: var(--ikincil);
     } 
 
     
@@ -79,14 +86,16 @@ body{
         width: 40px!important;
         height: 40px!important;
         font-size: 0.5em!important;
-        background-color: #ffffff!important;
-        fill: maroon;
+        background-color: #00202aff!important;
+        fill: var(--ikincil);
+        padding: 3px;
 
     }
 
     .ustbar {
         display: flex;
         justify-content: space-between;
+        align-items: center;
         height: 45px;
         border-radius: 15px;
         width: 90%;
@@ -104,19 +113,89 @@ body{
         font-size: 45px;
     }
     
-    .ortaalan {
+    .ustbar .ustbar-name img{
+        height: 25px;
+    }
+
+    .ustbar .city-button{
+        height: 30px;
         display: flex;
         justify-content: center;
-        background-color: #5E5D65;
-        bottom: 100px;
-        width: 90%;
-        height: 75%;
+        align-items: center;
+        }
+        
+    .ortaalan {
+        display: flex !important;
+        justify-content: center!important;
+        background-color: #ffffff!important;
+        bottom: 100px!important;
+        width: 90%!important;
+        height: 75%!important;
     }
     .ortaalan .ortaalanText{
         font-size: 25px;
         display: flex;
         align-items: center;
     }
-
     
+#app {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .swiper {
+    width: 240px;
+    height: 200px;
+  }
+  
+  .swiper-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 18px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #fff;
+  }
+  
+  .swiper-slide:nth-child(1n) {
+    background-color: rgb(206, 17, 17);
+  }
+  
+  .swiper-slide:nth-child(2n) {
+    background-color: rgb(0, 140, 255);
+  }
+  
+  .swiper-slide:nth-child(3n) {
+    background-color: rgb(10, 184, 111);
+  }
+  
+  .swiper-slide:nth-child(4n) {
+    background-color: rgb(211, 122, 7);
+  }
+  
+  .swiper-slide:nth-child(5n) {
+    background-color: rgb(118, 163, 12);
+  }
+  
+  .swiper-slide:nth-child(6n) {
+    background-color: rgb(180, 10, 47);
+  }
+  
+  .swiper-slide:nth-child(7n) {
+    background-color: rgb(35, 99, 19);
+  }
+  
+  .swiper-slide:nth-child(8n) {
+    background-color: rgb(0, 68, 255);
+  }
+  
+  .swiper-slide:nth-child(9n) {
+    background-color: rgb(218, 12, 218);
+  }
+  
+  .swiper-slide:nth-child(10n) {
+    background-color: rgb(54, 94, 77);
+  }
 }
