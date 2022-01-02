@@ -10,17 +10,10 @@ import { AppContext } from './Context'
 
 function GirisEkrani() {
 
-	var sehir;
-	function updateState() {
-		setCity(localStorage.getItem("city"))
-	}
-
 	var {city, setCity} = useContext(AppContext);
-
-    function handleChange (e) {
-        localStorage.setItem("city", e.value);
-        localStorage.setItem("cityName", e.label); 
-    }
+	function handleChange (e) {
+		setCity({"city":e.value, "cityName":e.label })
+	}
 
 	
 const cityOptions = [
@@ -33,7 +26,7 @@ const cityOptions = [
 	return (
 		<div className="giris-ekrani">
 			<div className="giris-button">
-				<Button as="div" labelPosition="left" onClick={updateState} >
+				<Button as="div" labelPosition="left">
 					<Label as="a" basic pointing="right">
 						Haydi Şehir Seçelim..
 					</Label>

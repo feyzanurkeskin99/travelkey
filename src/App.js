@@ -12,10 +12,11 @@ import Kategoriler from './Kategoriler'
 import Kesfet from './Kesfet'
 import GirisEkrani from './GirisEkrani'
 import { AppContext } from './Context'
+import {useLocalStorageState} from './utils'
 
 function App (){
-    const [city, setCity] = useState(localStorage.getItem("city") || "sehirsec");
-        if (city=="sehirsec") {
+    const [city, setCity] = useLocalStorageState("city",  "sehirsec");
+        if (city.cityName =="sehirsec") {
             return(
                 <AppContext.Provider value={{city, setCity}}>
                 <div className="app">

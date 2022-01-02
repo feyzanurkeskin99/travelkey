@@ -14,13 +14,13 @@ function UstBar (){
     function sehirSec(){
         localStorage.removeItem("city")
         localStorage.removeItem("cityName")
-        setCity("sehirsec")
+        setCity({cityName:"sehirsec"})
     }
         return(
             <div className="ustbar">
                 <div className="ustbar-button three-line"><img src={threeline}></img></div>
                 <div className="ustbar-name"><div><img src={name}></img></div></div>
-                <Button basic color='black' onClick={sehirSec} content='Black' className='city-button'>{localStorage.getItem("cityName") || "sehirsec"}</Button>
+                <Button basic color='black' onClick={sehirSec} content='Black' className='city-button'>{city.cityName || "sehirsec"}</Button>
             </div>
         )
     
