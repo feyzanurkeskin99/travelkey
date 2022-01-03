@@ -4,12 +4,12 @@ import { Icon } from 'semantic-ui-react'
 import './ozel.css'
 import { Swiper, SwiperSlide } from 'swiper/react/swiper-react.js';
 import 'swiper/swiper.min.css'
+import 'swiper/modules/effect-cards/effect-cards.js'
 import 'swiper/modules/pagination/pagination.min.css'
 
 const VitrinKoleksiyon =()=>{
     
         return(
-            <div className="ortaalan">
               <>
               <Swiper effect={'cards'} grabCursor={true} className="mySwiper">
                 <SwiperSlide>Slide 1</SwiperSlide>
@@ -18,7 +18,7 @@ const VitrinKoleksiyon =()=>{
                 <SwiperSlide>Slide 4</SwiperSlide>
               </Swiper>
               </>
-            </div>
+        
         )
 }
 
