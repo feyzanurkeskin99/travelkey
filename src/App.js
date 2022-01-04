@@ -16,7 +16,7 @@ import {useLocalStorageState} from './utils'
 
 function App (){
     const [city, setCity] = useLocalStorageState("city",  "sehirsec");
-        if (city.cityName =="sehirsec") {
+        if (city.cityName == "sehirsec") {
             return(
                 <AppContext.Provider value={{city, setCity}}>
                 <div className="app">

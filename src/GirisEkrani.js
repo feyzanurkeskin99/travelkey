@@ -32,7 +32,7 @@ const cityOptions = [
 					</Label>
 				</Button>
 			</div>
-			<Select options={cityOptions} onChange={handleChange}/>
+			<Select inputProps={{readOnly:true}} options={cityOptions} onChange={handleChange}/>
 		</div>
 	);
 }

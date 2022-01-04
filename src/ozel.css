@@ -119,13 +119,19 @@ body{
   }
 
   .ustbar .city-button{
+    padding: 5px;
       height: 30px;
+      color:#74E2FF;
+      border-radius: 10px;
+      border: 2px solid #74E2FF;
       display: flex;
       justify-content: center;
       align-items: center;
       }
-      
-  .ortaalan {
+  .ustbar .city-button i{
+      margin-bottom: 5px;
+  }
+  .ortaalan {    
       display: flex !important;
       flex-direction: column;
       justify-content: flex-start!important;
@@ -155,7 +161,7 @@ body{
       background-size: cover;
       position: relative;
   }
-​
+
   .ortaalan .cover::before {
     content: "";
     position: absolute;
@@ -167,7 +173,7 @@ body{
     background: linear-gradient(0deg, #04212d, transparent);
     z-index: 0;
 }
-​
+
   .ortaalan .ara{
     background: #BBDADF;
     display: flex;
@@ -178,7 +184,7 @@ body{
     margin-bottom: -1.5em;
     z-index: 1;
 }
-​
+
 .ortaalan .title{
   z-index: 1;
   display: flex;
@@ -186,12 +192,12 @@ body{
   padding: 0 2em;
   width: 100%;
 }
-​
+
 .ortaalan .title h2 {
   color: white;
   text-shadow: 4px 4px 11px #000000;
 }
-​
+
 .ortaalan .title span{
  height: 40px;
  width: 64xp;
@@ -200,7 +206,7 @@ body{
  padding: 10px;
  color: white;
 }
-​
+
 .ortaalan .ara input{
   background: transparent;
   border:none;
@@ -215,6 +221,8 @@ body{
   .swiper {
     width: 240px;
     height: 200px;
+    margin-bottom: 10px;
+    overflow: visible !important;
   }
   
   .swiper-slide {
@@ -226,7 +234,9 @@ body{
     font-weight: bold;
     color: #fff;
   }
-  
+  .mySwiper2 .swiper-slide img{
+    border-radius: 15px;
+  }
   .swiper-slide:nth-child(1n) {
     background-color: rgb(206, 17, 17);
   }
@@ -266,73 +276,48 @@ body{
   .swiper-slide:nth-child(10n) {
     background-color: rgb(54, 94, 77);
   }
-  
-  .ortaalan .cover {
-    height: 30vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  .all-collections-container{
+    display: flex;    
     justify-content: flex-end;
-    background-color: #74E2FF;
-    border-radius: 0 0 20px 20px;
-    width: 100vw;
-    height: 45vh;
-    margin-top: -10vh;
-    margin-bottom: 3em;
-    background: url(https://images.unsplash.com/photo-1546508428-f76b668cc812?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=922&q=80);
-    background-position: top;
-    background-size: cover;
-    position: relative;
-}
+    margin-right: 10px;
+  }
+  
+  .all-collections{
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
+    height: 25px;
+    width: 130px;
+    background-color: #74E2FF;    
+    white-space: nowrap; /* Yazıyı tek satırla sınırlandırıyoruz */
+    overflow:hidden; /* Verilen genişlikten (150px) artanı gizlemesini istiyoruz */
+    text-overflow:clip; 
+    border-radius: 50px;
+    margin-bottom: 10px;
+  }
 
-.ortaalan .cover::before {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 10em;
-  border-radius: 20px;
-  bottom: 0;
-  left: 0;
-  background: linear-gradient(0deg, #04212d, transparent);
-  z-index: 0;
-}
+  .all-collections span{
+    font-size: 10px;
+  }
+  .all-collections:hover{
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
+    height: 25px;
+    width: 130px;
+    background-color:#04212d;
+    color: #74E2FF;
+    white-space: nowrap; /* Yazıyı tek satırla sınırlandırıyoruz */
+    overflow:hidden; /* Verilen genişlikten (150px) artanı gizlemesini istiyoruz */
+    text-overflow:clip; 
+    border-radius: 50px;
+    margin-bottom: 10px;
+    fill: #74E2FF;
+  }
 
-.ortaalan .ara{
-  background: #BBDADF;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1em;
-  border-radius: 50px;
-  margin-bottom: -1.5em;
-  z-index: 1;
-}
-
-.ortaalan .title{
-z-index: 1;
-display: flex;
-justify-content: space-between;
-padding: 0 2em;
-width: 100%;
-}
-
-.ortaalan .title h2 {
-color: white;
-text-shadow: 4px 4px 11px #000000;
-}
-
-.ortaalan .title span{
-height: 40px;
-width: 64xp;
-background: var(--birincil);
-border-radius: .5em;
-padding: 10px;
-color: white;
-}
-
-.ortaalan .ara input{
-background: transparent;
-border:none;
-}
+  .all-collections svg{
+    height: inherit;
+    padding: 2px;
+  }
   
 }

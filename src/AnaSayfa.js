@@ -1,11 +1,17 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import ReactDOM from 'react-dom'
-import { Icon } from 'semantic-ui-react'
-import VitrinKoleksiyon from './VitrinKoleksiyon'
+import { Button, Icon } from 'semantic-ui-react'
+import VitrinKoleksiyon from './Swipers/VitrinKoleksiyon'
+import KategorilerScrollingCarousel from './Swipers/KategorilerScrollingCarousel'
+
 
 const AnaSayfa =()=>{
+    React.useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
         return(
-            <div className="ortaalan">
+            <div className="ortaalan" scrollbar={true}>
+            
                 <div className='cover'>
                 <div className='title'>
                     <h2>Nereye gitmek  <br/>istiyorsun?</h2>
@@ -20,6 +26,7 @@ const AnaSayfa =()=>{
                 </div>
 
                 <VitrinKoleksiyon></VitrinKoleksiyon>
+                <KategorilerScrollingCarousel></KategorilerScrollingCarousel>
             </div>
         )
     
