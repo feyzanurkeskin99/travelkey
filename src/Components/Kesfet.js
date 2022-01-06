@@ -1,14 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Icon } from 'semantic-ui-react'
-import './ozel.css'
+import '../ozel.css'
 import SwiperCore, {EffectCards,Pagination, Navigation, Scrollbar, A11y} from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react/swiper-react.js';
 import 'swiper/swiper.min.css'
 import 'swiper/modules/pagination/pagination.min.css'
-import giris from './images/giris.png'
-import giris2 from './images/giris2.png'
-import giris3 from './images/giris3.png'
+import giris from '../images/giris.png'
+import giris2 from '../images/giris2.png'
+import giris3 from '../images/giris3.png'
 
 
 

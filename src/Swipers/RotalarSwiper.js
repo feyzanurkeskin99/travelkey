@@ -10,12 +10,12 @@ import TumElemanlar from '../TumElemanlar';
 
 SwiperCore.use([Pagination]);
 
-const KategorilerSwiper2 =()=>{
+const RotalarSwiper =()=>{
     
     return(
-        <div className='kategoriler-swiper-2'>
-        <TumElemanlar name='Tüm Koleksiyonlar'></TumElemanlar>
-        <Swiper slidesPerView={5} centeredSlides={true} slidesPerView={'auto'} spaceBetween={30} grabCursor={true} pagination={{
+        <div className='rotalar-swiper'>
+        <TumElemanlar name='Tüm Rotalar'></TumElemanlar>
+        <Swiper slidesPerView={5} centeredSlides={true} slidesPerView={'auto'} spaceBetween={30} slidesPerView={'auto'} grabCursor={true} pagination={{
             "clickable": true
     }} className="mySwiper3">
         <SwiperSlide>Slide 1</SwiperSlide><SwiperSlide>Slide 2</SwiperSlide><SwiperSlide>Slide 3</SwiperSlide><SwiperSlide>Slide 4</SwiperSlide><SwiperSlide>Slide 5</SwiperSlide><SwiperSlide>Slide 6</SwiperSlide><SwiperSlide>Slide 7</SwiperSlide><SwiperSlide>Slide 8</SwiperSlide><SwiperSlide>Slide 9</SwiperSlide>
@@ -24,4 +24,4 @@ const KategorilerSwiper2 =()=>{
     )
 }
 
-export default KategorilerSwiper2;
+export default RotalarSwiper;

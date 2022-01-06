@@ -46,6 +46,9 @@ body{
       height: 10vh;
       margin:1em;
       border-radius: 15px;
+    position: absolute;
+    bottom: 0px;
+    z-index: 10000;
   }
   .altbar .altbar-button{
       display: flex;
@@ -68,6 +71,9 @@ body{
   
   .altbar .altbar-button .altbar-link svg{
       font-size:1.5em!important;
+      width: 100%; 
+      height: 100%;
+    
   } 
 
   .altbar .altbar-button .altbar-link.location{
@@ -100,6 +106,9 @@ body{
     padding: 0 1em;
     z-index: 2;
     background: linear-gradient(180deg, #0a0905, #bfb9b900);
+    position:absolute;
+    left: 0;
+    top:0;
 }
   .ustbar .ustbar-button{
       display: flex;
@@ -138,6 +147,10 @@ body{
       width: 100%!important;
       height: 80vh!important;
       flex-grow: 2;
+      overflow-y:scroll;
+      overflow-x:hidden;
+      margin-bottom: 100px;
+
   }
   .ortaalan .ortaalanText{
       font-size: 25px;
@@ -154,12 +167,17 @@ body{
       border-radius: 0 0 20px 20px;
       width: 100vw;
       height: 45vh;
-      margin-top: -10vh;
       margin-bottom: 3em;
       background: url(https://images.unsplash.com/photo-1546508428-f76b668cc812?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=922&q=80);
       background-position: top;
       background-size: cover;
       position: relative;
+  }
+
+  .ortaalan .cover .title{
+    height: 45vh;
+    align-items: flex-end;
+    margin-bottom: 2em;
   }
 
   .ortaalan .cover::before {
@@ -224,8 +242,29 @@ body{
     margin-bottom: 10px;
     overflow: visible !important;
   }
-  
-  .swiper-slide {
+  .kategoriler-swiper-2 .swiper-slide{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 18px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #fff;
+    width: 100%!important;
+    height: 100%!important;
+  }
+  .rotalar-swiper .swiper-slide{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 18px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #fff;
+    width: 100%!important;
+    height: 60%!important;
+  }
+  .vitrin-koleksiyon .swiper-slide{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -234,52 +273,63 @@ body{
     font-weight: bold;
     color: #fff;
   }
-  .mySwiper2 .swiper-slide img{
+  .kategoriler-scrolling-carousel .swiper-slide{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 18px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #fff;
+  }
+
+  .kategoriler-scrolling-carousel .swiper-slide img{
     border-radius: 15px;
   }
   .swiper-slide:nth-child(1n) {
-    background-color: rgb(206, 17, 17);
+    background-color: var(--birincil);
   }
   
   .swiper-slide:nth-child(2n) {
-    background-color: rgb(0, 140, 255);
+    background-color: var(--light);
   }
   
   .swiper-slide:nth-child(3n) {
-    background-color: rgb(10, 184, 111);
+    background-color: var(--ikincil);
   }
   
   .swiper-slide:nth-child(4n) {
-    background-color: rgb(211, 122, 7);
+    background-color: var(--birincil);
   }
   
   .swiper-slide:nth-child(5n) {
-    background-color: rgb(118, 163, 12);
+    background-color: var(--light);
   }
   
   .swiper-slide:nth-child(6n) {
-    background-color: rgb(180, 10, 47);
+    background-color: var(--ikincil);
   }
   
   .swiper-slide:nth-child(7n) {
-    background-color: rgb(35, 99, 19);
+    background-color: var(--birincil);
   }
   
   .swiper-slide:nth-child(8n) {
-    background-color: rgb(0, 68, 255);
+    background-color: var(--light);
   }
   
   .swiper-slide:nth-child(9n) {
-    background-color: rgb(218, 12, 218);
+    background-color: var(--ikincil);
   }
   
   .swiper-slide:nth-child(10n) {
-    background-color: rgb(54, 94, 77);
+    background-color: var(--birincil);
   }
   .all-collections-container{
     display: flex;    
     justify-content: flex-end;
     margin-right: 10px;
+    margin-bottom: 20px;
   }
   
   .all-collections{
@@ -319,5 +369,20 @@ body{
     height: inherit;
     padding: 2px;
   }
-  
+  .kategoriler-scrolling-carousel{
+    margin-bottom: 20px;
+  }
+  .kategoriler-swiper-2{
+    margin-bottom: 20px;
+    width: 100%;
+  }
+
+  .hava-durumu{
+    height: 80px;
+    width: 150px;
+    background: var(--birincil);
+    border-radius: .5em;
+    padding: 10px;
+    color: white;
+  }
 }

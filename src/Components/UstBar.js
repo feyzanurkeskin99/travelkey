@@ -3,8 +3,8 @@ import React, {useContext} from 'react'
 import ReactDOM from 'react-dom'
 import { Button, Icon } from 'semantic-ui-react';
 import { AppContext } from './Context'
-import threeline from './images/three-line.png'
-import name from './images/name.png'
+import threeline from '../images/three-line.png'
+import name from '../images/name.png'
 
 
 function UstBar (){
