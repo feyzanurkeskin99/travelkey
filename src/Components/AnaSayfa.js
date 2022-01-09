@@ -15,8 +15,7 @@ const AnaSayfa =()=>{
         window.scrollTo(0, 0);
     }, []);
         return(
-            <div className="ortaalan">
-            
+            <>
                 <div className='cover'>
                 <div className='title'>
                     <h2>Nereye gitmek  <br/>istiyorsun?</h2>
@@ -34,7 +33,7 @@ const AnaSayfa =()=>{
                 <RotalarSwiper></RotalarSwiper>
                 <YerlerSwiper></YerlerSwiper>
                 <Haberler></Haberler>
-            </div>
+            </>
         )
     
 }

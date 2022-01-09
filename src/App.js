@@ -14,6 +14,8 @@ import GirisEkrani from './Components/GirisEkrani'
 import NotFound from './Components/NotFound'
 import { AppContext } from './Components/Context'
 import {useLocalStorageState} from './Components/utils'
+import Etkinlikler from './Components/Etkinlikler'
+import Kaydedilenler from './Components/Kaydedilenler'
 
 function App (){
     const [city, setCity] = useLocalStorageState("city",  "sehirsec");
@@ -32,14 +34,18 @@ function App (){
                 <AppContext.Provider value={{city, setCity}}>
                 <div className="app">
                 <UstBar/>
+                    <div className='ortaalan'>
                     <Routes>
                         <Route path='/' element={ <AnaSayfa />} />
                         <Route path='/travelkey' element={<AnaSayfa />} />
                         <Route path='/kategoriler' element={<Kategoriler />} />
                         <Route path='/kesfet' element={<Kesfet />} />
                         <Route path='/giris' element={ <GirisEkrani/>} />
+                        <Route path='/kaydedilenler' element={<Kaydedilenler />} />
+                        <Route path='/etkinlikler' element={ <Etkinlikler/>} />
                         <Route path='*' element={<NotFound/>} />
                     </Routes>
+                    </div>
                 <AltBar />
                 </div>
             </AppContext.Provider>  

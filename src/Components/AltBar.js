@@ -8,31 +8,31 @@ import InlineSVG from 'svg-inline-react';
 const AltBar  =()=>{
         return(
             <div className="altbar">
-                <div className="altbar-button">
-                    <NavLink to="/" className="altbar-link">
-                    <InlineSVG src={navIcons.home}/>
-                    </NavLink>
-                </div>
-                <div className="altbar-button location-border">
-                    <NavLink to="/kategoriler" className="altbar-link location">
-                    <InlineSVG src={navIcons.discover}/>
-                    </NavLink>
-                </div>
-                <div className="altbar-button">
-                    <NavLink to="/kesfet" className="altbar-link">
-                    <InlineSVG src={navIcons.categories}/>
-                    </NavLink>
-                </div>
-                <div className="altbar-button">
-                    <NavLink to="/kategoriler" className="altbar-link">
-                    <InlineSVG src={navIcons.events}/>
-                    </NavLink>
-                </div>
-                <div className="altbar-button">
-                    <NavLink to="/kesfet" className="altbar-link">
-                    <InlineSVG src={navIcons.saved}/>
-                    </NavLink>
-                </div>
+                <NavLink to="/" className="altbar-link">
+                    <div className="altbar-button">
+                        <InlineSVG src={navIcons.home}/>
+                    </div>
+                </NavLink>
+                <NavLink to="/kesfet" className="altbar-link location">
+                    <div className="altbar-button location-border">
+                        <InlineSVG src={navIcons.discover}/>
+                    </div>
+                </NavLink>
+                <NavLink to="/kategoriler" className="altbar-link location">
+                    <div className="altbar-button location-border">
+                        <InlineSVG src={navIcons.categories}/>
+                    </div>
+                </NavLink>
+                <NavLink to="/etkinlikler" className="altbar-link location">
+                    <div className="altbar-button location-border">
+                        <InlineSVG src={navIcons.events}/>
+                    </div>
+                </NavLink>
+                <NavLink to="/kaydedilenler" className="altbar-link location">
+                    <div className="altbar-button location-border">
+                        <InlineSVG src={navIcons.saved}/>
+                    </div>
+                </NavLink>
             </div>
         )
     
