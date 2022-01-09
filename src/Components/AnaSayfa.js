@@ -6,6 +6,8 @@ import KategorilerScrollingCarousel from '../Swipers/KategorilerScrollingCarouse
 import KategorilerSwiper2 from '../Swipers/KategorilerSwiper2'
 import RotalarSwiper from '../Swipers/RotalarSwiper'
 import HavaDurumu from './HavaDurumu'
+import YerlerSwiper from '../Swipers/YerlerSwiper'
+import Haberler from '../Swipers/Haberler'
 
 
 const AnaSayfa =()=>{
@@ -18,7 +20,7 @@ const AnaSayfa =()=>{
                 <div className='cover'>
                 <div className='title'>
                     <h2>Nereye gitmek  <br/>istiyorsun?</h2>
-                    <span> TODO Hava</span>
+                    <HavaDurumu></HavaDurumu>
                 </div>
                 <div className='ara'>
 
@@ -26,11 +28,12 @@ const AnaSayfa =()=>{
                 <input type="text" placeholder='Ara: Yerler, Koleksiyonlar, Etkinlikler...'></input>
                 </div>
                 </div>
-                <HavaDurumu></HavaDurumu>
                 <VitrinKoleksiyon></VitrinKoleksiyon>
                 <KategorilerScrollingCarousel></KategorilerScrollingCarousel>
                 <KategorilerSwiper2></KategorilerSwiper2>
                 <RotalarSwiper></RotalarSwiper>
+                <YerlerSwiper></YerlerSwiper>
+                <Haberler></Haberler>
             </div>
         )
     

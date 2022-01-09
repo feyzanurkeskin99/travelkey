@@ -11,6 +11,7 @@ import AnaSayfa from './Components/AnaSayfa'
 import Kategoriler from './Components/Kategoriler'
 import Kesfet from './Components/Kesfet'
 import GirisEkrani from './Components/GirisEkrani'
+import NotFound from './Components/NotFound'
 import { AppContext } from './Components/Context'
 import {useLocalStorageState} from './Components/utils'
 
@@ -37,6 +38,7 @@ function App (){
                         <Route path='/kategoriler' element={<Kategoriler />} />
                         <Route path='/kesfet' element={<Kesfet />} />
                         <Route path='/giris' element={ <GirisEkrani/>} />
+                        <Route path='*' element={<NotFound/>} />
                     </Routes>
                 <AltBar />
                 </div>

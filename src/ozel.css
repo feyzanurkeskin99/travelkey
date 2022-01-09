@@ -1,5 +1,5 @@
 body{
-  background-color: #ffffff!important;
+  background-color: #d1d1d1!important;
 }
 :root{
   --birincil:#004359ff;
@@ -109,6 +109,8 @@ body{
     position:absolute;
     left: 0;
     top:0;
+    backdrop-filter: blur(8px);
+    background: radial-gradient(#c2c2c261, #ffffff8c);
 }
   .ustbar .ustbar-button{
       display: flex;
@@ -168,7 +170,7 @@ body{
       width: 100vw;
       height: 45vh;
       margin-bottom: 3em;
-      background: url(https://images.unsplash.com/photo-1546508428-f76b668cc812?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=922&q=80);
+      background: url(https://images.unsplash.com/photo-1508672019048-805c876b67e2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1519&q=80);
       background-position: top;
       background-size: cover;
       position: relative;
@@ -250,9 +252,74 @@ body{
     font-size: 22px;
     font-weight: bold;
     color: #fff;
-    width: 100%!important;
-    height: 100%!important;
+    width: 50%!important;
+    height: 60%!important;
+    flex-direction: column;
   }
+  .kategoriler-swiper-2 .swiper-slide .kategoriler-alt{
+    background-color: var(--ikincil);
+    color: var(--birincil);
+    font-size: 15px;
+    font-weight: 200;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    height: 45px;
+    border-radius: 18px 0 18px 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .kategoriler-swiper-2 .swiper-slide .kategoriler-ust{
+    background-color: var(--birincil);
+    height: 100%;
+    width: 100%;
+    border-radius: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+  .haberler-swiper .swiper-slide{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 18px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #fff;
+    width: 70%!important;
+    height: 80%!important;
+    flex-direction: column;
+  }
+  .haberler-swiper .swiper-slide .haberler-alt{
+    background-color: white;
+    color: var(--birincil);
+    font-size: 15px;
+    font-weight: 200;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    height: 70px;
+    border-radius: 18px 18px 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .haberler-swiper .swiper-slide .haberler-ust{
+    background-color: var(--birincil);
+    height: 100%;
+    width: 100%;
+    border-radius: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+
   .rotalar-swiper .swiper-slide{
     display: flex;
     align-items: center;
@@ -263,6 +330,17 @@ body{
     color: #fff;
     width: 100%!important;
     height: 60%!important;
+  }
+  .yerler-swiper .swiper-slide{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 18px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #fff;
+    width: 60%!important;
+    height: 100%!important;
   }
   .vitrin-koleksiyon .swiper-slide{
     display: flex;
@@ -381,8 +459,33 @@ body{
     height: 80px;
     width: 150px;
     background: var(--birincil);
-    border-radius: .5em;
+    border-radius: 1em;
     padding: 10px;
     color: white;
+   column-count: 1;
+   position: relative;
+  }
+  .hava-durumu-derece{
+    margin:0;
+    font-size: 20px;
+    font-weight: 600;
+  }
+  .hava-durumu-sehir{
+    margin:0;
+    font-size: 10px;
+    font-weight: 100;
+  }
+  .hava-durumu-durum{
+    margin:0;
+    font-size: 15px;
+    font-weight: 400;
+  }
+  .hava-durumu-icon{
+    position:absolute;
+    top: 0;
+    right: 0;
+    width: 70px;
+    height: 70px;
+    opacity: 0.5;
   }
 }

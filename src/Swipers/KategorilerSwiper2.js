@@ -6,19 +6,63 @@ import 'swiper/swiper.min.css'
 import 'swiper/modules/effect-cards/effect-cards.js'
 import 'swiper/modules/pagination/pagination.min.css'
 import TumElemanlar from '../TumElemanlar';
+import { Icon } from 'semantic-ui-react';
 
-
-SwiperCore.use([Pagination]);
 
 const KategorilerSwiper2 =()=>{
     
     return(
         <div className='kategoriler-swiper-2'>
-        <TumElemanlar name='Tüm Koleksiyonlar'></TumElemanlar>
-        <Swiper slidesPerView={5} centeredSlides={true} slidesPerView={'auto'} spaceBetween={30} grabCursor={true} pagination={{
-            "clickable": true
-    }} className="mySwiper3">
-        <SwiperSlide>Slide 1</SwiperSlide><SwiperSlide>Slide 2</SwiperSlide><SwiperSlide>Slide 3</SwiperSlide><SwiperSlide>Slide 4</SwiperSlide><SwiperSlide>Slide 5</SwiperSlide><SwiperSlide>Slide 6</SwiperSlide><SwiperSlide>Slide 7</SwiperSlide><SwiperSlide>Slide 8</SwiperSlide><SwiperSlide>Slide 9</SwiperSlide>
+        <TumElemanlar name='Tüm Kategoriler'></TumElemanlar>
+        <Swiper slidesPerView={5} centeredSlides={true} slidesPerView={'auto'} spaceBetween={20} grabCursor={true} className="mySwiper3">
+        <SwiperSlide>
+            <div className='kategoriler-ust'>
+                <Icon size='huge' name='food'></Icon>
+            </div>
+            <div className='kategoriler-alt'>DOĞA</div>
+        </SwiperSlide>
+        <SwiperSlide>
+            <div className='kategoriler-ust'>
+                <Icon size='huge' name='food'></Icon>
+            </div>
+            <div className='kategoriler-alt'>TARİH</div>
+        </SwiperSlide>
+        <SwiperSlide>
+            <div className='kategoriler-ust'>
+                <Icon size='huge' name='food'></Icon>
+            </div>
+            <div className='kategoriler-alt'>LEZZET</div>
+        </SwiperSlide>
+        <SwiperSlide>
+            <div className='kategoriler-ust'>
+                <Icon size='huge' name='food'></Icon></div>
+            <div className='kategoriler-alt'>KONAKLAMA</div>
+        </SwiperSlide>
+        <SwiperSlide>
+            <div className='kategoriler-ust'>
+                <Icon size='huge' name='food'></Icon></div>
+            <div className='kategoriler-alt'>AKTİVİTE</div>
+        </SwiperSlide>
+        <SwiperSlide>
+            <div className='kategoriler-ust'>
+                <Icon size='huge' name='food'></Icon></div>
+            <div className='kategoriler-alt'>EĞLENCE</div>
+        </SwiperSlide>
+        <SwiperSlide>
+            <div className='kategoriler-ust'>
+                <Icon size='huge' name='food'></Icon></div>
+            <div className='kategoriler-alt'>DOĞA</div>
+        </SwiperSlide>
+        <SwiperSlide>
+            <div className='kategoriler-ust'>
+                <Icon size='huge' name='food'></Icon></div>
+            <div className='kategoriler-alt'>TARİH</div>
+        </SwiperSlide>
+        <SwiperSlide>
+            <div className='kategoriler-ust'>
+                <Icon size='huge' name='food'></Icon></div>
+            <div className='kategoriler-alt'>LEZZET</div>
+        </SwiperSlide>
         </Swiper>
         </div>
     )
