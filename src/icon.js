@@ -62,6 +62,12 @@ const havaIcons={
         "home": `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><path fill="#efefef" stroke="#efefef" stroke-miterlimit="10" stroke-width="3" d="M46.5 31.5h-.32a10.49 10.49 0 00-19.11-8 7 7 0 00-10.57 6 7.21 7.21 0 00.1 1.14A7.5 7.5 0 0018 45.5a4.19 4.19 0 00.5 0v0h28a7 7 0 000-14z"/><g><path fill="#f4a71d" d="M30 36l-4 12h4l-2 10 10-14h-6l4-8h-6z"/><animate attributeName="opacity" dur="2s" repeatCount="indefinite" values="1;1;1;1;1;1;0.1;1;0.1;1;1;0.1;1;0.1;1"/></g></svg>`,
         "kesfet": `SVGKODU`
     }
+
+    const backgroundIcons={
+    
+        "routes": `<svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="route" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="svg-inline--fa fa-route fa-w-16 fa-fw fa-2x"><g class="fa-group"><path fill="currentColor" d="M512 416a96.15 96.15 0 0 1-96 96H138.2a690.4 690.4 0 0 0 47.3-64H416a32 32 0 0 0 0-64h-96a96 96 0 0 1 0-192h45.24A799.82 799.82 0 0 0 416 256h-96a32 32 0 0 0 0 64h96a96.15 96.15 0 0 1 96 96z" class="fa-secondary"></path><path fill="currentColor" d="M96 256a96 96 0 0 0-96 96c0 53 96 160 96 160s96-107 96-160a96 96 0 0 0-96-96zm0 128a32 32 0 1 1 32-32 32 32 0 0 1-32 32zM416 0a96 96 0 0 0-96 96c0 53 96 160 96 160s96-107 96-160a96 96 0 0 0-96-96zm0 128a32 32 0 1 1 32-32 32 32 0 0 1-32 32z" class="fa-primary"></path></g></svg>`,
+        "kesfet": `SVGKODU`
+    }
     
     
-    export  {havaIcons, navIcons,kategoriIcons};
+    export  {havaIcons, navIcons,kategoriIcons,backgroundIcons};

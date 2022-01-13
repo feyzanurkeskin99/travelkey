@@ -1,5 +1,5 @@
 body{
-  background-color: #d1d1d1!important;
+  background-color: #ffffff!important;
 }
 :root{
   --birincil:#004359ff;
@@ -16,7 +16,6 @@ body{
   height: 100vh;
 }
 @media only screen and (max-width : 900px)  { 
-
   .giris-ekrani {
       background-image: url(./images/giris.png);
       background-color: #fff;
@@ -75,14 +74,38 @@ body{
     height: 100%;
   z-index: 1;
 } 
+.altbar .altbar-link .altbar-button:before {
+  background: rgba(192,216,223,.47843137254901963);
+  width: 0;
+  height: 0;
+  top: 50%;
+  -webkit-filter: blur(9px);
+  filter: blur(9px);
+  transition: all 250ms ease-in-out;
+}
+.altbar .altbar-link.active svg {
+  fill: white;
+}
 
+.altbar .altbar-link.active .altbar-button:before {
+  width: 50%;
+  height: 50%;
+}
 .altbar  .altbar-link .altbar-button{
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
 } 
-
+.altbar .altbar-link.active .altbar-button, .altbar .altbar-link:hover .altbar-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background-color: #00000024!important;
+  fill: #24c7ff;
+  fill: var(--ikincil);
+}
 .altbar .altbar-link:hover .altbar-button, .altbar .altbar-link.active .altbar-button{
     display: flex;
     align-items: center;
@@ -174,6 +197,7 @@ border-radius: 5em;
     overflow-y:scroll;
     overflow-x:hidden;
     padding-bottom: 10vh;
+    background-color: #d1d1d1;
 }
   .ortaalan .ortaalanText{
       font-size: 25px;
@@ -265,6 +289,9 @@ border-radius: 5em;
     margin-bottom: 10px;
     overflow: visible !important;
   }
+  .swiper-wrapper{
+    align-items: center;
+  }
   .kategoriler-swiper-2 .swiper-slide{
     display: flex;
     align-items: center;
@@ -276,6 +303,7 @@ border-radius: 5em;
     width: 50%!important;
     height: 60%!important;
     flex-direction: column;
+    left:-25%;
   }
   .kategoriler-swiper-2 .swiper-slide .kategoriler-alt{
     background-color: var(--ikincil);
@@ -314,17 +342,18 @@ border-radius: 5em;
     width: 70%!important;
     height: 80%!important;
     flex-direction: column;
+    left:-25%;
   }
   .haberler-swiper .swiper-slide .haberler-alt{
-    background-color: white;
+    background-color: var(--ikincil);
     color: var(--birincil);
     font-size: 15px;
     font-weight: 200;
     width: 100%;
     position: absolute;
     bottom: 0;
-    height: 70px;
-    border-radius: 18px 18px 0 0;
+    height: 60px;
+    border-radius: 0 0 18px 18px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -332,14 +361,61 @@ border-radius: 5em;
   
   .haberler-swiper .swiper-slide .haberler-ust{
     background-color: var(--birincil);
-    height: 100%;
+    height: 70%;
     width: 100%;
     border-radius: 18px;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: absolute;
+    top: 0;
+    z-index: 1000;
   }
 
+  .rotalar-swiper{
+    padding-top: 60px;
+    position: relative;
+  }
+
+  .background-icon{
+    position: absolute;
+    top: 10px;
+    left: 40px;
+    width: 70px;
+    height: 70px;
+  }
+  .background-icon svg{
+    font-size: 6em;;
+    opacity: 0.3;
+  }
+  .background-icon .background-baslik{
+    position: absolute;
+    top: 20px;
+    left: 50px;
+    color: var(--birincil);
+    font-size: 30px;
+  }
+  .iki-sira-swiper .background-icon{
+    top: 20px;
+    left: 20px;
+  }
+  .iki-sira-swiper .background-icon svg{
+    font-size: 6em;;
+    opacity: 0.3;
+  }
+
+  .iki-sira-swiper .background-baslik{
+    font-size: 40px;
+
+  }
+  
+
+  .background-icon .fa-primary{
+    fill:var(--birincil);
+  }
+  .background-icon .fa-secondary{
+    fill:var(--ikincil);
+  }
 
   .rotalar-swiper .swiper-slide{
     display: flex;
@@ -352,6 +428,19 @@ border-radius: 5em;
     width: 100%!important;
     height: 60%!important;
   }
+
+  .rotalar-swiper .swiper-slide::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 3em;
+    border-radius: 0 0 20px 20px;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(0deg, #04212d, transparent);
+    z-index: 0;
+  }
+
   .yerler-swiper .swiper-slide{
     display: flex;
     align-items: center;
@@ -362,7 +451,21 @@ border-radius: 5em;
     color: #fff;
     width: 60%!important;
     height: 100%!important;
+    left:-25%;
   }
+
+  .yerler-swiper .swiper-slide::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 5em;
+    border-radius: 0 0 20px 20px;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(0deg, #04212d, transparent);
+    z-index: 0;
+  }
+
   .vitrin-koleksiyon .swiper-slide{
     display: flex;
     align-items: center;
@@ -372,6 +475,37 @@ border-radius: 5em;
     font-weight: bold;
     color: #fff;
   }
+
+  .iki-sira-swiper{
+    position: relative;
+    background-color: white;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    border-radius: 25px;
+    padding-top: 100px;
+    padding-bottom: 30px;
+    padding-left: -15px;
+    margin-top: 30px;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-bottom: 10%;
+  }
+  .iki-sira-swiper .swiper-slide{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 18px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #fff;
+    width: 100%!important;
+    height: 60%!important;
+    left: -10%;
+  }
+  .mySwiper4{
+    margin-bottom: -60px;
+  }
   .kategoriler-scrolling-carousel .swiper-slide{
     display: flex;
     align-items: center;
@@ -380,11 +514,71 @@ border-radius: 5em;
     font-size: 22px;
     font-weight: bold;
     color: #fff;
+    margin-top: 15px;
   }
 
   .kategoriler-scrolling-carousel .swiper-slide img{
     border-radius: 15px;
   }
+
+  .etkinlikler{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .etkinlikler .all-collections-container{
+    width: 100%;
+  }
+  .etkinlikler .etkinlikler-satir{
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 90%;
+    height: 80px;
+    background: #ffffff;
+    margin-bottom: 15px;
+    border-radius: 10px;
+  }
+
+  .etkinlikler .etkinlikler-satir::before{    
+    content: "";
+    position: absolute;
+    width: 45%;
+    height: 100%;
+    border-radius: 10px;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(-90deg, #04212d, transparent);
+    z-index: 0;
+}
+.etkinlikler .etkinlikler-satir .tarih{
+  display: flex;
+  align-items: center;
+  width: 115px;
+  color: var(--birincil);
+}
+.etkinlikler .etkinlik-adi{
+  font-size: 20px;
+  margin-top: 0;
+  margin-left: 15px;
+}
+.etkinlikler .tarih h2{
+  font-size: 50px;
+  margin-bottom: 0;
+  margin-right: 5px;
+}
+.etkinlikler .tarih h3{
+  margin-top: 0;
+  font-size: 15px;
+}
+
+.etkinlikler .tarih h4{
+  margin-bottom: 0;
+  font-size: 20px;
+}
   .swiper-slide:nth-child(1n) {
     background-color: var(--birincil);
   }
@@ -429,6 +623,7 @@ border-radius: 5em;
     justify-content: flex-end;
     margin-right: 10px;
     margin-bottom: 20px;
+    margin-top: 20px;
   }
   
   .all-collections{
