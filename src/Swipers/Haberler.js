@@ -7,13 +7,17 @@ import 'swiper/modules/effect-cards/effect-cards.js'
 import 'swiper/modules/pagination/pagination.min.css'
 import TumElemanlar from '../TumElemanlar';
 import { Icon } from 'semantic-ui-react';
+import { NavLink } from 'react-router-dom';
 
 
 const Haberler =()=>{
     
     return(
         <div className='haberler-swiper'>
-        <TumElemanlar name='Tüm haberler'></TumElemanlar>
+        <NavLink to='/haber-sirala'>
+            <TumElemanlar name='Tüm Haberler'></TumElemanlar>
+        </NavLink>
+        
         <Swiper slidesPerView={5} centeredSlides={true} slidesPerView={'auto'} spaceBetween={20} grabCursor={true} className="haberler">
         <SwiperSlide>
             <div className='haberler-ust'>

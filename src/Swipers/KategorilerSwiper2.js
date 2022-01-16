@@ -7,13 +7,16 @@ import 'swiper/modules/effect-cards/effect-cards.js'
 import 'swiper/modules/pagination/pagination.min.css'
 import TumElemanlar from '../TumElemanlar';
 import { Icon } from 'semantic-ui-react';
+import { NavLink } from 'react-router-dom';
 
 
 const KategorilerSwiper2 =()=>{
     
     return(
         <div className='kategoriler-swiper-2'>
-        <TumElemanlar name='Tüm Kategoriler'></TumElemanlar>
+         <NavLink to='/kategori-sirala'>
+            <TumElemanlar name='Tüm Kategoriler'></TumElemanlar>
+        </NavLink>
         <Swiper slidesPerView={5} centeredSlides={true} slidesPerView={'auto'} spaceBetween={20} grabCursor={true} className="mySwiper3">
         <SwiperSlide>
             <div className='kategoriler-ust'>

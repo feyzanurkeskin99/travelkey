@@ -11,6 +11,8 @@ import Haberler from '../Swipers/Haberler'
 import IkiSiraSwiper from '../Swipers/IkiSiraSwiper'
 import Events from '../Swipers/Etkinlikler'
 import Etkinlikler from '../Swipers/Etkinlikler'
+import {backgroundIcons} from '../icon'
+import MiniSlider from '../Swipers/MiniSlider'
 
 
 const AnaSayfa =()=>{
@@ -35,8 +37,10 @@ const AnaSayfa =()=>{
                 <RotalarSwiper></RotalarSwiper>
                 <YerlerSwiper></YerlerSwiper>
                 <Haberler></Haberler>
-                <IkiSiraSwiper></IkiSiraSwiper>
+                <IkiSiraSwiper backgroundIcon={backgroundIcons.routes} name="Rotalar"></IkiSiraSwiper>
+                <IkiSiraSwiper backgroundIcon={backgroundIcons.historical} name="Tarihi"></IkiSiraSwiper>
                 <Etkinlikler></Etkinlikler>
+                <MiniSlider></MiniSlider>
             </>
         )
     

@@ -238,6 +238,233 @@ border-radius: 5em;
     background: linear-gradient(0deg, #04212d, transparent);
     z-index: 0;
 }
+.ortaalan .not-found{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+.ortaalan .yerler-detay-cover {
+  height: 30vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  background-color: #74E2FF;
+  border-radius: 0 0 68px 68px;
+  width: 100vw;
+  height: 45vh;
+  margin-bottom: 3em;
+  background: url(https://images.unsplash.com/photo-1508672019048-805c876b67e2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1519&q=80);
+  background-position: top;
+  background-size: cover;
+  position: relative;
+}
+.ortaalan .yerler-detay-cover::before {
+content: "";
+position: absolute;
+width: 100%;
+height: 10em;
+border-radius: 80px;
+bottom: 0;
+left: 0;
+background: linear-gradient(0deg, #04212d, transparent);
+z-index: 0;
+}
+
+
+
+.ortaalan .mini-slider .mySwiper2 .swiper-slide img{
+  height: 30vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  background-color: #74E2FF;
+  border-radius: 0 0 20px 20px;
+  width: 100vw;
+  height: 45vh;
+  margin-bottom: 3em;
+  
+  background-position: top;
+  background-size: cover;
+  position: relative;
+}
+.yerler-detay-ortaalan{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.yerler-detay-ortaalan .yerler-spot{
+  width: 90%;
+  height: auto;
+  border-left: 5px solid var(--birincil);
+}
+.yerler-detay-ortaalan .yerler-spot .yerler-spot-yazi{
+  margin-left: 10px;
+  color: var(--birincil);
+  font-weight: bold;
+}
+
+.yerler-detay-ortaalan .mini-slider .swiper{
+  height: auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.yerler-detay-ortaalan .yerler-mini-slider{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.yerler-detay-ortaalan .yerler-mini-slider .mini-slider{
+  height: 80px;
+  width: 80%;
+  padding: 10px;
+  margin: 20px 0 20px 0;
+  background-color: var(--birincil);
+  overflow: hidden;
+  border-radius: 18px;
+}
+.yerler-detay-ortaalan .iki-sira-swiper{
+  width: 90%;
+}
+
+.yerler-detay-ortaalan .iletisim .fa-primary{
+  fill:var(--birincil)
+}
+.yerler-detay-ortaalan .iletisim .fa-secondary{
+  fill:var(--ikincil)
+}
+.yerler-detay-ortaalan .iletisim .iletisim-bilgi{
+  display: flex;
+  flex-direction: column;
+}
+
+.yerler-detay-ortaalan .iletisim .iletisim-bilgi svg{
+  margin: 5px;
+}
+
+.yerler-detay-ortaalan .iletisim .koyu{
+  font-weight: bold;
+  color: var(--birincil);
+}
+
+
+.yerler-detay-ortaalan .iletisim{
+  padding: 30px;
+    background-color: darkgray;
+    border-radius: 18px;
+    width: 90%;
+}
+
+.yerler-detay-ortaalan .iletisim .iletisim-detay{
+  color: var(--light);
+}
+
+.yerler-detay-ortaalan .iletisim .iletisim-baslik{
+  color:var(--birincil);
+  margin-left: 15px;
+}
+
+.yerler-detay-ortaalan .iletisim span{
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  padding: 5px;
+}
+
+.yerler-detay-ortaalan .iletisim svg{
+  font-size: 1em;
+}
+
+.yerler-detay-cover .iletisim .konum-alt-icon{
+  font-size: 0.6em;
+}
+.yerler-detay-ortaalan .detay-yazi{
+  margin-left: 10px;
+  color: black;
+  font-weight: bold;
+  padding: 15px;
+  font-size: 16px;
+}
+.yerler-detay-cover .cover-baslik{
+  margin: 40px 40px 50px 40px;
+}
+.yerler-detay-cover .cover-baslik .kategori{
+  display: flex;
+  justify-content: space-evenly;
+  border-radius: 5px;
+  border: 1px solid white;
+  width: 80px;
+}
+
+.yerler-detay-cover .cover-baslik .baslik{
+  font-size: 33px;
+  width: 160px;
+  line-height: 40px;
+  font-weight: bolder;
+  margin-top: 10px;
+}
+
+.yerler-detay-cover .konum{
+  width: 50px;
+  height: 100px;
+  z-index: 1;
+  position: absolute;
+  right: 35px;
+  bottom: 60px;
+  border: 1px solid white;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  color:white;
+
+}
+.yerler-detay-cover .konum .konum-ust-icon{
+  font-size: 0.5em;
+}
+.yerler-detay-cover .konum .konum-alt-icon{
+  font-size: 0.3em;
+}
+.yerler-detay-cover .fa-primary{
+  color: white!important;
+}
+
+.yerler-detay-cover .fa-secondary{
+  color:white!important;
+}
+
+.yerler-detay-cover .cover-baslik .kategori .kategori-adi, .yerler-detay-cover .cover-baslik .baslik{
+  color:white;
+}
+.yerler-detay-cover .cover-baslik .kategori div, .yerler-detay-cover .cover-baslik .kategori, .yerler-detay-cover .cover-baslik .baslik{
+  z-index: 35;
+}
+
+.yerler-detay-cover .cover-baslik .kategori svg{
+  font-size: 1em;
+  color: white;
+}
+.yerler-detay-cover .cover-baslik .kategori svg{
+  fill:white;
+}
+.ortaalan .mini-slider .swiper-slide{
+  border-radius: 18px;
+  width: 50px;
+  height: 50px;
+}
+.ortaalan .mini-slider .swiper-wrapper{
+  align-items: center;
+}
+.ortaalan .mini-slider .swiper-slide img{
+  border-radius: 18px;
+}
+
 
   .ortaalan .ara{
     background: #BBDADF;
@@ -248,6 +475,8 @@ border-radius: 5em;
     border-radius: 50px;
     margin-bottom: -1.5em;
     z-index: 1;
+    box-shadow: 0 0 16px 16px #2626267d;
+    width: 80%; 
 }
 
 .ortaalan .title{
@@ -371,6 +600,101 @@ border-radius: 5em;
     top: 0;
     z-index: 1000;
   }
+  .haberler-sirala{
+    margin-top: 85px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+  }
+
+  .haberler-sirala .haberler-container{
+    width: 180px;
+    height: 175px;
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+    font-size: 22px;
+    font-weight: bold;
+    color: #fff;
+    margin: 10px 0;
+  }
+  .haberler-sirala .haberler-container .haberler-alt{
+    background-color: var(--ikincil);
+    color: var(--birincil);
+    font-size: 15px;
+    font-weight: 200;
+    width: 180px;
+    position: absolute;
+    height: 60px;
+    border-radius: 0 0 18px 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .haberler-sirala .haberler-container .haberler-ust{
+    background-color: var(--birincil);
+    height: 75%;
+    width: 180px;
+    border-radius: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    margin-bottom: 45px;
+  }
+
+
+
+  .kategoriler-sirala{
+    margin-top: 85px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+  }
+
+  .kategoriler-sirala .kategoriler-container{
+    width: 160px;
+    height: 150px;
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+    font-size: 22px;
+    font-weight: bold;
+    color: #fff;
+    margin: 10px 0;
+    justify-content: center;
+  }
+  .kategoriler-sirala .kategoriler-container .kategoriler-alt{
+    background-color: var(--ikincil);
+    color: var(--birincil);
+    font-size: 15px;
+    font-weight: 200;
+    width: 88%;
+    position: absolute;
+    height: 60px;
+    border-radius: 18px 0 18px 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .kategoriler-sirala .kategoriler-container .kategoriler-ust{
+    background-color: var(--birincil);
+    height: 70%;
+    width: 140px;
+    border-radius: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 0;
+    margin-bottom: 30px;
+  }
+
+
+
 
   .rotalar-swiper{
     padding-top: 60px;
@@ -466,6 +790,40 @@ border-radius: 5em;
     z-index: 0;
   }
 
+
+.yerler-sirala{
+  margin-top: 85px;
+}
+
+  .yerler-sirala .yerler-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 18px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #fff;
+    width: 60%!important;
+    height: 100%!important;
+    left:-25%;
+  }
+
+  .yerler-sirala .yerler-container::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 5em;
+    border-radius: 0 0 20px 20px;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(0deg, #04212d, transparent);
+    z-index: 0;
+  }
+
+
+
+
+
   .vitrin-koleksiyon .swiper-slide{
     display: flex;
     align-items: center;
@@ -527,8 +885,12 @@ border-radius: 5em;
     width: 100%;
     justify-content: center;
     align-items: center;
+    margin-top: 100px;
   }
-
+  .etkinlikler a{
+    width: 100%;
+    margin-right: 10px;
+  }
   .etkinlikler .all-collections-container{
     width: 100%;
   }
@@ -569,6 +931,7 @@ border-radius: 5em;
   font-size: 50px;
   margin-bottom: 0;
   margin-right: 5px;
+  margin-left: 5px;
 }
 .etkinlikler .tarih h3{
   margin-top: 0;

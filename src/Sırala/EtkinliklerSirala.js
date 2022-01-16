@@ -1,16 +1,32 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import TumElemanlar from '../TumElemanlar';
-import { NavLink } from 'react-router-dom';
 
 
-const Etkinlikler =()=>{
+const EtkinliklerSirala =()=>{
     
     return(
         <div className='etkinlikler'>
-        <NavLink to='/etkinlik-sirala'>
-                <TumElemanlar name='Tüm Etkinlikler'></TumElemanlar>
-        </NavLink>
+        <div className='etkinlikler-satir'>
+            <div className="tarih">
+                <h2>24</h2>
+                <div className="tarih-ay-yil">
+                    <h4>Ekim</h4>
+                    <h3>2022</h3>
+                </div>
+            </div>
+            <h2 className="etkinlik-adi">Bi'rafting Kampı</h2>
+        </div>
+        <div className='etkinlikler-satir'>
+            <div className="tarih">
+                <h2>05</h2>
+                <div className="tarih-ay-yil">
+                    <h4>Kasım</h4>
+                    <h3>2022</h3>
+                </div>
+            </div>
+            <h2 className="etkinlik-adi">Haluk Levent Konseri</h2>
+        </div>
         <div className='etkinlikler-satir'>
             <div className="tarih">
                 <h2>24</h2>
@@ -35,4 +51,4 @@ const Etkinlikler =()=>{
     )
 }
 
-export default Etkinlikler;
+export default EtkinliklerSirala;

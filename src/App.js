@@ -16,6 +16,11 @@ import { AppContext } from './Components/Context'
 import {useLocalStorageState} from './Components/utils'
 import Etkinlikler from './Components/Etkinlikler'
 import Kaydedilenler from './Components/Kaydedilenler'
+import YerlerDetay from './Detay/YerlerDetay'
+import EtkinliklerSirala from './Sırala/EtkinliklerSirala'
+import HaberlerSirala from './Sırala/HaberlerSirala'
+import KategoriSirala from './Sırala/KategoriSirala'
+import YerlerSirala from './Sırala/YerlerSirala'
 
 function App (){
     const [city, setCity] = useLocalStorageState("city",  "sehirsec");
@@ -26,8 +31,8 @@ function App (){
                     <Routes>
                         <Route path='*' element={ <GirisEkrani /> } />
                     </Routes>
-               </div>
-               </AppContext.Provider>  
+                </div>
+                </AppContext.Provider>  
                 )
         } else {
             return(
@@ -43,6 +48,11 @@ function App (){
                         <Route path='/giris' element={ <GirisEkrani/>} />
                         <Route path='/kaydedilenler' element={<Kaydedilenler />} />
                         <Route path='/etkinlikler' element={ <Etkinlikler/>} />
+                        <Route path='/yerler-detay' element={ <YerlerDetay/>} />
+                        <Route path='/yerler-sirala' element={ <YerlerSirala/>} />
+                        <Route path='/etkinlik-sirala' element={ <EtkinliklerSirala/>} />
+                        <Route path='/haber-sirala' element={ <HaberlerSirala/>} />
+                        <Route path='/kategori-sirala' element={ <KategoriSirala/>} />
                         <Route path='*' element={<NotFound/>} />
                     </Routes>
                     </div>

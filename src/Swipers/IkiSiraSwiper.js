@@ -7,18 +7,17 @@ import 'swiper/modules/effect-cards/effect-cards.js'
 import 'swiper/modules/pagination/pagination.min.css'
 import TumElemanlar from '../TumElemanlar';
 import InlineSVG from 'svg-inline-react';
-import {backgroundIcons} from '../icon'
 
 SwiperCore.use([Pagination]);
 
-const IkiSiraSwiper =()=>{
+const IkiSiraSwiper =(props)=>{
     
     return(
         <div className='iki-sira-swiper'>
         
         <div className='background-icon'>
-            <InlineSVG src={backgroundIcons.routes}></InlineSVG>
-            <h2 className='background-baslik'>Rotalar</h2>
+            <InlineSVG src={props.backgroundIcon}></InlineSVG>
+            <h2 className='background-baslik'>{props.name}</h2>
         </div>
             <div>
                 <Swiper slidesPerView={5} centeredSlides={true} slidesPerView={'auto'} spaceBetween={30} slidesPerView={'auto'} grabCursor={true} className="mySwiper4">
