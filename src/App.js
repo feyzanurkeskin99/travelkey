@@ -21,6 +21,7 @@ import EtkinliklerSirala from './Sırala/EtkinliklerSirala'
 import HaberlerSirala from './Sırala/HaberlerSirala'
 import KategoriSirala from './Sırala/KategoriSirala'
 import YerlerSirala from './Sırala/YerlerSirala'
+import KoleksiyonSirala from './Sırala/KoleksiyonSirala'
 
 function App (){
     const [city, setCity] = useLocalStorageState("city",  "sehirsec");
@@ -53,6 +54,7 @@ function App (){
                         <Route path='/etkinlik-sirala' element={ <EtkinliklerSirala/>} />
                         <Route path='/haber-sirala' element={ <HaberlerSirala/>} />
                         <Route path='/kategori-sirala' element={ <KategoriSirala/>} />
+                        <Route path='/koleksiyon-sirala' element={ <KoleksiyonSirala/>} />
                         <Route path='*' element={<NotFound/>} />
                     </Routes>
                     </div>
