@@ -18,12 +18,12 @@ const AltBar  =()=>{
                         <InlineSVG src={navIcons.discover}/>
                     </div>
                 </NavLink>
-                <NavLink to="/kategori-sirala" className="altbar-link location">
+                <NavLink to="/kategoriler-sirala" className="altbar-link location">
                     <div className="altbar-button location-border">
                         <InlineSVG src={navIcons.categories}/>
                     </div>
                 </NavLink>
-                <NavLink to="/etkinlik-sirala" className="altbar-link location">
+                <NavLink to="/etkinlikler-sirala" className="altbar-link location">
                     <div className="altbar-button location-border">
                         <InlineSVG src={navIcons.events}/>
                     </div>

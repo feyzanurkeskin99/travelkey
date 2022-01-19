@@ -15,7 +15,7 @@ const KategorilerScrollingCarousel =()=>{
     
     return(
         <div className='kategoriler-scrolling-carousel'>        
-        <NavLink to='/koleksiyon-sirala'>
+        <NavLink to='/koleksiyonlar-sirala'>
             <TumElemanlar name='Tüm Koleksiyonlar'></TumElemanlar>
         </NavLink>
         <Swiper effect={'coverflow'} grabCursor={true} centeredSlides={true} slidesPerView={'auto'} coverflowEffect={{

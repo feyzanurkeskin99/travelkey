@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import ReactDOM from 'react-dom'
 import SwiperCore, {Pagination} from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react/swiper-react.js';
@@ -7,18 +7,49 @@ import 'swiper/modules/effect-cards/effect-cards.js'
 import 'swiper/modules/pagination/pagination.min.css'
 import TumElemanlar from '../TumElemanlar';
 import { NavLink } from 'react-router-dom';
+import InlineSVG from 'svg-inline-react';
+import useFetch from 'use-http';
+import { kategoriIcons } from '../icon';
+import { AppContext } from '../Components/Context'
 
+const YerlerSwiper =(props)=>{    
 
-const YerlerSwiper =()=>{
+    var {city, setCity} = useContext(AppContext);
+const options = {};
+const date="";
+const {
+    loading,
+    error,
+    data = [],
+} = useFetch('https://seyyahpanel.kod8.app/places', options, []);
     
     return(
         <div className='yerler-swiper'>
             <NavLink to='/yerler-sirala'>
                 <TumElemanlar name='Tüm Yerler'></TumElemanlar>
             </NavLink>
-            <Swiper slidesPerView={5} centeredSlides={true} slidesPerView={'auto'} spaceBetween={30} slidesPerView={'auto'} grabCursor={true} className="mySwiperYerler">
-                <SwiperSlide>Slide 1</SwiperSlide><SwiperSlide>Slide 2</SwiperSlide><SwiperSlide>Slide 3</SwiperSlide><SwiperSlide>Slide 4</SwiperSlide><SwiperSlide>Slide 5</SwiperSlide><SwiperSlide>Slide 6</SwiperSlide><SwiperSlide>Slide 7</SwiperSlide><SwiperSlide>Slide 8</SwiperSlide><SwiperSlide>Slide 9</SwiperSlide>
-            </Swiper>
+        
+        <Swiper slidesPerView={5} centeredSlides={true} slidesPerView={'auto'} spaceBetween={30} slidesPerView={'auto'} grabCursor={true} className="mySwiperYerler">
+            {error && <h1>Error!</h1>}
+            {loading && <h1>Loading...</h1>}
+            {data
+            .filter(data.sehir.plaka !== city.city)
+            .map((places) => (
+                <NavLink to={"/yerler?id="+places.id+"/"}>
+                    <SwiperSlide>
+                    <div className="yerler-swiper-kategori">
+                                <div className="yerler-swiper-kategori-icon">
+                                    <InlineSVG src={kategoriIcons[places.category.iconname]}></InlineSVG>
+                                </div>
+                                <div className="yerler-swiper-kategori-adi">
+                                    {places.category.name}
+                                </div>
+                            </div>
+                            <div className="yerler-swiper-baslik">{places.name}</div>
+                    </SwiperSlide>
+                </NavLink>
+            ))}
+        </Swiper>
         </div>
     )
 }

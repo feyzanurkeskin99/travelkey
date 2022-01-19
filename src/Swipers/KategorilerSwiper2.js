@@ -8,64 +8,38 @@ import 'swiper/modules/pagination/pagination.min.css'
 import TumElemanlar from '../TumElemanlar';
 import { Icon } from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
+import InlineSVG from 'svg-inline-react';
+import {backgroundIcons, kategoriIcons} from '../icon'
 
+import useFetch from 'use-http';
 
 const KategorilerSwiper2 =()=>{
+    const options = {};
+    const date="";
+    const {
+        loading,
+        error,
+        data = [],
+    } = useFetch('https://seyyahpanel.kod8.app/categories', options, []);
     
     return(
         <div className='kategoriler-swiper-2'>
-         <NavLink to='/kategori-sirala'>
+         <NavLink to='/kategoriler-sirala'>
             <TumElemanlar name='Tüm Kategoriler'></TumElemanlar>
         </NavLink>
         <Swiper slidesPerView={5} centeredSlides={true} slidesPerView={'auto'} spaceBetween={20} grabCursor={true} className="mySwiper3">
-        <SwiperSlide>
-            <div className='kategoriler-ust'>
-                <Icon size='huge' name='food'></Icon>
-            </div>
-            <div className='kategoriler-alt'>DOĞA</div>
-        </SwiperSlide>
-        <SwiperSlide>
-            <div className='kategoriler-ust'>
-                <Icon size='huge' name='food'></Icon>
-            </div>
-            <div className='kategoriler-alt'>TARİH</div>
-        </SwiperSlide>
-        <SwiperSlide>
-            <div className='kategoriler-ust'>
-                <Icon size='huge' name='food'></Icon>
-            </div>
-            <div className='kategoriler-alt'>LEZZET</div>
-        </SwiperSlide>
-        <SwiperSlide>
-            <div className='kategoriler-ust'>
-                <Icon size='huge' name='food'></Icon></div>
-            <div className='kategoriler-alt'>KONAKLAMA</div>
-        </SwiperSlide>
-        <SwiperSlide>
-            <div className='kategoriler-ust'>
-                <Icon size='huge' name='food'></Icon></div>
-            <div className='kategoriler-alt'>AKTİVİTE</div>
-        </SwiperSlide>
-        <SwiperSlide>
-            <div className='kategoriler-ust'>
-                <Icon size='huge' name='food'></Icon></div>
-            <div className='kategoriler-alt'>EĞLENCE</div>
-        </SwiperSlide>
-        <SwiperSlide>
-            <div className='kategoriler-ust'>
-                <Icon size='huge' name='food'></Icon></div>
-            <div className='kategoriler-alt'>DOĞA</div>
-        </SwiperSlide>
-        <SwiperSlide>
-            <div className='kategoriler-ust'>
-                <Icon size='huge' name='food'></Icon></div>
-            <div className='kategoriler-alt'>TARİH</div>
-        </SwiperSlide>
-        <SwiperSlide>
-            <div className='kategoriler-ust'>
-                <Icon size='huge' name='food'></Icon></div>
-            <div className='kategoriler-alt'>LEZZET</div>
-        </SwiperSlide>
+            {error && <h1>Error!</h1>}
+            {loading && <h1>Loading...</h1>}
+            {data.map((categories) => (
+                <NavLink to={"/kategori?id="+categories.id+"/"}>
+                    <SwiperSlide>
+                        <div className='kategoriler-ust'>
+                            <InlineSVG src={kategoriIcons.categories}></InlineSVG>
+                        </div>
+                        <div className='kategoriler-alt'>{categories.name}</div>
+                    </SwiperSlide>
+                </NavLink>
+            ))}
         </Swiper>
         </div>
     )

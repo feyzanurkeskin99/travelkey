@@ -32,7 +32,7 @@ const cityOptions = [
 					</Label>
 				</Button>
 			</div>
-			<Select inputProps={{readOnly:true}} options={cityOptions} onChange={handleChange}/>
+			<Select options={cityOptions} onChange={handleChange} blurInputOnSelect={false}/>
 		</div>
 	);
 }

@@ -14,19 +14,24 @@ const IkiSiraSwiper =(props)=>{
     
     return(
         <div className='iki-sira-swiper'>
-        
-        <div className='background-icon'>
-            <InlineSVG src={props.backgroundIcon}></InlineSVG>
-            <h2 className='background-baslik'>{props.name}</h2>
-        </div>
-            <div>
-                <Swiper slidesPerView={5} centeredSlides={true} slidesPerView={'auto'} spaceBetween={30} slidesPerView={'auto'} grabCursor={true} className="mySwiper4">
-                    <SwiperSlide>Slide 1</SwiperSlide><SwiperSlide>Slide 2</SwiperSlide><SwiperSlide>Slide 3</SwiperSlide><SwiperSlide>Slide 4</SwiperSlide><SwiperSlide>Slide 5</SwiperSlide><SwiperSlide>Slide 6</SwiperSlide><SwiperSlide>Slide 7</SwiperSlide><SwiperSlide>Slide 8</SwiperSlide><SwiperSlide>Slide 9</SwiperSlide>
-                </Swiper>
-                <Swiper slidesPerView={5} centeredSlides={true} slidesPerView={'auto'} spaceBetween={30} slidesPerView={'auto'} grabCursor={true} className="mySwiper4">
-                    <SwiperSlide>Slide 1</SwiperSlide><SwiperSlide>Slide 2</SwiperSlide><SwiperSlide>Slide 3</SwiperSlide><SwiperSlide>Slide 4</SwiperSlide><SwiperSlide>Slide 5</SwiperSlide><SwiperSlide>Slide 6</SwiperSlide><SwiperSlide>Slide 7</SwiperSlide><SwiperSlide>Slide 8</SwiperSlide><SwiperSlide>Slide 9</SwiperSlide>
-                </Swiper>
+            <div className='background-icon'>
+                <InlineSVG src={props.backgroundIcon}></InlineSVG>
+                <h2 className='background-baslik'>{props.name}</h2>
             </div>
+                <Swiper slidesPerView={5} centeredSlides={true} slidesPerView={'auto'} spaceBetween={30} slidesPerView={'auto'} grabCursor={true} className="mySwiper4">
+                    <SwiperSlide>
+                        <div className="iki-sira-ust">Slide 1</div>
+                        <div className="iki-sira-alt">Slide 1</div>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <div className="iki-sira-ust">Slide 2</div>
+                        <div className="iki-sira-alt">Slide 2</div>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <div className="iki-sira-ust">Slide 3</div>
+                        <div className="iki-sira-alt">Slide 3</div>
+                    </SwiperSlide>
+                </Swiper>
         </div>
     )
 }

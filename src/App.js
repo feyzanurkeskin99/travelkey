@@ -51,10 +51,10 @@ function App (){
                         <Route path='/etkinlikler' element={ <Etkinlikler/>} />
                         <Route path='/yerler-detay' element={ <YerlerDetay/>} />
                         <Route path='/yerler-sirala' element={ <YerlerSirala/>} />
-                        <Route path='/etkinlik-sirala' element={ <EtkinliklerSirala/>} />
-                        <Route path='/haber-sirala' element={ <HaberlerSirala/>} />
-                        <Route path='/kategori-sirala' element={ <KategoriSirala/>} />
-                        <Route path='/koleksiyon-sirala' element={ <KoleksiyonSirala/>} />
+                        <Route path='/etkinlikler-sirala' element={ <EtkinliklerSirala/>} />
+                        <Route path='/haberler-sirala' element={ <HaberlerSirala/>} />
+                        <Route path='/kategoriler-sirala' element={ <KategoriSirala/>} />
+                        <Route path='/koleksiyonlar-sirala' element={ <KoleksiyonSirala/>} />
                         <Route path='*' element={<NotFound/>} />
                     </Routes>
                     </div>

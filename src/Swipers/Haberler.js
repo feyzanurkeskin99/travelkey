@@ -14,7 +14,7 @@ const Haberler =()=>{
     
     return(
         <div className='haberler-swiper'>
-        <NavLink to='/haber-sirala'>
+        <NavLink to='/haberler-sirala'>
             <TumElemanlar name='Tüm Haberler'></TumElemanlar>
         </NavLink>
         
