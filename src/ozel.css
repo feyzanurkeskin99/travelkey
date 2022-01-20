@@ -274,23 +274,6 @@ z-index: 0;
 }
 
 
-
-.ortaalan .mini-slider .mySwiper2 .swiper-slide img{
-  height: 30vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  background-color: #74E2FF;
-  border-radius: 0 0 20px 20px;
-  width: 100vw;
-  height: 45vh;
-  margin-bottom: 3em;
-  
-  background-position: top;
-  background-size: cover;
-  position: relative;
-}
 .yerler-detay-ortaalan{
   display: flex;
   flex-direction: column;
@@ -453,6 +436,26 @@ z-index: 0;
 .yerler-detay-cover .cover-baslik .kategori svg{
   fill:white;
 }
+
+
+.ortaalan .mini-slider .mySwiper2 .swiper-slide img{
+  height: 30vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  background-color: #74E2FF;
+  border-radius: 0 0 20px 20px;
+  width: 100vw;
+  height: 45vh;
+  margin-bottom: 3em;
+  
+  background-position: top;
+  background-size: cover;
+  position: relative;
+}
+
+
 .ortaalan .mini-slider .swiper-slide{
   border-radius: 18px;
   width: 50px;
@@ -464,6 +467,53 @@ z-index: 0;
 .ortaalan .mini-slider .swiper-slide img{
   border-radius: 18px;
 }
+
+
+
+
+.ortaalan .semt-swiper .swiper-slide .semt-adi-ust, .ortaalan .semt-swiper .swiper-slide .semt-adi-alt{
+  border-radius: 10px;
+  width: 100%;
+  height: 15%;
+  background-color: var(--ikincil)!important;
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--birincil);
+  font-weight: 900;
+  text-transform:uppercase;
+  font-size:12px;
+}
+
+.semt-swiper .semt-baslik{  
+  font-size: 35px;
+  margin: 20px;
+  color: var(--birincil);
+  font-weight: bolder;
+}
+.ortaalan .semt-swiper .swiper-wrapper .swiper-slide{
+  align-items: center;
+  background-color:transparent;
+}
+.ortaalan .semt-swiper .swiper-slide img{
+  border-radius: 18px;
+}
+.semt-swiper .swiper{
+  width:100%;
+}
+
+.semt-swiper .swiper-slide .semt-baslik-ust{
+  width:30%!important;
+  border-radius: 10px!important;
+  height: 15%!important;
+}
+
+
+
+
+
+
 
 
   .ortaalan .ara{

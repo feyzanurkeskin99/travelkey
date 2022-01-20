@@ -13,6 +13,7 @@ import Events from '../Swipers/Etkinlikler'
 import Etkinlikler from '../Swipers/Etkinlikler'
 import {backgroundIcons, kategoriIcons} from '../icon'
 import MiniSlider from '../Swipers/MiniSlider'
+import SemtSwiper from '../Swipers/SemtSwiper'
 
 
 const AnaSayfa =()=>{
@@ -41,6 +42,7 @@ const AnaSayfa =()=>{
                 <IkiSiraSwiper backgroundIcon={backgroundIcons.historical} name="Tarihi"></IkiSiraSwiper>
                 <Etkinlikler></Etkinlikler>
                 <MiniSlider></MiniSlider>
+                <SemtSwiper></SemtSwiper>
             </>
         )
     
