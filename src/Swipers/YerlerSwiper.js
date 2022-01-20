@@ -21,7 +21,7 @@ const {
     loading,
     error,
     data = [],
-} = useFetch('https://seyyahpanel.kod8.app/places', options, []);
+} = useFetch('https://seyyahpanel.kod8.app/places?sehir.plate='+city.city, options, []);
     
     return(
         <div className='yerler-swiper'>
@@ -32,9 +32,7 @@ const {
         <Swiper slidesPerView={5} centeredSlides={true} slidesPerView={'auto'} spaceBetween={30} slidesPerView={'auto'} grabCursor={true} className="mySwiperYerler">
             {error && <h1>Error!</h1>}
             {loading && <h1>Loading...</h1>}
-            {data
-            .filter(data.sehir.plaka !== city.city)
-            .map((places) => (
+            {data.filter(data => data.sehir.plaka === city.city).map((places) => (
                 <NavLink to={"/yerler?id="+places.id+"/"}>
                     <SwiperSlide>
                     <div className="yerler-swiper-kategori">

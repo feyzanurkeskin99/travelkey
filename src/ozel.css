@@ -564,31 +564,28 @@ z-index: 0;
   }
 
   .haberler-swiper .swiper-slide{
+    width: 75%;
+    height: 100%;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 18px;
+    align-items: flex-start;
+    position: relative;
     font-size: 22px;
     font-weight: bold;
     color: #fff;
-    width: 70%!important;
-    height: 80%!important;
-    flex-direction: column;
-    left:-25%;
+    margin: 10px 0;
+    background-color: transparent!important;
   }
   .haberler-swiper .swiper-slide .haberler-alt{
-    background-color: var(--ikincil);
+    background-color: white;
     color: var(--birincil);
     font-size: 15px;
     font-weight: 200;
     width: 100%;
-    position: absolute;
-    bottom: 0;
-    height: 60px;
-    border-radius: 0 0 18px 18px;
+    height: 90%;
+    border-radius: 18px;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-end;
   }
   
   .haberler-swiper .swiper-slide .haberler-ust{
@@ -597,8 +594,8 @@ z-index: 0;
     width: 100%;
     border-radius: 18px;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-end;
     position: absolute;
     top: 0;
     z-index: 1000;
@@ -615,7 +612,7 @@ z-index: 0;
     width: 180px;
     height: 175px;
     display: flex;
-    align-items: flex-end;
+    align-items: flex-start;
     position: relative;
     font-size: 22px;
     font-weight: bold;
@@ -623,17 +620,18 @@ z-index: 0;
     margin: 10px 0;
   }
   .haberler-sirala .haberler-container .haberler-alt{
-    background-color: var(--ikincil);
+    background-color: white;
     color: var(--birincil);
     font-size: 15px;
     font-weight: 200;
     width: 180px;
     position: absolute;
-    height: 60px;
-    border-radius: 0 0 18px 18px;
+    height: 100%;
+    border-radius: 18px;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-end;
+    padding: 12px;
   }
 
   .haberler-sirala .haberler-container .haberler-ust{
@@ -642,13 +640,37 @@ z-index: 0;
     width: 180px;
     border-radius: 18px;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-end;
     z-index: 1;
     margin-bottom: 45px;
   }
 
+  .haberler-sirala a{
+    width: 50%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
+  .haberler-sirala .haberler-container .haberler-ust .haberler-sirala-tarih, .haberler-swiper .haberler-swiper-tarih{
+    margin: 10px;
+  }
+
+  .haberler-sirala .haberler-sirala-baslik{
+    overflow: hidden;
+    white-space: nowrap;
+    display: block;
+    text-overflow: ellipsis;
+  }
+  .haberler-swiper .haberler-swiper-baslik{
+    overflow: hidden;
+    white-space: nowrap;
+    display: block;
+    text-overflow: ellipsis;
+    padding: 10px;
+  }
 
   .kategoriler-sirala{
     margin-top: 85px;
@@ -970,7 +992,9 @@ z-index: 0;
     background-color: #24c7ff;
     margin: 10px;
   }
-
+  .kategoriler-scrolling-carousel{
+    margin-bottom: 60px;
+  }
 
   .kategoriler-scrolling-carousel .swiper-slide{
     display: flex;
@@ -980,11 +1004,25 @@ z-index: 0;
     font-size: 22px;
     font-weight: bold;
     color: #fff;
-    margin-top: 15px;
+    margin-top: 60px;
+    height: 150%;
+  }
+
+  .kategoriler-scrolling-carousel .swiper-slide img::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 5em;
+    border-radius: 0 0 20px 20px;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(0deg, #04212d, transparent);
+    z-index: 35;
   }
 
   .kategoriler-scrolling-carousel .swiper-slide img{
     border-radius: 15px;
+    height: 100%;
   }
 
   .etkinlikler{
@@ -1110,9 +1148,7 @@ z-index: 0;
     height: inherit;
     padding: 2px;
   }
-  .kategoriler-scrolling-carousel{
-    margin-bottom: 20px;
-  }
+  
   .kategoriler-swiper-2{
     margin-bottom: 20px;
     width: 100%;

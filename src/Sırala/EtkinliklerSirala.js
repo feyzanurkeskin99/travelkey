@@ -1,16 +1,20 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import ReactDOM from 'react-dom'
 import TumElemanlar from '../TumElemanlar';
 import { NavLink } from 'react-router-dom';
 import useFetch from 'use-http';
+import { AppContext } from '../Components/Context'
 
-const EtkinliklerSirala =()=>{const options = {};
+const EtkinliklerSirala =()=>{
+    
+    var {city, setCity} = useContext(AppContext);
+    const options = {};
 const date="";
 const {
     loading,
     error,
     data = [],
-} = useFetch('https://seyyahpanel.kod8.app/events', options, []);
+} = useFetch('https://seyyahpanel.kod8.app/events?sehir.plate='+city.city, options, []);
 
 return(
 
@@ -20,7 +24,7 @@ return(
         {error && <h1>Error!</h1>}
         {loading && <h1>Loading...</h1>}
         {data.map((events) => (
-            <NavLink to={"/etkinlik?="+events.id+"/"}>
+            <NavLink to={"/etkinlik?id="+events.id+"/"}>
                 <div key={events.id} className='etkinlikler-satir'>
                     <div className="tarih">
                         <h2>{new Date(events.datetime).getDate()}</h2>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import ReactDOM from 'react-dom'
 import SwiperCore, {Pagination} from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react/swiper-react.js';
@@ -7,60 +7,34 @@ import 'swiper/modules/effect-cards/effect-cards.js'
 import 'swiper/modules/pagination/pagination.min.css'
 import TumElemanlar from '../TumElemanlar';
 import { Icon } from 'semantic-ui-react';
-
+import useFetch from 'use-http';
+import { NavLink } from 'react-router-dom';
+import InlineSVG from 'svg-inline-react';
+import {kategoriIcons} from '../icon'
 
 const KategoriSirala =()=>{
-    
+    const options = {};
+    const date="";
+    const {
+        loading,
+        error,
+        data = [],
+    } = useFetch('https://seyyahpanel.kod8.app/categories', options, []);
     return(
         <div className='kategoriler-sirala'>
-            <div className="kategoriler-container">
-                <div className='kategoriler-ust'>
-                    9 Ocak
-                </div>
-                <div className='kategoriler-alt'>DOĞA</div>
-            </div>
-            <div className="kategoriler-container">
-                <div className='kategoriler-ust'>
-                    9 Ocak
-                </div>
-                <div className='kategoriler-alt'>DOĞA</div>
-            </div>
-            <div className="kategoriler-container">
-                <div className='kategoriler-ust'>
-                    9 Ocak
-                </div>
-                <div className='kategoriler-alt'>DOĞA</div>
-            </div>
-            <div className="kategoriler-container">
-                <div className='kategoriler-ust'>
-                    9 Ocak
-                </div>
-                <div className='kategoriler-alt'>DOĞA</div>
-            </div>
-            <div className="kategoriler-container">
-                <div className='kategoriler-ust'>
-                    9 Ocak
-                </div>
-                <div className='kategoriler-alt'>DOĞA</div>
-            </div>
-            <div className="kategoriler-container">
-                <div className='kategoriler-ust'>
-                    9 Ocak
-                </div>
-                <div className='kategoriler-alt'>DOĞA</div>
-            </div>
-            <div className="kategoriler-container">
-                <div className='kategoriler-ust'>
-                    9 Ocak
-                </div>
-                <div className='kategoriler-alt'>DOĞA</div>
-            </div>
-            <div className="kategoriler-container">
-                <div className='kategoriler-ust'>
-                    9 Ocak
-                </div>
-                <div className='kategoriler-alt'>DOĞA</div>
-            </div>
+            
+            {error && <h1>Error!</h1>}
+            {loading && <h1>Loading...</h1>}
+            {data.map((categories) => (
+                <NavLink to={"/kategori?id="+categories.id+"/"}>
+                    <div className="kategoriler-container">
+                        <div className='kategoriler-ust'>
+                            <InlineSVG src={kategoriIcons[categories.iconname]}></InlineSVG>
+                        </div>
+                        <div className='kategoriler-alt'>{categories.name}</div>
+                    </div>
+                </NavLink>
+            ))}
         </div>
     )
 }

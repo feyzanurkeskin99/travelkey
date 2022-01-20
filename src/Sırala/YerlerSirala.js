@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import ReactDOM from 'react-dom'
 import SwiperCore, {Pagination} from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react/swiper-react.js';
@@ -11,16 +11,20 @@ import InlineSVG from 'svg-inline-react';
 import useFetch from 'use-http';
 import { kategoriIcons } from '../icon';
 
+import { AppContext } from '../Components/Context'
+
 
 
 const YerlerSirala =()=>{
+    
+    var {city, setCity} = useContext(AppContext);
     const options = {};
 const date="";
 const {
     loading,
     error,
     data = [],
-} = useFetch('https://seyyahpanel.kod8.app/places', options, []);
+} = useFetch('https://seyyahpanel.kod8.app/places?sehir.plate='+city.city, options, []);
     
     return(
         <div className='yerler-sirala'>

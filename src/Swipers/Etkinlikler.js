@@ -1,17 +1,20 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import ReactDOM from 'react-dom'
 import TumElemanlar from '../TumElemanlar';
 import { NavLink } from 'react-router-dom';
 import useFetch from 'use-http';
+import { AppContext } from '../Components/Context'
 
 const Etkinlikler =()=>{
+    
+    var {city, setCity} = useContext(AppContext);
     const options = {};
     const date="";
     const {
         loading,
         error,
         data = [],
-    } = useFetch('https://seyyahpanel.kod8.app/events', options, []);
+    } = useFetch('https://seyyahpanel.kod8.app/events?sehir.plate='+city.city, options, []);
     
     return(
 

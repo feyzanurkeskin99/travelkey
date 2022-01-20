@@ -34,7 +34,7 @@ const KategorilerSwiper2 =()=>{
                 <NavLink to={"/kategori?id="+categories.id+"/"}>
                     <SwiperSlide>
                         <div className='kategoriler-ust'>
-                            <InlineSVG src={kategoriIcons.categories}></InlineSVG>
+                            <InlineSVG src={kategoriIcons[categories.iconname]}></InlineSVG>
                         </div>
                         <div className='kategoriler-alt'>{categories.name}</div>
                     </SwiperSlide>
