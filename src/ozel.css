@@ -1017,7 +1017,7 @@ z-index: 0;
     height: 420px;
   }
   .iki-sira-swiper .swiper{
-    height: 50%;
+    height: 100%;
   }
 
   .iki-sira-swiper .swiper-slide {
@@ -1048,8 +1048,8 @@ z-index: 0;
 
   .kategoriler-scrolling-carousel .swiper-slide{
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-end;
+    justify-content: flex-start;
     border-radius: 18px;
     font-size: 22px;
     font-weight: bold;
@@ -1058,7 +1058,7 @@ z-index: 0;
     height: 150%;
   }
 
-  .kategoriler-scrolling-carousel .swiper-slide img::before{
+  .kategoriler-scrolling-carousel .swiper-slide::before{
     content: "";
     position: absolute;
     width: 100%;
@@ -1073,8 +1073,21 @@ z-index: 0;
   .kategoriler-scrolling-carousel .swiper-slide img{
     border-radius: 15px;
     height: 100%;
+    position: relative;
   }
 
+  .kategoriler-scrolling-carousel .koleksiyon-swiper-baslik{
+    position: absolute;
+    z-index: 1000;
+    margin: 20px;
+    line-height: 1.2em;
+    height: 1.2em;
+    overflow: hidden;
+    white-space: nowrap;
+    display: block;
+    text-overflow: ellipsis;
+    width: 85%;
+  }
   .etkinlikler{
     display: flex;
     flex-wrap: wrap;

@@ -46,7 +46,6 @@ const Haberler =()=>{
                 </NavLink>
             ))}
 
-            
         </Swiper>
         </div>
     )
