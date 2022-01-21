@@ -25,7 +25,7 @@ import KoleksiyonSirala from './Sırala/KoleksiyonSirala'
 
 function App (){
     const [city, setCity] = useLocalStorageState("city",  "sehirsec");
-        if (city.cityName == "sehirsec") {
+        if (city === "sehirsec" || city.cityName === "sehirsec") {
             return(
                 <AppContext.Provider value={{city, setCity}}>
                 <div className="app">

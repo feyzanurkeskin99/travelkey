@@ -959,7 +959,7 @@ z-index: 0;
   }
   .koleksiyonlar-sirala .koleksiyonlar-container{
     display: flex;
-    align-items: flex-end;
+    align-items: flex-start;
     justify-content: center;
     border-radius: 18px;
     font-size: 22px;
@@ -971,22 +971,62 @@ z-index: 0;
     flex-wrap: wrap;
     background-color: var(--ikincil);
     margin: 10px 0;
+    box-shadow: 0 0 22px 4px black;
   }
 
-  .koleksiyonlar-sirala .koleksiyonlar-container::after{
-    content: "";
+  .koleksiyonlar-sirala .koleksiyon-sirala-ust{
+    height: 80%;
+    width: 95%;
+    background-color: var(--light);
+    position: relative;
+    top: 2%;
+    border-radius: 18px;
+  }
+
+  .koleksiyonlar-sirala .koleksiyon-sirala-ust img{
     width: 100%;
-    height: 5em;
-    border-radius: 0 0 20px 20px;
-    bottom: 0;
-    left: 0;
-    background: linear-gradient(0deg, #04212d, transparent);
-    z-index: 0;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 18px;
   }
 
+  .koleksiyonlar-sirala .koleksiyon-sirala-alt{
+    width: 95%;
+    height: 10%;
+    background-color: var(--light);
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .koleksiyonlar-sirala .koleksiyon-sirala-alt-baslik{
+    width: 75%;
+    height: 80%;
+    line-height: 1.2em;
+    height: 1.2em;
+    overflow: hidden;
+    white-space: nowrap;
+    display: block;
+    text-overflow: ellipsis;
+  }
 
+  .koleksiyonlar-sirala a {
+    width: 15%;
+    height: 80%;
+    background-color: var(--ikincil);
+    border-radius: 10px;
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+  }
 
-
+  .koleksiyonlar-sirala a .koleksiyon-sirala-buton .fa-primary{
+    fill:var(--birincil);
+  }
+  .koleksiyonlar-sirala a .koleksiyon-sirala-buton .fa-secondary{
+    fill:var(--light);
+  }
 
 
 
