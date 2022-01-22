@@ -23,14 +23,7 @@ const IkiSiraSwiper =(props)=>{
                         <div className="iki-sira-ust">Slide 1</div>
                         <div className="iki-sira-alt">Slide 1</div>
                     </SwiperSlide>
-                    <SwiperSlide>
-                        <div className="iki-sira-ust">Slide 2</div>
-                        <div className="iki-sira-alt">Slide 2</div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <div className="iki-sira-ust">Slide 3</div>
-                        <div className="iki-sira-alt">Slide 3</div>
-                    </SwiperSlide>
+                    
                 </Swiper>
         </div>
     )

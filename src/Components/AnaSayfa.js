@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useContext, useEffect} from 'react'
 import ReactDOM from 'react-dom'
 import { Button, Icon } from 'semantic-ui-react'
 import VitrinKoleksiyon from '../Swipers/VitrinKoleksiyon'
@@ -14,12 +14,24 @@ import Etkinlikler from '../Swipers/Etkinlikler'
 import {backgroundIcons, kategoriIcons} from '../icon'
 import MiniSlider from '../Swipers/MiniSlider'
 import SemtSwiper from '../Swipers/SemtSwiper'
-
+import useFetch from 'use-http';
+import { NavLink } from 'react-router-dom';
+import { AppContext } from '../Components/Context'
 
 const AnaSayfa =()=>{
     React.useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
+
+    var {city, setCity} = useContext(AppContext);
+    const options = {};
+    const date="";
+    const {
+        loading,
+        error,
+        data = [],
+    } = useFetch('https://seyyahpanel.kod8.app/categories?sehir_anavitrins.plate='+city.city, options, []);
+    //isDistrict=false ile semt olmayan koleksiyonları getirdik
         return(
             <>
                 <div className='cover'>
@@ -38,8 +50,14 @@ const AnaSayfa =()=>{
                 <RotalarSwiper></RotalarSwiper>
                 <YerlerSwiper kategoriIcon={kategoriIcons.historical} name="Tarih"></YerlerSwiper>
                 <Haberler></Haberler>
-                <IkiSiraSwiper backgroundIcon={backgroundIcons.routes} name="Rotalar"></IkiSiraSwiper>
-                <IkiSiraSwiper backgroundIcon={backgroundIcons.historical} name="Tarihi"></IkiSiraSwiper>
+                
+
+                {error && <h1>Error!</h1>}
+                {loading && <h1>Loading...</h1>}
+                {data.map((categories) => (
+                    <IkiSiraSwiper backgroundIcon={backgroundIcons[categories.iconname]} name={categories.name}></IkiSiraSwiper>
+                ))}
+
                 <Etkinlikler></Etkinlikler>
                 <MiniSlider></MiniSlider>
                 <SemtSwiper></SemtSwiper>

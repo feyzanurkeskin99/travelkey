@@ -194,7 +194,7 @@ border-radius: 5em;
     width: 100%!important;
     height: 80vh!important;
     flex-grow: 2;
-    overflow-y:scroll;
+    overflow-y:overlay;
     overflow-x:hidden;
     padding-bottom: 10vh;
     background-color: #d1d1d1;
@@ -1019,6 +1019,7 @@ z-index: 0;
     font-size: 10px;
     display: flex;
     justify-content: center;
+    box-shadow: 5px 5px 22px 4px var(--birincil);
   }
 
   .koleksiyonlar-sirala a .koleksiyon-sirala-buton .fa-primary{
@@ -1028,8 +1029,10 @@ z-index: 0;
     fill:var(--light);
   }
 
-
-
+  .vitrin-koleksiyon .swiper{
+    height: 300px;
+  }
+  
   .vitrin-koleksiyon .swiper-slide{
     display: flex;
     align-items: center;
@@ -1185,6 +1188,13 @@ z-index: 0;
   margin-top: 0;
   margin-left: 15px;
   color: var(--birincil);
+      line-height: 1.2em;
+      height: 1.2em;
+      overflow: hidden;
+      white-space: nowrap;
+      display: block;
+      text-overflow: ellipsis;
+      width: 55%;
 }
 .etkinlikler .tarih h2, .etkinlikler-sirala .tarih h2{
   font-size: 51px;
