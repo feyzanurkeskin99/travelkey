@@ -12,7 +12,7 @@ import useFetch from 'use-http';
 import { kategoriIcons } from '../icon';
 import { AppContext } from '../Components/Context'
 
-const YerlerSwiper =(props)=>{    
+const YerlerTypes =(props)=>{    
 
     var {city, setCity} = useContext(AppContext);
 const options = {};
@@ -21,18 +21,19 @@ const {
     loading,
     error,
     data = [],
-} = useFetch('https://seyyahpanel.kod8.app/places?sehir.plate='+city.city+'&vitrin=true', options, []);
+} = useFetch('https://seyyahpanel.kod8.app/places?sehir.plate='+city.city+'&vitrin=true&type='+props.type, options, []);
     
     return(
-        <div className='yerler-swiper'>
-            <NavLink to='/yerler-sirala'>
-                <TumElemanlar name='Tüm Yerler'></TumElemanlar>
-            </NavLink>
-        
+        <div className='yerler-swiper yerler-types'>
+        <div className="yerler-types-baslik-container">
+            <div className="yerler-types-baslik">
+                {props.name}
+            </div>
+        </div>
         <Swiper slidesPerView={5} centeredSlides={true} slidesPerView={'auto'} spaceBetween={30} slidesPerView={'auto'} grabCursor={true} className="mySwiperYerler">
             {error && <h1>Error!</h1>}
             {loading && <h1>Loading...</h1>}
-            {data.map((places) => (
+            {data.filter(data => data.sehir.plaka === city.city).map((places) => (
                 <NavLink to={"/places?id="+places.id+"/"}>
                     <SwiperSlide>
                     <div className="yerler-swiper-kategori">
@@ -52,4 +53,4 @@ const {
     )
 }
 
-export default YerlerSwiper;
+export default YerlerTypes;

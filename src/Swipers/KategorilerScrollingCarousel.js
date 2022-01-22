@@ -21,13 +21,19 @@ const KategorilerScrollingCarousel =()=>{
         loading,
         error,
         data = [],
-    } = useFetch('https://seyyahpanel.kod8.app/bundles?city.plate='+city.city+'&isDistrict=false', options, []);
+    } = useFetch('https://seyyahpanel.kod8.app/bundles?city.plate='+city.city+'&anavitrin=true&isDistrict=false', options, []);
     //isDistrict=false ile semt olmayan koleksiyonları getirdik
     return(
+        <>
+        {error && <h1>Error!</h1>}
+        {loading && <h1>Loading...</h1>}
+        {data
+        .map((bundles) => (
         <div className='kategoriler-scrolling-carousel'>        
-        <NavLink to='/koleksiyonlar-sirala'>
-            <TumElemanlar name='Tüm Koleksiyonlar'></TumElemanlar>
-        </NavLink>
+        <div className="anavitrin-koleksiyon-baslik-container">
+            <div className="anavitrin-koleksiyon-baslik">{bundles.name}</div>
+            <div className="anavitrin-koleksiyon-spot">Cağnım düccem güzel düccem gezmek çok güsel lay lay</div>
+        </div>
         <Swiper effect={'coverflow'} grabCursor={true} centeredSlides={true} slidesPerView={'auto'} coverflowEffect={{
             "rotate": 50,
             "stretch": 0,
@@ -37,19 +43,20 @@ const KategorilerScrollingCarousel =()=>{
         }} className="mySwiper2">
             {error && <h1>Error!</h1>}
             {loading && <h1>Loading...</h1>}
-            {data
-            .map((bundles) => (
-                <NavLink to={"/blogs?="+bundles.id+"/"}>
+            {bundles["places"].map((placess)=>(
+                <NavLink to={"/places?="+placess.id+"/"}>
                     <SwiperSlide>
                         <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />
                         <div className="koleksiyon-swiper-baslik">
-                            {bundles.name}
+                            {placess.name}
                         </div>
                     </SwiperSlide>
                 </NavLink>
-            ))}
+                ))}
             </Swiper>
         </div>
+        ))}
+        </>
     )
 }
 

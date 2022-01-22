@@ -61,7 +61,7 @@ function App (){
                 <AltBar />
                 </div>
             </AppContext.Provider>  
-              )
+            )
         }
     }
 

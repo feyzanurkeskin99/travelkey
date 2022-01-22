@@ -14,6 +14,7 @@ import Etkinlikler from '../Swipers/Etkinlikler'
 import {backgroundIcons, kategoriIcons} from '../icon'
 import MiniSlider from '../Swipers/MiniSlider'
 import SemtSwiper from '../Swipers/SemtSwiper'
+import YerlerTypes from '../Swipers/YerlerTypes'
 import useFetch from 'use-http';
 import { NavLink } from 'react-router-dom';
 import { AppContext } from '../Components/Context'
@@ -22,16 +23,6 @@ const AnaSayfa =()=>{
     React.useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
-
-    var {city, setCity} = useContext(AppContext);
-    const options = {};
-    const date="";
-    const {
-        loading,
-        error,
-        data = [],
-    } = useFetch('https://seyyahpanel.kod8.app/categories?sehir_anavitrins.plate='+city.city, options, []);
-    //isDistrict=false ile semt olmayan koleksiyonları getirdik
         return(
             <>
                 <div className='cover'>
@@ -45,22 +36,18 @@ const AnaSayfa =()=>{
                 </div>
                 </div>
                 <VitrinKoleksiyon></VitrinKoleksiyon>
-                <KategorilerScrollingCarousel></KategorilerScrollingCarousel>
                 <KategorilerSwiper2></KategorilerSwiper2>
-                <RotalarSwiper></RotalarSwiper>
+                <SemtSwiper></SemtSwiper>
                 <YerlerSwiper kategoriIcon={kategoriIcons.historical} name="Tarih"></YerlerSwiper>
+                <RotalarSwiper></RotalarSwiper>
+                <YerlerTypes name="Aktiviteler" type="activity"></YerlerTypes>
+                <YerlerTypes name="Neyi Meşhur?" type="iconic"></YerlerTypes>
+                <KategorilerScrollingCarousel></KategorilerScrollingCarousel>
+                <IkiSiraSwiper></IkiSiraSwiper>
+                <Etkinlikler></Etkinlikler>
                 <Haberler></Haberler>
                 
-
-                {error && <h1>Error!</h1>}
-                {loading && <h1>Loading...</h1>}
-                {data.map((categories) => (
-                    <IkiSiraSwiper backgroundIcon={backgroundIcons[categories.iconname]} name={categories.name}></IkiSiraSwiper>
-                ))}
-
-                <Etkinlikler></Etkinlikler>
                 <MiniSlider></MiniSlider>
-                <SemtSwiper></SemtSwiper>
             </>
         )
     

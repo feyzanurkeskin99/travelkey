@@ -14,7 +14,7 @@ const Etkinlikler =()=>{
         loading,
         error,
         data = [],
-    } = useFetch('https://seyyahpanel.kod8.app/events?sehir.plate='+city.city, options, []);
+    } = useFetch('https://seyyahpanel.kod8.app/events?sehir.plate='+city.city+'&vitrin=true', options, []);
     
     return(
 

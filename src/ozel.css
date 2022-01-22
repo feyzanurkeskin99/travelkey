@@ -474,7 +474,7 @@ z-index: 0;
 .ortaalan .semt-swiper .swiper-slide .semt-adi-ust, .ortaalan .semt-swiper .swiper-slide .semt-adi-alt{
   border-radius: 10px;
   width: 100%;
-  height: 15%;
+  height: 20%;
   background-color: var(--ikincil)!important;
   margin: 10px;
   display: flex;
@@ -486,6 +486,9 @@ z-index: 0;
   font-size:12px;
 }
 
+.semt-swiper{
+  margin-bottom: 20px;
+}
 .semt-swiper .semt-baslik{  
   font-size: 35px;
   margin: 20px;
@@ -501,6 +504,7 @@ z-index: 0;
 }
 .semt-swiper .swiper{
   width:100%;
+  height: 100%;
 }
 
 .semt-swiper .swiper-slide .semt-baslik-ust{
@@ -508,12 +512,6 @@ z-index: 0;
   border-radius: 10px!important;
   height: 15%!important;
 }
-
-
-
-
-
-
 
 
   .ortaalan .ara{
@@ -570,6 +568,16 @@ z-index: 0;
   }
   .swiper-wrapper{
     align-items: center;
+  }
+
+  
+  .kategoriler-swiper-2{
+    margin-bottom: 20px;
+    width: 100%;
+    margin-top: 20px;
+  } 
+  .kategoriler-swiper-2 .all-collections-container{
+    margin-bottom: 0!important;
   }
   .kategoriler-swiper-2 .swiper-slide{
     display: flex;
@@ -769,13 +777,6 @@ z-index: 0;
   }
 
 
-
-
-  .rotalar-swiper{
-    padding-top: 60px;
-    position: relative;
-  }
-
   .background-icon{
     position: absolute;
     top: 10px;
@@ -805,7 +806,7 @@ z-index: 0;
 
   .iki-sira-swiper .background-baslik{
     font-size: 40px;
-
+    width: max-content;
   }
   
 
@@ -816,6 +817,11 @@ z-index: 0;
     fill:var(--ikincil);
   }
 
+
+  .rotalar-swiper{
+    padding-top: 60px;
+    position: relative;
+  }
   .rotalar-swiper .swiper-slide{
     display: flex;
     align-items: center;
@@ -828,6 +834,16 @@ z-index: 0;
     height: 60%!important;
   }
 
+  .rotalar-swiper .swiper-slide .rotalar-baslik{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    z-index: 1;
+    margin: 5%;
+    margin-bottom: 15%;
+  }
   .rotalar-swiper .swiper-slide::before{
     content: "";
     position: absolute;
@@ -869,6 +885,8 @@ z-index: 0;
     background: linear-gradient(0deg, #04212d, transparent);
     z-index: 0;
   }
+
+  
 .yerler-swiper .yerler-swiper-kategori, .yerler-sirala .yerler-sirala-kategori{
   display: flex;
   margin: 10px 10px 0 0;
@@ -889,6 +907,7 @@ z-index: 0;
   z-index: 1;
   font-size: 20px;
 }
+
 .yerler-sirala a .yerler-sirala-baslik{
   margin: 15px;
   z-index: 1;
@@ -902,6 +921,32 @@ z-index: 0;
   margin-top: 3px;
   margin-left: 5px;
 }
+
+.yerler-swiper.yerler-types{
+  margin-bottom: 30px;
+}
+
+.yerler-swiper .yerler-types-baslik{
+  width: 80%;
+  margin-top: 20px;
+}
+
+.yerler-swiper.yerler-types .yerler-types-baslik-container{
+    width: 100%;
+    height: 25%;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 25px;
+    color: var(--birincil);
+    font-weight: 900;
+}
+
+
+
+
 .yerler-sirala a{
   margin-top: 20px;
   display: flex;
@@ -1029,19 +1074,6 @@ z-index: 0;
     fill:var(--light);
   }
 
-  .vitrin-koleksiyon .swiper{
-    height: 300px;
-  }
-  
-  .vitrin-koleksiyon .swiper-slide{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 18px;
-    font-size: 22px;
-    font-weight: bold;
-    color: #fff;
-  }
 
   .iki-sira-swiper{
     position: relative;
@@ -1086,7 +1118,7 @@ z-index: 0;
     margin: 10px;
   }
   .kategoriler-scrolling-carousel{
-    margin-bottom: 60px;
+    margin-bottom: 130px;
   }
 
   .kategoriler-scrolling-carousel .swiper-slide{
@@ -1131,6 +1163,89 @@ z-index: 0;
     text-overflow: ellipsis;
     width: 85%;
   }
+
+  .kategoriler-scrolling-carousel .anavitrin-koleksiyon-baslik-container{
+    width: 100%;
+    height: 40%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .kategoriler-scrolling-carousel .anavitrin-koleksiyon-baslik{
+    width: 75%;
+    line-height: 1.2em;
+    overflow: hidden;
+    display: block;
+    text-overflow: ellipsis;
+    font-size: 30px;
+    color: var(--birincil);
+    font-weight: 900;
+    margin-top: 30px;
+  }
+  .kategoriler-scrolling-carousel .anavitrin-koleksiyon-spot{
+    width: 75%;
+    line-height: 1.2em;
+    height: 3.6em;
+    overflow: hidden;
+    display: block;
+    text-overflow: ellipsis;
+    color: gray;
+  }
+
+  .vitrin-koleksiyon{
+    margin-bottom: 60px;
+  }
+
+  .vitrin-koleksiyon .swiper-slide{
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    border-radius: 18px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #fff;
+    margin-top: 60px;
+    height: 150%;
+  }
+
+  .vitrin-koleksiyon .swiper-slide::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 5em;
+    border-radius: 0 0 20px 20px;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(0deg, #04212d, transparent);
+    z-index: 35;
+  }
+
+  .vitrin-koleksiyon .swiper-slide img{
+    border-radius: 15px;
+    height: 100%;
+    position: relative;
+  }
+
+  .vitrin-koleksiyon .vitrin-koleksiyon-swiper-baslik{
+    position: absolute;
+    z-index: 1000;
+    margin: 20px;
+    line-height: 1.2em;
+    height: 1.2em;
+    overflow: hidden;
+    white-space: nowrap;
+    display: block;
+    text-overflow: ellipsis;
+    width: 85%;
+  }
+
+
+
+
+
   .etkinlikler{
     display: flex;
     flex-wrap: wrap;
@@ -1262,10 +1377,6 @@ z-index: 0;
     padding: 2px;
   }
   
-  .kategoriler-swiper-2{
-    margin-bottom: 20px;
-    width: 100%;
-  }
 
   .hava-durumu{
     height: 80px;

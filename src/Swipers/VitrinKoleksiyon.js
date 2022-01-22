@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import ReactDOM from 'react-dom'
 import { Button, Icon } from 'semantic-ui-react'
 import '../ozel.css'
@@ -8,19 +8,40 @@ import 'swiper/swiper.min.css'
 import 'swiper/modules/effect-cards/effect-cards.js'
 import 'swiper/modules/pagination/pagination.min.css'
 import TumElemanlar from '../TumElemanlar'
+import { NavLink } from 'react-router-dom';
+import useFetch from 'use-http';
+import { AppContext } from '../Components/Context'
 
 SwiperCore.use([EffectCards]);
 
 const VitrinKoleksiyon =()=>{
-    
+  var {city, setCity} = useContext(AppContext);
+  const options = {};
+  const date="";
+  const {
+      loading,
+      error,
+      data = [],
+  } = useFetch('https://seyyahpanel.kod8.app/bundles?city.plate='+city.city+'&isDistrict=false&vitrin=true', options, []);
         return(
               <div className='vitrin-koleksiyon'>
-              <TumElemanlar name='Tüm Vitrindekiler'></TumElemanlar>
+              <NavLink to='/koleksiyonlar-sirala'>
+                <TumElemanlar name='Tüm Koleksiyonlar'></TumElemanlar>
+              </NavLink>
               <Swiper effect={'cards'} grabCursor={true} className="mySwiper">
-                <SwiperSlide>Slide 1</SwiperSlide>
-                <SwiperSlide>Slide 2</SwiperSlide>
-                <SwiperSlide>Slide 3</SwiperSlide>
-                <SwiperSlide>Slide 4</SwiperSlide>
+                {error && <h1>Error!</h1>}
+                {loading && <h1>Loading...</h1>}
+                {data
+                .map((bundles) => (
+                    <NavLink to={"/blogs?="+bundles.id+"/"}>
+                        <SwiperSlide>
+                            <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />
+                            <div className="vitrin-koleksiyon-swiper-baslik">
+                                {bundles.name}
+                            </div>
+                        </SwiperSlide>
+                    </NavLink>
+                ))}
               </Swiper>
               </div>
         
