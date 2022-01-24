@@ -26,7 +26,7 @@ const KategoriSirala =()=>{
             {error && <h1>Error!</h1>}
             {loading && <h1>Loading...</h1>}
             {data.map((categories) => (
-                <NavLink to={"/kategori?id="+categories.id+"/"}>
+                <NavLink to={"/categories?id="+categories.id+"/"}>
                     <div className="kategoriler-container">
                         <div className='kategoriler-ust'>
                             <InlineSVG src={kategoriIcons[categories.iconname]}></InlineSVG>

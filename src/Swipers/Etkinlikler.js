@@ -27,8 +27,8 @@ const Etkinlikler =()=>{
             {error && <h1>Error!</h1>}
             {loading && <h1>Loading...</h1>}
             {data.map((events) => (
-                <NavLink to={"/etkinlik?="+events.id+"/"}>
-                    <div key={events.id} className='etkinlikler-satir'>
+                <NavLink to={"/events?id="+events.id+"/"}>
+                    <div className='etkinlikler-satir'>
                         <div className="tarih">
                             <h2>{new Date(events.datetime).getDate()}</h2>
                             <div className="tarih-ay-yil">

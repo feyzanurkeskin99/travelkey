@@ -33,9 +33,13 @@ const {
         <Swiper slidesPerView={5} centeredSlides={true} slidesPerView={'auto'} spaceBetween={30} slidesPerView={'auto'} grabCursor={true} className="mySwiperYerler">
             {error && <h1>Error!</h1>}
             {loading && <h1>Loading...</h1>}
-            {data.filter(data => data.sehir.plaka === city.city).map((places) => (
-                <NavLink to={"/places?id="+places.id+"/"}>
+            {data.map((places) => (
+                
                     <SwiperSlide>
+                    
+                    <NavLink to={"/places?id="+places.id+"/"}>
+                    <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />
+                    </NavLink>
                     <div className="yerler-swiper-kategori">
                                 <div className="yerler-swiper-kategori-icon">
                                     <InlineSVG src={kategoriIcons[places.category.iconname]}></InlineSVG>
@@ -46,7 +50,6 @@ const {
                             </div>
                             <div className="yerler-swiper-baslik">{places.name}</div>
                     </SwiperSlide>
-                </NavLink>
             ))}
         </Swiper>
         </div>

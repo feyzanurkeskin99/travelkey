@@ -32,18 +32,20 @@ const Haberler =()=>{
             {error && <h1>Error!</h1>}
             {loading && <h1>Loading...</h1>}
             {data.map((blogs) => (
-                <NavLink to={"/blogs?="+blogs.id+"/"}>
-                    <SwiperSlide key={blogs.id}>
+                
+                    <SwiperSlide>
+                        <NavLink to={"/blogs?id="+blogs.id+"/"}>
                             <div className='haberler-ust'>
                                 <div className="haberler-swiper-tarih">{new Date(blogs.datetime).toLocaleString('tr', {day:"numeric", month:"short"})}</div>
                             </div>
+                        </NavLink>
                             <div className='haberler-alt'>
                                 <div className="haberler-swiper-baslik">
                                     {blogs.title}
                                 </div>
                             </div>
                     </SwiperSlide>
-                </NavLink>
+                
             ))}
 
         </Swiper>

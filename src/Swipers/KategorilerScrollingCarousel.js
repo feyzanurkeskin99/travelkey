@@ -44,14 +44,16 @@ const KategorilerScrollingCarousel =()=>{
             {error && <h1>Error!</h1>}
             {loading && <h1>Loading...</h1>}
             {bundles["places"].map((placess)=>(
-                <NavLink to={"/places?="+placess.id+"/"}>
+                
                     <SwiperSlide>
+                    <NavLink to={"/places?id="+placess.id+"/"}>
                         <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />
+                        </NavLink>
                         <div className="koleksiyon-swiper-baslik">
                             {placess.name}
                         </div>
                     </SwiperSlide>
-                </NavLink>
+                
                 ))}
             </Swiper>
         </div>

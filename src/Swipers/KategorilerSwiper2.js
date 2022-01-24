@@ -31,14 +31,16 @@ const KategorilerSwiper2 =()=>{
             {error && <h1>Error!</h1>}
             {loading && <h1>Loading...</h1>}
             {data.map((categories) => (
-                <NavLink to={"/kategori?id="+categories.id+"/"}>
+                
                     <SwiperSlide>
-                        <div className='kategoriler-ust'>
-                            <InlineSVG src={kategoriIcons[categories.iconname]}></InlineSVG>
-                        </div>
+                        <NavLink to={"/categories?id="+categories.id+"/"}>
+                            <div className='kategoriler-ust'>
+                                <InlineSVG src={kategoriIcons[categories.iconname]}></InlineSVG>
+                            </div>
+                        </NavLink>
                         <div className='kategoriler-alt'>{categories.name}</div>
                     </SwiperSlide>
-                </NavLink>
+                
             ))}
         </Swiper>
         </div>

@@ -33,14 +33,17 @@ const VitrinKoleksiyon =()=>{
                 {loading && <h1>Loading...</h1>}
                 {data
                 .map((bundles) => (
-                    <NavLink to={"/blogs?="+bundles.id+"/"}>
+                    
                         <SwiperSlide>
+                            <NavLink to={"/bundles?id="+bundles.id+"/"}>
                             <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />
+                            </NavLink>
                             <div className="vitrin-koleksiyon-swiper-baslik">
                                 {bundles.name}
                             </div>
+                          
                         </SwiperSlide>
-                    </NavLink>
+                    
                 ))}
               </Swiper>
               </div>

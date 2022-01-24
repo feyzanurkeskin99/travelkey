@@ -579,7 +579,7 @@ z-index: 0;
   .kategoriler-swiper-2 .all-collections-container{
     margin-bottom: 0!important;
   }
-  .kategoriler-swiper-2 .swiper-slide{
+  .kategoriler-swiper-2 .swiper-slide, .kategoriler-swiper-2 .swiper-slide a{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -648,6 +648,7 @@ z-index: 0;
   
   .haberler-swiper .swiper-slide .haberler-ust{
     background-color: var(--birincil);
+    color: white;
     height: 70%;
     width: 100%;
     border-radius: 18px;
@@ -819,30 +820,54 @@ z-index: 0;
 
 
   .rotalar-swiper{
+    margin-top: 20px;
     padding-top: 60px;
     position: relative;
   }
+
+  .rotalar-swiper .swiper-slide img{    
+    border-radius: 15px;
+    width: 100%;
+    position: absolute;
+  }
+  .rotalar-swiper .swiper-slide a{    
+    z-index: 35;
+    display: flex;
+    border-radius: 18px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #fff;
+    width: 100%!important;
+    height: 100%!important;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+
   .rotalar-swiper .swiper-slide{
     display: flex;
-    align-items: center;
-    justify-content: center;
     border-radius: 18px;
     font-size: 22px;
     font-weight: bold;
     color: #fff;
     width: 100%!important;
     height: 60%!important;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
   }
 
   .rotalar-swiper .swiper-slide .rotalar-baslik{
     height: 100%;
-    width: 100%;
+    width: 90%;
     display: flex;
     align-items: flex-end;
     justify-content: flex-start;
-    z-index: 1;
+    z-index: 3;
     margin: 5%;
-    margin-bottom: 15%;
+    margin-bottom: 10%;
   }
   .rotalar-swiper .swiper-slide::before{
     content: "";
@@ -853,16 +878,16 @@ z-index: 0;
     bottom: 0;
     left: 0;
     background: linear-gradient(0deg, #04212d, transparent);
-    z-index: 0;
+    z-index: 3;
   }
+  
 
   .yerler-swiper .swiper-slide{
     display: flex;
     border-radius: 18px;
     margin-right: 30px;
     flex-wrap: wrap;
-    justify-content: flex-start;
-    align-content: space-between;
+    justify-content: center;
     flex-direction: column;
     justify-content: space-between;
     font-size: 22px;
@@ -870,8 +895,19 @@ z-index: 0;
     color: #fff;
     width: 60%!important;
     height: 100%!important;
-    left:-25%;
+    left: -25%;
     position: relative;
+    align-content: flex-start;
+  }
+  .yerler-swiper .swiper-slide a{
+    height: 100%!important;
+  }
+  .yerler-swiper .swiper-slide img{
+    width: 100%;
+    height: 100%;
+    border-radius: 18px;
+    z-index: 0;
+    position: absolute;
   }
 
   .yerler-swiper .swiper-slide::before{
@@ -883,14 +919,28 @@ z-index: 0;
     bottom: 0;
     left: 0;
     background: linear-gradient(0deg, #04212d, transparent);
-    z-index: 0;
+    z-index: 1;
   }
-
+  .yerler-swiper .swiper-slide::after{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 3em;
+    border-radius: 20px 20px;
+    top: 0;
+    left: 0;
+    background: linear-gradient(180deg, gray, transparent);
+    z-index: 5;
+  }
+  .yerler-swiper .all-collections-container{
+    margin-top: 50px;
+  }
   
 .yerler-swiper .yerler-swiper-kategori, .yerler-sirala .yerler-sirala-kategori{
   display: flex;
   margin: 10px 10px 0 0;
   color:var(--birincil);
+  z-index: 35;
 }
 
 .yerler-swiper .yerler-swiper-kategori .yerler-swiper-kategori-icon svg, .yerler-sirala a .yerler-sirala-kategori .yerler-sirala-kategori-icon svg{
@@ -904,8 +954,9 @@ z-index: 0;
 }
 .yerler-swiper .yerler-swiper-baslik{
   margin: 15px;
-  z-index: 1;
-  font-size: 20px;
+  z-index: 3;
+  font-size: 17px;
+  width: 80%;
 }
 
 .yerler-sirala a .yerler-sirala-baslik{
@@ -922,9 +973,6 @@ z-index: 0;
   margin-left: 5px;
 }
 
-.yerler-swiper.yerler-types{
-  margin-bottom: 30px;
-}
 
 .yerler-swiper .yerler-types-baslik{
   width: 80%;
@@ -945,6 +993,13 @@ z-index: 0;
 }
 
 
+.yerler-swiper.yerler-types{
+  margin-bottom: 30px;
+}
+
+.yerler-swiper.yerler-types .swiper-slide{
+  align-content: flex-start;
+}
 
 
 .yerler-sirala a{

@@ -33,8 +33,8 @@ const {
         {error && <h1>Error!</h1>}
         {loading && <h1>Loading...</h1>}
         {data.map((places) => (
-            <NavLink to={"/yerler?id="+places.id+"/"}>
-                <div key={places.id} className="yerler-container">
+            <NavLink to={"/places?id="+places.id+"/"}>
+                <div className="yerler-container">
                 <div className="yerler-sirala-kategori">
                             <div className="yerler-sirala-kategori-icon">
                                 <InlineSVG src={kategoriIcons[places.category.iconname]}></InlineSVG>

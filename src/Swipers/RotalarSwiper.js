@@ -33,13 +33,16 @@ const {
                 {error && <h1>Error!</h1>}
                 {loading && <h1>Loading...</h1>}
                 {data.map((bundles) => (
-                    <NavLink to={"/bundles?id="+bundles.id+"/"}>
                     <SwiperSlide>
+                        
+                        <img src="https://i12.haber7.net//haber/haber7/photos/2021/42/turkiyedeki_yuruyus_rotalari_nerede_1634557754_4097.jpg" />
+                        
+                        <NavLink to={"/bundles?id="+bundles.id+"/"}>
                         <div className="rotalar-baslik">
                             {bundles.name}
                         </div>
+                        </NavLink>
                     </SwiperSlide>
-                    </NavLink>
             ))}
         
         </Swiper>

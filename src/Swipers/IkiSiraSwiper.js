@@ -23,9 +23,9 @@ const IkiSiraSwiper =(props)=>{
         error,
         data = [],
     } = useFetch('https://seyyahpanel.kod8.app/categories?sehir_anavitrins.plate='+city.city, options, []);
-    //isDistrict=false ile semt olmayan koleksiyonları getirdik
+    
     return(
-        <>
+        <div>
         {error && <h1>Error!</h1>}
         {loading && <h1>Loading...</h1>}
         {data
@@ -38,26 +38,26 @@ const IkiSiraSwiper =(props)=>{
 
                 <Swiper slidesPerView={5} centeredSlides={true} slidesPerView={'auto'} spaceBetween={30} slidesPerView={'auto'} grabCursor={true} className="mySwiper4">
                     
-                {error && <h1>Error!</h1>}
-                {loading && <h1>Loading...</h1>}
-                {categories["places"].map((placess)=>(
-                <NavLink to={"/places?="+placess.id+"/"}>
-                    <SwiperSlide>
-                        <div className="iki-sira-ust">{placess.name}</div>
-                        <div className="iki-sira-alt">{placess.name}</div>
-                    </SwiperSlide>
-                </NavLink>
-                ))}
+                    {categories["places"]
+                    .reduce((previous, current, index, array)=>{
+                    return index %2 === 0 ? [...previous, array.slice(index,index+2)] : previous},[])
+                    .map((placess) => (
+                        <SwiperSlide>
+                                <NavLink to={"/places?id="+placess[0].id+"/"}>
+                                    <div className="iki-sira-ust">{placess[0].name}</div>
+                                </NavLink>
+                                <NavLink to={"/places?id="+placess[1].id+"/"}>
+                                    <div className="iki-sira-ust">{placess[1].name}</div>
+                                </NavLink>
+                            
+                        </SwiperSlide>
+                    ))}
+                
                 </Swiper>
         </div>
         ))}
-        </>
-
-
-
-
-
-
+        
+        </div>
 
     )
 }

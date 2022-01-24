@@ -29,23 +29,29 @@ const {
                 <TumElemanlar name='Tüm Yerler'></TumElemanlar>
             </NavLink>
         
-        <Swiper slidesPerView={5} centeredSlides={true} slidesPerView={'auto'} spaceBetween={30} slidesPerView={'auto'} grabCursor={true} className="mySwiperYerler">
+        <Swiper slidesPerView={5} centeredSlides={true} slidesPerView={'auto'} spaceBetween={20} slidesPerView={'auto'} grabCursor={true} className="mySwiperYerler">
             {error && <h1>Error!</h1>}
             {loading && <h1>Loading...</h1>}
             {data.map((places) => (
-                <NavLink to={"/places?id="+places.id+"/"}>
+                
                     <SwiperSlide>
+                    
+                    <NavLink to={"/places?id="+places.id+"/"}>
+                    <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />
+                    
+                    </NavLink>
                     <div className="yerler-swiper-kategori">
                                 <div className="yerler-swiper-kategori-icon">
                                     <InlineSVG src={kategoriIcons[places.category.iconname]}></InlineSVG>
                                 </div>
+                                
                                 <div className="yerler-swiper-kategori-adi">
                                     {places.category.name}
                                 </div>
                             </div>
                             <div className="yerler-swiper-baslik">{places.name}</div>
                     </SwiperSlide>
-                </NavLink>
+                
             ))}
         </Swiper>
         </div>
