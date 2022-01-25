@@ -37,7 +37,7 @@ const KoleksiyonSirala =()=>{
                             <div className="koleksiyon-sirala-alt-baslik">
                                 {bundles.name}
                             </div>
-                            <NavLink to={"/bundles?id="+bundles.id+"/"}>
+                            <NavLink to={"/bundles/"+bundles.id+"/"}>
                             <div className="koleksiyon-sirala-buton">
                                 <InlineSVG src={collectionIcons.arrow}></InlineSVG>
                             </div>

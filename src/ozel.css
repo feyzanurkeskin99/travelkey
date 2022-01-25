@@ -275,6 +275,7 @@ z-index: 0;
 
 
 .yerler-detay-ortaalan{
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -805,6 +806,56 @@ z-index: 0;
     opacity: 0.3;
   }
 
+  .iki-sira-swiper .swiper-slide img{    
+    border-radius: 15px;
+    width: 100%;
+    position: absolute;
+  }
+.iki-sira-swiper .iki-sira-alt-baslik, .iki-sira-swiper .iki-sira-ust-baslik{
+    z-index: 35;
+    line-height: 1.2em;
+    height: 2.4em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.2em;
+    height: 1.2em;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 85%;
+    margin-top: 25%;
+}
+
+  .iki-sira-swiper .swiper-slide .iki-sira-alt::before, .iki-sira-swiper .swiper-slide .iki-sira-ust::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 4em;
+    border-radius: 0 0 20px 20px;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(0deg, #04212d, transparent);
+    z-index: 1;
+  }
+
+  .iki-sira-swiper .iki-sira-alt, .iki-sira-swiper .iki-sira-ust{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 45%!important;
+    left: -10%;
+    background-color: #24c7ff;
+    margin: 10px;
+    z-index: 35;
+    border-radius: 18px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #fff;
+    width: 100%!important;
+    position: relative;
+    overflow: hidden;
+  }
+
   .iki-sira-swiper .background-baslik{
     font-size: 40px;
     width: max-content;
@@ -965,6 +1016,24 @@ z-index: 0;
   font-size: 20px;
   position: absolute;
   bottom: 5px;
+}
+.yerler-sirala .yerler-container::before{
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 3em;
+  border-radius: 20px 20px;
+  top: 0;
+  left: 0;
+  background: linear-gradient(180deg, gray, transparent);
+  z-index: 2;
+}
+.yerler-sirala .yerler-container img{
+  width: 100%;
+    height: 100%;
+    border-radius: 18px;
+    z-index: 0;
+    position: absolute;
 }
 
 .yerler-swiper .yerler-swiper-kategori-adi, .yerler-sirala a .yerler-sirala-kategori-adi{

@@ -21,10 +21,12 @@ import EtkinliklerSirala from './Sırala/EtkinliklerSirala'
 import HaberlerSirala from './Sırala/HaberlerSirala'
 import KategoriSirala from './Sırala/KategoriSirala'
 import YerlerSirala from './Sırala/YerlerSirala'
+import BundlesYerlerSirala from './Sırala/BundlesYerlerSirala'
 import KoleksiyonSirala from './Sırala/KoleksiyonSirala'
+import useFetch from 'use-http';
 
 function App (){
-    const [city, setCity] = useLocalStorageState("city",  "sehirsec");
+    const [city, setCity] = useLocalStorageState("city",  "sehirsec");     
         if (city === "sehirsec" || city.cityName === "sehirsec") {
             return(
                 <AppContext.Provider value={{city, setCity}}>
@@ -39,6 +41,7 @@ function App (){
             return(
                 <AppContext.Provider value={{city, setCity}}>
                 <div className="app">
+                
                 <UstBar/>
                     <div className='ortaalan'>
                     <Routes>
@@ -50,7 +53,9 @@ function App (){
                         <Route path='/kaydedilenler' element={<Kaydedilenler />} />
                         <Route path='/etkinlikler' element={ <Etkinlikler/>} />
                         <Route path='/yerler-detay' element={ <YerlerDetay/>} />
+                        <Route path='/places/:id' element={ <YerlerDetay/>} />
                         <Route path='/yerler-sirala' element={ <YerlerSirala/>} />
+                        <Route path='/bundles/:id' element={ <BundlesYerlerSirala/>} />
                         <Route path='/etkinlikler-sirala' element={ <EtkinliklerSirala/>} />
                         <Route path='/haberler-sirala' element={ <HaberlerSirala/>} />
                         <Route path='/kategoriler-sirala' element={ <KategoriSirala/>} />
@@ -64,5 +69,4 @@ function App (){
             )
         }
     }
-
 export default App;

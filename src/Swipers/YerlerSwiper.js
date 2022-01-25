@@ -35,8 +35,7 @@ const {
             {data.map((places) => (
                 
                     <SwiperSlide>
-                    
-                    <NavLink to={"/places?id="+places.id+"/"}>
+                    <NavLink to={"/places/"+places.id+"/"}>
                     <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />
                     
                     </NavLink>
@@ -48,8 +47,8 @@ const {
                                 <div className="yerler-swiper-kategori-adi">
                                     {places.category.name}
                                 </div>
-                            </div>
-                            <div className="yerler-swiper-baslik">{places.name}</div>
+                    </div>
+                    <div className="yerler-swiper-baslik">{places.name}</div>
                     </SwiperSlide>
                 
             ))}

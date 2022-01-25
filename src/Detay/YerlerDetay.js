@@ -12,6 +12,8 @@ import MiniSlider from '../Swipers/MiniSlider';
 import IkiSiraSwiper from '../Swipers/IkiSiraSwiper';
 import {backgroundIcons, contactIcons, kategoriIcons, locationIcons} from '../icon'
 import InlineSVG from 'svg-inline-react';
+import NotFound from '../Components/NotFound';
+import {useParams} from 'react-router-dom'
 
 SwiperCore.use([FreeMode,Navigation,Thumbs]);
 
@@ -20,7 +22,14 @@ const YerlerDetay =()=>{
         window.scrollTo(0, 0);
     }, []);
     
-const [thumbsSwiper, setThumbsSwiper] = useState(null);
+    const [thumbsSwiper, setThumbsSwiper] = useState(null);
+
+    let { id } = useParams();
+
+    if (!id) {
+        return <NotFound />;
+    }
+    
         return(
             <div className='yerler-detay-ortaalan'>
                 <div className='yerler-detay-cover'>
@@ -40,6 +49,7 @@ const [thumbsSwiper, setThumbsSwiper] = useState(null);
                 
                 <div className="yerler-spot">
                     <div className="yerler-spot-yazi">
+                    {id}
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex magni pariatur, impedit cumque placeat corrupti omnis est commodi dolorem veniam quod voluptatibus laudantium sunt aliquam sed aliquid tenetur dolorum earum.
                     </div>
                 </div>
@@ -63,7 +73,9 @@ const [thumbsSwiper, setThumbsSwiper] = useState(null);
                     
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, excepturi, at ullam et magni, rem pariatur quisquam ducimus commodi eius veniam temporibus assumenda. Sint eum molestias vero accusantium eaque necessitatibus.</span>
                 </div>
-                <IkiSiraSwiper backgroundIcon={backgroundIcons.routes} name="Rotalar"></IkiSiraSwiper>
+
+                
+                <IkiSiraSwiper></IkiSiraSwiper>
             </div>
         )
     

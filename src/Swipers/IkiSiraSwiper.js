@@ -14,20 +14,21 @@ import {backgroundIcons} from '../icon'
 
 SwiperCore.use([Pagination]);
 
-const IkiSiraSwiper =(props)=>{
+const IkiSiraSwiper =()=>{
     var {city, setCity} = useContext(AppContext);
     const options = {};
-    const date="";
+    var arr=[]
     const {
-        loading,
-        error,
         data = [],
     } = useFetch('https://seyyahpanel.kod8.app/categories?sehir_anavitrins.plate='+city.city, options, []);
+    //https://seyyahpanel.kod8.app/places?sehir.plate=81&category.anavitrin_contains=81 url 'i denenecek
+    const {
+        sehirId = [],
+    } = useFetch('https://seyyahpanel.kod8.app/sehirs?plate='+city.city, options, []);
     
     return(
-        <div>
-        {error && <h1>Error!</h1>}
-        {loading && <h1>Loading...</h1>}
+        <>
+        
         {data
         .map((categories) => (
         <div className='iki-sira-swiper'>
@@ -35,30 +36,36 @@ const IkiSiraSwiper =(props)=>{
                 <InlineSVG src={backgroundIcons[categories.iconname]}></InlineSVG>
                 <h2 className='background-baslik'>{categories.name}</h2>
             </div>
-
                 <Swiper slidesPerView={5} centeredSlides={true} slidesPerView={'auto'} spaceBetween={30} slidesPerView={'auto'} grabCursor={true} className="mySwiper4">
-                    
                     {categories["places"]
                     .reduce((previous, current, index, array)=>{
                     return index %2 === 0 ? [...previous, array.slice(index,index+2)] : previous},[])
+                    .filter(dizi => dizi.length === 2)
                     .map((placess) => (
                         <SwiperSlide>
-                                <NavLink to={"/places?id="+placess[0].id+"/"}>
-                                    <div className="iki-sira-ust">{placess[0].name}</div>
+                                <NavLink to={"/places?id="+[placess[0]].id+"/"}>
+                                    <div className="iki-sira-ust">
+                                        <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />
+                                        <div className="iki-sira-ust-baslik">
+                                            {placess[0].name}
+                                        </div>
+                                        
+                                    </div>
                                 </NavLink>
-                                <NavLink to={"/places?id="+placess[1].id+"/"}>
-                                    <div className="iki-sira-ust">{placess[1].name}</div>
+                                <NavLink to={"/places?id="+[placess[1]].id+"/"}>
+                                    <div className="iki-sira-ust">
+                                    <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />
+                                        <div className="iki-sira-alt-baslik">
+                                            {placess[1].name}
+                                        </div>
+                                    </div>
                                 </NavLink>
-                            
                         </SwiperSlide>
                     ))}
-                
                 </Swiper>
         </div>
         ))}
-        
-        </div>
-
+        </>
     )
 }
 
