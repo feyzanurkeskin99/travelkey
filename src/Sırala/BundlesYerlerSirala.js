@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, {useContext, useEffect, useState} from 'react'
 import ReactDOM from 'react-dom'
 import SwiperCore, {Pagination} from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react/swiper-react.js';
@@ -10,7 +10,7 @@ import { NavLink } from 'react-router-dom';
 import InlineSVG from 'svg-inline-react';
 import useFetch from 'use-http';
 import { kategoriIcons } from '../icon';
-
+import axios from 'axios';
 import NotFound from '../Components/NotFound';
 import {useParams} from 'react-router-dom'
 import { AppContext } from '../Components/Context'
@@ -20,14 +20,25 @@ import { AppContext } from '../Components/Context'
 const BundlesYerlerSirala =()=>{
     
     var {city, setCity} = useContext(AppContext);
-    const options = {};
-    const date=[];
-    const {
-        loading,
-        error,
-        data = [],
-    } = useFetch('https://seyyahpanel.kod8.app/bundles?city.plate='+city.city, options, []);
-        
+    
+    
+    const [dataPlace, setDataPlace]=useState([]);
+    const [dataCat, setDataCat]=useState([]);
+
+    useEffect(()=>{
+        const fetchData = async ()=>{
+            await axios.get('https://seyyahpanel.kod8.app/places?sehir.plate='+city.city)
+            .then(response => {
+                setDataCat(response.data);
+            })
+            await axios.get('https://seyyahpanel.kod8.app/bundles?city.plate='+city.city)
+            .then(response => {
+                setDataPlace(response.data);
+            })
+        }
+        fetchData();
+    },[]);
+    
     let { id } = useParams();
 
     if (!id) {
@@ -35,32 +46,36 @@ const BundlesYerlerSirala =()=>{
     }
     return(
         <div className='yerler-sirala'>
-        {error && <h1>Error!</h1>}
-        {loading && <h1>Loading...</h1>}
-        {data
+        {dataPlace
         .filter(dataFilter => ""+dataFilter.id===id)
         .map((places) => (
-            places["places"].map((placess)=>(
+        places["places"].map((placess)=>(
                 
                 <NavLink to={"/places/"+placess.id+"/"}>
-                
                 <div className="yerler-container">
                 <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />
                 <div className="yerler-sirala-kategori">
-                            <div className="yerler-sirala-kategori-icon">
-                                <InlineSVG src={kategoriIcons.nature}></InlineSVG>
-                            </div>
-                            <div className="yerler-sirala-kategori-adi">
-                                Doğa
-                            </div>
-                        </div>
-                        <div className="yerler-sirala-baslik">{placess.name}</div>
+                {dataCat
+                .filter(dataCatFilter => dataCatFilter.id===placess.id)
+                .map((categories)=>(
+                    <>
+                    <div className="yerler-sirala-kategori-icon">
+                                <InlineSVG src={kategoriIcons[categories.category.iconname]}></InlineSVG>
+                    </div>
+                    <div className="yerler-sirala-kategori-adi">
+                        {categories.category.name}
+                        {console.log(categories)}
+                    </div>
+                    </>
+                ))}
+                </div>
+                
+                <div className="yerler-sirala-baslik">{placess.name}</div>
                 </div>
             </NavLink>
             ))
             
         ))}
-
         </div>
     )
 }

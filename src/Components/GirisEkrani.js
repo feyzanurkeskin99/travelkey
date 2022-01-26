@@ -32,7 +32,7 @@ const cityOptions = [
 					</Label>
 				</Button>
 			</div>
-			<Select options={cityOptions} onChange={handleChange} blurInputOnSelect={false}/>
+			<Select options={cityOptions} onChange={handleChange} blurInputOnSelect={false} isSearchable={ false }/>
 		</div>
 	);
 }

@@ -33,11 +33,9 @@ const KategorilerSwiper2 =()=>{
             {data.map((categories) => (
                 
                     <SwiperSlide>
-                        <NavLink to={"/categories?id="+categories.id+"/"}>
                             <div className='kategoriler-ust'>
                                 <InlineSVG src={kategoriIcons[categories.iconname]}></InlineSVG>
                             </div>
-                        </NavLink>
                         <div className='kategoriler-alt'>{categories.name}</div>
                     </SwiperSlide>
                 
