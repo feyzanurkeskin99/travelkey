@@ -14,6 +14,7 @@ import axios from 'axios';
 import NotFound from '../Components/NotFound';
 import {useParams} from 'react-router-dom'
 import { AppContext } from '../Components/Context'
+import slugify from 'react-slugify';
 
 
 
@@ -47,16 +48,16 @@ const BundlesYerlerSirala =()=>{
     return(
         <div className='yerler-sirala'>
         {dataPlace
-        .filter(dataFilter => ""+dataFilter.id===id)
+        .filter(dataFilter => ""+dataFilter.id=== id.split("-")[0])
         .map((places) => (
         places["places"].map((placess)=>(
                 
-                <NavLink to={"/places/"+placess.id+"/"}>
+                <NavLink to={"/places/"+placess.id+"-"+slugify(placess.name)}>
                 <div className="yerler-container">
                 <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />
                 <div className="yerler-sirala-kategori">
                 {dataCat
-                .filter(dataCatFilter => dataCatFilter.id===placess.id)
+                .filter(dataCatFilter => dataCatFilter.id=== placess.id)
                 .map((categories)=>(
                     <>
                     <div className="yerler-sirala-kategori-icon">
@@ -64,7 +65,7 @@ const BundlesYerlerSirala =()=>{
                     </div>
                     <div className="yerler-sirala-kategori-adi">
                         {categories.category.name}
-                        {console.log(categories)}
+                        
                     </div>
                     </>
                 ))}

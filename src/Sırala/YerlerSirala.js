@@ -10,6 +10,7 @@ import { NavLink } from 'react-router-dom';
 import InlineSVG from 'svg-inline-react';
 import useFetch from 'use-http';
 import { kategoriIcons } from '../icon';
+import slugify from 'react-slugify';
 
 import { AppContext } from '../Components/Context'
 
@@ -31,7 +32,7 @@ const {
         {error && <h1>Error!</h1>}
         {loading && <h1>Loading...</h1>}
         {data.map((places) => (
-            <NavLink to={"/places/"+places.id+"/"}>
+            <NavLink to={"/places/"+places.id+"-"+slugify(places.name)}>
             
                 <div className="yerler-container">
                 <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />

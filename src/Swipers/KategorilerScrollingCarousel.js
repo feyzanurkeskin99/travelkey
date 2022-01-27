@@ -9,6 +9,7 @@ import TumElemanlar from '../TumElemanlar';
 import { NavLink } from 'react-router-dom';
 import useFetch from 'use-http';
 import { AppContext } from '../Components/Context'
+import slugify from 'react-slugify';
 
 
 SwiperCore.use([EffectCoverflow]);
@@ -46,7 +47,7 @@ const KategorilerScrollingCarousel =()=>{
             {bundles["places"].map((placess)=>(
                 
                     <SwiperSlide>
-                    <NavLink to={"/places/"+placess.id+"/"}>
+                    <NavLink to={"/places/"+placess.id+"-"+slugify(placess.name)}>
                         <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />
                         </NavLink>
                         <div className="koleksiyon-swiper-baslik">

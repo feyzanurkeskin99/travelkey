@@ -24,6 +24,7 @@ import YerlerSirala from './Sırala/YerlerSirala'
 import BundlesYerlerSirala from './Sırala/BundlesYerlerSirala'
 import KoleksiyonSirala from './Sırala/KoleksiyonSirala'
 import useFetch from 'use-http';
+import HaberlerDetay from './Detay/HaberlerDetay'
 
 function App (){
     const [city, setCity] = useLocalStorageState("city",  "sehirsec");     
@@ -58,6 +59,7 @@ function App (){
                         <Route path='/bundles/:id' element={ <BundlesYerlerSirala/>} />
                         <Route path='/etkinlikler-sirala' element={ <EtkinliklerSirala/>} />
                         <Route path='/haberler-sirala' element={ <HaberlerSirala/>} />
+                        <Route path='/blogs/:id' element={ <HaberlerDetay/>} />
                         <Route path='/kategoriler-sirala' element={ <KategoriSirala/>} />
                         <Route path='/koleksiyonlar-sirala' element={ <KoleksiyonSirala/>} />
                         <Route path='*' element={<NotFound/>} />

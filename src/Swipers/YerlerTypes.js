@@ -11,6 +11,7 @@ import InlineSVG from 'svg-inline-react';
 import useFetch from 'use-http';
 import { kategoriIcons } from '../icon';
 import { AppContext } from '../Components/Context'
+import slugify from 'react-slugify';
 
 const YerlerTypes =(props)=>{    
 
@@ -37,7 +38,7 @@ const {
                 
                     <SwiperSlide>
                     
-                    <NavLink to={"/places/"+places.id+"/"}>
+                    <NavLink to={"/places/"+places.id+"-"+slugify(places.name)}>
                     <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />
                     </NavLink>
                     <div className="yerler-swiper-kategori">

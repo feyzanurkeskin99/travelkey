@@ -10,6 +10,7 @@ import { Icon } from 'semantic-ui-react';
 import useFetch from 'use-http';
 import { AppContext } from '../Components/Context'
 import { NavLink } from 'react-router-dom';
+import slugify from 'react-slugify';
 
 
 const HaberlerSirala =()=>{
@@ -27,7 +28,7 @@ const HaberlerSirala =()=>{
             {error && <h1>Error!</h1>}
             {loading && <h1>Loading...</h1>}
             {data.map((blogs) => (
-                <NavLink to={"/blogs?id="+blogs.id+"/"}>
+                <NavLink to={"/blogs/"+blogs.id+"-"+slugify(blogs.title)}>
                     <div className="haberler-container">
                         <div className='haberler-ust'>
                             <div className="haberler-sirala-tarih">{new Date(blogs.datetime).toLocaleString('tr', {day:"numeric", month:"short"})}</div>

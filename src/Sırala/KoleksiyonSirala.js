@@ -12,6 +12,7 @@ import {collectionIcons} from '../icon'
 import useFetch from 'use-http';
 import { NavLink } from 'react-router-dom';
 import { AppContext } from '../Components/Context'
+import slugify from 'react-slugify';
 
 const KoleksiyonSirala =()=>{
     var {city, setCity} = useContext(AppContext);
@@ -37,7 +38,7 @@ const KoleksiyonSirala =()=>{
                             <div className="koleksiyon-sirala-alt-baslik">
                                 {bundles.name}
                             </div>
-                            <NavLink to={"/bundles/"+bundles.id+"/"}>
+                            <NavLink to={"/bundles/"+bundles.id+"-"+slugify(bundles.name)}>
                             <div className="koleksiyon-sirala-buton">
                                 <InlineSVG src={collectionIcons.arrow}></InlineSVG>
                             </div>

@@ -11,6 +11,7 @@ import useFetch from 'use-http';
 import { NavLink } from 'react-router-dom';
 import InlineSVG from 'svg-inline-react';
 import {kategoriIcons} from '../icon'
+import slugify from 'react-slugify';
 
 const KategoriSirala =()=>{
     const options = {};
@@ -26,7 +27,7 @@ const KategoriSirala =()=>{
             {error && <h1>Error!</h1>}
             {loading && <h1>Loading...</h1>}
             {data.map((categories) => (
-                <NavLink to={"/categories?id="+categories.id+"/"}>
+                <NavLink to={"/categories/"+categories.id+"-"+slugify(categories.name)}>
                     <div className="kategoriler-container">
                         <div className='kategoriler-ust'>
                             <InlineSVG src={kategoriIcons[categories.iconname]}></InlineSVG>

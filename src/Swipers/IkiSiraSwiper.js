@@ -12,6 +12,7 @@ import { NavLink } from 'react-router-dom';
 import { AppContext } from '../Components/Context'
 import {backgroundIcons} from '../icon'
 import axios from 'axios';
+import slugify from 'react-slugify';
 
 SwiperCore.use([Pagination]);
 
@@ -54,8 +55,8 @@ const IkiSiraSwiper =()=>{
                         .filter(diziFilter => diziFilter.length===2)
                         .map((placess) => (
                             <SwiperSlide>
-                            {console.log(categories["places"].sehir)}
-                                    <NavLink to={"/places/"+placess[0].id+"/"}>
+                            {console.log(slugify(placess[0].name))}
+                                    <NavLink to={"/places/"+placess[0].id+"-"+slugify(placess[0].name)}>
                                         <div className="iki-sira-ust">
                                             <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />
                                             <div className="iki-sira-ust-baslik">
@@ -64,12 +65,30 @@ const IkiSiraSwiper =()=>{
                                             
                                         </div>
                                     </NavLink>
-                                    <NavLink to={"/places/"+placess[1].id+"/"}>
+                                    <NavLink to={"/places/"+placess[1].id+"-"+slugify(placess[1].name)}>
                                         <div className="iki-sira-ust">
                                         <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />
                                             <div className="iki-sira-alt-baslik">
                                                 {placess[1].name}
                                             </div>
+                                        </div>
+                                    </NavLink>
+                            </SwiperSlide>
+                        ))}
+                        {categories["places"]
+                        .filter(dizi => dizi.sehir!==deneme.id)
+                        .reduce((previous, current, index, array)=>{
+                        return index %2 === 0 ? [...previous, array.slice(index,index+2)] : previous},[])
+                        .filter(diziFilter => diziFilter.length===1)
+                        .map((placess) => (
+                            <SwiperSlide>
+                                    <NavLink to={"/places/"+placess[0].id+"/"}>
+                                        <div className="iki-sira-ust">
+                                            <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />
+                                            <div className="iki-sira-ust-baslik">
+                                                {placess[0].name}
+                                            </div>
+                                            
                                         </div>
                                     </NavLink>
                             </SwiperSlide>

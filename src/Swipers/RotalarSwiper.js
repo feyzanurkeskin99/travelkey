@@ -11,6 +11,7 @@ import { NavLink } from 'react-router-dom';
 import useFetch from 'use-http';
 import { kategoriIcons, backgroundIcons } from '../icon';
 import { AppContext } from '../Components/Context'
+import slugify from 'react-slugify';
 
 const RotalarSwiper =()=>{
     var {city, setCity} = useContext(AppContext);
@@ -37,7 +38,7 @@ const {
                         
                         <img src="https://i12.haber7.net//haber/haber7/photos/2021/42/turkiyedeki_yuruyus_rotalari_nerede_1634557754_4097.jpg" />
                         
-                        <NavLink to={"/bundles?id="+bundles.id+"/"}>
+                        <NavLink to={"/bundles/"+bundles.id+"-"+slugify(bundles.name)}>
                         <div className="rotalar-baslik">
                             {bundles.name}
                         </div>

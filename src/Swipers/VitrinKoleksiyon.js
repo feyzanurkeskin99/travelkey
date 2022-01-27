@@ -11,6 +11,7 @@ import TumElemanlar from '../TumElemanlar'
 import { NavLink } from 'react-router-dom';
 import useFetch from 'use-http';
 import { AppContext } from '../Components/Context'
+import slugify from 'react-slugify';
 
 SwiperCore.use([EffectCards]);
 
@@ -35,7 +36,7 @@ const VitrinKoleksiyon =()=>{
                 .map((bundles) => (
                     
                         <SwiperSlide>
-                            <NavLink to={"/bundles/"+bundles.id+"/"}>
+                            <NavLink to={"/bundles/"+bundles.id+"-"+slugify(bundles.name)}>
                             <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />
                             </NavLink>
                             <div className="vitrin-koleksiyon-swiper-baslik">

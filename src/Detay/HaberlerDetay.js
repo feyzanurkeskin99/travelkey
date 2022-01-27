@@ -20,7 +20,7 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 
 SwiperCore.use([FreeMode,Navigation,Thumbs]);
 
-const YerlerDetay =()=>{
+const HaberlerDetay =()=>{
 
     const mapRef= useRef();
 
@@ -33,7 +33,7 @@ const YerlerDetay =()=>{
 
     useEffect(()=>{
         const fetchData = async ()=>{
-            await axios.get('https://seyyahpanel.kod8.app/places?sehir.plate='+city.city)
+            await axios.get('https://seyyahpanel.kod8.app/blogs?sehir.plate='+city.city)
             .then(response => {
                 setData(response.data);
             })
@@ -53,28 +53,15 @@ const YerlerDetay =()=>{
                 {
                 data
                 .filter(dataFilter => ""+dataFilter.id === id.split("-")[0])
-                .map((dataPlaces)=>(
+                .map((dataBlogs)=>(
                     <>
                     {console.log(id)}
                     <div className='yerler-detay-cover'>
-                        <div className="cover-baslik">
-                            <div className="kategori">
-                                <div className="kategori-icon"><InlineSVG src={kategoriIcons[dataPlaces.category.iconname]}></InlineSVG></div>
-                                <div className="kategori-adi">{dataPlaces.category.name}</div>
-                            </div>
-                            <div className="baslik">{dataPlaces.name}</div>
-                        </div>
-                        <div className="konum">
-                            <a href='https://www.google.com/maps/place/Ak%C4%B1nlar,+Binef+At+%C3%87iftli%C4%9Fi,+2644+Cd.+No:9,+81100+D%C3%BCzce+Merkez%2FD%C3%BCzce,+T%C3%BCrkiye/@40.8378565,31.1645331,13z/data=!4m2!3m1!1s0x409d8b898df2094f:0x43e5b59dfbfe00?hl=tr-TR&gl=US'></a>
-                            <div className="konum-ust-icon"><InlineSVG src={contactIcons.address}></InlineSVG></div>
-                            <div>Konum</div>
-                            <div className="konum-alt-icon"><InlineSVG src={locationIcons.location}></InlineSVG></div>
-                        </div>
                     </div>
-                    
+                    <div className="haber-detay">
                     <div className="yerler-spot">
                         <div className="yerler-spot-yazi">
-                        {id}
+                        
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex magni pariatur, impedit cumque placeat corrupti omnis est commodi dolorem veniam quod voluptatibus laudantium sunt aliquam sed aliquid tenetur dolorum earum.
                         </div>
                     </div>
@@ -82,6 +69,12 @@ const YerlerDetay =()=>{
                     <div className="yerler-mini-slider">
                         <MiniSlider></MiniSlider>
                     </div>
+                    <div className="detay-yazi">
+                        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, excepturi, at ullam et magni, rem pariatur quisquam ducimus commodi eius veniam temporibus assumenda. Sint eum molestias vero accusantium eaque necessitatibus.
+                        
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, excepturi, at ullam et magni, rem pariatur quisquam ducimus commodi eius veniam temporibus assumenda. Sint eum molestias vero accusantium eaque necessitatibus.</span>
+                    </div>
+                    
                     <div className="iletisim">
                         <h2 className='iletisim-baslik'>İletişim Bilgileri</h2>
                         <div className="iletisim-bilgi">
@@ -92,25 +85,7 @@ const YerlerDetay =()=>{
                         </div>
                     </div>
 
-                    <div className="detay-yazi">
-                        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, excepturi, at ullam et magni, rem pariatur quisquam ducimus commodi eius veniam temporibus assumenda. Sint eum molestias vero accusantium eaque necessitatibus.
-                        
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, excepturi, at ullam et magni, rem pariatur quisquam ducimus commodi eius veniam temporibus assumenda. Sint eum molestias vero accusantium eaque necessitatibus.</span>
                     </div>
-
-                    <MapContainer center={[40.8555272, 31.1370757]} zoom={15} scrollWheelZoom={false} >
-                        <TileLayer
-                            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                        />
-                        <Marker position={[40.8555272, 31.1370757]}>
-                            <Popup>
-                            {dataPlaces.name} <br /> Burada
-                            </Popup>
-                        </Marker>
-                    </MapContainer>
-                    
-                    <IkiSiraSwiper></IkiSiraSwiper>
                     </>
                 ))}
             </div>
@@ -118,4 +93,4 @@ const YerlerDetay =()=>{
     
 }
 
-export default YerlerDetay;
+export default HaberlerDetay;

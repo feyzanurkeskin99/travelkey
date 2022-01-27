@@ -4,6 +4,7 @@ import TumElemanlar from '../TumElemanlar';
 import { NavLink } from 'react-router-dom';
 import useFetch from 'use-http';
 import { AppContext } from '../Components/Context'
+import slugify from 'react-slugify';
 
 const Etkinlikler =()=>{
     
@@ -27,7 +28,7 @@ const Etkinlikler =()=>{
             {error && <h1>Error!</h1>}
             {loading && <h1>Loading...</h1>}
             {data.map((events) => (
-                <NavLink to={"/events?id="+events.id+"/"}>
+                <NavLink to={"/events/"+events.id+"-"+slugify(events.name)}>
                     <div className='etkinlikler-satir'>
                         <div className="tarih">
                             <h2>{new Date(events.datetime).getDate()}</h2>
