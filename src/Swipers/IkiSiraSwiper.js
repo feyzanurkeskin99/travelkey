@@ -55,7 +55,7 @@ const IkiSiraSwiper =()=>{
                         .map((placess) => (
                             <SwiperSlide>
                             {console.log(categories["places"].sehir)}
-                                    <NavLink to={"/places/"+[placess[0]].id+"/"}>
+                                    <NavLink to={"/places/"+placess[0].id+"/"}>
                                         <div className="iki-sira-ust">
                                             <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />
                                             <div className="iki-sira-ust-baslik">
@@ -64,7 +64,7 @@ const IkiSiraSwiper =()=>{
                                             
                                         </div>
                                     </NavLink>
-                                    <NavLink to={"/places/"+[placess[1]].id+"/"}>
+                                    <NavLink to={"/places/"+placess[1].id+"/"}>
                                         <div className="iki-sira-ust">
                                         <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />
                                             <div className="iki-sira-alt-baslik">

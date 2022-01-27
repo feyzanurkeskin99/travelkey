@@ -375,7 +375,8 @@ z-index: 0;
   font-size: 16px;
 }
 .yerler-detay-cover .cover-baslik{
-  margin: 40px 40px 50px 40px;
+  margin: 40px 0 50px 40px;
+  z-index: 1;
 }
 .yerler-detay-cover .cover-baslik .kategori{
   display: flex;
@@ -386,8 +387,8 @@ z-index: 0;
 }
 
 .yerler-detay-cover .cover-baslik .baslik{
-  font-size: 33px;
-  width: 160px;
+  font-size: 30px;
+  width: 60%;
   line-height: 40px;
   font-weight: bolder;
   margin-top: 10px;
