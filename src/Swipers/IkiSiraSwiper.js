@@ -44,33 +44,40 @@ const IkiSiraSwiper =()=>{
                 <h2 className='background-baslik'>{categories.name}</h2>
             </div>
                 <Swiper slidesPerView={5} centeredSlides={true} slidesPerView={'auto'} spaceBetween={30} slidesPerView={'auto'} grabCursor={true} className="mySwiper4">
-                    {categories["places"]
-                    .filter(dizi => dizi.sehir===dataCity.id)
-                    .reduce((previous, current, index, array)=>{
-                    return index %2 === 0 ? [...previous, array.slice(index,index+2)] : previous},[])
-                    .filter(diziFilter => diziFilter.length===2)
-                    .map((placess) => (
-                        <SwiperSlide>
-                        {console.log(placess)}
-                                <NavLink to={"/places/"+[placess[0]].id+"/"}>
-                                    <div className="iki-sira-ust">
+                    <>
+                    {dataCity.map((deneme)=>(
+                        <>
+                        {categories["places"]
+                        .filter(dizi => dizi.sehir===deneme.id)
+                        .reduce((previous, current, index, array)=>{
+                        return index %2 === 0 ? [...previous, array.slice(index,index+2)] : previous},[])
+                        .filter(diziFilter => diziFilter.length===2)
+                        .map((placess) => (
+                            <SwiperSlide>
+                            {console.log(categories["places"].sehir)}
+                                    <NavLink to={"/places/"+[placess[0]].id+"/"}>
+                                        <div className="iki-sira-ust">
+                                            <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />
+                                            <div className="iki-sira-ust-baslik">
+                                                {placess[0].name}
+                                            </div>
+                                            
+                                        </div>
+                                    </NavLink>
+                                    <NavLink to={"/places/"+[placess[1]].id+"/"}>
+                                        <div className="iki-sira-ust">
                                         <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />
-                                        <div className="iki-sira-ust-baslik">
-                                            {placess[0].name}
+                                            <div className="iki-sira-alt-baslik">
+                                                {placess[1].name}
+                                            </div>
                                         </div>
-                                        
-                                    </div>
-                                </NavLink>
-                                <NavLink to={"/places/"+[placess[1]].id+"/"}>
-                                    <div className="iki-sira-ust">
-                                    <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />
-                                        <div className="iki-sira-alt-baslik">
-                                            {placess[1].name}
-                                        </div>
-                                    </div>
-                                </NavLink>
-                        </SwiperSlide>
+                                    </NavLink>
+                            </SwiperSlide>
+                        ))}
+                        </>
                     ))}
+                    </>
+                    
                 </Swiper>
         </div>
         ))}
