@@ -11,6 +11,7 @@ import useFetch from 'use-http';
 import { AppContext } from '../Components/Context'
 import { NavLink } from 'react-router-dom';
 import slugify from 'react-slugify';
+import backgroundImage from '../images/news.jpg'
 
 
 const HaberlerSirala =()=>{
@@ -31,6 +32,7 @@ const HaberlerSirala =()=>{
                 <NavLink to={"/blogs/"+blogs.id+"-"+slugify(blogs.title)}>
                     <div className="haberler-container">
                         <div className='haberler-ust'>
+                            <img src={backgroundImage} />
                             <div className="haberler-sirala-tarih">{new Date(blogs.datetime).toLocaleString('tr', {day:"numeric", month:"short"})}</div>
                         </div>
                         <div className='haberler-alt'>

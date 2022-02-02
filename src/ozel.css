@@ -16,6 +16,56 @@ body{
   height: 100vh;
 }
 @media only screen and (max-width : 900px)  { 
+  .mt-20{
+    margin-top: 20%;
+  }
+  .ara-sayfasi{
+    margin-top: 20%;
+  }
+  .hidden{
+    display: none;
+  }
+  .side-bar{
+    width: 25%;
+    height: calc(10vh*9);
+    background-color: transparent;
+    position: absolute;
+    margin-top: 10vh;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+  }
+  .side-bar-eleman{
+    background-color: var(--birincil);
+    border-radius: 18px;
+    width: 100%;
+    height: 14%;
+    margin-bottom: 10px;
+    padding: 5px;
+  }
+  .sidebar-kategori{
+    width: 100%;
+    height: 100%;
+    background-color: #dedddaff;
+    background-color: var(--overlay);
+    border-radius: 18px;
+    display: flex;
+    padding: 5px;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-weight: bolder;
+    color: var(--birincil);
+  }
+  .sidebar-kategori svg{
+    font-size: 3em;
+    opacity: 0.5;
+  }
+  .sidebar-kategori svg .fa-primary{
+    fill: var(--birincil);
+  }
+  .sidebar-kategori svg .fa-secondary{
+    fill: var(--ikincil);
+  }
   .giris-ekrani {
       background-image: url(./images/giris.png);
       background-color: #fff;
@@ -86,10 +136,6 @@ body{
   fill: white;
 }
 
-.altbar .altbar-link.active .altbar-button:before {
-  width: 50%;
-  height: 50%;
-}
 .altbar  .altbar-link .altbar-button{
     display: flex;
     align-items: center;
@@ -281,6 +327,8 @@ z-index: 0;
   align-items: center;
 }
 
+
+
 .yerler-detay-ortaalan .yerler-spot{
   width: 90%;
   height: auto;
@@ -381,10 +429,10 @@ z-index: 0;
 }
 .yerler-detay-cover .cover-baslik .kategori{
   display: flex;
-  justify-content: space-evenly;
   border-radius: 5px;
-  border: 1px solid white;
-  width: 80px;
+  border: 1px solid #fff;
+  width: fit-content;
+  padding: 2px;
 }
 
 .yerler-detay-cover .cover-baslik .baslik{
@@ -426,7 +474,7 @@ z-index: 0;
 }
 .leaflet-container{
   width: 80%;
-  height: 15%;
+  height: 8%;
   transform:translate3d(0px, 0px, 0px);
   width: 100%;
   border-radius: 18px;
@@ -450,8 +498,9 @@ z-index: 0;
 }
 
 .yerler-detay-cover .cover-baslik .kategori svg{
-  font-size: 1em;
+  font-size: 0.8em;
   color: white;
+  margin-right: 5px;
 }
 .yerler-detay-cover .cover-baslik .kategori svg{
   fill:white;
@@ -501,13 +550,16 @@ z-index: 0;
   justify-content: center;
   align-items: center;
   color: var(--birincil);
-  font-weight: 900;
+  font-weight: bolder;
   text-transform:uppercase;
   font-size:12px;
 }
 
 .semt-swiper{
   margin-bottom: 20px;
+}
+.semt-swiper .swiper-wrapper{
+  margin-left: 25px;
 }
 .semt-swiper .semt-baslik{  
   font-size: 35px;
@@ -668,7 +720,7 @@ z-index: 0;
   
   .haberler-swiper .swiper-slide .haberler-ust{
     background-color: var(--birincil);
-    color: white;
+    color:white;
     height: 70%;
     width: 100%;
     border-radius: 18px;
@@ -678,6 +730,26 @@ z-index: 0;
     position: absolute;
     top: 0;
     z-index: 1000;
+    overflow: hidden;
+  }
+  .haberler-swiper .swiper-slide .haberler-ust img{
+    position: absolute;
+    border-radius: 18px;
+    height: 100%;
+  }
+
+  .haberler-swiper .swiper-slide .haberler-ust::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 5em;
+    border-radius: 0 0 20px 20px;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(
+0deg
+, #04212d, transparent);
+    z-index: 35;
   }
   .haberler-sirala{
     margin-top: 85px;
@@ -723,11 +795,30 @@ z-index: 0;
     align-items: flex-end;
     z-index: 1;
     margin-bottom: 45px;
+    overflow:hidden;
   }
 
+  .haberler-sirala .haberler-container .haberler-ust::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 5em;
+    border-radius: 0 0 20px 20px;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient( 
+0deg
+ , #04212d, transparent);
+    z-index: 35;
+    margin-bottom: 45px;
+  }
+  .haberler-sirala .haberler-container .haberler-ust img{
+    border-radius: 18px;
+    height: 100%;
+  }
   .haberler-sirala a{
     width: 50%;
-    height: 50%;
+    height: 30%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -735,6 +826,8 @@ z-index: 0;
 
   .haberler-sirala .haberler-container .haberler-ust .haberler-sirala-tarih, .haberler-swiper .haberler-swiper-tarih{
     margin: 10px;
+    position: absolute;
+    z-index: 36;
   }
 
   .haberler-sirala .haberler-sirala-baslik{
@@ -751,7 +844,7 @@ z-index: 0;
     padding: 10px;
   }
 
-  .haber-detay{
+  .haber-detay, .etkinlikler-detay{
     display: flex;
     z-index: 100;
     width: 100%;
@@ -760,8 +853,154 @@ z-index: 0;
     justify-content: center;
     margin-top: -160px;
     background-color: #d1d1d1;
-    padding-top: 60px;
+    padding-top: 10px;
     border-radius: 60px 60px 0 0;
+  }
+  .haberler-detay-ortaalan .detay-yazi{
+    margin-left: 10px;
+    color: black;
+    font-weight: bold;
+    padding: 15px;
+    font-size: 16px;
+  }
+  .haberler-detay-tarih{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding-left: 20px;
+    padding-top: 30px;
+    color: var(--birincil);
+    font-weight: bolder;
+    font-size: 15px;
+  }
+  .haberler-detay-tarih svg{
+    font-size: 0.6em;
+    color: var(--birincil);
+    margin-right: 10px;
+  }
+
+  .haberler-detay-ortaalan{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .ortaalan .haberler-detay-cover {
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    background-color: #74E2FF;
+    border-radius: 0 0 68px 68px;
+    width: 100vw;
+    height: 60vh;
+    margin-bottom: 3em;
+    background: url(https://images.unsplash.com/photo-1508672019048-805c876b67e2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1519&q=80);
+    background-position: top;
+    background-size: cover;
+    position: relative;
+  }
+  .haberler-detay-ortaalan .haberler-spot{
+    width: 90%;
+    height: auto;
+    border-left: 5px solid var(--birincil);
+  }
+  .haberler-detay-ortaalan .haberler-spot .haberler-spot-yazi{
+    margin-left: 10px;
+    color: var(--birincil);
+    font-weight: bolder;
+    font-size: 20px;
+    line-height: 1.2em;
+  }
+  .haberler-detay-ortaalan .haberler-mini-slider{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .haberler-detay-ortaalan .haberler-mini-slider .mini-slider{
+    height: 80px;
+    width: 80%;
+    padding: 10px;
+    margin: 20px 0 20px 0;
+    background-color: var(--birincil);
+    overflow: hidden;
+    border-radius: 18px;
+  }
+
+  .haberler-detay-ortaalan .mini-slider .swiper{
+    height: auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  
+.haberler-detay-ortaalan .iletisim .fa-primary{
+  fill:var(--birincil)
+}
+.haberler-detay-ortaalan .iletisim .fa-secondary{
+  fill:var(--ikincil)
+}
+.haberler-detay-ortaalan .iletisim .iletisim-bilgi{
+  display: flex;
+  flex-direction: column;
+}
+
+.haberler-detay-ortaalan .iletisim .iletisim-bilgi svg{
+  margin: 5px;
+}
+
+.haberler-detay-ortaalan .iletisim .koyu{
+  font-weight: bold;
+  color: var(--birincil);
+}
+
+
+.haberler-detay-ortaalan .iletisim{
+  padding: 30px;
+    background-color: darkgray;
+    border-radius: 18px;
+    width: 90%;
+}
+
+.haberler-detay-ortaalan .iletisim .iletisim-detay{
+  color: var(--light);
+}
+
+.haberler-detay-ortaalan .iletisim .iletisim-baslik{
+  color:var(--birincil);
+  margin-left: 15px;
+}
+
+.haberler-detay-ortaalan .iletisim span{
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  padding: 5px;
+}
+
+.haberler-detay-ortaalan .iletisim svg{
+  font-size: 1em;
+}
+
+.haberler-detay-cover .iletisim .konum-alt-icon{
+  font-size: 0.6em;
+}
+  .haber-detay-baslik, .etkinlikler-detay-baslik{
+    width: 80%;
+    font-size: 19px;
+    color: #004359ff;
+    color: var(--birincil);
+    font-weight: bolder;
+    line-height: 1.2em;
+    border-radius: 24px;
+    margin-top: 5px;
+    box-shadow: 0 0 30px 4px black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    margin-top: 10px;
   }
   .kategoriler-sirala{
     margin-top: 85px;
@@ -1025,7 +1264,7 @@ z-index: 0;
   z-index: 35;
 }
 
-.yerler-swiper .yerler-swiper-kategori .yerler-swiper-kategori-icon svg, .yerler-sirala a .yerler-sirala-kategori .yerler-sirala-kategori-icon svg{
+.yerler-swiper .yerler-swiper-kategori .yerler-swiper-kategori-icon svg, .yerler-sirala .yerler-sirala-kategori .yerler-sirala-kategori-icon svg{
   font-size: 0.5em;
   margin-left: 10px;
 }
@@ -1089,7 +1328,7 @@ z-index: 0;
     flex-direction: column;
     font-size: 25px;
     color: var(--birincil);
-    font-weight: 900;
+    font-weight: bolder;
 }
 
 
@@ -1248,6 +1487,7 @@ z-index: 0;
   }
   .iki-sira-swiper .swiper{
     height: 100%;
+    margin-top: 10px;
   }
 
   .iki-sira-swiper .swiper-slide {
@@ -1337,7 +1577,7 @@ z-index: 0;
     text-overflow: ellipsis;
     font-size: 30px;
     color: var(--birincil);
-    font-weight: 900;
+    font-weight: bolder;
     margin-top: 30px;
   }
   .kategoriler-scrolling-carousel .anavitrin-koleksiyon-spot{
@@ -1483,6 +1723,156 @@ z-index: 0;
 }
 
 
+
+
+.etkinler-detay{
+  display: flex;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: -160px;
+  background-color: #d1d1d1;
+  padding-top: 10px;
+  border-radius: 60px 60px 0 0;
+}
+.etkinler-detay-ortaalan .detay-yazi{
+  margin-left: 10px;
+  color: black;
+  font-weight: bold;
+  padding: 15px;
+  font-size: 16px;
+}
+.etkinler-detay-tarih{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding-left: 20px;
+  padding-top: 30px;
+  color: var(--birincil);
+  font-weight: bolder;
+  font-size: 15px;
+}
+.etkinler-detay-tarih svg{
+  font-size: 0.6em;
+  color: var(--birincil);
+  margin-right: 10px;
+}
+
+.etkinler-detay-ortaalan{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.ortaalan .etkinler-detay-cover {
+  height: 30vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  background-color: #74E2FF;
+  border-radius: 0 0 68px 68px;
+  width: 100vw;
+  height: 60vh;
+  margin-bottom: 3em;
+  background: url(https://images.unsplash.com/photo-1508672019048-805c876b67e2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1519&q=80);
+  background-position: top;
+  background-size: cover;
+  position: relative;
+}
+.etkinler-detay-ortaalan .etkinler-spot{
+  width: 90%;
+  height: auto;
+  border-left: 5px solid var(--birincil);
+}
+.etkinler-detay-ortaalan .etkinler-spot .etkinler-spot-yazi{
+  margin-left: 10px;
+  color: var(--birincil);
+  font-weight: bold;
+}
+.etkinler-detay-ortaalan .etkinler-mini-slider{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.etkinler-detay-ortaalan .etkinler-mini-slider .mini-slider{
+  height: 80px;
+  width: 80%;
+  padding: 10px;
+  margin: 20px 0 20px 0;
+  background-color: var(--birincil);
+  overflow: hidden;
+  border-radius: 18px;
+}
+
+.etkinler-detay-ortaalan .mini-slider .swiper{
+  height: auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.etkinler-detay-ortaalan .iletisim .fa-primary{
+fill:var(--birincil)
+}
+.etkinler-detay-ortaalan .iletisim .fa-secondary{
+fill:var(--ikincil)
+}
+.haberler-detay-ortaalan .iletisim .iletisim-bilgi{
+display: flex;
+flex-direction: column;
+}
+
+.etkinler-detay-ortaalan .iletisim .iletisim-bilgi svg{
+margin: 5px;
+}
+
+.etkinler-detay-ortaalan .iletisim .koyu{
+font-weight: bold;
+color: var(--birincil);
+}
+
+
+.etkinler-detay-ortaalan .iletisim{
+  padding: 30px;
+  background-color: darkgray;
+  border-radius: 18px;
+  width: 90%;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.etkinler-detay-ortaalan .iletisim .iletisim-detay{
+color: var(--light);
+}
+
+.etkinler-detay-ortaalan .iletisim .iletisim-baslik{
+color:var(--birincil);
+margin-left: 15px;
+}
+
+.etkinler-detay-ortaalan .iletisim span{
+display: flex;
+align-items: center;
+margin-right: 10px;
+padding: 5px;
+}
+
+.etkinler-detay-ortaalan .iletisim svg{
+font-size: 1em;
+}
+
+.etkinler-detay-cover .iletisim .konum-alt-icon{
+font-size: 0.6em;
+}
+
+
+
+
+
+
   .swiper-slide{
     background-color: var(--ikincil);
   }
@@ -1557,6 +1947,11 @@ z-index: 0;
     margin:0;
     font-size: 15px;
     font-weight: 400;
+    overflow: hidden;
+    white-space: nowrap;
+    display: block;
+    text-overflow: ellipsis;
+    width: 85%;
   }
   .hava-durumu-icon{
     position:absolute;

@@ -54,8 +54,7 @@ const IkiSiraSwiper =()=>{
                         return index %2 === 0 ? [...previous, array.slice(index,index+2)] : previous},[])
                         .filter(diziFilter => diziFilter.length===2)
                         .map((placess) => (
-                            <SwiperSlide>
-                            {console.log(slugify(placess[0].name))}
+                            <SwiperSlide key={placess.id}>
                                     <NavLink to={"/places/"+placess[0].id+"-"+slugify(placess[0].name)}>
                                         <div className="iki-sira-ust">
                                             <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />
@@ -76,13 +75,13 @@ const IkiSiraSwiper =()=>{
                             </SwiperSlide>
                         ))}
                         {categories["places"]
-                        .filter(dizi => dizi.sehir!==deneme.id)
+                        .filter(dizi => dizi.sehir===deneme.id)
                         .reduce((previous, current, index, array)=>{
                         return index %2 === 0 ? [...previous, array.slice(index,index+2)] : previous},[])
                         .filter(diziFilter => diziFilter.length===1)
                         .map((placess) => (
-                            <SwiperSlide>
-                                    <NavLink to={"/places/"+placess[0].id+"/"}>
+                            <SwiperSlide key={placess.id}>
+                                    <NavLink to={"/places/"+placess[0].id+"-"+slugify(placess[0].name)}>
                                         <div className="iki-sira-ust">
                                             <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />
                                             <div className="iki-sira-ust-baslik">

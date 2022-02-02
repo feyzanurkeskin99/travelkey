@@ -46,7 +46,7 @@ const KategorilerScrollingCarousel =()=>{
             {loading && <h1>Loading...</h1>}
             {bundles["places"].map((placess)=>(
                 
-                    <SwiperSlide>
+                    <SwiperSlide key={placess.id}>
                     <NavLink to={"/places/"+placess.id+"-"+slugify(placess.name)}>
                         <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />
                         </NavLink>

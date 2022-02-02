@@ -10,9 +10,11 @@ import { AppContext } from './Context'
 
 function GirisEkrani() {
 
+    const navigate = useNavigate();
 	var {city, setCity} = useContext(AppContext);
 	function handleChange (e) {
 		setCity({"city":e.value, "cityName":e.label })
+		navigate("/travelkey");
 	}
 
 	

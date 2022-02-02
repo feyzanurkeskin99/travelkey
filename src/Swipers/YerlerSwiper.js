@@ -22,7 +22,7 @@ const {
     loading,
     error,
     data = [],
-} = useFetch('https://seyyahpanel.kod8.app/places?sehir.plate='+city.city+'&vitrin=true', options, []);
+} = useFetch('https://seyyahpanel.kod8.app/places?sehir.plate='+city.city+'&vitrin=true&type=place', options, []);
     
     return(
         <div className='yerler-swiper'>
@@ -35,7 +35,7 @@ const {
             {loading && <h1>Loading...</h1>}
             {data.map((places) => (
                 
-                    <SwiperSlide>
+                    <SwiperSlide key={places.id}>
                     <NavLink to={"/places/"+places.id+"-"+slugify(places.name)}>
                     <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />
                     

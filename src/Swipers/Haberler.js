@@ -11,7 +11,7 @@ import { NavLink } from 'react-router-dom';
 import useFetch from 'use-http';
 import { AppContext } from '../Components/Context'
 import slugify from 'react-slugify';
-
+import backgroundImage from '../images/news.jpg'
 
 const Haberler =()=>{
     var {city, setCity} = useContext(AppContext);
@@ -33,10 +33,11 @@ const Haberler =()=>{
             {error && <h1>Error!</h1>}
             {loading && <h1>Loading...</h1>}
             {data.map((blogs) => (
-                
+                    
                     <SwiperSlide>
-                        <NavLink to={"/blogs/"+blogs.id+"-"+slugify(blogs.title)}>
+                        <NavLink  key={blogs.id} to={"/blogs/"+blogs.id+"-"+slugify(blogs.title)}>
                             <div className='haberler-ust'>
+                                <img src={backgroundImage} />
                                 <div className="haberler-swiper-tarih">{new Date(blogs.datetime).toLocaleString('tr', {day:"numeric", month:"short"})}</div>
                             </div>
                         </NavLink>

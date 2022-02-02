@@ -6,9 +6,13 @@ import SwiperCore, {EffectCards,Pagination, Navigation, Scrollbar, A11y} from 's
 import { Swiper, SwiperSlide } from 'swiper/react/swiper-react.js';
 import 'swiper/swiper.min.css'
 import 'swiper/modules/pagination/pagination.min.css'
-import giris from '../images/giris.png'
-import giris2 from '../images/giris2.png'
-import giris3 from '../images/giris3.png'
+import KategorilerScrollingCarousel from '../Swipers/KategorilerScrollingCarousel'
+import KategorilerSwiper2 from '../Swipers/KategorilerSwiper2'
+import RotalarSwiper from '../Swipers/RotalarSwiper'
+import Haberler from '../Swipers/Haberler'
+import IkiSiraSwiper from '../Swipers/IkiSiraSwiper'
+import Etkinlikler from '../Swipers/Etkinlikler'
+import YerlerTypes from '../Swipers/YerlerTypes'
 
 
 
@@ -16,39 +20,17 @@ SwiperCore.use([EffectCards]);
 
 
 const Kesfet =()=>{
-    const data=[
-    {
-        title:"Road",
-        subtitle:"Long road",
-        image: {giris}
-    },
-    {
-        title:"Mountains",
-        subtitle:"Long mountains",
-        image: {giris2}
-    },
-    {
-        title:"Unknown ",
-        subtitle:"Long unknown",
-        image: {giris3}
-    },
-    ]
     
         return(
             <div className="ortaalan">
-              <>
-              <Swiper effect={'cards'} grabCursor={true} className="mySwiper">
-                <SwiperSlide>Slide 1</SwiperSlide>
-                <SwiperSlide>Slide 2</SwiperSlide>
-                <SwiperSlide>Slide 3</SwiperSlide>
-                <SwiperSlide>Slide 4</SwiperSlide>
-                <SwiperSlide>Slide 5</SwiperSlide>
-                <SwiperSlide>Slide 6</SwiperSlide>
-                <SwiperSlide>Slide 7</SwiperSlide>
-                <SwiperSlide>Slide 8</SwiperSlide>
-                <SwiperSlide>Slide 9</SwiperSlide>
-              </Swiper>
-              </>
+                <KategorilerSwiper2></KategorilerSwiper2>
+                <Haberler></Haberler>
+                <RotalarSwiper></RotalarSwiper>
+                <YerlerTypes name="Aktiviteler" type="activity"></YerlerTypes>
+                <YerlerTypes name="Neyi Meşhur?" type="iconic"></YerlerTypes>
+                <KategorilerScrollingCarousel></KategorilerScrollingCarousel>
+                <IkiSiraSwiper></IkiSiraSwiper>
+                <Etkinlikler></Etkinlikler>
             </div>
         )
 }

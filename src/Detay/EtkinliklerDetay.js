@@ -1,5 +1,5 @@
 import React, {useState,useEffect, useContext, useRef} from 'react'
-import ReactDOM from 'react-dom'
+import ReactDOM, {useLocation} from 'react-dom'
 import { Button, Icon } from 'semantic-ui-react'
 import SwiperCore, {
     FreeMode,Navigation,Thumbs
@@ -10,20 +10,19 @@ import 'swiper/modules/effect-cards/effect-cards.js'
 import 'swiper/modules/pagination/pagination.min.css'
 import MiniSlider from '../Swipers/MiniSlider';
 import IkiSiraSwiper from '../Swipers/IkiSiraSwiper';
-import {contactIcons, dateIcon} from '../icon';
+import {dateIcon, contactIcons} from '../icon'
 import InlineSVG from 'svg-inline-react';
 import NotFound from '../Components/NotFound';
-import {useParams} from 'react-router-dom';
+import {useParams} from 'react-router-dom'
 import axios from 'axios';
-import { AppContext } from '../Components/Context';
-import ReactMarkdown from 'react-markdown';
-import parse from 'html-react-parser';
+import { AppContext } from '../Components/Context'
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 
 SwiperCore.use([FreeMode,Navigation,Thumbs]);
 
-const HaberlerDetay =()=>{
+const EtkinliklerDetay =()=>{
+    
 
-    const mapRef= useRef();
 
     React.useEffect(() => {
         window.scrollTo(0, 0);
@@ -34,7 +33,7 @@ const HaberlerDetay =()=>{
 
     useEffect(()=>{
         const fetchData = async ()=>{
-            await axios.get('https://seyyahpanel.kod8.app/blogs?sehir.plate='+city.city)
+            await axios.get('https://seyyahpanel.kod8.app/events?sehir.plate='+city.city)
             .then(response => {
                 setData(response.data);
             })
@@ -50,31 +49,48 @@ const HaberlerDetay =()=>{
     //url den id'yi çekmek için
 
         return(
-            <div className='haberler-detay-ortaalan'>
+            <div className='etkinler-detay-ortaalan'>
                 {
                 data
                 .filter(dataFilter => ""+dataFilter.id === id.split("-")[0])
                 .map((dataBlogs)=>(
                     <>
-                    <div className='haberler-detay-cover'>
+                    <div className='etkinler-detay-cover'>
                     </div>
-                    <div className="haber-detay">
-                        <div className="haber-detay-baslik">{dataBlogs.title}</div>
-                        <div className='haberler-detay-tarih'><InlineSVG src={dateIcon.datetime}></InlineSVG> {new Date(dataBlogs.datetime).toLocaleString('tr', {day:"numeric", month:"short", year:"numeric"})}</div>
+                    <div className="etkinlikler-detay">
+                        <div className="etkinlikler-detay-baslik">{dataBlogs.name}</div>
+                        <div className='etkinler-detay-tarih'><InlineSVG src={dateIcon.datetime}></InlineSVG> {new Date(dataBlogs.datetime).toLocaleString('tr', {day:"numeric", month:"short", year:"numeric"})}</div>
 
-                        <div className="haberler-spot">
-                            <div className="haberler-spot-yazi">
-                                {dataBlogs.spot}
+                        <div className="etkinler-spot">
+                            <div className="etkinler-spot-yazi">
+                            
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex magni pariatur, impedit cumque placeat corrupti omnis est commodi dolorem veniam quod voluptatibus laudantium sunt aliquam sed aliquid tenetur dolorum earum.
                             </div>
                         </div>
 
-                        <div className="haberler-mini-slider">
+                        <div className="etkinler-mini-slider">
                             <MiniSlider></MiniSlider>
                         </div>
                         <div className="detay-yazi">
-                            {parse(dataBlogs.body)}
+                            <>
+                            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, excepturi, at ullam et magni, rem pariatur quisquam ducimus commodi eius veniam temporibus assumenda. Sint eum molestias vero accusantium eaque necessitatibus.
+                            
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, excepturi, at ullam et magni, rem pariatur quisquam ducimus commodi eius veniam temporibus assumenda. Sint eum molestias vero accusantium eaque necessitatibus.</span>
+                            </>
                         </div>
                     
+                        <MapContainer center={[40.8555272, 31.1370757]} zoom={15} scrollWheelZoom={false} >
+                            <TileLayer
+                                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                            />
+                            <Marker position={[40.8555272, 31.1370757]}>
+                                <Popup>
+                                {dataBlogs.name} <br /> Burada
+                                </Popup>
+                            </Marker>
+                        </MapContainer>
+
                         <div className="iletisim">
                             <h2 className='iletisim-baslik'>İletişim Bilgileri</h2>
                             <div className="iletisim-bilgi">
@@ -93,4 +109,4 @@ const HaberlerDetay =()=>{
     
 }
 
-export default HaberlerDetay;
+export default EtkinliklerDetay;

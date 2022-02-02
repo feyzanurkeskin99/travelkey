@@ -1,5 +1,5 @@
 import React, {useState,useEffect, useContext, useRef} from 'react'
-import ReactDOM from 'react-dom'
+import ReactDOM, {useLocation} from 'react-dom'
 import { Button, Icon } from 'semantic-ui-react'
 import SwiperCore, {
     FreeMode,Navigation,Thumbs
@@ -17,12 +17,13 @@ import {useParams} from 'react-router-dom'
 import axios from 'axios';
 import { AppContext } from '../Components/Context'
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
+import parse from 'html-react-parser';
 
 SwiperCore.use([FreeMode,Navigation,Thumbs]);
 
 const YerlerDetay =()=>{
+    
 
-    const mapRef= useRef();
 
     React.useEffect(() => {
         window.scrollTo(0, 0);
@@ -55,7 +56,6 @@ const YerlerDetay =()=>{
                 .filter(dataFilter => ""+dataFilter.id === id.split("-")[0])
                 .map((dataPlaces)=>(
                     <>
-                    {console.log(id)}
                     <div className='yerler-detay-cover'>
                         <div className="cover-baslik">
                             <div className="kategori">
@@ -74,8 +74,7 @@ const YerlerDetay =()=>{
                     
                     <div className="yerler-spot">
                         <div className="yerler-spot-yazi">
-                        {id}
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex magni pariatur, impedit cumque placeat corrupti omnis est commodi dolorem veniam quod voluptatibus laudantium sunt aliquam sed aliquid tenetur dolorum earum.
+                            {dataPlaces.spot}
                         </div>
                     </div>
 
@@ -93,9 +92,7 @@ const YerlerDetay =()=>{
                     </div>
 
                     <div className="detay-yazi">
-                        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, excepturi, at ullam et magni, rem pariatur quisquam ducimus commodi eius veniam temporibus assumenda. Sint eum molestias vero accusantium eaque necessitatibus.
-                        
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, excepturi, at ullam et magni, rem pariatur quisquam ducimus commodi eius veniam temporibus assumenda. Sint eum molestias vero accusantium eaque necessitatibus.</span>
+                            {parse(dataPlaces.body)}
                     </div>
 
                     <MapContainer center={[40.8555272, 31.1370757]} zoom={15} scrollWheelZoom={false} >

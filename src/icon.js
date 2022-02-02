@@ -1,47 +1,145 @@
-
+const conditions = {
+    "Açık": {
+       iconID: "1",
+       general: "clear",
+    },
+    "Az Bulutlu": {
+        iconID: "2",
+        general: "cloudy",
+     },
+     "Parçalı Bulutlu": {
+        iconID: "2",
+        general: "cloudy",
+     },
+     "Çok Bulutlu": {
+        iconID: "3",
+        general: "cloudy",
+     },
+     "Puslu": {
+        iconID: "8",
+        general: "misty",
+     },
+     "Sisli": {
+        iconID: "8",
+        general: "misty",
+     },
+     "Duman": {
+      iconID: "8",
+      general: "misty",
+   },
+     "Rüzgarlı": {
+        iconID: "10",
+        general: "windy",
+     },
+     "Toz veya Kum Fırtınası": {
+      iconID: "10",
+      general: "windy",
+   },
+     "Dolu": {
+        iconID: "11",
+        general: "hail",
+     },
+     "Hafif Yağmurlu": {
+        iconID: "12",
+        general: "drizzle",
+     },
+     "Hafif Sağanak Yağışlı": {
+        iconID: "12",
+        general: "drizzle",
+     },
+     "Yağmurlu": {
+        iconID: "4",
+        general: "rainy",
+     },
+     "Sağanak Yağışlı": {
+        iconID: "4",
+        general: "rainy",
+     },
+     "Kuvvetli Yağmurlu": {
+        iconID: "4",
+        general: "rainy",
+     },
+     "Gökgürültülü Sağanak Yağışlı": {
+        iconID: "5",
+        general: "thunder",
+     },
+     "Kuvvetli Sağanak Yağışlı": {
+      iconID: "4",
+      general: "rainy",
+    },
+    "Kuvvetli Gökgürültülü Sağanak Yağışlı": {
+      iconID: "4",
+      general: "rainy",
+    },
+     "Kar Yağışlı": {
+        iconID: "6",
+        general: "snow",
+     },
+     "Hafif Kar Yağışlı": {
+        iconID: "9",
+        general: "snow",
+     },
+     "Yoğun Kar Yağışlı": {
+        iconID: "9",
+        general: "snow",
+    },
+    "Karla Karışık Yağmurlu": {
+        iconID: "6",
+        general: "snow",
+    },
+}
 const havaIcons={
     "sunny":{
+        "iconID":"1",
         "durum":["Güneşli", "Açık"],
         "icon":`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><g><circle cx="32" cy="32" r="11.64" fill="#f4a71d"/><path fill="none" stroke="#f4a71d" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3" d="M32 15.71V9.5M32 54.5v-6.21M43.52 20.48l4.39-4.39M16.09 47.91l4.39-4.39M20.48 20.48l-4.39-4.39M47.91 47.91l-4.39-4.39M15.71 32H9.5M54.5 32h-6.21"/><animateTransform attributeName="transform" dur="45s" from="0 32 32" repeatCount="indefinite" to="360 32 32" type="rotate"/></g></svg>`,
         "resim":"GÜNEŞLİ RESİM LİNKİ"
         },
     "cloudy":{
+        "iconID":"2",
         "durum":["Az Bulutlu", "Parçalı Bulutlu", "Çok Bulutlu"],
         "icon":`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><clipPath id="a"><path fill="none" d="M10.55 34.21l-3.83-3.42-2-6 1-7 4-5 5-3h6l5 1 3 3 2.56 4.36-4.56 4.64h-5l-5 5v3l-6.17 3.42z"/></clipPath></defs><g clip-path="url(#a)"><g><circle cx="19.22" cy="24.29" r="5.95" fill="#f4a71d"/><path fill="none" stroke="#f4a71d" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M19.22 15.97v-3.18M19.22 35.79v-3.17M25.11 18.4l2.24-2.24M11.09 32.42l2.24-2.24M13.33 18.4l-2.24-2.24M27.35 32.42l-2.24-2.24M10.89 24.29H7.72M30.72 24.29h-3.17"/><animateTransform attributeName="transform" dur="45s" from="0 19.22 24.293" repeatCount="indefinite" to="360 19.22 24.293" type="rotate"/></g></g><path fill="#efefef" stroke="#efefef" stroke-miterlimit="10" stroke-width="3" d="M46.5 31.5h-.32a10.49 10.49 0 00-19.11-8 7 7 0 00-10.57 6 7.21 7.21 0 00.1 1.14A7.5 7.5 0 0018 45.5a4.19 4.19 0 00.5 0v0h28a7 7 0 000-14z"/></svg>`,
         "resim":"GÜNEŞLİ RESİM LİNKİ"
         },
     "misty":{
+        "iconID":"8",
         "durum":["Puslu", "Sisli", "Duman"],
         "icon":`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><g><path fill="none" stroke="#efefef" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3" d="M17 25h30"/><animateTransform attributeName="transform" begin="0s" dur="5s" repeatCount="indefinite" type="translate" values="-4 0; 4 0; -4 0"/></g><g><path fill="none" stroke="#efefef" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3" d="M17 32h30"/><animateTransform attributeName="transform" begin="-2s" dur="5s" repeatCount="indefinite" type="translate" values="-3 0; 3 0; -3 0"/></g><g><path fill="none" stroke="#efefef" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3" d="M17 39h30"/><animateTransform attributeName="transform" begin="-4s" dur="5s" repeatCount="indefinite" type="translate" values="-4 0; 4 0; -4 0"/></g></svg>`,
         "resim":"GÜNEŞLİ RESİM LİNKİ"
         },
     "windy":{
+        "iconID":"10",
             "durum":["Rüzgarlı", "Toz veya Kum Fırtınası"],
             "icon":`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><g><path fill="none" stroke="#efefef" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3" d="M43.64 20a5 5 0 113.61 8.46h-35.5M29.14 44a5 5 0 103.61-8.46h-21"/><animateTransform attributeName="transform" dur="2s" repeatCount="indefinite" type="translate" values="-8 2; 0 -2; 8 0; 0 1; -8 2"/></g></svg>`,
             "resim":"GÜNEŞLİ RESİM LİNKİ"
             },
 
     "hail":{
+        "iconID":"11",
         "durum":["Dolu"],
         "icon":`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><clipPath id="a"><path fill="none" d="M21.17 46.81L18 64h24l2.75-17.19H21.17z"/></clipPath></defs><g clip-path="url(#a)"><g><circle cx="32" cy="50" r="1.5" fill="#72b8d4"/><animateTransform attributeName="transform" dur="0.6s" repeatCount="indefinite" type="translate" values="2 -10; -2 12; -1 9"/><animate attributeName="opacity" dur="0.6s" repeatCount="indefinite" values="1;1;0"/></g><g><circle cx="39" cy="50" r="1.5" fill="#72b8d4"/><animateTransform attributeName="transform" begin="-0.4s" dur="0.6s" repeatCount="indefinite" type="translate" values="2 -10; -2 12; -1 9"/><animate attributeName="opacity" begin="-0.4s" dur="0.6s" repeatCount="indefinite" values="1;1;0"/></g><g><circle cx="25" cy="50" r="1.5" fill="#72b8d4"/><animateTransform attributeName="transform" begin="-0.2s" dur="0.6s" repeatCount="indefinite" type="translate" values="2 -10; -2 12; -1 9"/><animate attributeName="opacity" begin="-0.2s" dur="0.6s" repeatCount="indefinite" values="1;1;0"/></g></g><path fill="#efefef" stroke="#efefef" stroke-miterlimit="10" stroke-width="3" d="M46.5 31.5h-.32a10.49 10.49 0 00-19.11-8 7 7 0 00-10.57 6 7.21 7.21 0 00.1 1.14A7.5 7.5 0 0018 45.5a4.19 4.19 0 00.5 0v0h28a7 7 0 000-14z"/></svg>`,
         "resim":"GÜNEŞLİ RESİM LİNKİ"
     },
     "drizzle":{
+        "iconID":"12",
             "durum":["Hafif Yağmurlu", "Hafif Sağanak Yağışlı"],
             "icon":`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><clipPath id="a"><path fill="none" d="M42 64l2.85-17h-23.8L17 64"/></clipPath></defs><g clip-path="url(#a)"><g><path fill="none" stroke="#2885c7" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M32.08 49.01l-.16.98"/><animateTransform attributeName="transform" dur="1.5s" repeatCount="indefinite" type="translate" values="2 -10; -2 10"/><animate attributeName="opacity" dur="1.5s" repeatCount="indefinite" values="1;1;0"/></g><g><path fill="none" stroke="#2885c7" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M26.08 49.01l-.16.98"/><animateTransform attributeName="transform" begin="-0.5s" dur="1.5s" repeatCount="indefinite" type="translate" values="2 -10; -2 10"/><animate attributeName="opacity" begin="-0.5s" dur="1.5s" repeatCount="indefinite" values="1;1;0"/></g><g><path fill="none" stroke="#2885c7" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M38.08 49.01l-.16.98"/><animateTransform attributeName="transform" begin="-1s" dur="1.5s" repeatCount="indefinite" type="translate" values="2 -10; -2 10"/><animate attributeName="opacity" begin="-1s" dur="1.5s" repeatCount="indefinite" values="1;1;0"/></g></g><path fill="#efefef" stroke="#efefef" stroke-miterlimit="10" stroke-width="3" d="M46.5 31.5h-.32a10.49 10.49 0 00-19.11-8 7 7 0 00-10.57 6 7.21 7.21 0 00.1 1.14A7.5 7.5 0 0018 45.5a4.19 4.19 0 00.5 0v0h28a7 7 0 000-14z"/></svg>`,
             "resim":"GÜNEŞLİ RESİM LİNKİ"
             },
     "rainy":{
+        "iconID":"4",
             "durum":["Yağmurlu", "Sağanak Yağışlı", "Kuvvetli Yağmurlu", "Kuvvetli Sağanak Yağışlı", "Kuvvetli Gökgürültülü Sağanak Yağışlı"],
             "icon":`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><clipPath id="a"><path fill="none" d="M42 64l2.85-17h-23.8L17 64"/></clipPath></defs><g clip-path="url(#a)"><g><path fill="none" stroke="#2885c7" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M24.52 49.05l-1.04 5.9"/><animateTransform attributeName="transform" dur="0.5s" repeatCount="indefinite" type="translate" values="2 -10; -2 10"/><animate attributeName="opacity" dur="0.5s" repeatCount="indefinite" values="1;1;0"/></g><g><path fill="none" stroke="#2885c7" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M31.52 49.05l-1.04 5.9"/><animateTransform attributeName="transform" begin="-0.3s" dur="0.5s" repeatCount="indefinite" type="translate" values="2 -10; -2 10"/><animate attributeName="opacity" begin="-0.3s" dur="0.5s" repeatCount="indefinite" values="1;1;0"/></g><g><path fill="none" stroke="#2885c7" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M38.52 49.05l-1.04 5.9"/><animateTransform attributeName="transform" begin="-0.1s" dur="0.5s" repeatCount="indefinite" type="translate" values="2 -10; -2 10"/><animate attributeName="opacity" begin="-0.1s" dur="0.5s" repeatCount="indefinite" values="1;1;0"/></g></g><path fill="#efefef" stroke="#efefef" stroke-miterlimit="10" stroke-width="3" d="M46.5 31.5h-.32a10.49 10.49 0 00-19.11-8 7 7 0 00-10.57 6 7.21 7.21 0 00.1 1.14A7.5 7.5 0 0018 45.5a4.19 4.19 0 00.5 0v0h28a7 7 0 000-14z"/></svg>`,
             "resim":"GÜNEŞLİ RESİM LİNKİ"
             },
     "thunder":{
+        "iconID":"5",
         "durum":["Gökgürültülü Sağanak Yağışlı"],
         "icon":`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><path fill="#efefef" stroke="#efefef" stroke-miterlimit="10" stroke-width="3" d="M46.5 31.5h-.32a10.49 10.49 0 00-19.11-8 7 7 0 00-10.57 6 7.21 7.21 0 00.1 1.14A7.5 7.5 0 0018 45.5a4.19 4.19 0 00.5 0v0h28a7 7 0 000-14z"/><g><path fill="#f4a71d" d="M30 36l-4 12h4l-2 10 10-14h-6l4-8h-6z"/><animate attributeName="opacity" dur="2s" repeatCount="indefinite" values="1;1;1;1;1;1;0.1;1;0.1;1;1;0.1;1;0.1;1"/></g></svg>`,
         "resim":"GÜNEŞLİ RESİM LİNKİ"
         },
     "snow":{
+        "iconID":"6",
         "durum":["Hafif Kar Yağışlı", "Yoğun Kar Yağışlı", "Karla Karışık Yağmurlu"],
         "icon":`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><clipPath id="a"><path fill="none" d="M21.17 46.81L18 64h24l2.75-17.19H21.17z"/></clipPath></defs><g clip-path="url(#a)"><g><g><g><path fill="#72b8d4" d="M32.29 47.2l.29.82a.29.29 0 00.41.17l.79-.37a.3.3 0 01.4.4l-.37.79a.29.29 0 00.17.41l.82.29a.31.31 0 010 .58l-.82.29a.29.29 0 00-.17.41l.37.79a.3.3 0 01-.4.4l-.78-.37a.29.29 0 00-.41.17l-.29.82a.31.31 0 01-.58 0l-.3-.8a.29.29 0 00-.41-.17l-.79.37a.3.3 0 01-.4-.4l.37-.79a.29.29 0 00-.17-.41l-.82-.29a.31.31 0 010-.58l.82-.29a.29.29 0 00.17-.41l-.37-.79a.3.3 0 01.4-.4l.79.37a.29.29 0 00.41-.17l.29-.82a.31.31 0 01.58-.02z"/><animateTransform attributeName="transform" dur="9s" repeatCount="indefinite" type="rotate" values="0 32 50; 180 32 50; 360 32 50"/></g><animateTransform attributeName="transform" dur="3s" repeatCount="indefinite" type="translate" values="-3 0; 3 0"/></g><animateTransform attributeName="transform" dur="3s" repeatCount="indefinite" type="translate" values="2 -6; -2 12"/><animate attributeName="opacity" dur="3s" repeatCount="indefinite" values="1;1;1;0"/></g><g><g><g><path fill="#72b8d4" d="M39.29 47.2l.29.82a.29.29 0 00.41.17l.79-.37a.3.3 0 01.4.4l-.37.79a.29.29 0 00.17.41l.82.29a.31.31 0 010 .58l-.82.29a.29.29 0 00-.17.41l.37.79a.3.3 0 01-.4.4l-.78-.37a.29.29 0 00-.41.17l-.29.82a.31.31 0 01-.58 0l-.3-.8a.29.29 0 00-.41-.17l-.79.37a.3.3 0 01-.4-.4l.37-.79a.29.29 0 00-.17-.41l-.82-.29a.31.31 0 010-.58l.82-.29a.29.29 0 00.17-.41l-.37-.79a.3.3 0 01.4-.4l.79.37a.29.29 0 00.41-.17l.29-.82a.31.31 0 01.58-.02z"/><animateTransform attributeName="transform" dur="6s" repeatCount="indefinite" type="rotate" values="0 39 50; 180 39 50; 360 39 50"/></g><animateTransform attributeName="transform" begin="-1s" dur="3s" repeatCount="indefinite" type="translate" values="0 0; 3 0"/></g><animateTransform attributeName="transform" begin="-1s" dur="3s" repeatCount="indefinite" type="translate" values="2 -6; -2 12"/><animate attributeName="opacity" begin="-1s" dur="3s" repeatCount="indefinite" values="1;1;1;0"/></g><g><g><g><path fill="#72b8d4" d="M25.29 47.2l.29.82a.29.29 0 00.41.17l.79-.37a.3.3 0 01.4.4l-.37.79a.29.29 0 00.17.41l.82.29a.31.31 0 010 .58l-.82.29a.29.29 0 00-.17.41l.37.79a.3.3 0 01-.4.4l-.78-.37a.29.29 0 00-.41.17l-.29.82a.31.31 0 01-.58 0l-.3-.8a.29.29 0 00-.41-.17l-.79.37a.3.3 0 01-.4-.4l.37-.79a.29.29 0 00-.17-.41l-.82-.29a.31.31 0 010-.58l.82-.29a.29.29 0 00.17-.41l-.37-.79a.3.3 0 01.4-.4l.79.37a.29.29 0 00.41-.17l.29-.82a.31.31 0 01.58-.02z"/><animateTransform attributeName="transform" dur="6s" repeatCount="indefinite" type="rotate" values="0 25 50; 180 25 50; 360 25 50"/></g><animateTransform attributeName="transform" begin="-1.5s" dur="3s" repeatCount="indefinite" type="translate" values="-3 0; 2 0"/></g><animateTransform attributeName="transform" begin="-1.5s" dur="3s" repeatCount="indefinite" type="translate" values="2 -6; -2 12"/><animate attributeName="opacity" begin="-1.5s" dur="3s" repeatCount="indefinite" values="1;1;1;0"/></g></g><path fill="#efefef" stroke="#efefef" stroke-miterlimit="10" stroke-width="3" d="M46.5 31.5h-.32a10.49 10.49 0 00-19.11-8 7 7 0 00-10.57 6 7.21 7.21 0 00.1 1.14A7.5 7.5 0 0018 45.5a4.19 4.19 0 00.5 0v0h28a7 7 0 000-14z"/></svg>`,
         "resim":"GÜNEŞLİ RESİM LİNKİ"
@@ -74,7 +172,12 @@ const havaIcons={
         "culture": `<svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="theater-masks" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" class="svg-inline--fa fa-theater-masks fa-w-20 fa-fw fa-2x"><g class="fa-group"><path fill="currentColor" d="M229.45 303.5l.46-2.61q-4.28.54-8.59 1.29c-40.27 7.08-73.4 26.26-92.56 50-4.21-49.87 31-95.87 82.8-105a102.8 102.8 0 0 1 28-1.07l10.23-57.89a43 43 0 0 1-25.11-31.69 42.49 42.49 0 0 1-.1-13 65.27 65.27 0 0 0 31.94 6.67l4.62-26.14c4.77-27.26 25.39-48.68 51.53-53.9l1.13-.21 1.28-.23h.13c3-.48 5.94-.92 8.92-1.34l1.75-.23c2.38-.32 4.76-.63 7.14-.91l2.57-.3q3.19-.36 6.39-.68l2.82-.26q3.18-.3 6.37-.55l2.59-.2c2.38-.17 4.76-.33 7.14-.46l1.71-.11q8.7-.47 17.39-.61l-.7-4c-4.93-28.09-26.7-50-54-54.34a453.62 453.62 0 0 0-292 51.33C9 70.46-3.89 98.44 1 126.54L32.82 306c15.39 87 156.86 151.86 219.9 140.79 8.52-1.5 17.93-4.81 27.77-9.6-34.29-39.84-58.83-89.61-51.04-133.69zM90.54 182.72a41.87 41.87 0 0 1-.09-13c11.64 6 26.73 8.33 42.5 5.56s29.15-10.12 38-19.71a42.58 42.58 0 0 1 4.38 12.26 43.06 43.06 0 0 1-84.82 14.92z" class="fa-secondary"></path><path fill="currentColor" d="M606.8 121.05a452.59 452.59 0 0 0-291.69-51.33c-27.28 4.36-49 26.25-53.94 54.34L229.45 303.5c-15.37 87 95.18 196.19 158.14 207.27S591.85 457 607.22 370L639 190.54c4.88-28.1-8-56.08-32.2-69.49zm-272.95 96.76a40 40 0 1 1 74.64 25.25c-8.24-8.9-20.65-15.74-35.28-18.31s-28.64-.4-39.44 5.17a39 39 0 0 1 .08-12.11zm70.36 198.68c-55.62-9.78-93.42-59.24-88.9-112.85 20.58 25.53 56.15 46.15 99.38 53.76s83.73.37 111.81-16.6c-14.17 51.92-66.64 85.48-122.29 75.69zm134.26-162.67a39.44 39.44 0 0 1-4.06 11.39c-8.24-8.9-20.66-15.74-35.3-18.31s-28.64-.4-39.43 5.17a39 39 0 0 1 .09-12.1 40 40 0 0 1 78.7 13.85z" class="fa-primary"></path></g></svg>`,
         "taste":`<svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="utensils-alt" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="svg-inline--fa fa-utensils-alt fa-w-18 fa-fw fa-2x"><g class="fa-group"><path fill="currentColor" d="M74.8 424a32 32 0 0 0-1.4 46.6l32 32a32 32 0 0 0 46.6-1.4l117.5-132.7-56.6-66.8zM546.5 94.82L452.7 176c-1.5 1.4-5.9-3-4.6-4.6l78.8-96.9c12.4-15.3-10.4-37.8-25.5-25.5l-96.9 78.8c-1.7 1.4-6-3.1-4.7-4.6L481 29.42c12.8-14.7-8.7-38-24.8-26.2-3.9 2.8-76.9 54.5-98.7 76.2-33.3 33.3-37.5 72.1-16.1 108.4-30.4 26.9-19.6 17.4-48.4 42.9l54 50.1c26.5-30 14.4-16.2 41-46.3 35 20.7 74.3 18.1 108.5-16.2 21.7-21.7 73.4-94.6 76.2-98.6 11.8-16.2-11.5-37.6-26.2-24.9z" class="fa-secondary"></path><path fill="currentColor" d="M501.7 424.42a32 32 0 0 1 .8 46.1l-32 32a32.09 32.09 0 0 1-46-.7C405.4 479.22 223.9 265.32 216 256 56 256 0 165.92 0 32.12c0-27.9 33.3-42.5 53.8-23.5z" class="fa-primary"></path></g></svg>`,
         "shopping":`<svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="store" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 616 512" class="svg-inline--fa fa-store fa-w-20 fa-fw fa-2x"><g class="fa-group"><path fill="currentColor" d="M547.69,286.8a102.1,102.1,0,0,0,16.4-3.6V480a32,32,0,0,1-32,32H84a32,32,0,0,1-32-32V283.2a125.89,125.89,0,0,0,16.4,3.6,135.49,135.49,0,0,0,18,1.2,132.81,132.81,0,0,0,29.51-3.8V384H500V284.2a127.12,127.12,0,0,0,29.51,3.8A138.38,138.38,0,0,0,547.69,286.8Z" class="fa-secondary"></path><path fill="currentColor" d="M602,118.6c33.6,53.6,3.8,128-59,136.4a102.9,102.9,0,0,1-13.7.9,99.08,99.08,0,0,1-73.81-33.1A98.83,98.83,0,0,1,316,230.88a96.26,96.26,0,0,1-8.08-8.08,98.9,98.9,0,0,1-139.62,8,97.4,97.4,0,0,1-8-8,98.75,98.75,0,0,1-73.81,33.1,104.6,104.6,0,0,1-13.7-.9C10.12,246.5-19.58,172.1,14,118.6L78.83,15A32,32,0,0,1,106,0H510a32,32,0,0,1,27.07,15Z" class="fa-primary"></path></g></svg>`,
-        "nature": `<svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="trees" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" class="svg-inline--fa fa-trees fa-w-20 fa-fw fa-2x"><g class="fa-group"><path fill="currentColor" d="M224 440.46V416h-64v24.45l-30.29 48.4A16 16 0 0 0 144 512h96a16 16 0 0 0 14.31-23.16zm410.31-62L554.42 288h30.63a22.73 22.73 0 0 0 20.78-13 22 22 0 0 0-3.28-24l-78.13-91h28.89a22.69 22.69 0 0 0 20.86-13.61 22.27 22.27 0 0 0-4.24-24.08L459.66 4.84c-6-6.45-17.28-6.45-23.32 0L341.28 106.1c11.09 15.37 14 35.3 6.34 53a54.48 54.48 0 0 1-18.26 22.68l41.54 48.32a54.56 54.56 0 0 1-6.07 76.9q-2 1.68-4.1 3.18l41.62 47.15C411 367.11 415.69 371.46 416 384v56.45l-30.29 48.4A16 16 0 0 0 400 512h96a16 16 0 0 0 14.31-23.16L480 440.46V416h136.87a23.19 23.19 0 0 0 21-13.25 22.15 22.15 0 0 0-3.56-24.25z" class="fa-secondary"></path><path fill="currentColor" d="M381.86 402.76a23.19 23.19 0 0 1-21 13.25H23.13a23.17 23.17 0 0 1-21-13.25 22.09 22.09 0 0 1 3.56-24.26L85.58 288H55a22.72 22.72 0 0 1-20.83-13.08 22.06 22.06 0 0 1 3.27-24L115.58 160H86.69a22.67 22.67 0 0 1-20.87-13.6 22.25 22.25 0 0 1 4.24-24.08L180.34 4.84c6-6.45 17.32-6.45 23.32 0l110.27 117.47a22.27 22.27 0 0 1 4.24 24.08A22.69 22.69 0 0 1 297.31 160h-28.89l78.13 91a22 22 0 0 1 3.28 24 22.73 22.73 0 0 1-20.78 13h-30.63l79.88 90.5a22.12 22.12 0 0 1 3.56 24.26z" class="fa-primary"></path></g></svg>`
+        "nature": `<svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="trees" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" class="svg-inline--fa fa-trees fa-w-20 fa-fw fa-2x"><g class="fa-group"><path fill="currentColor" d="M224 440.46V416h-64v24.45l-30.29 48.4A16 16 0 0 0 144 512h96a16 16 0 0 0 14.31-23.16zm410.31-62L554.42 288h30.63a22.73 22.73 0 0 0 20.78-13 22 22 0 0 0-3.28-24l-78.13-91h28.89a22.69 22.69 0 0 0 20.86-13.61 22.27 22.27 0 0 0-4.24-24.08L459.66 4.84c-6-6.45-17.28-6.45-23.32 0L341.28 106.1c11.09 15.37 14 35.3 6.34 53a54.48 54.48 0 0 1-18.26 22.68l41.54 48.32a54.56 54.56 0 0 1-6.07 76.9q-2 1.68-4.1 3.18l41.62 47.15C411 367.11 415.69 371.46 416 384v56.45l-30.29 48.4A16 16 0 0 0 400 512h96a16 16 0 0 0 14.31-23.16L480 440.46V416h136.87a23.19 23.19 0 0 0 21-13.25 22.15 22.15 0 0 0-3.56-24.25z" class="fa-secondary"></path><path fill="currentColor" d="M381.86 402.76a23.19 23.19 0 0 1-21 13.25H23.13a23.17 23.17 0 0 1-21-13.25 22.09 22.09 0 0 1 3.56-24.26L85.58 288H55a22.72 22.72 0 0 1-20.83-13.08 22.06 22.06 0 0 1 3.27-24L115.58 160H86.69a22.67 22.67 0 0 1-20.87-13.6 22.25 22.25 0 0 1 4.24-24.08L180.34 4.84c6-6.45 17.32-6.45 23.32 0l110.27 117.47a22.27 22.27 0 0 1 4.24 24.08A22.69 22.69 0 0 1 297.31 160h-28.89l78.13 91a22 22 0 0 1 3.28 24 22.73 22.73 0 0 1-20.78 13h-30.63l79.88 90.5a22.12 22.12 0 0 1 3.56 24.26z" class="fa-primary"></path></g></svg>`,
+        "collections":`<svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="line-columns" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="svg-inline--fa fa-line-columns fa-w-16 fa-fw fa-2x"><g class="fa-group"><path fill="currentColor" d="M496 288H304a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h192a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0 128H304a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h192a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-256H304a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h192a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-128H304a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h192a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16z" class="fa-secondary"></path><path fill="currentColor" d="M208 288H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h192a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0 128H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h192a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-384H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h192a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16zm0 128H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h192a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16z" class="fa-primary"></path></g></svg>`,
+        "blogs":`<svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="newspaper" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="svg-inline--fa fa-newspaper fa-w-18 fa-fw fa-2x"><g class="fa-group"><path fill="currentColor" d="M544 64H96a32 32 0 0 0-32 32v322.21c0 .36-.05.73-.09 1.09 0 .21 0 .42-.08.63s-.08.66-.13 1-.08.46-.12.68-.1.61-.16.91-.11.46-.16.69-.13.59-.21.87-.13.46-.19.69l-.24.84-.24.68c-.09.28-.18.55-.28.82s-.17.45-.26.67-.21.53-.32.79-.2.45-.3.67-.23.51-.35.76l-.33.65c-.13.25-.25.49-.39.74l-.36.63-.42.72-.39.61c-.15.23-.3.46-.46.69l-.42.6-.48.66c-.15.2-.3.39-.46.58s-.33.43-.51.64l-.48.55-.54.61-.51.53c-.18.2-.37.39-.57.59l-.53.5-.6.56-.55.48-.62.52-.58.46-.65.49-.6.43-.68.46c-.2.14-.41.27-.62.4l-.69.43-.65.37c-.23.13-.47.27-.71.39l-.67.34c-.24.13-.48.25-.73.36l-.69.31-.74.32-.71.28-.77.29-.72.24-.78.25-.75.21-.79.21-.76.17-.81.17-.77.14-.82.12-.79.1-.83.09-.81.06h-1.65H528a48 48 0 0 0 48-48V96a32 32 0 0 0-32-32zM304 372a12 12 0 0 1-12 12H140a12 12 0 0 1-12-12v-8a12 12 0 0 1 12-12h152a12 12 0 0 1 12 12zm0-96a12 12 0 0 1-12 12H140a12 12 0 0 1-12-12v-8a12 12 0 0 1 12-12h152a12 12 0 0 1 12 12zm208 96a12 12 0 0 1-12 12H348a12 12 0 0 1-12-12v-8a12 12 0 0 1 12-12h152a12 12 0 0 1 12 12zm0-96a12 12 0 0 1-12 12H348a12 12 0 0 1-12-12v-8a12 12 0 0 1 12-12h152a12 12 0 0 1 12 12zm0-96a12 12 0 0 1-12 12H140a12 12 0 0 1-12-12v-40a12 12 0 0 1 12-12h360a12 12 0 0 1 12 12z" class="fa-secondary"></path><path fill="currentColor" d="M292 352H140a12 12 0 0 0-12 12v8a12 12 0 0 0 12 12h152a12 12 0 0 0 12-12v-8a12 12 0 0 0-12-12zm0-96H140a12 12 0 0 0-12 12v8a12 12 0 0 0 12 12h152a12 12 0 0 0 12-12v-8a12 12 0 0 0-12-12zm208 96H348a12 12 0 0 0-12 12v8a12 12 0 0 0 12 12h152a12 12 0 0 0 12-12v-8a12 12 0 0 0-12-12zm0-96H348a12 12 0 0 0-12 12v8a12 12 0 0 0 12 12h152a12 12 0 0 0 12-12v-8a12 12 0 0 0-12-12zM0 128v287.33c0 17.44 13.67 32.18 31.1 32.67A32 32 0 0 0 64 416V96H32a32 32 0 0 0-32 32z" class="fa-primary"></path></g></svg>`,
+        "events":`<svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="calendar-alt" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-calendar-alt fa-w-14 fa-fw fa-2x"><g class="fa-group"><path fill="currentColor" d="M0 192v272a48 48 0 0 0 48 48h352a48 48 0 0 0 48-48V192zm128 244a12 12 0 0 1-12 12H76a12 12 0 0 1-12-12v-40a12 12 0 0 1 12-12h40a12 12 0 0 1 12 12zm0-128a12 12 0 0 1-12 12H76a12 12 0 0 1-12-12v-40a12 12 0 0 1 12-12h40a12 12 0 0 1 12 12zm128 128a12 12 0 0 1-12 12h-40a12 12 0 0 1-12-12v-40a12 12 0 0 1 12-12h40a12 12 0 0 1 12 12zm0-128a12 12 0 0 1-12 12h-40a12 12 0 0 1-12-12v-40a12 12 0 0 1 12-12h40a12 12 0 0 1 12 12zm128 128a12 12 0 0 1-12 12h-40a12 12 0 0 1-12-12v-40a12 12 0 0 1 12-12h40a12 12 0 0 1 12 12zm0-128a12 12 0 0 1-12 12h-40a12 12 0 0 1-12-12v-40a12 12 0 0 1 12-12h40a12 12 0 0 1 12 12zm-80-180h32a16 16 0 0 0 16-16V16a16 16 0 0 0-16-16h-32a16 16 0 0 0-16 16v96a16 16 0 0 0 16 16zm-192 0h32a16 16 0 0 0 16-16V16a16 16 0 0 0-16-16h-32a16 16 0 0 0-16 16v96a16 16 0 0 0 16 16z" class="fa-secondary"></path><path fill="currentColor" d="M448 112v80H0v-80a48 48 0 0 1 48-48h48v48a16 16 0 0 0 16 16h32a16 16 0 0 0 16-16V64h128v48a16 16 0 0 0 16 16h32a16 16 0 0 0 16-16V64h48a48 48 0 0 1 48 48z" class="fa-primary"></path></g></svg>`,
+        "bundles":`<svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="stars" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="svg-inline--fa fa-stars fa-w-16 fa-fw fa-2x"><g class="fa-group"><path fill="currentColor" d="M415.99814,80.0021a7.297,7.297,0,0,0-3.68757-5.96246L362.669,53.338,341.96545,3.697a6.65746,6.65746,0,0,0-11.926,0L309.33591,53.338,259.69042,74.03964a6.66417,6.66417,0,0,0,0,11.92493l49.64549,20.69969,20.70353,49.643a6.65746,6.65746,0,0,0,11.926,0L362.669,106.66426l49.64159-20.69969A7.31629,7.31629,0,0,0,415.99814,80.0021Zm93.05649,139.2264L469.339,202.67109,452.7801,162.961a5.32533,5.32533,0,0,0-9.53925,0L426.678,202.67109l-39.7117,16.55741a5.33544,5.33544,0,0,0,0,9.54033L426.678,245.3282l16.56282,39.7081a5.32376,5.32376,0,0,0,9.53925,0L469.339,245.3282l39.71561-16.55937a5.33544,5.33544,0,0,0,0-9.54033Z" class="fa-secondary"></path><path fill="currentColor" d="M364.294,267.29343,259.4951,251.99764l-46.90716-95.19633c-8.39078-16.99879-32.68813-17.2019-41.18829,0l-46.90716,95.19633L19.69358,267.29343C.89634,269.99636-6.71318,293.19783,6.99021,306.49376l75.90772,73.99472L64.89758,485.07476c-3.20319,18.9049,16.68782,33.107,33.29752,24.2014l93.7987-49.3871,93.79869,49.3871A22.95361,22.95361,0,0,0,319.09,485.07476L301.199,380.48848l75.89209-73.99472C390.70077,293.19783,383.09125,269.99636,364.294,267.29343Z" class="fa-primary"></path></g></svg>`,
+        "city":`<svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="city" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" class="svg-inline--fa fa-city fa-w-20 fa-fw fa-2x"><g class="fa-group"><path fill="currentColor" d="M116 352H76a12 12 0 0 0-12 12v40a12 12 0 0 0 12 12h40a12 12 0 0 0 12-12v-40a12 12 0 0 0-12-12zm0-96H76a12 12 0 0 0-12 12v40a12 12 0 0 0 12 12h40a12 12 0 0 0 12-12v-40a12 12 0 0 0-12-12zm0-96H76a12 12 0 0 0-12 12v40a12 12 0 0 0 12 12h40a12 12 0 0 0 12-12v-40a12 12 0 0 0-12-12zm128 192h-40a12 12 0 0 0-12 12v40a12 12 0 0 0 12 12h40a12 12 0 0 0 12-12v-40a12 12 0 0 0-12-12zm0-96h-40a12 12 0 0 0-12 12v40a12 12 0 0 0 12 12h40a12 12 0 0 0 12-12v-40a12 12 0 0 0-12-12zm0-96h-40a12 12 0 0 0-12 12v40a12 12 0 0 0 12 12h40a12 12 0 0 0 12-12v-40a12 12 0 0 0-12-12zm320 192h-40a12 12 0 0 0-12 12v40a12 12 0 0 0 12 12h40a12 12 0 0 0 12-12v-40a12 12 0 0 0-12-12zm0-96h-40a12 12 0 0 0-12 12v40a12 12 0 0 0 12 12h40a12 12 0 0 0 12-12v-40a12 12 0 0 0-12-12z" class="fa-secondary"></path><path fill="currentColor" d="M616 192H480V24a24 24 0 0 0-24-24H312a24 24 0 0 0-24 24v72h-64V16a16 16 0 0 0-16-16h-16a16 16 0 0 0-16 16v80h-64V16A16 16 0 0 0 96 0H80a16 16 0 0 0-16 16v80H24a24 24 0 0 0-24 24v360a32 32 0 0 0 32 32h576a32 32 0 0 0 32-32V216a24 24 0 0 0-24-24zM128 404a12 12 0 0 1-12 12H76a12 12 0 0 1-12-12v-40a12 12 0 0 1 12-12h40a12 12 0 0 1 12 12zm0-96a12 12 0 0 1-12 12H76a12 12 0 0 1-12-12v-40a12 12 0 0 1 12-12h40a12 12 0 0 1 12 12zm0-96a12 12 0 0 1-12 12H76a12 12 0 0 1-12-12v-40a12 12 0 0 1 12-12h40a12 12 0 0 1 12 12zm128 192a12 12 0 0 1-12 12h-40a12 12 0 0 1-12-12v-40a12 12 0 0 1 12-12h40a12 12 0 0 1 12 12zm0-96a12 12 0 0 1-12 12h-40a12 12 0 0 1-12-12v-40a12 12 0 0 1 12-12h40a12 12 0 0 1 12 12zm0-96a12 12 0 0 1-12 12h-40a12 12 0 0 1-12-12v-40a12 12 0 0 1 12-12h40a12 12 0 0 1 12 12zm160 96a12 12 0 0 1-12 12h-40a12 12 0 0 1-12-12v-40a12 12 0 0 1 12-12h40a12 12 0 0 1 12 12zm0-96a12 12 0 0 1-12 12h-40a12 12 0 0 1-12-12v-40a12 12 0 0 1 12-12h40a12 12 0 0 1 12 12zm0-96a12 12 0 0 1-12 12h-40a12 12 0 0 1-12-12V76a12 12 0 0 1 12-12h40a12 12 0 0 1 12 12zm160 288a12 12 0 0 1-12 12h-40a12 12 0 0 1-12-12v-40a12 12 0 0 1 12-12h40a12 12 0 0 1 12 12zm0-96a12 12 0 0 1-12 12h-40a12 12 0 0 1-12-12v-40a12 12 0 0 1 12-12h40a12 12 0 0 1 12 12z" class="fa-primary"></path></g></svg>`,
     }
 
     const contactIcons={
@@ -89,4 +192,7 @@ const havaIcons={
     const collectionIcons={
         "arrow":`<svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="chevron-double-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="svg-inline--fa fa-chevron-double-right fa-w-16 fa-fw fa-2x"><g class="fa-group"><path fill="currentColor" d="M285.6 273L90.79 467a24 24 0 0 1-33.88.1l-.1-.1-22.74-22.7a24 24 0 0 1 0-33.85L188.39 256 34.07 101.55A23.8 23.8 0 0 1 34 67.8l.11-.1L56.81 45a24 24 0 0 1 33.88-.1l.1.1L285.6 239a24.09 24.09 0 0 1 0 34z" class="fa-secondary"></path><path fill="currentColor" d="M478 273L283.19 467a24 24 0 0 1-33.87.1l-.1-.1-22.75-22.7a23.81 23.81 0 0 1-.1-33.75l.1-.1L380.8 256 226.47 101.55a24 24 0 0 1 0-33.85L249.22 45a24 24 0 0 1 33.87-.1.94.94 0 0 1 .1.1L478 239a24.09 24.09 0 0 1 0 34z" class="fa-primary"></path></g></svg>`
     }
-    export  {collectionIcons, havaIcons, navIcons,kategoriIcons,backgroundIcons,contactIcons,locationIcons};
+    const dateIcon={
+        "datetime":`<svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="calendar-alt" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-calendar-alt fa-w-14 fa-fw fa-2x"><g class="fa-group"><path fill="currentColor" d="M0 192v272a48 48 0 0 0 48 48h352a48 48 0 0 0 48-48V192zm128 244a12 12 0 0 1-12 12H76a12 12 0 0 1-12-12v-40a12 12 0 0 1 12-12h40a12 12 0 0 1 12 12zm0-128a12 12 0 0 1-12 12H76a12 12 0 0 1-12-12v-40a12 12 0 0 1 12-12h40a12 12 0 0 1 12 12zm128 128a12 12 0 0 1-12 12h-40a12 12 0 0 1-12-12v-40a12 12 0 0 1 12-12h40a12 12 0 0 1 12 12zm0-128a12 12 0 0 1-12 12h-40a12 12 0 0 1-12-12v-40a12 12 0 0 1 12-12h40a12 12 0 0 1 12 12zm128 128a12 12 0 0 1-12 12h-40a12 12 0 0 1-12-12v-40a12 12 0 0 1 12-12h40a12 12 0 0 1 12 12zm0-128a12 12 0 0 1-12 12h-40a12 12 0 0 1-12-12v-40a12 12 0 0 1 12-12h40a12 12 0 0 1 12 12zm-80-180h32a16 16 0 0 0 16-16V16a16 16 0 0 0-16-16h-32a16 16 0 0 0-16 16v96a16 16 0 0 0 16 16zm-192 0h32a16 16 0 0 0 16-16V16a16 16 0 0 0-16-16h-32a16 16 0 0 0-16 16v96a16 16 0 0 0 16 16z" class="fa-secondary"></path><path fill="currentColor" d="M448 112v80H0v-80a48 48 0 0 1 48-48h48v48a16 16 0 0 0 16 16h32a16 16 0 0 0 16-16V64h128v48a16 16 0 0 0 16 16h32a16 16 0 0 0 16-16V64h48a48 48 0 0 1 48 48z" class="fa-primary"></path></g></svg>`
+    }
+    export  {conditions, collectionIcons, havaIcons, navIcons,kategoriIcons,backgroundIcons,contactIcons,locationIcons, dateIcon};

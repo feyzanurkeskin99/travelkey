@@ -32,7 +32,7 @@ const KategorilerSwiper2 =()=>{
             {loading && <h1>Loading...</h1>}
             {data.map((categories) => (
                 
-                    <SwiperSlide>
+                    <SwiperSlide key={categories.id}>
                             <div className='kategoriler-ust'>
                                 <InlineSVG src={kategoriIcons[categories.iconname]}></InlineSVG>
                             </div>
