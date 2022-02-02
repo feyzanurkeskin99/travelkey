@@ -29,10 +29,7 @@ const HavaDurumu =()=>{
     },[]);
 
         return(
-            
             <div className='hava-durumu'>
-                {console.log(durum[data])}
-                {console.log(durum)}
                 <div>
                     <h2 className='hava-durumu-derece'>{Math.round(dataDerece.now)}°</h2>
                     <h4 className='hava-durumu-sehir'>{city.cityName}</h4>
@@ -44,7 +41,6 @@ const HavaDurumu =()=>{
                 ):(
                     <InlineSVG src={havaIcons.cloudy.icon}/>
                 )}
-
                 </div>
             </div>
         )

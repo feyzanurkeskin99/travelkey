@@ -307,6 +307,9 @@ border-radius: 5em;
   background-size: cover;
   position: relative;
 }
+.yerler-detay-ortaalan .leaflet-container{
+  height: 10%;
+}
 .ortaalan .yerler-detay-cover::before {
 content: "";
 position: absolute;

@@ -24,7 +24,8 @@ const Haberler =()=>{
     } = useFetch('https://seyyahpanel.kod8.app/blogs?sehir.plate='+city.city, options, []);
     
     return(
-        <div className='haberler-swiper'>
+        (data.length !==0)?(
+            <div className='haberler-swiper'>
         <NavLink to='/haberler-sirala'>
             <TumElemanlar name='Tüm Haberler'></TumElemanlar>
         </NavLink>
@@ -52,6 +53,9 @@ const Haberler =()=>{
 
         </Swiper>
         </div>
+        ):(
+            <></>
+        )
     )
 }
 

@@ -24,6 +24,7 @@ const KategorilerScrollingCarousel =()=>{
         data = [],
     } = useFetch('https://seyyahpanel.kod8.app/bundles?city.plate='+city.city+'&anavitrin=true&isDistrict=false', options, []);
     //isDistrict=false ile semt olmayan koleksiyonları getirdik
+  
     return(
         <>
         {error && <h1>Error!</h1>}

@@ -18,9 +18,8 @@ const Etkinlikler =()=>{
     } = useFetch('https://seyyahpanel.kod8.app/events?sehir.plate='+city.city+'&vitrin=true', options, []);
     
     return(
-
-    
-        <div className='etkinlikler'>
+        (data.length !== 0) ? (
+            <div className='etkinlikler'>
             <NavLink to='/etkinlikler-sirala'>
                     <TumElemanlar name='Tüm Etkinlikler'></TumElemanlar>
             </NavLink>
@@ -42,6 +41,10 @@ const Etkinlikler =()=>{
                 </NavLink>
             ))}
         </div>
+        ):(
+            <></>
+        )
+        
     )
 }
 

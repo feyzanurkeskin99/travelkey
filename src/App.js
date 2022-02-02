@@ -5,7 +5,7 @@ import OrtaAlan from './Components/OrtaAlan'
 import UstBar from './Components/UstBar'
 import threeline from './images/three-line.png'
 import iconLogo from './images/logo.jpeg'
-import {BrowserRouter , Routes, Route, useLocation, NavLink} from 'react-router-dom'
+import {BrowserRouter , Routes, Route, useLocation, NavLink,useNavigate} from 'react-router-dom'
 import './ozel.css'
 import AnaSayfa from './Components/AnaSayfa'
 import Kategoriler from './Components/Kategoriler'
@@ -36,9 +36,11 @@ function App (){
     React.useEffect((location) => {
         console.log('Location changed'+location);
     }, [location]);
+    const navigate = useNavigate();
     function sehirSec(){
         localStorage.removeItem("city")
         localStorage.removeItem("cityName")
+		navigate("/giris");
         setCity({cityName:"sehirsec"})
     }
     function hideButton(){

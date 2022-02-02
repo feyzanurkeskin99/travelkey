@@ -24,6 +24,7 @@ const VitrinKoleksiyon =()=>{
       error,
       data = [],
   } = useFetch('https://seyyahpanel.kod8.app/bundles?city.plate='+city.city+'&isDistrict=false&vitrin=true', options, []);
+  
         return(
               <div className='vitrin-koleksiyon'>
               <NavLink to='/koleksiyonlar-sirala'>

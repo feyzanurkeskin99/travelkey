@@ -25,7 +25,8 @@ const {
 } = useFetch('https://seyyahpanel.kod8.app/places?sehir.plate='+city.city+'&vitrin=true&type='+props.type, options, []);
     
     return(
-        <div className='yerler-swiper yerler-types'>
+        (data.length !== 0)?(
+            <div className='yerler-swiper yerler-types'>
         <div className="yerler-types-baslik-container">
             <div className="yerler-types-baslik">
                 {props.name}
@@ -54,6 +55,9 @@ const {
             ))}
         </Swiper>
         </div>
+        ):(
+            <></>
+        )
     )
 }
 
