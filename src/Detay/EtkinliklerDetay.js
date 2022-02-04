@@ -17,6 +17,7 @@ import {useParams} from 'react-router-dom'
 import axios from 'axios';
 import { AppContext } from '../Components/Context'
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
+import parse from 'html-react-parser';
 
 SwiperCore.use([FreeMode,Navigation,Thumbs]);
 
@@ -53,18 +54,17 @@ const EtkinliklerDetay =()=>{
                 {
                 data
                 .filter(dataFilter => ""+dataFilter.id === id.split("-")[0])
-                .map((dataBlogs)=>(
+                .map((dataEvents)=>(
                     <>
                     <div className='etkinlikler-detay-cover'>
                     </div>
                     <div className="etkinlikler-detay">
-                        <div className="etkinlikler-detay-baslik">{dataBlogs.name}</div>
-                        <div className='etkinlikler-detay-tarih'><InlineSVG src={dateIcon.datetime}></InlineSVG> {new Date(dataBlogs.datetime).toLocaleString('tr', {day:"numeric", month:"short", year:"numeric"})}</div>
+                        <div className="etkinlikler-detay-baslik">{dataEvents.name}</div>
+                        <div className='etkinlikler-detay-tarih'><InlineSVG src={dateIcon.datetime}></InlineSVG> {new Date(dataEvents.datetime).toLocaleString('tr', {day:"numeric", month:"short", year:"numeric"})}</div>
 
                         <div className="etkinlikler-spot">
                             <div className="etkinlikler-spot-yazi">
-                            
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex magni pariatur, impedit cumque placeat corrupti omnis est commodi dolorem veniam quod voluptatibus laudantium sunt aliquam sed aliquid tenetur dolorum earum.
+                            {dataEvents.spot}
                             </div>
                         </div>
 
@@ -73,20 +73,20 @@ const EtkinliklerDetay =()=>{
                         </div>
                         <div className="detay-yazi">
                             <>
-                            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, excepturi, at ullam et magni, rem pariatur quisquam ducimus commodi eius veniam temporibus assumenda. Sint eum molestias vero accusantium eaque necessitatibus.
-                            
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, excepturi, at ullam et magni, rem pariatur quisquam ducimus commodi eius veniam temporibus assumenda. Sint eum molestias vero accusantium eaque necessitatibus.</span>
+                            <span>
+                                {parse(dataEvents.body)}
+                            </span>
                             </>
                         </div>
                     
-                        <MapContainer center={[40.8555272, 31.1370757]} zoom={15} scrollWheelZoom={false} >
+                        <MapContainer center={[dataEvents.gps.split("@")[1].split(",")[0],dataEvents.gps.split("@")[1].split(",")[1]]} zoom={15} scrollWheelZoom={false} >
                             <TileLayer
                                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                             />
-                            <Marker position={[40.8555272, 31.1370757]}>
+                            <Marker position={[dataEvents.gps.split("@")[1].split(",")[0],dataEvents.gps.split("@")[1].split(",")[1]]}>
                                 <Popup>
-                                {dataBlogs.name} <br /> Burada
+                                {dataEvents.name} <br /> Burada
                                 </Popup>
                             </Marker>
                         </MapContainer>

@@ -38,7 +38,16 @@ const VitrinKoleksiyon =()=>{
                     
                         <SwiperSlide key={bundles.id}>
                             <NavLink to={"/bundles/"+bundles.id+"-"+slugify(bundles.name)}>
-                            <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />
+                            {(bundles.image === null ) ? (
+                        <>
+                        <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />
+                        </>
+                        ):(
+                            <>
+                            <img src={"https://seyyahpanel.kod8.app"+bundles.image.url} />
+                            </>
+                        )}
+
                             </NavLink>
                             <div className="vitrin-koleksiyon-swiper-baslik">
                                 {bundles.name}

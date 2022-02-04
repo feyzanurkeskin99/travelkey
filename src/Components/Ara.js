@@ -54,7 +54,7 @@ const Ara =()=>{
             .then(response => {
                 setDataSemt(response.data);
             })
-            await axios.get('https://seyyahpanel.kod8.app/places?sehir.plate='+city.city+'&name_contains='+id+'&vitrin=true')
+            await axios.get('https://seyyahpanel.kod8.app/places?sehir.plate='+city.city+'&name_contains='+id+'&vitrin=true&type=place')
             .then(response => {
                 setDataYerler(response.data);
             })
@@ -122,7 +122,16 @@ const Ara =()=>{
                     
                         <SwiperSlide key={bundles.id}>
                             <NavLink to={"/bundles/"+bundles.id+"-"+slugify(bundles.name)}>
-                            <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />
+                            {(bundles.image === null ) ? (
+                                <>
+                                <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />
+                                </>
+                            ):(
+                                <>
+                                <img src={"https://seyyahpanel.kod8.app"+bundles.image.url} />
+                                </>
+                            )}
+
                             </NavLink>
                             <div className="vitrin-koleksiyon-swiper-baslik">
                                 {bundles.name}
@@ -192,8 +201,16 @@ const Ara =()=>{
                     
                         <SwiperSlide key={places.id}>
                         <NavLink to={"/places/"+places.id+"-"+slugify(places.name)}>
+                        {(places.image === null ) ? (
+                        <>
                         <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />
-                        
+                        </>
+                        ):(
+                            <>
+                            <img src={"https://seyyahpanel.kod8.app"+places.image.url} />
+                            </>
+                        )}
+
                         </NavLink>
                         <div className="yerler-swiper-kategori">
                                     <div className="yerler-swiper-kategori-icon">
@@ -229,7 +246,16 @@ const Ara =()=>{
                     {dataRotalar.map((bundles) => (
                         <SwiperSlide key={bundles.id}>
                             
-                            <img src="https://i12.haber7.net//haber/haber7/photos/2021/42/turkiyedeki_yuruyus_rotalari_nerede_1634557754_4097.jpg" />
+                        {(bundles.image === null ) ? (
+                        <>
+                        <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />
+                        </>
+                        ):(
+                            <>
+                            <img src={"https://seyyahpanel.kod8.app"+bundles.image.url} />
+                            </>
+                        )}
+
                             
                             <NavLink to={"/bundles/"+bundles.id+"-"+slugify(bundles.name)}>
                             <div className="rotalar-baslik">
@@ -260,7 +286,16 @@ const Ara =()=>{
                         <SwiperSlide key={places.id}>
                         
                         <NavLink to={"/places/"+places.id+"-"+slugify(places.name)}>
+                        {(places.image === null ) ? (
+                        <>
                         <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />
+                        </>
+                        ):(
+                            <>
+                            <img src={"https://seyyahpanel.kod8.app"+places.image.url} />
+                            </>
+                        )}
+
                         </NavLink>
                         <div className="yerler-swiper-kategori">
                                     <div className="yerler-swiper-kategori-icon">
@@ -294,7 +329,16 @@ const Ara =()=>{
                     <SwiperSlide key={places.id}>
                     
                     <NavLink to={"/places/"+places.id+"-"+slugify(places.name)}>
-                    <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />
+                    {(places.image === null ) ? (
+                        <>
+                        <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />
+                        </>
+                    ):(
+                        <>
+                        <img src={"https://seyyahpanel.kod8.app"+places.image.url} />
+                        </>
+                    )}
+
                     </NavLink>
                     <div className="yerler-swiper-kategori">
                                 <div className="yerler-swiper-kategori-icon">
@@ -321,7 +365,7 @@ const Ara =()=>{
             <div className='kategoriler-scrolling-carousel'>        
             <div className="anavitrin-koleksiyon-baslik-container">
                 <div className="anavitrin-koleksiyon-baslik">{bundles.name}</div>
-                <div className="anavitrin-koleksiyon-spot">Cağnım düccem güzel düccem gezmek çok güsel lay lay buraya spot gelecek.</div>
+                <div className="anavitrin-koleksiyon-spot">{bundles.name} görülmeden gidilmemesi gereken güzelliklerden.</div>
             </div>
             <Swiper effect={'coverflow'} grabCursor={true} centeredSlides={true} slidesPerView={'auto'} coverflowEffect={{
                 "rotate": 50,
@@ -334,7 +378,16 @@ const Ara =()=>{
                     
                         <SwiperSlide key={placess.id}>
                         <NavLink to={"/places/"+placess.id+"-"+slugify(placess.name)}>
-                            <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />
+                        {(placess.image === null ) ? (
+                        <>
+                        <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />
+                        </>
+                        ):(
+                            <>
+                            <img src={"https://seyyahpanel.kod8.app"+placess.image.url} />
+                            </>
+                        )}
+
                             </NavLink>
                             <div className="koleksiyon-swiper-baslik">
                                 {placess.name}

@@ -34,7 +34,7 @@ const KategorilerScrollingCarousel =()=>{
         <div className='kategoriler-scrolling-carousel'>        
         <div className="anavitrin-koleksiyon-baslik-container">
             <div className="anavitrin-koleksiyon-baslik">{bundles.name}</div>
-            <div className="anavitrin-koleksiyon-spot">Cağnım düccem güzel düccem gezmek çok güsel lay lay buraya spot gelecek.</div>
+            <div className="anavitrin-koleksiyon-spot">{bundles.name} görülmeden gidilmemesi gereken güzelliklerden.</div>
         </div>
         <Swiper effect={'coverflow'} grabCursor={true} centeredSlides={true} slidesPerView={'auto'} coverflowEffect={{
             "rotate": 50,
