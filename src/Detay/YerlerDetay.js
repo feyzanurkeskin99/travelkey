@@ -67,7 +67,11 @@ const YerlerDetay =()=>{
                                 <div className="baslik">{dataPlaces.name}</div>
                             </div>
                             <div className="konum">
+                            {(dataPlaces.gps === null)? (
+                            <></>
+                            ):(
                                 <a href={dataPlaces.gps}></a>
+                            )}
                                 <div className="konum-ust-icon"><InlineSVG src={contactIcons.address}></InlineSVG></div>
                                 <div>Konum</div>
                                 <div className="konum-alt-icon"><InlineSVG src={locationIcons.location}></InlineSVG></div>
@@ -110,7 +114,10 @@ const YerlerDetay =()=>{
                                 {dataPlaces.body === null ? (<></>):(parse(dataPlaces.body))}
                         </div>
                             
-                        <MapContainer center={[dataPlaces.gps.split("@")[1].split(",")[0],dataPlaces.gps.split("@")[1].split(",")[1]]} zoom={15} scrollWheelZoom={true} >
+                        {(dataPlaces.gps === null)? (
+                            <></>
+                        ):(
+                            <MapContainer center={[dataPlaces.gps.split("@")[1].split(",")[0],dataPlaces.gps.split("@")[1].split(",")[1]]} zoom={15} scrollWheelZoom={true} >
                             <TileLayer
                                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -123,6 +130,7 @@ const YerlerDetay =()=>{
                                 </Popup>
                             </Marker>
                         </MapContainer>
+                        )}
                         
                         <IkiSiraSwiper></IkiSiraSwiper>
                     </>
