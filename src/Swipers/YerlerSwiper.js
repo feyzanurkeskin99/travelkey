@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, {useContext, useState} from 'react'
 import ReactDOM from 'react-dom'
 import SwiperCore, {Pagination} from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react/swiper-react.js';
@@ -17,7 +17,7 @@ const YerlerSwiper =(props)=>{
 
     var {city, setCity} = useContext(AppContext);
 const options = {};
-const date="";
+const [imageUrl, setImageUrl]= useState([]);
 const {
     loading,
     error,
@@ -37,7 +37,16 @@ const {
                 
                     <SwiperSlide key={places.id}>
                     <NavLink to={"/places/"+places.id+"-"+slugify(places.name)}>
-                    <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />
+                    {console.log(places.image === null)}
+                    {(places.image === null ) ? (
+                        <>
+                        <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />
+                        </>
+                    ):(
+                        <>
+                        <img src={"https://seyyahpanel.kod8.app"+places.image.url} />
+                        </>
+                    )}
                     
                     </NavLink>
                     <div className="yerler-swiper-kategori">

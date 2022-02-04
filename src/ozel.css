@@ -308,7 +308,7 @@ border-radius: 5em;
   position: relative;
 }
 .yerler-detay-ortaalan .leaflet-container{
-  height: 10%;
+  height: 15%;
 }
 .ortaalan .yerler-detay-cover::before {
 content: "";
@@ -858,6 +858,9 @@ z-index: 0;
     background-color: #d1d1d1;
     padding-top: 10px;
     border-radius: 60px 60px 0 0;
+  }
+  .etkinlikler-detay-ortaalan .leaflet-container{
+    height: 20%;
   }
   .haberler-detay-ortaalan .detay-yazi{
     margin-left: 10px;
@@ -1529,7 +1532,12 @@ z-index: 0;
     color: #fff;
     margin-top: 60px;
     height: 150%;
+    overflow: hidden;
   }
+  .kategoriler-scrolling-carousel a{
+    height: 111%;
+  }
+
 
   .kategoriler-scrolling-carousel .swiper-slide::before{
     content: "";
@@ -1728,7 +1736,7 @@ z-index: 0;
 
 
 
-.etkinler-detay{
+.etkinlikler-detay{
   display: flex;
   z-index: 100;
   width: 100%;
@@ -1740,14 +1748,14 @@ z-index: 0;
   padding-top: 10px;
   border-radius: 60px 60px 0 0;
 }
-.etkinler-detay-ortaalan .detay-yazi{
+.etkinlikler-detay-ortaalan .detay-yazi{
   margin-left: 10px;
   color: black;
   font-weight: bold;
   padding: 15px;
   font-size: 16px;
 }
-.etkinler-detay-tarih{
+.etkinlikler-detay-tarih{
   display: flex;
   align-items: center;
   width: 100%;
@@ -1757,19 +1765,19 @@ z-index: 0;
   font-weight: bolder;
   font-size: 15px;
 }
-.etkinler-detay-tarih svg{
+.etkinlikler-detay-tarih svg{
   font-size: 0.6em;
   color: var(--birincil);
   margin-right: 10px;
 }
 
-.etkinler-detay-ortaalan{
+.etkinlikler-detay-ortaalan{
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.ortaalan .etkinler-detay-cover {
+.ortaalan .etkinlikler-detay-cover {
   height: 30vh;
   display: flex;
   flex-direction: column;
@@ -1785,23 +1793,23 @@ z-index: 0;
   background-size: cover;
   position: relative;
 }
-.etkinler-detay-ortaalan .etkinler-spot{
+.etkinlikler-detay-ortaalan .etkinlikler-spot{
   width: 90%;
   height: auto;
   border-left: 5px solid var(--birincil);
 }
-.etkinler-detay-ortaalan .etkinler-spot .etkinler-spot-yazi{
+.etkinlikler-detay-ortaalan .etkinlikler-spot .etkinlikler-spot-yazi{
   margin-left: 10px;
   color: var(--birincil);
   font-weight: bold;
 }
-.etkinler-detay-ortaalan .etkinler-mini-slider{
+.etkinlikler-detay-ortaalan .etkinlikler-mini-slider{
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.etkinler-detay-ortaalan .etkinler-mini-slider .mini-slider{
+.etkinlikler-detay-ortaalan .etkinlikler-mini-slider .mini-slider{
   height: 80px;
   width: 80%;
   padding: 10px;
@@ -1811,16 +1819,16 @@ z-index: 0;
   border-radius: 18px;
 }
 
-.etkinler-detay-ortaalan .mini-slider .swiper{
+.etkinlikler-detay-ortaalan .mini-slider .swiper{
   height: auto;
   margin-top: 5px;
   margin-bottom: 5px;
 }
 
-.etkinler-detay-ortaalan .iletisim .fa-primary{
+.etkinlikler-detay-ortaalan .iletisim .fa-primary{
 fill:var(--birincil)
 }
-.etkinler-detay-ortaalan .iletisim .fa-secondary{
+.etkinlikler-detay-ortaalan .iletisim .fa-secondary{
 fill:var(--ikincil)
 }
 .haberler-detay-ortaalan .iletisim .iletisim-bilgi{
@@ -1828,17 +1836,17 @@ display: flex;
 flex-direction: column;
 }
 
-.etkinler-detay-ortaalan .iletisim .iletisim-bilgi svg{
+.etkinlikler-detay-ortaalan .iletisim .iletisim-bilgi svg{
 margin: 5px;
 }
 
-.etkinler-detay-ortaalan .iletisim .koyu{
+.etkinlikler-detay-ortaalan .iletisim .koyu{
 font-weight: bold;
 color: var(--birincil);
 }
 
 
-.etkinler-detay-ortaalan .iletisim{
+.etkinlikler-detay-ortaalan .iletisim{
   padding: 30px;
   background-color: darkgray;
   border-radius: 18px;
@@ -1847,27 +1855,27 @@ color: var(--birincil);
   margin-bottom: 30px;
 }
 
-.etkinler-detay-ortaalan .iletisim .iletisim-detay{
+.etkinlikler-detay-ortaalan .iletisim .iletisim-detay{
 color: var(--light);
 }
 
-.etkinler-detay-ortaalan .iletisim .iletisim-baslik{
+.etkinlikler-detay-ortaalan .iletisim .iletisim-baslik{
 color:var(--birincil);
 margin-left: 15px;
 }
 
-.etkinler-detay-ortaalan .iletisim span{
+.etkinlikler-detay-ortaalan .iletisim span{
 display: flex;
 align-items: center;
 margin-right: 10px;
 padding: 5px;
 }
 
-.etkinler-detay-ortaalan .iletisim svg{
+.etkinlikler-detay-ortaalan .iletisim svg{
 font-size: 1em;
 }
 
-.etkinler-detay-cover .iletisim .konum-alt-icon{
+.etkinlikler-detay-cover .iletisim .konum-alt-icon{
 font-size: 0.6em;
 }
 

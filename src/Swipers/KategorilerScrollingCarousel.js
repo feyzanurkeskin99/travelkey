@@ -49,7 +49,15 @@ const KategorilerScrollingCarousel =()=>{
                 
                     <SwiperSlide key={placess.id}>
                     <NavLink to={"/places/"+placess.id+"-"+slugify(placess.name)}>
+                    {(placess.image === null ) ? (
+                        <>
                         <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />
+                        </>
+                ):(
+                        <>
+                        <img src={"https://seyyahpanel.kod8.app"+placess.image.url} />
+                        </>
+                )}
                         </NavLink>
                         <div className="koleksiyon-swiper-baslik">
                             {placess.name}

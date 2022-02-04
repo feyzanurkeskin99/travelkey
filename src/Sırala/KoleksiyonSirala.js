@@ -32,7 +32,15 @@ const KoleksiyonSirala =()=>{
                 
                     <div className="koleksiyonlar-container">
                         <div className="koleksiyon-sirala-ust">
-                            <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />
+                        {(bundles.image === null ) ? (
+                        <>
+                        <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />
+                        </>
+                ):(
+                        <>
+                        <img src={"https://seyyahpanel.kod8.app"+bundles.image.url} />
+                        </>
+                )}
                         </div>
                         <div className="koleksiyon-sirala-alt">
                             <div className="koleksiyon-sirala-alt-baslik">

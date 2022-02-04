@@ -49,26 +49,26 @@ const EtkinliklerDetay =()=>{
     //url den id'yi çekmek için
 
         return(
-            <div className='etkinler-detay-ortaalan'>
+            <div className='etkinlikler-detay-ortaalan'>
                 {
                 data
                 .filter(dataFilter => ""+dataFilter.id === id.split("-")[0])
                 .map((dataBlogs)=>(
                     <>
-                    <div className='etkinler-detay-cover'>
+                    <div className='etkinlikler-detay-cover'>
                     </div>
                     <div className="etkinlikler-detay">
                         <div className="etkinlikler-detay-baslik">{dataBlogs.name}</div>
-                        <div className='etkinler-detay-tarih'><InlineSVG src={dateIcon.datetime}></InlineSVG> {new Date(dataBlogs.datetime).toLocaleString('tr', {day:"numeric", month:"short", year:"numeric"})}</div>
+                        <div className='etkinlikler-detay-tarih'><InlineSVG src={dateIcon.datetime}></InlineSVG> {new Date(dataBlogs.datetime).toLocaleString('tr', {day:"numeric", month:"short", year:"numeric"})}</div>
 
-                        <div className="etkinler-spot">
-                            <div className="etkinler-spot-yazi">
+                        <div className="etkinlikler-spot">
+                            <div className="etkinlikler-spot-yazi">
                             
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex magni pariatur, impedit cumque placeat corrupti omnis est commodi dolorem veniam quod voluptatibus laudantium sunt aliquam sed aliquid tenetur dolorum earum.
                             </div>
                         </div>
 
-                        <div className="etkinler-mini-slider">
+                        <div className="etkinlikler-mini-slider">
                             <MiniSlider></MiniSlider>
                         </div>
                         <div className="detay-yazi">
@@ -90,16 +90,6 @@ const EtkinliklerDetay =()=>{
                                 </Popup>
                             </Marker>
                         </MapContainer>
-
-                        <div className="iletisim">
-                            <h2 className='iletisim-baslik'>İletişim Bilgileri</h2>
-                            <div className="iletisim-bilgi">
-                                <span className='iletisim-eposta'><InlineSVG src={contactIcons.email}></InlineSVG><span className="koyu">Mail:</span><span className="iletisim-detay">feyzanurkeskin1999@gmail.com</span></span>
-                                <span className='iletisim-web'><InlineSVG src={contactIcons.web}></InlineSVG><span className="koyu">Web:</span><span className="iletisim-detay">www.seyyah.tk</span></span>
-                                <span className='iletisim-telefon'><InlineSVG src={contactIcons.phone}></InlineSVG><span className="koyu">Telefon:</span><span className="iletisim-detay">0542 776 20 22</span></span>
-                                <span className='iletisim-adres'><InlineSVG src={contactIcons.address}></InlineSVG><span className="koyu">Adres:</span> <span className="iletisim-detay">Bitirme cad. Projesi mah. No:100</span></span>
-                            </div>
-                        </div>
 
                     </div>
                     </>

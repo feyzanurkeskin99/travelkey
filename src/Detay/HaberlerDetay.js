@@ -16,7 +16,6 @@ import NotFound from '../Components/NotFound';
 import {useParams} from 'react-router-dom';
 import axios from 'axios';
 import { AppContext } from '../Components/Context';
-import ReactMarkdown from 'react-markdown';
 import parse from 'html-react-parser';
 
 SwiperCore.use([FreeMode,Navigation,Thumbs]);
@@ -73,16 +72,6 @@ const HaberlerDetay =()=>{
                         </div>
                         <div className="detay-yazi">
                             {parse(dataBlogs.body)}
-                        </div>
-                    
-                        <div className="iletisim">
-                            <h2 className='iletisim-baslik'>İletişim Bilgileri</h2>
-                            <div className="iletisim-bilgi">
-                                <span className='iletisim-eposta'><InlineSVG src={contactIcons.email}></InlineSVG><span className="koyu">Mail:</span><span className="iletisim-detay">feyzanurkeskin1999@gmail.com</span></span>
-                                <span className='iletisim-web'><InlineSVG src={contactIcons.web}></InlineSVG><span className="koyu">Web:</span><span className="iletisim-detay">www.seyyah.tk</span></span>
-                                <span className='iletisim-telefon'><InlineSVG src={contactIcons.phone}></InlineSVG><span className="koyu">Telefon:</span><span className="iletisim-detay">0542 776 20 22</span></span>
-                                <span className='iletisim-adres'><InlineSVG src={contactIcons.address}></InlineSVG><span className="koyu">Adres:</span> <span className="iletisim-detay">Bitirme cad. Projesi mah. No:100</span></span>
-                            </div>
                         </div>
 
                     </div>

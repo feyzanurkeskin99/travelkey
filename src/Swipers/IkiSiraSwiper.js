@@ -57,7 +57,15 @@ const IkiSiraSwiper =()=>{
                             <SwiperSlide key={placess.id}>
                                     <NavLink to={"/places/"+placess[0].id+"-"+slugify(placess[0].name)}>
                                         <div className="iki-sira-ust">
-                                            <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />
+                                        {(placess[0].image === null ) ? (
+                                                <>
+                                                <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />
+                                                </>
+                                        ):(
+                                                <>
+                                                <img src={"https://seyyahpanel.kod8.app"+placess[0].image.url} />
+                                                </>
+                                        )}
                                             <div className="iki-sira-ust-baslik">
                                                 {placess[0].name}
                                             </div>
@@ -66,7 +74,15 @@ const IkiSiraSwiper =()=>{
                                     </NavLink>
                                     <NavLink to={"/places/"+placess[1].id+"-"+slugify(placess[1].name)}>
                                         <div className="iki-sira-ust">
-                                        <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />
+                                        {(placess[1].image === null ) ? (
+                                                <>
+                                                <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />
+                                                </>
+                                        ):(
+                                                <>
+                                                <img src={"https://seyyahpanel.kod8.app"+placess[1].image.url} />
+                                                </>
+                                        )}
                                             <div className="iki-sira-alt-baslik">
                                                 {placess[1].name}
                                             </div>
@@ -83,7 +99,15 @@ const IkiSiraSwiper =()=>{
                             <SwiperSlide key={placess.id}>
                                     <NavLink to={"/places/"+placess[0].id+"-"+slugify(placess[0].name)}>
                                         <div className="iki-sira-ust">
-                                            <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />
+                                        {(placess[0].image === null ) ? (
+                                                <>
+                                                <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />
+                                                </>
+                                        ):(
+                                                <>
+                                                <img src={"https://seyyahpanel.kod8.app"+placess[0].image.url} />
+                                                </>
+                                        )}
                                             <div className="iki-sira-ust-baslik">
                                                 {placess[0].name}
                                             </div>

@@ -18,12 +18,9 @@ import axios from 'axios';
 import { AppContext } from '../Components/Context'
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import parse from 'html-react-parser';
-
 SwiperCore.use([FreeMode,Navigation,Thumbs]);
 
 const YerlerDetay =()=>{
-    
-
 
     React.useEffect(() => {
         window.scrollTo(0, 0);
@@ -31,7 +28,8 @@ const YerlerDetay =()=>{
 
     var {city, setCity} = useContext(AppContext);
     const [data, setData]=useState([]);
-
+    const [latitude, setLatitude]=useState([]);
+    const [longitude, setLongitude]=useState([]);
     useEffect(()=>{
         const fetchData = async ()=>{
             await axios.get('https://seyyahpanel.kod8.app/places?sehir.plate='+city.city)
@@ -57,10 +55,13 @@ const YerlerDetay =()=>{
                 .map((dataPlaces)=>(
                     (dataPlaces.length !== 0) ? (
                         <>
+                        {console.log(dataPlaces.email === null)}
                         <div className='yerler-detay-cover'>
                             <div className="cover-baslik">
                                 <div className="kategori">
+
                                     <div className="kategori-icon"><InlineSVG src={kategoriIcons[dataPlaces.category.iconname]}></InlineSVG></div>
+
                                     <div className="kategori-adi">{dataPlaces.category.name}</div>
                                 </div>
                                 <div className="baslik">{dataPlaces.name}</div>
@@ -82,26 +83,41 @@ const YerlerDetay =()=>{
                         <div className="yerler-mini-slider">
                             <MiniSlider></MiniSlider>
                         </div>
+
                         <div className="iletisim">
                             <h2 className='iletisim-baslik'>İletişim Bilgileri</h2>
                             <div className="iletisim-bilgi">
-                                <span className='iletisim-eposta'><InlineSVG src={contactIcons.email}></InlineSVG><span className="koyu">Mail:</span><span className="iletisim-detay">feyzanurkeskin1999@gmail.com</span></span>
-                                <span className='iletisim-web'><InlineSVG src={contactIcons.web}></InlineSVG><span className="koyu">Web:</span><span className="iletisim-detay">www.seyyah.tk</span></span>
-                                <span className='iletisim-telefon'><InlineSVG src={contactIcons.phone}></InlineSVG><span className="koyu">Telefon:</span><span className="iletisim-detay">0542 776 20 22</span></span>
-                                <span className='iletisim-adres'><InlineSVG src={contactIcons.address}></InlineSVG><span className="koyu">Adres:</span> <span className="iletisim-detay">Bitirme cad. Projesi mah. No:100</span></span>
+                                <span className='iletisim-eposta'>
+                                    <InlineSVG src={contactIcons.email}></InlineSVG>
+                                    <span className="koyu">Mail:</span><span className="iletisim-detay">{dataPlaces.email === null ? ("-"):(dataPlaces.email)}</span>
+                                </span>
+                                <span className='iletisim-web'>
+                                    <InlineSVG src={contactIcons.web}></InlineSVG>
+                                    <span className="koyu">Web:</span><span className="iletisim-detay">{dataPlaces.website === null ? ("-"):(dataPlaces.website)}</span>
+                                </span>
+                                <span className='iletisim-telefon'>
+                                    <InlineSVG src={contactIcons.phone}></InlineSVG>
+                                    <span className="koyu">Telefon:</span><span className="iletisim-detay">{dataPlaces.phone === null ? ("-"):(dataPlaces.phone)}</span>
+                                </span>
+                                <span className='iletisim-adres'>
+                                    <InlineSVG src={contactIcons.address}></InlineSVG>
+                                    <span className="koyu">Adres:</span> <span className="iletisim-detay">{dataPlaces.address === null ? ("-"):(dataPlaces.address)}</span>
+                                </span>
                             </div>
                         </div>
 
                         <div className="detay-yazi">
-                                {parse(dataPlaces.body)}
+                                {dataPlaces.body === null ? (<></>):(parse(dataPlaces.body))}
                         </div>
-
-                        <MapContainer center={[40.8555272, 31.1370757]} zoom={15} scrollWheelZoom={false} >
+                            
+                        <MapContainer center={[dataPlaces.gps.split("@")[1].split(",")[0],dataPlaces.gps.split("@")[1].split(",")[1]]} zoom={15} scrollWheelZoom={true} >
                             <TileLayer
                                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                             />
-                            <Marker position={[40.8555272, 31.1370757]}>
+                            
+                            <Marker position={[dataPlaces.gps.split("@")[1].split(",")[0],dataPlaces.gps.split("@")[1].split(",")[1]]} >
+                                
                                 <Popup>
                                 {dataPlaces.name} <br /> Burada
                                 </Popup>

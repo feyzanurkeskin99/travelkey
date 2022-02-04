@@ -35,7 +35,15 @@ const {
             <NavLink to={"/places/"+places.id+"-"+slugify(places.name)}>
             
                 <div className="yerler-container">
-                <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />
+                {(places.image === null ) ? (
+                        <>
+                        <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />
+                        </>
+                ):(
+                        <>
+                        <img src={"https://seyyahpanel.kod8.app"+places.image.url} />
+                        </>
+                )}
                 <div className="yerler-sirala-kategori">
                             <div className="yerler-sirala-kategori-icon">
                                 <InlineSVG src={kategoriIcons[places.category.iconname]}></InlineSVG>

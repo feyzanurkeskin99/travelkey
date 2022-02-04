@@ -40,7 +40,15 @@ const {
                     <SwiperSlide key={places.id}>
                     
                     <NavLink to={"/places/"+places.id+"-"+slugify(places.name)}>
-                    <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />
+                    {(places.image === null ) ? (
+                        <>
+                        <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />
+                        </>
+                ):(
+                        <>
+                        <img src={"https://seyyahpanel.kod8.app"+places.image.url} />
+                        </>
+                )}
                     </NavLink>
                     <div className="yerler-swiper-kategori">
                                 <div className="yerler-swiper-kategori-icon">

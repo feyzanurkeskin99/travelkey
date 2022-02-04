@@ -54,7 +54,15 @@ const BundlesYerlerSirala =()=>{
                 
                 <NavLink to={"/places/"+placess.id+"-"+slugify(placess.name)}>
                 <div className="yerler-container">
-                <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />
+                {(placess.image === null ) ? (
+                        <>
+                        <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />
+                        </>
+                ):(
+                        <>
+                        <img src={"https://seyyahpanel.kod8.app"+placess.image.url} />
+                        </>
+                )}
                 <div className="yerler-sirala-kategori">
                 {dataCat
                 .filter(dataCatFilter => dataCatFilter.id=== placess.id)
