@@ -36,8 +36,11 @@ const HavaDurumu =()=>{
                     <h2 className='hava-durumu-durum'>{data}</h2>
                 </div>
                 <div className='hava-durumu-icon'>
-                {(durum[data] !== undefined) ? (
+                {(durum[data] !== undefined || durum[data] !== null) ? (
+                    <>
+                    console.log(durum[data])
                     <InlineSVG src={havaIcons[durum[data].general].icon}/>
+                    </>
                 ):(
                     <InlineSVG src={havaIcons.cloudy.icon}/>
                 )}

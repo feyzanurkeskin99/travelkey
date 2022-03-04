@@ -10,7 +10,7 @@ import 'swiper/modules/effect-cards/effect-cards.js'
 import 'swiper/modules/pagination/pagination.min.css'
 import MiniSlider from '../Swipers/MiniSlider';
 import IkiSiraSwiper from '../Swipers/IkiSiraSwiper';
-import {dateIcon, contactIcons} from '../icon'
+import {dateIcon, contactIcons, locationIcons} from '../icon'
 import InlineSVG from 'svg-inline-react';
 import NotFound from '../Components/NotFound';
 import {useParams} from 'react-router-dom'
@@ -57,6 +57,16 @@ const EtkinliklerDetay =()=>{
                 .map((dataEvents)=>(
                     <>
                     <div className='etkinlikler-detay-cover'>
+                    <div className="konum">
+                            {(dataEvents.gps === null)? (
+                            <></>
+                            ):(
+                                <a href={dataEvents.gps}></a>
+                            )}
+                                <div className="konum-ust-icon"><InlineSVG src={contactIcons.address}></InlineSVG></div>
+                                <div>Konum</div>
+                                <div className="konum-alt-icon"><InlineSVG src={locationIcons.location}></InlineSVG></div>
+                            </div>
                     </div>
                     <div className="etkinlikler-detay">
                         <div className="etkinlikler-detay-baslik">{dataEvents.name}</div>
