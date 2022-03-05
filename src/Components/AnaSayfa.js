@@ -18,7 +18,6 @@ import YerlerTypes from '../Swipers/YerlerTypes'
 import useFetch from 'use-http';
 import { NavLink, useNavigate} from 'react-router-dom';
 import { AppContext } from '../Components/Context'
-import SearchField from 'react-search-field';
 
 const AnaSayfa =()=>{
 	const [search, setSearch] = useState([]);

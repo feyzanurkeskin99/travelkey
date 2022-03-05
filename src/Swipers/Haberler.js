@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, {useEffect, useState, useContext} from 'react'
 import ReactDOM from 'react-dom'
 import SwiperCore, {Pagination} from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react/swiper-react.js';
@@ -12,17 +12,31 @@ import useFetch from 'use-http';
 import { AppContext } from '../Components/Context'
 import slugify from 'react-slugify';
 import backgroundImage from '../images/news.jpg'
+import { getApiModels } from '../Models/ApiModels';
+
 
 const Haberler =()=>{
     var {city, setCity} = useContext(AppContext);
-    const options = {};
-    const date="";
-    const {
-        loading,
-        error,
-        data = [],
-    } = useFetch('https://seyyahpanel.kod8.app/blogs?sehir.plate='+city.city, options, []);
-    
+
+    const [data, setData]=useState([""]);
+    const url="blogs?sehir.plate="+city.city
+    const getBlogApi = async() => {
+        try{
+            const res = await getApiModels(url);
+            if(res.status) {
+                setData(res.data)
+            }
+        }catch(e){
+            alert(e.message)
+        }
+    }
+
+    useEffect(() => {
+        getBlogApi()
+    },[])
+
+
+
     return(
         (data.length !==0)?(
             <div className='haberler-swiper'>
@@ -30,12 +44,10 @@ const Haberler =()=>{
             <TumElemanlar name='Tüm Haberler'></TumElemanlar>
         </NavLink>
         
-        <Swiper slidesPerView={5} centeredSlides={true} slidesPerView={'auto'} spaceBetween={20} grabCursor={true} className="haberler">
-            {error && <h1>Error!</h1>}
-            {loading && <h1>Loading...</h1>}
-            {data.map((blogs) => (
+        <Swiper centeredSlides={true} slidesPerView={'auto'} spaceBetween={20} grabCursor={true} className="haberler">
+            {data.map((blogs, index) => (
                     
-                    <SwiperSlide>
+                    <SwiperSlide key={index}>
                         <NavLink  key={blogs.id} to={"/blogs/"+blogs.id+"-"+slugify(blogs.title)}>
                             <div className='haberler-ust'>
                                 <img src={backgroundImage} />

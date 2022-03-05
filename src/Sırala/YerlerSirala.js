@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, {useEffect, useState, useContext} from 'react'
 import ReactDOM from 'react-dom'
 import SwiperCore, {Pagination} from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react/swiper-react.js';
@@ -11,6 +11,7 @@ import InlineSVG from 'svg-inline-react';
 import useFetch from 'use-http';
 import { kategoriIcons } from '../icon';
 import slugify from 'react-slugify';
+import { getApiModels } from '../Models/ApiModels';
 
 import { AppContext } from '../Components/Context'
 
@@ -19,18 +20,31 @@ import { AppContext } from '../Components/Context'
 const YerlerSirala =()=>{
     
     var {city, setCity} = useContext(AppContext);
-    const options = {};
-const date="";
-const {
-    loading,
-    error,
-    data = [],
-} = useFetch('https://seyyahpanel.kod8.app/places?sehir.plate='+city.city, options, []);
-    
+
+const [data, setData]=useState([]);
+
+const url="places?sehir.plate="+city.city
+const getYerlerApi = async() => {
+    try{
+        const res = await getApiModels(url);
+        if(res.status) {
+            setData(res.data)
+        }
+    }catch(e){
+        alert(e.message)
+    }
+}
+
+useEffect(() => {
+    getYerlerApi()
+},[])
+
+
+
+
+
     return(
         <div className='yerler-sirala'>
-        {error && <h1>Error!</h1>}
-        {loading && <h1>Loading...</h1>}
         {data.map((places) => (
             <NavLink to={"/places/"+places.id+"-"+slugify(places.name)}>
             

@@ -1,7 +1,0 @@
-{
-  "name": "travelkey",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "react"
-}

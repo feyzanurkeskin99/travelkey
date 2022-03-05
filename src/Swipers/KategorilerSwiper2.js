@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import ReactDOM from 'react-dom'
 import SwiperCore, {Pagination} from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react/swiper-react.js';
@@ -10,26 +10,35 @@ import { Icon } from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
 import InlineSVG from 'svg-inline-react';
 import {backgroundIcons, kategoriIcons} from '../icon'
+import { getApiModels } from '../Models/ApiModels';
 
-import useFetch from 'use-http';
 
 const KategorilerSwiper2 =()=>{
-    const options = {};
-    const date="";
-    const {
-        loading,
-        error,
-        data = [],
-    } = useFetch('https://seyyahpanel.kod8.app/categories', options, []);
+    const [data, setData]=useState([""]);
     
+    const getCategoriesApi = async() => {
+        try{
+            const res = await getApiModels("categories");
+            if(res.status) {
+                setData(res.data)
+            }
+        }catch(e){
+            alert(e.message)
+        }
+    }
+
+    useEffect(() => {
+        getCategoriesApi()
+    },[])
+
+
     return(
         <div className='kategoriler-swiper-2'>
          <NavLink to='/kategoriler-sirala'>
             <TumElemanlar name='Tüm Kategoriler'></TumElemanlar>
         </NavLink>
-        <Swiper slidesPerView={5} centeredSlides={true} slidesPerView={'auto'} spaceBetween={20} grabCursor={true} className="mySwiper3">
-            {error && <h1>Error!</h1>}
-            {loading && <h1>Loading...</h1>}
+        <Swiper centeredSlides={true} slidesPerView={'auto'} spaceBetween={20} grabCursor={true} className="mySwiper3">
+
             {data.map((categories) => (
                 
                     <SwiperSlide key={categories.id}>

@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, {useEffect, useState, useContext} from 'react'
 import ReactDOM from 'react-dom'
 import SwiperCore, {Pagination} from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react/swiper-react.js';
@@ -12,16 +12,30 @@ import useFetch from 'use-http';
 import { kategoriIcons, backgroundIcons } from '../icon';
 import { AppContext } from '../Components/Context'
 import slugify from 'react-slugify';
+import { getApiModels } from '../Models/ApiModels';
 
 const RotalarSwiper =()=>{
     var {city, setCity} = useContext(AppContext);
-const options = {};
-const date="";
-const {
-    loading,
-    error,
-    data = [],
-} = useFetch('https://seyyahpanel.kod8.app/bundles?city.plate='+city.city+'&vitrin=true&isRoute=true', options, []);
+
+
+const [data, setData]=useState([""]);
+const url="bundles?city.plate="+city.city+"&vitrin=true&isRoute=true"
+const getRouteApi = async() => {
+    try{
+        const res = await getApiModels(url);
+        if(res.status) {
+            setData(res.data)
+        }
+    }catch(e){
+        alert(e.message)
+    }
+}
+
+useEffect(() => {
+    getRouteApi()
+},[])
+
+
     return(
         <div className='rotalar-swiper'>
             <div className='background-icon'>
@@ -29,10 +43,8 @@ const {
                 <h2 className='background-baslik'>Rotalar</h2>
             </div>
 
-        <Swiper slidesPerView={5} centeredSlides={true} slidesPerView={'auto'} spaceBetween={30} slidesPerView={'auto'} grabCursor={true} className="mySwiper3">
+        <Swiper centeredSlides={true} slidesPerView={'auto'} spaceBetween={30} grabCursor={true} className="mySwiper3">
         
-                {error && <h1>Error!</h1>}
-                {loading && <h1>Loading...</h1>}
                 {data.map((bundles) => (
                     <SwiperSlide key={bundles.id}>
                         

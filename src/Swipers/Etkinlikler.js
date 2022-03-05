@@ -1,22 +1,35 @@
-import React, {useContext} from 'react'
+import React, {useEffect, useState, useContext} from 'react'
 import ReactDOM from 'react-dom'
 import TumElemanlar from '../TumElemanlar';
 import { NavLink } from 'react-router-dom';
 import useFetch from 'use-http';
 import { AppContext } from '../Components/Context'
 import slugify from 'react-slugify';
+import { getApiModels } from '../Models/ApiModels';
 
 const Etkinlikler =()=>{
     
     var {city, setCity} = useContext(AppContext);
-    const options = {};
-    const date="";
-    const {
-        loading,
-        error,
-        data = [],
-    } = useFetch('https://seyyahpanel.kod8.app/events?sehir.plate='+city.city+'&vitrin=true', options, []);
     
+    const [data, setData]=useState([""]);
+    const url="events?sehir.plate="+city.city+"&vitrin=true"
+    const getEventApi = async() => {
+        try{
+            const res = await getApiModels(url);
+            if(res.status) {
+                setData(res.data)
+            }
+        }catch(e){
+            alert(e.message)
+        }
+    }
+
+    useEffect(() => {
+        getEventApi()
+    },[])
+
+
+
     return(
         (data.length !== 0) ? (
             <div className='etkinlikler'>
@@ -24,8 +37,6 @@ const Etkinlikler =()=>{
                     <TumElemanlar name='Tüm Etkinlikler'></TumElemanlar>
             </NavLink>
 
-            {error && <h1>Error!</h1>}
-            {loading && <h1>Loading...</h1>}
             {data.map((events) => (
                 <NavLink to={"/events/"+events.id+"-"+slugify(events.name)}>
                     <div key={events.id} className='etkinlikler-satir'>

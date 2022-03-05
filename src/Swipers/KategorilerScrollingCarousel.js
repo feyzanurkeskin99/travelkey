@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, {useEffect, useState, useContext} from 'react'
 import ReactDOM from 'react-dom'
 import SwiperCore, {EffectCoverflow, Pagination} from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react/swiper-react.js';
@@ -10,65 +10,72 @@ import { NavLink } from 'react-router-dom';
 import useFetch from 'use-http';
 import { AppContext } from '../Components/Context'
 import slugify from 'react-slugify';
+import { getApiModels } from '../Models/ApiModels';
 
 
 SwiperCore.use([EffectCoverflow]);
 
 const KategorilerScrollingCarousel =()=>{
     var {city, setCity} = useContext(AppContext);
-    const options = {};
-    const date="";
-    const {
-        loading,
-        error,
-        data = [],
-    } = useFetch('https://seyyahpanel.kod8.app/bundles?city.plate='+city.city+'&anavitrin=true&isDistrict=false', options, []);
-    //isDistrict=false ile semt olmayan koleksiyonları getirdik
-  
+
+    const [data, setData]=useState([]);
+    const url="bundles?city.plate="+city.city+"&anavitrin=true&isDistrict=false"
+    const getAnaVitrinApi = async() => {
+        try{
+            const res = await getApiModels(url);
+            if(res.status) {
+                setData(res.data)
+            }
+        }catch(e){
+            alert(e.message)
+        }
+    }
+
+    useEffect(() => {
+        getAnaVitrinApi()
+    },[])
+
+
     return(
-        <>
-        {error && <h1>Error!</h1>}
-        {loading && <h1>Loading...</h1>}
-        {data
-        .map((bundles) => (
-        <div className='kategoriler-scrolling-carousel'>        
-        <div className="anavitrin-koleksiyon-baslik-container">
-            <div className="anavitrin-koleksiyon-baslik">{bundles.name}</div>
-            <div className="anavitrin-koleksiyon-spot">{bundles.name} görülmeden gidilmemesi gereken güzelliklerden.</div>
-        </div>
-        <Swiper effect={'coverflow'} grabCursor={true} centeredSlides={true} slidesPerView={'auto'} coverflowEffect={{
-            "rotate": 50,
-            "stretch": 0,
-            "depth": 100,
-            "modifier": 1,
-            "slideShadows": true
-        }} className="mySwiper2">
-            {error && <h1>Error!</h1>}
-            {loading && <h1>Loading...</h1>}
-            {bundles["places"].map((placess)=>(
-                
-                    <SwiperSlide key={placess.id}>
-                    <NavLink to={"/places/"+placess.id+"-"+slugify(placess.name)}>
-                    {(placess.image === null ) ? (
-                        <>
-                        <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />
-                        </>
-                ):(
-                        <>
-                        <img src={"https://seyyahpanel.kod8.app"+placess.image.url} />
-                        </>
-                )}
-                        </NavLink>
-                        <div className="koleksiyon-swiper-baslik">
-                            {placess.name}
-                        </div>
-                    </SwiperSlide>
-                
-                ))}
-            </Swiper>
-        </div>
-        ))}
-        </>
+        data === [] ? (<></>):(
+            data.map((bundles) => (
+                <div className='kategoriler-scrolling-carousel'>        
+                <div className="anavitrin-koleksiyon-baslik-container">
+                    <div className="anavitrin-koleksiyon-baslik">{bundles.name}</div>
+                    <div className="anavitrin-koleksiyon-spot">{bundles.name} görülmeden gidilmemesi gereken güzelliklerden.</div>
+                </div>
+                <Swiper effect={'coverflow'} grabCursor={true} centeredSlides={true} slidesPerView={'auto'} coverflowEffect={{
+                    "rotate": 50,
+                    "stretch": 0,
+                    "depth": 100,
+                    "modifier": 1,
+                    "slideShadows": true
+                }} className="mySwiper2">
+                    {bundles["places"].map((placess)=>(
+                        
+                            <SwiperSlide key={placess.id}>
+                            <NavLink to={"/places/"+placess.id+"-"+slugify(placess.name)}>
+                            {(placess.image === null ) ? (
+                                <>
+                                <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />
+                                </>
+                        ):(
+                                <>
+                                <img src={"https://seyyahpanel.kod8.app"+placess.image.url} />
+                                </>
+                        )}
+                                </NavLink>
+                                <div className="koleksiyon-swiper-baslik">
+                                    {placess.name}
+                                </div>
+                            </SwiperSlide>
+                        
+                        ))}
+                    </Swiper>
+                </div>
+                ))
+        )
+        
     )
 }
 

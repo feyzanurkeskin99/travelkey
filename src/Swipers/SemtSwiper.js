@@ -1,4 +1,4 @@
-import React, {useState,useEffect, useContext} from 'react'
+import React, {useEffect, useState, useContext} from 'react'
 import ReactDOM from 'react-dom'
 import { Button, Icon } from 'semantic-ui-react'
 import SwiperCore, {
@@ -8,14 +8,11 @@ import { Swiper, SwiperSlide } from 'swiper/react/swiper-react.js';
 import 'swiper/swiper.min.css'
 import 'swiper/modules/effect-cards/effect-cards.js'
 import 'swiper/modules/pagination/pagination.min.css'
-import InlineSVG from 'svg-inline-react';
-import {collectionIcons} from '../icon'
-import useFetch from 'use-http';
 import { NavLink } from 'react-router-dom';
 import { AppContext } from '../Components/Context'
 import slugify from 'react-slugify';
 import {useParams} from 'react-router-dom'
-import axios from 'axios';
+import { getApiModels } from '../Models/ApiModels';
 
 
 SwiperCore.use([FreeMode,Navigation,Thumbs]);
@@ -25,20 +22,28 @@ const SemtSwiper =()=>{
         window.scrollTo(0, 0);
     }, []);
     
-  
-  const [thumbsSwiper, setThumbsSwiper] = useState(null);
-  var {city, setCity} = useContext(AppContext);
+
+    const [thumbsSwiper, setThumbsSwiper] = useState(null);
+    var {city, setCity} = useContext(AppContext);
     const [data, setData]=useState([]);
 
-    useEffect(()=>{
-        const fetchData = async ()=>{
-            await axios.get('https://seyyahpanel.kod8.app/bundles?city.plate='+city.city+'&isDistrict=true') //semt olan koleksiyonlar
-            .then(response => {
-                setData(response.data);
-            })
+    const url="bundles?city.plate="+city.city+"&isDistrict=true"//semt olan koleksiyonlar
+    const getSemtApi = async() => {
+        try{
+            const res = await getApiModels(url);
+            if(res.status) {
+                setData(res.data)
+            }
+        }catch(e){
+            alert(e.message)
         }
-        fetchData();
-    },[]);
+    }
+
+    useEffect(() => {
+        getSemtApi()
+    },[])
+
+
         return(
             <>
                 <div className='semt-swiper'>

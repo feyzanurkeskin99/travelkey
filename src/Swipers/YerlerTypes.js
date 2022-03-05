@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, {useEffect, useState, useContext} from 'react'
 import ReactDOM from 'react-dom'
 import SwiperCore, {Pagination} from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react/swiper-react.js';
@@ -12,18 +12,32 @@ import useFetch from 'use-http';
 import { kategoriIcons } from '../icon';
 import { AppContext } from '../Components/Context'
 import slugify from 'react-slugify';
+import { getApiModels } from '../Models/ApiModels';
 
 const YerlerTypes =(props)=>{    
 
     var {city, setCity} = useContext(AppContext);
-const options = {};
-const date="";
-const {
-    loading,
-    error,
-    data = [],
-} = useFetch('https://seyyahpanel.kod8.app/places?sehir.plate='+city.city+'&vitrin=true&type='+props.type, options, []);
-    
+
+
+    const [data, setData]=useState([]);
+
+    const url="places?sehir.plate="+city.city+"&vitrin=true&type="+props.type
+    const getYerlerTypesApi = async() => {
+        try{
+            const res = await getApiModels(url);
+            if(res.status) {
+                setData(res.data)
+            }
+        }catch(e){
+            alert(e.message)
+        }
+    }
+
+    useEffect(() => {
+        getYerlerTypesApi()
+    },[])
+
+
     return(
         (data.length !== 0)?(
             <div className='yerler-swiper yerler-types'>
@@ -32,9 +46,7 @@ const {
                 {props.name}
             </div>
         </div>
-        <Swiper slidesPerView={5} centeredSlides={true} slidesPerView={'auto'} spaceBetween={30} slidesPerView={'auto'} grabCursor={true} className="mySwiperYerler">
-            {error && <h1>Error!</h1>}
-            {loading && <h1>Loading...</h1>}
+        <Swiper centeredSlides={true} slidesPerView={'auto'} spaceBetween={30} grabCursor={true} className="mySwiperYerler">
             {data.map((places) => (
                 
                     <SwiperSlide key={places.id}>

@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, {useEffect, useState} from 'react'
 import ReactDOM from 'react-dom'
 import SwiperCore, {Pagination} from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react/swiper-react.js';
@@ -13,19 +13,30 @@ import InlineSVG from 'svg-inline-react';
 import {kategoriIcons} from '../icon'
 import slugify from 'react-slugify';
 
+import { getApiModels } from '../Models/ApiModels';
+
 const KategoriSirala =()=>{
-    const options = {};
-    const date="";
-    const {
-        loading,
-        error,
-        data = [],
-    } = useFetch('https://seyyahpanel.kod8.app/categories', options, []);
+
+    const [data, setData]=useState([""]);
+    
+    const getCategoriesApi = async() => {
+        try{
+            const res = await getApiModels("categories");
+            if(res.status) {
+                setData(res.data)
+            }
+        }catch(e){
+            alert(e.message)
+        }
+    }
+
+    useEffect(() => {
+        getCategoriesApi()
+    },[])
+
+
     return(
         <div className='kategoriler-sirala'>
-            
-            {error && <h1>Error!</h1>}
-            {loading && <h1>Loading...</h1>}
             {data.map((categories) => (
                 <NavLink to={"/categories/"+categories.id+"-"+slugify(categories.name)}>
                     <div className="kategoriler-container">

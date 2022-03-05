@@ -13,6 +13,7 @@ import { AppContext } from '../Components/Context'
 import {backgroundIcons} from '../icon'
 import axios from 'axios';
 import slugify from 'react-slugify';
+import { getApiModels } from '../Models/ApiModels';
 
 SwiperCore.use([Pagination]);
 
@@ -22,32 +23,39 @@ const IkiSiraSwiper =()=>{
     const [dataCity, setDataCity]=useState([]);
     const [dataCat, setDataCat]=useState([]);
 
-    useEffect(()=>{
-        const fetchData = async ()=>{
-            await axios.get('https://seyyahpanel.kod8.app/categories?sehir_anavitrins.plate='+city.city)
-            .then(response => {
-                setDataCat(response.data);
-            })
-            await axios.get('https://seyyahpanel.kod8.app/sehirs?plate='+city.city)
-            .then(response => {
-                setDataCity(response.data);
-            })
+
+    const getApi = async() => {
+        try{
+            const resCat = await getApiModels("categories?sehir_anavitrins.plate="+city.city);
+            const resCity = await getApiModels("sehirs?plate="+city.city);
+            
+            if(resCat.status && resCity.status) {
+                setDataCat(resCat.data)
+                setDataCity(resCity.data)
+            }
+        }catch(e){
+            alert(e.message)
         }
-        fetchData();
-    },[]);
+    }
+
+    useEffect(() => {
+        getApi()
+    },[])
+
+
     return(
         <>
         {dataCat
-        .map((categories) => (
-        <div className='iki-sira-swiper'>
+        .map((categories, index) => (
+        <div className='iki-sira-swiper' key={index}>
             <div className='background-icon'>
                 <InlineSVG src={backgroundIcons[categories.iconname]}></InlineSVG>
                 <h2 className='background-baslik'>{categories.name}</h2>
             </div>
-                <Swiper slidesPerView={5} centeredSlides={true} slidesPerView={'auto'} spaceBetween={30} slidesPerView={'auto'} grabCursor={true} className="mySwiper4">
+                <Swiper centeredSlides={true} slidesPerView={'auto'} spaceBetween={30} grabCursor={true} className="mySwiper4">
                     <>
-                    {dataCity.map((deneme)=>(
-                        <>
+                    {dataCity.map((deneme, index)=>(
+                        <div key={index}>
                         {categories["places"]
                         .filter(dizi => dizi.sehir===deneme.id)
                         .reduce((previous, current, index, array)=>{
@@ -116,7 +124,7 @@ const IkiSiraSwiper =()=>{
                                     </NavLink>
                             </SwiperSlide>
                         ))}
-                        </>
+                        </div>
                     ))}
                     </>
                     

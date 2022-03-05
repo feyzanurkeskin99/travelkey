@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react'
+import React, {useEffect, useState, useContext} from 'react'
 import ReactDOM from 'react-dom'
 import SwiperCore, {Pagination} from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react/swiper-react.js';
@@ -12,27 +12,39 @@ import useFetch from 'use-http';
 import { kategoriIcons } from '../icon';
 import { AppContext } from '../Components/Context'
 import slugify from 'react-slugify';
+import { getApiModels } from '../Models/ApiModels';
 
 const YerlerSwiper =(props)=>{    
 
     var {city, setCity} = useContext(AppContext);
-const options = {};
-const [imageUrl, setImageUrl]= useState([]);
-const {
-    loading,
-    error,
-    data = [],
-} = useFetch('https://seyyahpanel.kod8.app/places?sehir.plate='+city.city+'&vitrin=true&type=place', options, []);
-    
+    const [data, setData]=useState([]);
+
+    const url="places?sehir.plate="+city.city+"&vitrin=true&type=place"//semt olan koleksiyonlar
+    const getYerlerApi = async() => {
+        try{
+            const res = await getApiModels(url);
+            if(res.status) {
+                setData(res.data)
+            }
+        }catch(e){
+            alert(e.message)
+        }
+    }
+
+    useEffect(() => {
+        getYerlerApi()
+    },[])
+
+
+
+
     return(
         <div className='yerler-swiper'>
             <NavLink to='/yerler-sirala'>
                 <TumElemanlar name='Tüm Yerler'></TumElemanlar>
             </NavLink>
         
-        <Swiper slidesPerView={5} centeredSlides={true} slidesPerView={'auto'} spaceBetween={20} slidesPerView={'auto'} grabCursor={true} className="mySwiperYerler">
-            {error && <h1>Error!</h1>}
-            {loading && <h1>Loading...</h1>}
+        <Swiper centeredSlides={true} slidesPerView={'auto'} spaceBetween={20} grabCursor={true} className="mySwiperYerler">
             {data.map((places) => (
                 
                     <SwiperSlide key={places.id}>

@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react'
+import React, {useEffect, useState, useContext} from 'react'
 import ReactDOM from 'react-dom'
 import SwiperCore, {Pagination} from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react/swiper-react.js';
@@ -15,36 +15,43 @@ import NotFound from '../Components/NotFound';
 import {useParams} from 'react-router-dom'
 import { AppContext } from '../Components/Context'
 import slugify from 'react-slugify';
+import { getApiModels } from '../Models/ApiModels';
 
 
 
 const BundlesYerlerSirala =()=>{
     
     var {city, setCity} = useContext(AppContext);
-    
-    
     const [dataPlace, setDataPlace]=useState([]);
     const [dataCat, setDataCat]=useState([]);
 
-    useEffect(()=>{
-        const fetchData = async ()=>{
-            await axios.get('https://seyyahpanel.kod8.app/places?sehir.plate='+city.city)
-            .then(response => {
-                setDataCat(response.data);
-            })
-            await axios.get('https://seyyahpanel.kod8.app/bundles?city.plate='+city.city)
-            .then(response => {
-                setDataPlace(response.data);
-            })
-        }
-        fetchData();
-    },[]);
-    
-    let { id } = useParams();
 
+    const getApi = async() => {
+        try{
+            const resCat = await getApiModels("places?sehir.plate="+city.city);
+            const resPlace = await getApiModels("bundles?city.plate="+city.city);
+            
+            if(resCat.status && resPlace.status) {
+                setDataCat(resCat.data)
+                setDataPlace(resPlace.data)
+            }
+        }catch(e){
+            alert(e.message)
+        }
+    }
+
+    useEffect(() => {
+        getApi()
+    },[])
+
+
+
+    let { id } = useParams();
     if (!id) {
         return <NotFound />;
     }
+
+    
     return(
         <div className='yerler-sirala'>
         {dataPlace

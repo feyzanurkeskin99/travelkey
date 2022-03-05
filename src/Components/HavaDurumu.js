@@ -14,6 +14,7 @@ const HavaDurumu =()=>{
     
     const [data, setData]=useState([]);
     const [dataDerece, setDataDerece]=useState([]);
+    const [dataDurum, setDataDurum]=useState("");
     var durum=conditions;
     
 
@@ -23,6 +24,7 @@ const HavaDurumu =()=>{
             .then(response => {
                 setData(response.data[city.city].durum[0].condition);
                 setDataDerece(response.data[city.city].durum[0]);
+                setDataDurum(durum[response.data[city.city].durum[0].condition]);
             })
         }
         fetchData();
@@ -36,10 +38,10 @@ const HavaDurumu =()=>{
                     <h2 className='hava-durumu-durum'>{data}</h2>
                 </div>
                 <div className='hava-durumu-icon'>
-                {(durum[data] !== undefined || durum[data] !== null) ? (
+                {(dataDurum !== undefined || dataDurum !== null) ? (
                     <>
-                    console.log(durum[data])
-                    <InlineSVG src={havaIcons[durum[data].general].icon}/>
+                    {console.log(dataDurum.general)}
+                    <InlineSVG src={[havaIcons[dataDurum.general]].icon}/>
                     </>
                 ):(
                     <InlineSVG src={havaIcons.cloudy.icon}/>
