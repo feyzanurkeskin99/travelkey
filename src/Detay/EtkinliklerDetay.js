@@ -1,15 +1,11 @@
-import React, {useState,useEffect, useContext, useRef} from 'react'
-import ReactDOM, {useLocation} from 'react-dom'
-import { Button, Icon } from 'semantic-ui-react'
+import React, {useState,useEffect, useContext} from 'react'
 import SwiperCore, {
     FreeMode,Navigation,Thumbs
 } from 'swiper'
-import { Swiper, SwiperSlide } from 'swiper/react/swiper-react.js';
 import 'swiper/swiper.min.css'
 import 'swiper/modules/effect-cards/effect-cards.js'
 import 'swiper/modules/pagination/pagination.min.css'
 import MiniSlider from '../Swipers/MiniSlider';
-import IkiSiraSwiper from '../Swipers/IkiSiraSwiper';
 import {dateIcon, contactIcons, locationIcons} from '../icon'
 import InlineSVG from 'svg-inline-react';
 import NotFound from '../Components/NotFound';

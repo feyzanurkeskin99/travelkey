@@ -19,6 +19,7 @@ import SwiperCore, {
     FreeMode,Navigation,Thumbs
 } from 'swiper'
 import backgroundImage from '../images/news.jpg'
+import { getApiModels } from '../Models/ApiModels';
 
 SwiperCore.use([FreeMode,Navigation,Thumbs]);
 
@@ -28,12 +29,6 @@ const Ara =()=>{
     var {city, setCity} = useContext(AppContext);
     
     const [dataVitrin, setDataVitrin]=useState([]);
-
-
-    const [dataCat, setDataCat]=useState([]);
-    const [dataCity, setDataCity]=useState([]);
-
-
     const [dataSemt, setDataSemt]=useState([]);
     const [dataYerler, setDataYerler]=useState([]);
     const [dataRotalar, setDataRotalar]=useState([]);
@@ -44,60 +39,47 @@ const Ara =()=>{
     const [dataEtkinlikler, setDataEtkinlikler]=useState([]);
     const [dataHaberler, setDataHaberler]=useState([]);
 
-    useEffect(()=>{
-        const fetchData = async ()=>{
-            await axios.get('https://seyyahpanel.kod8.app/bundles?city.plate='+city.city+'&name_contains='+id+'&isDistrict=false&vitrin=true')
-            .then(response => {
-                setDataVitrin(response.data);
-            })
-            await axios.get('https://seyyahpanel.kod8.app/bundles?city.plate='+city.city+'&name_contains='+id+'&isDistrict=true')
-            .then(response => {
-                setDataSemt(response.data);
-            })
-            await axios.get('https://seyyahpanel.kod8.app/places?sehir.plate='+city.city+'&name_contains='+id+'&vitrin=true&type=place')
-            .then(response => {
-                setDataYerler(response.data);
-            })
-            await axios.get('https://seyyahpanel.kod8.app/bundles?city.plate='+city.city+'&vitrin=true&isRoute=true&name_contains='+id)
-            .then(response => {
-                setDataRotalar(response.data);
-            })
-            await axios.get('https://seyyahpanel.kod8.app/places?sehir.plate='+city.city+'&vitrin=true&type=activity&name_contains='+id)
-            .then(response => {
-                setDataAktivite(response.data);
-            })
-            await axios.get('https://seyyahpanel.kod8.app/places?sehir.plate='+city.city+'&vitrin=true&type=iconic&name_contains='+id)
-            .then(response => {
-                setDataMeshur(response.data);
-            })
-            await axios.get('https://seyyahpanel.kod8.app/bundles?city.plate='+city.city+'&anavitrin=true&isDistrict=false&name_contains='+id)
-            .then(response => {
-                setDataKoleksiyon(response.data);
-            })
-
-            /** ikisira swiper için 
-            await axios.get('https://seyyahpanel.kod8.app/sehirs?plate='+city.city)
-            .then(response => {
-                setDataCat(response.data);
-            })
-            await axios.get('https://seyyahpanel.kod8.app/sehirs?plate='+city.city)
-            .then(response => {
-                setDataCity(response.data);
-            })
-            */
-
-            await axios.get('https://seyyahpanel.kod8.app/events?sehir.plate='+city.city+'&name_contains='+id+'&vitrin=true')
-            .then(response => {
-                setDataEtkinlikler(response.data);
-            })
-            await axios.get('https://seyyahpanel.kod8.app/blogs?sehir.plate='+city.city+'&title_contains='+id)
-            .then(response => {
-                setDataHaberler(response.data);
-            })
+    const getApi = async() => {
+        try{
+            const resDataVitrin = await getApiModels("bundles?city.plate="+city.city+"&name_contains="+id+"&isDistrict=false&vitrin=true");
+            const resDataSemt = await getApiModels("bundles?city.plate="+city.city+"&name_contains="+id+"&isDistrict=true");
+            const resDataYerler = await getApiModels("places?sehir.plate="+city.city+"&name_contains="+id+"&vitrin=true&type=place");
+            const resDataRotalar = await getApiModels("bundles?city.plate="+city.city+"&vitrin=true&isRoute=true&name_contains="+id);
+            const resDataAktivite = await getApiModels("places?sehir.plate="+city.city+"&vitrin=true&type=activity&name_contains="+id);
+            const resDataMeshur = await getApiModels("places?sehir.plate="+city.city+"&vitrin=true&type=iconic&name_contains="+id);
+            const resDataKoleksiyon = await getApiModels("bundles?city.plate="+city.city+"&anavitrin=true&isDistrict=false&name_contains="+id);
+            const resDataEtkinlikler = await getApiModels("events?sehir.plate="+city.city+"&name_contains="+id+"&vitrin=true");
+            const resDataHaberler = await getApiModels("blogs?sehir.plate="+city.city+"&title_contains="+id);
             
+            if( resDataSemt.status 
+                && resDataYerler.status
+                && resDataRotalar.status 
+                && resDataAktivite.status
+                && resDataMeshur.status
+                && resDataKoleksiyon.status 
+                && resDataEtkinlikler.status
+                && resDataHaberler.status
+                && resDataVitrin.status
+                ) {
+                setDataVitrin(resDataVitrin.data);
+                setDataSemt(resDataSemt.data);
+                setDataYerler(resDataYerler.data);
+                setDataRotalar(resDataRotalar.data);
+                setDataAktivite(resDataAktivite.data);
+                setDataMeshur(resDataMeshur.data);
+                setDataKoleksiyon(resDataKoleksiyon.data);
+                setDataEtkinlikler(resDataEtkinlikler.data);
+                setDataHaberler(resDataHaberler.data);
+            }
+        }catch(e){
+            alert(e.message)
         }
-        fetchData();
-    },[]);
+    }
+
+    useEffect(() => {
+        getApi()
+    },[])
+
 
     let { id } = useParams();
     if (!id) {

@@ -58,8 +58,6 @@ const AnaSayfa =()=>{
                 <IkiSiraSwiper></IkiSiraSwiper>
                 <Etkinlikler></Etkinlikler>
                 <Haberler></Haberler>
-                
-                <MiniSlider></MiniSlider>
                 </AppContext.Provider>  
                 
             </>

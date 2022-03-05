@@ -40,7 +40,6 @@ const HavaDurumu =()=>{
                 <div className='hava-durumu-icon'>
                 {(dataDurum !== undefined || dataDurum !== null) ? (
                     <>
-                    {console.log(dataDurum.general)}
                     <InlineSVG src={[havaIcons[dataDurum.general]].icon}/>
                     </>
                 ):(

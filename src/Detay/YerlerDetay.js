@@ -55,7 +55,6 @@ const YerlerDetay =()=>{
                 .map((dataPlaces)=>(
                     (dataPlaces.length !== 0) ? (
                         <>
-                        {console.log(dataPlaces.email === null)}
                         <div className='yerler-detay-cover'>
                             <div className="cover-baslik">
                                 <div className="kategori">
@@ -87,28 +86,43 @@ const YerlerDetay =()=>{
                         <div className="yerler-mini-slider">
                             <MiniSlider></MiniSlider>
                         </div>
+                        
+                        {(dataPlaces.email=== null & dataPlaces.website=== null & dataPlaces.phone=== null & dataPlaces.address=== null) ? (<></>):(
 
-                        <div className="iletisim">
+                            <div className="iletisim">
                             <h2 className='iletisim-baslik'>İletişim Bilgileri</h2>
                             <div className="iletisim-bilgi">
-                                <span className='iletisim-eposta'>
-                                    <InlineSVG src={contactIcons.email}></InlineSVG>
-                                    <span className="koyu">Mail:</span><span className="iletisim-detay">{dataPlaces.email === null ? ("-"):(dataPlaces.email)}</span>
-                                </span>
-                                <span className='iletisim-web'>
-                                    <InlineSVG src={contactIcons.web}></InlineSVG>
-                                    <span className="koyu">Web:</span><span className="iletisim-detay">{dataPlaces.website === null ? ("-"):(dataPlaces.website)}</span>
-                                </span>
-                                <span className='iletisim-telefon'>
-                                    <InlineSVG src={contactIcons.phone}></InlineSVG>
-                                    <span className="koyu">Telefon:</span><span className="iletisim-detay">{dataPlaces.phone === null ? ("-"):(dataPlaces.phone)}</span>
-                                </span>
-                                <span className='iletisim-adres'>
-                                    <InlineSVG src={contactIcons.address}></InlineSVG>
-                                    <span className="koyu">Adres:</span> <span className="iletisim-detay">{dataPlaces.address === null ? ("-"):(dataPlaces.address)}</span>
-                                </span>
+
+                            {dataPlaces.email === null ? (<></>) :
+                            (
+                            <span className='iletisim-eposta'>
+                                <InlineSVG src={contactIcons.email}></InlineSVG>
+                                <span className="koyu">Mail:</span><span className="iletisim-detay">{dataPlaces.email}</span>
+                            </span>)}
+                                
+                            {dataPlaces.website === null ? (<></>) :
+                            (
+                            <span className='iletisim-eposta'>
+                                <InlineSVG src={contactIcons.web}></InlineSVG>
+                                <span className="koyu">Web:</span><span className="iletisim-detay">{dataPlaces.website}</span>
+                            </span>)}
+                                
+                            {dataPlaces.phone === null ? (<></>) :
+                            (
+                            <span className='iletisim-eposta'>
+                                <InlineSVG src={contactIcons.phone}></InlineSVG>
+                                <span className="koyu">Telefon:</span><span className="iletisim-detay">{dataPlaces.phone}</span>
+                            </span>)}
+
+                            {dataPlaces.address === null ? (<></>) :
+                            (
+                            <span className='iletisim-eposta'>
+                                <InlineSVG src={contactIcons.address}></InlineSVG>
+                                <span className="koyu">Adres:</span><span className="iletisim-detay">{dataPlaces.address}</span>
+                            </span>)}
                             </div>
                         </div>
+                        )}
 
                         <div className="detay-yazi">
                                 {dataPlaces.body === null ? (<></>):(parse(dataPlaces.body))}
