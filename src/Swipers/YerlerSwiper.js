@@ -40,7 +40,7 @@ const YerlerSwiper =(props)=>{
 
     return(
         <div className='yerler-swiper'>
-            <NavLink to='/yerler-sirala'>
+            <NavLink to='/yerler-sirala/all'>
                 <TumElemanlar name='Tüm Yerler'></TumElemanlar>
             </NavLink>
         

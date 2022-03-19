@@ -301,7 +301,7 @@ body{
         @apply m-cover z-1 w-60%
     }
     .yerler-detay-cover .cover-baslik .kategori{
-        @apply flex rounded-DEFAULT_2 border-1px border-solid border-white w-fit p-2px
+        @apply flex rounded-DEFAULT_2 border-1px border-solid border-white w-fit p-2px items-center
     }
 
     .yerler-detay-cover .cover-baslik .baslik{
@@ -651,7 +651,9 @@ body{
     .rotalar-swiper .swiper-slide .rotalar-baslik{
         @apply h-full w-90% flex items-end justify-start z-3 m-5% mb-10%
     }
-
+    .ortaalan .yerler-swiper{
+        @apply mt-50px
+    }
     .yerler-swiper .yerler-swiper-kategori-icon{
         @apply flex items-center
     }
@@ -674,7 +676,9 @@ body{
     .yerler-swiper .yerler-swiper-kategori .yerler-swiper-kategori-icon svg, .yerler-sirala .yerler-sirala-kategori .yerler-sirala-kategori-icon svg{
       @apply text-0.5 ml-10px
     }
-    
+    .yerler-sirala .yerler-sirala-kategori .yerler-sirala-kategori-icon{
+        @apply flex items-center
+    }
     .yerler-swiper .yerler-swiper-kategori .yerler-swiper-kategori-icon-adi, .yerler-sirala a .yerler-sirala-kategori .yerler-sirala-kategori-icon-adi{
         @apply ml-10px text-15px
     }

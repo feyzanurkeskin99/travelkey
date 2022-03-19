@@ -78,7 +78,7 @@ function App (){
                             <Route path='/ara' element={ <Ara/>} />
                             <Route path='/yerler-detay' element={ <YerlerDetay/>} />
                             <Route path='/places/:id' element={ <YerlerDetay/>} />
-                            <Route path='/yerler-sirala' element={ <YerlerSirala/>} />
+                            <Route path='/yerler-sirala/:id' element={ <YerlerSirala/>} />
                             <Route path='/bundles/:id' element={ <BundlesYerlerSirala/>} />
                             <Route path='/etkinlikler-sirala' element={ <EtkinliklerSirala/>} />
                             <Route path='/events/:id' element={ <EtkinliklerDetay/>} />

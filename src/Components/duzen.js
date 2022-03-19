@@ -13,13 +13,11 @@ import IkiSiraSwiper from '../Swipers/IkiSiraSwiper';
 import {backgroundIcons, contactIcons, kategoriIcons, locationIcons} from '../icon'
 import InlineSVG from 'svg-inline-react';
 import NotFound from '../Components/NotFound';
-import {NavLink, useParams} from 'react-router-dom'
+import {useParams} from 'react-router-dom'
 import axios from 'axios';
 import { AppContext } from '../Components/Context'
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import parse from 'html-react-parser';
-import slugify from 'react-slugify';
-
 SwiperCore.use([FreeMode,Navigation,Thumbs]);
 
 const YerlerDetay =()=>{
@@ -59,14 +57,12 @@ const YerlerDetay =()=>{
                         <>
                         <div className='yerler-detay-cover'>
                             <div className="cover-baslik">
-                                <NavLink to={"/yerler-sirala/categorie-"+dataPlaces.category.name}>
                                 <div className="kategori">
 
                                     <div className="kategori-icon"><InlineSVG src={kategoriIcons[dataPlaces.category.iconname]}></InlineSVG></div>
 
                                     <div className="kategori-adi">{dataPlaces.category.name}</div>
                                 </div>
-                                </NavLink>
                                 <div className="baslik">{dataPlaces.name}</div>
                             </div>
                             <div className="konum">
