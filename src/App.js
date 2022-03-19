@@ -6,7 +6,9 @@ import UstBar from './Components/UstBar'
 import threeline from './images/three-line.png'
 import iconLogo from './images/logo.jpeg'
 import {BrowserRouter , Routes, Route, useLocation, NavLink,useNavigate} from 'react-router-dom'
-import './ozel.css'
+// import './ozel.css'
+import '../src/Styles/output.css'
+
 import AnaSayfa from './Components/AnaSayfa'
 import Kategoriler from './Components/Kategoriler'
 import Kesfet from './Components/Kesfet'
@@ -23,12 +25,10 @@ import KategoriSirala from './Sırala/KategoriSirala'
 import YerlerSirala from './Sırala/YerlerSirala'
 import BundlesYerlerSirala from './Sırala/BundlesYerlerSirala'
 import KoleksiyonSirala from './Sırala/KoleksiyonSirala'
-import useFetch from 'use-http';
 import HaberlerDetay from './Detay/HaberlerDetay'
 import EtkinliklerDetay from './Detay/EtkinliklerDetay'
-import {backgroundIcons, contactIcons, kategoriIcons, locationIcons} from '../src/icon'
-import InlineSVG from 'svg-inline-react';
 import Ara from './Components/Ara'
+import YanbBar from './Components/YanBar'
 
 function App (){
     const [city, setCity] = useLocalStorageState("city",  "sehirsec");     
@@ -64,55 +64,7 @@ function App (){
                     <div className="app">
                     
                     <UstBar/>
-
-                        <div className="side-bar hidden">
-                            <NavLink to={"/koleksiyonlar-sirala"}>
-                                <div className="side-bar-eleman" onClick={hideButton}>
-                                <div className="sidebar-kategori">
-                                <InlineSVG src={backgroundIcons.bundles}></InlineSVG>
-                                <span>Vitrindekiler</span>
-                                </div>
-                                </div>
-                            </NavLink>
-                            <NavLink to={"/yerler-sirala"}>
-                                <div className="side-bar-eleman">
-                                <div className="sidebar-kategori" onClick={hideButton}>
-                                <InlineSVG src={backgroundIcons.routes}></InlineSVG>
-                                <span>Yerler</span>
-                                </div>
-                                </div>
-                            </NavLink>
-                            <NavLink to={"/koleksiyonlar-sirala"}>
-                                <div className="side-bar-eleman">
-                                <div className="sidebar-kategori" onClick={hideButton}>
-                                <InlineSVG src={backgroundIcons.collections}></InlineSVG>
-                                <span>Koleksiyonlar</span>
-                                </div>
-                                </div>
-                            </NavLink>
-                            <NavLink to={"/haberler-sirala"}>
-                                <div className="side-bar-eleman">
-                                <div className="sidebar-kategori" onClick={hideButton}>
-                                <InlineSVG src={backgroundIcons.blogs}></InlineSVG>
-                                <span>Haberler</span>
-                                </div>
-                                </div>
-                            </NavLink>
-                            <NavLink to={"/etkinlikler-sirala"}>
-                                <div className="side-bar-eleman" onClick={hideButton}>
-                                <div className="sidebar-kategori">
-                                <InlineSVG src={backgroundIcons.events}></InlineSVG>
-                                <span>Etkinlikler</span>
-                                </div>
-                                </div>
-                            </NavLink>
-                            <div className="side-bar-eleman" >
-                                <div className="sidebar-kategori" onClick={sehirSec}>
-                                <InlineSVG src={backgroundIcons.city}></InlineSVG>
-                                <span>Şehir Seç</span>
-                                </div>
-                            </div>
-                        </div>
+                        <YanbBar/>
                         <div className='ortaalan'>
                         
                         <Routes>

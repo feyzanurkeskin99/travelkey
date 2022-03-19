@@ -2,7 +2,8 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import {BrowserRouter , Routes, Route} from 'react-router-dom'
 import App from './App'
-import './ozel.css'
+// import './ozel.css'
+import './Styles/output.css'
 
 ReactDOM.render(
     <BrowserRouter>

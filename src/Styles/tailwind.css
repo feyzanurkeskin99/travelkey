@@ -1,0 +1,978 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+    background-color: #ffffff!important;
+}
+
+:root{
+    --birincil:#004359ff;
+    --light:#008dbdff;
+    --ikincil:#24c7ffff;
+    --overlay:#dedddaff;
+    --red:rgb(255, 0, 0);
+    --altbar-hover: #00202a;
+    --ortaalan: #d1d1d1;
+    --ortaalan-cover: #74E2FF;
+    --darkgrey: #a9a9a9;
+    --ortaalan-ara: #BBDADF;
+    --link-active-before: #c0d8df7a;
+    --link-active-after: #4cc6fb;
+    --link-border: #8be1fe;
+}   
+.app{
+    @apply flex flex-col items-center justify-around h-100vh
+}
+
+
+@media only screen and (max-width : 900px){
+    .altbar .altbar-link.active .altbar-button, .altbar .altbar-link:hover .altbar-button {
+                @apply flex items-center justify-center rounded-DEFAULT_1 bg-altbar-hover-color fill-birincil-color;
+            }
+
+    @layer components{
+        .altbar .altbar-link .altbar-button:before{
+            @apply  bg-buton-before-color w-0 h-0 top-50%;
+            content:"";
+            -webkit-filter: blur(9px);
+            filter: blur(9px);
+            transition: all 250ms ease-in-out;
+            
+        } 
+        
+        
+
+        .altbar .altbar-link.active .altbar-button:before {
+            @apply  bg-link-active-before-color w-50% h-50% left-50% top-50% absolute z-0;
+            content:"";
+            transform: translate(-50%, -50%);
+            filter: blur(9px);
+        }
+
+
+        .altbar .altbar-link.active .altbar-button:after {
+            @apply bg-link-active-after-color w-5px h-2px left-50% bottom-15% absolute z-0 border-link-border-color rounded-5;
+            content:"";
+            transform: translate(-50%, -50%);
+        }
+
+        .ortaalan .cover:before{
+            @apply  absolute w-full h-10 rounded-20px bottom-0 left-0 z-0;
+            content:"";
+            background: linear-gradient(0deg, #04212d, transparent);
+        } 
+        .ortaalan .yerler-detay-cover:before {
+            @apply  absolute w-full h-10 rounded-80px bottom-0 left-0 z-0;
+            content:"";
+            background: linear-gradient(0deg, #04212d, transparent);
+        }
+/* buraya bak tekrar !!!*/ 
+        .haberler-swiper .swiper-slide .haberler-ust:before{
+            @apply  absolute w-full h-5 rounded-DEFAULT_5 bottom-0 left-0 z-35;
+            content:"";
+            background: linear-gradient(0deg, #04212d, transparent);
+        } 
+        .haberler-sirala .haberler-container .haberler-ust:before{
+            @apply  absolute w-full h-5 rounded-DEFAULT_5 bottom-0 left-0 z-35;
+            content:"";
+            background: linear-gradient(0deg, #04212d, transparent);
+        } 
+/* buraya bak tekrar !!!*/ 
+    .iki-sira-swiper .swiper-slide .iki-sira-alt:before, .iki-sira-swiper .swiper-slide .iki-sira-ust:before{
+        @apply  absolute w-full h-4 rounded-DEFAULT_5 bottom-0 left-0 z-1;
+        content:"";
+        background: linear-gradient(0deg, #04212d, transparent);
+    } 
+    .rotalar-swiper .swiper-slide:before{
+        @apply  absolute w-full h-3 rounded-DEFAULT_5 bottom-0 left-0 z-3;
+        content:"";
+        background: linear-gradient(0deg, #04212d, transparent);
+    }
+    .yerler-swiper .swiper-slide:before{
+        @apply  absolute w-full h-5 rounded-DEFAULT_5 bottom-0 left-0 z-1;
+        content:"";
+        background: linear-gradient(0deg, #04212d, transparent);
+    }
+    .yerler-swiper .swiper-slide:after{
+        @apply absolute w-full h-3 rounded-20px top-0 left-0 z-5;
+        content:"";
+        background: linear-gradient(180deg, gray, transparent);
+    }
+    
+    .yerler-sirala .yerler-container:before{
+        @apply  absolute w-full h-3 rounded-20px top-0 left-0 z-2;
+        content:"";
+        background: linear-gradient(180deg, gray, transparent);
+    }
+            
+    .kategoriler-scrolling-carousel .swiper-slide:before{
+        @apply  absolute w-full h-5 rounded-DEFAULT_5 bottom-0 left-0 z-35;
+        content:"";
+        background: linear-gradient(0deg, #04212d, transparent);
+    }
+    .vitrin-koleksiyon .swiper-slide:before{
+        @apply  absolute w-full h-5 rounded-DEFAULT_5 bottom-0 left-0 z-35;
+        content:"";
+        background: linear-gradient(0deg, #04212d, transparent);
+    }
+    .etkinlikler .etkinlikler-satir:before, .etkinlikler-sirala .etkinlikler-satir:before{
+        @apply  absolute w-45% h-full rounded-DEFAULT_1 bottom-0 right-0 z-0;
+        content:"";
+        background: linear-gradient(-90deg, #04212d, transparent);
+    } 
+        
+    .yerler-sirala a .yerler-container:after{
+        @apply w-full h-5 rounded-DEFAULT_5 bottom-0 left-0 z-0;
+        content:"";
+        background: linear-gradient(0deg, #04212d, transparent);
+    }
+
+    }
+
+    .mt-20{
+        @apply mt-20%
+    }
+    .ara-sayfasi{
+        @apply mt-20%
+    }
+    /* .hidden{
+        @apply hidden
+    } */
+    .side-bar{
+        @apply w-65% bg-transparent absolute mt-10vh z-1000 top-0 left-0 h-h-calc
+    }
+    .side-bar-eleman{
+        @apply bg-birincil-color rounded w-full h-14% mb-10px p-5px
+    }
+    .sidebar-kategori{
+        @apply w-full h-full bg-overlay-color rounded flex p-5px justify-start flex-wrap font-bold 
+    }
+    .sidebar-kategori svg{
+        @apply text-5xl opacity-50
+    }
+    .sidebar-kategori svg .fa-primary{
+        @apply fill-birincil-color 
+    }
+    .sidebar-kategori svg .fa-secondary{
+        @apply fill-ikincil-color 
+    }
+    .giris-ekrani{
+        @apply bg-giris bg-white bg-no-repeat bg-center bg-fixed bg-cover flex items-center justify-center w-93vw h-96vh rounded-DEFAULT_1 
+    }
+    .ui[class*="left labeled"].button>.label{
+        @apply rounded-DEFAULT_2 
+    }
+    a.ui.basic.label:hover{
+        @apply bg-red-color
+    }
+    .altbar{
+        @apply flex justify-around bg-birincil-color w-full h-8vh rounded-DEFAULT_3 z-1000 absolute bottom-0;
+        background: radial-gradient(#1244588f, #124458ab);
+        backdrop-filter: blur(9px);
+    }
+    .altbar .altbar-link{
+        @apply flex items-center grow-2 p-1
+    }
+    .altbar .altbar-link .altbar-button{
+        @apply flex items-center justify-center fill-ikincil-color p-0.75
+    }
+    .altbar  .altbar-link .altbar-button svg{
+        @apply text-1.5 w-full h-full z-1 
+    }
+
+    .altbar .altbar-link.active svg{
+        @apply fill-white
+    }
+    .altbar  .altbar-link .altbar-button{
+        @apply flex items-center justify-center relative
+    }
+
+    .ustbar{
+        @apply flex justify-between items-center h-10vh rounded-DEFAULT_4 w-full p-01em  z-1000 absolute left-0 top-0 backdrop-blur;
+        background: linear-gradient(180deg, #0a0905, #bfb9b900);
+        backdrop-filter: blur(8px);
+        background: radial-gradient(#c2c2c261, #ffffff8c);
+    }
+    .ustbar .ustbar-button{
+        @apply flex items-center pl-10px pr-10px mt-5px mb-5px
+    }
+    .ustbar .ustbar-button.three-line{
+        @apply text-45px
+    }
+    .ustbar .ustbar-name img{
+        @apply h-25px 
+    }
+    .ustbar .city-button{
+        @apply p-5px h-30px text-birincil-color rounded-DEFAULT_1 border-solid border-2 border-birincil-color flex justify-center items-center font-bold
+    }
+    .ustbar .city-button i{
+        @apply mb-5px
+    }
+    .ortaalan { 
+        @apply flex flex-col justify-start w-full h-80vh flex-grow-2 overflow-x-hidden pb-10vh bg-ortaalan-color;
+        overflow-y: overlay;
+    }
+    .ortaalan .ortaalanText{
+        @apply text-25px flex items-center
+    }
+    .ortaalan .cover{
+        @apply flex flex-col items-center justify-end bg-ortaalan-cover-color rounded-DEFAULT_5 w-100vw h-45vh mb-3 bg-ortaalan-cover bg-top bg-cover relative
+    }
+    .ortaalan .cover .title{
+        @apply h-45vh items-end mb-2
+    }
+
+
+    .ortaalan .not-found{
+        @apply flex items-center justify-center w-full h-full
+    }
+    .ortaalan .yerler-detay-cover{
+        @apply flex flex-col items-start justify-end bg-ortaalan-cover-color rounded-DEFAULT_6 w-100vw h-60vh mb-3 bg-ortaalan-cover bg-top bg-cover relative
+    }
+    .yerler-detay-ortaalan .leaflet-container{
+        @apply h-15% 
+    }
+
+    .yerler-detay-ortaalan{
+        @apply w-full flex flex-col items-center
+    }
+    .yerler-detay-ortaalan .yerler-spot{
+        @apply w-90% h-auto border-l-5px border-solid border-birincil-color
+    }
+    .yerler-detay-ortaalan .yerler-spot .yerler-spot-yazi{
+        @apply ml-10px text-birincil-color font-bold
+    }
+    .yerler-detay-ortaalan .mini-slider .swiper{
+        @apply h-auto mt-5px mb-5px
+    }
+    .yerler-detay-ortaalan .yerler-mini-slider{
+        @apply w-full flex items-center justify-center 
+    }
+    .yerler-detay-ortaalan .yerler-mini-slider .mini-slider{
+        @apply h-80px w-4/5 p-10px m-20px bg-birincil-color overflow-hidden rounded
+    }
+    .yerler-detay-ortaalan .iki-sira-swiper{
+        @apply w-90%
+    }
+    .yerler-detay-ortaalan .iletisim .fa-primary{
+        @apply fill-birincil-color
+    }
+    .yerler-detay-ortaalan .iletisim .fa-secondary{
+        @apply fill-ikincil-color
+    }
+    .yerler-detay-ortaalan .iletisim .iletisim-bilgi{
+        @apply flex flex-col
+    }
+    .yerler-detay-ortaalan .iletisim .iletisim-bilgi svg{
+        @apply m-5px
+    }
+    .yerler-detay-ortaalan .iletisim .koyu{
+        @apply font-bold text-birincil-color
+    }
+    .yerler-detay-ortaalan .iletisim{
+        @apply p-30px bg-darkgrey-color rounded w-90%
+    }
+    .yerler-detay-ortaalan .iletisim .iletisim-detay{
+        @apply text-light-color
+    }
+
+
+    .yerler-detay-ortaalan .iletisim .iletisim-baslik{
+        @apply text-birincil-color ml-15px 
+    }
+    
+    .yerler-detay-ortaalan .iletisim span{
+        @apply flex items-center mr-10px p-5px
+    }
+    .yerler-detay-ortaalan .iletisim svg{
+        @apply text-1 
+    }    
+    .yerler-detay-cover .iletisim .konum-alt-icon{
+        @apply text-0.6
+    }
+    .yerler-detay-ortaalan .detay-yazi{
+        @apply m-10px text-black font-bold p-15px text-16px w-full
+    }
+    .yerler-detay-ortaalan .detay-yazi img{
+        @apply w-full
+    }
+    .yerler-detay-cover .cover-baslik{
+        @apply m-cover z-1 w-60%
+    }
+    .yerler-detay-cover .cover-baslik .kategori{
+        @apply flex rounded-DEFAULT_2 border-1px border-solid border-white w-fit p-2px
+    }
+
+    .yerler-detay-cover .cover-baslik .baslik{
+        @apply text-30px w-full h-2.4 leading-1.2 font-bold mt-10px
+    
+    }
+    
+    .yerler-detay-cover .konum, .etkinlikler-detay-cover .konum{
+        @apply w-50px h-100px z-1 absolute right-35px bottom-60px border-1px border-solid border-white rounded-DEFAULT_7 flex flex-col items-center justify-around text-white
+    }
+    
+    .yerler-detay-cover .konum a, .etkinlikler-detay-cover .konum a{
+        @apply w-full h-full absolute
+    }
+    .yerler-detay-cover .konum .konum-ust-icon, .etkinlikler-detay-cover .konum .konum-ust-icon{
+        @apply text-0.5
+    }
+    .yerler-detay-cover .konum .konum-alt-icon, .yerler-detay-cover .konum .konum-alt-icon{
+        @apply text-0.3
+    }
+    .leaflet-container{
+        @apply w-4/5 h-8% w-full rounded
+    }
+
+    .leaflet-control-attribution{
+        @apply hidden 
+    }
+    
+    .yerler-detay-cover .fa-primary, .yerler-detay-cover .fa-secondary, .yerler-detay-cover .cover-baslik .kategori .kategori-adi, .yerler-detay-cover .cover-baslik .baslik{
+        color:white;
+    }
+    .yerler-detay-cover .cover-baslik .kategori div, .yerler-detay-cover .cover-baslik .kategori, .yerler-detay-cover .cover-baslik .baslik{
+        z-index: 35;
+        @apply z-35
+    }
+    
+    .yerler-detay-cover .cover-baslik .kategori svg{
+        @apply text-0.8 text-white mr-5px
+    }
+    .yerler-detay-cover .cover-baslik .kategori svg{
+        @apply fill-white
+    }
+    /* #map { height: 180px; } */
+    
+    .ortaalan .mini-slider .mySwiper2 .swiper-slide img{
+        @apply flex flex-col items-center justify-end bg-ortaalan-cover-color rounded-DEFAULT_5 w-100vw h-45vh mb-3 bg-top bg-cover relative
+    }
+    
+    .ortaalan .mini-slider .swiper-slide{
+        @apply rounded w-50px h-50px
+    }
+    .ortaalan .mini-slider .swiper-wrapper{
+        @apply items-center
+    }
+    .ortaalan .mini-slider .swiper-slide img{
+        @apply rounded h-full
+    }
+
+    .ortaalan .semt-swiper .swiper-slide .semt-adi-ust, .ortaalan .semt-swiper .swiper-slide .semt-adi-alt{
+        @apply rounded-DEFAULT_1 w-full h-1/5 bg-ikincil-color m-10px flex justify-center items-center text-birincil-color font-bold uppercase text-12px
+    }
+    .semt-swiper{
+        @apply mb-20px 
+    }
+    .semt-swiper .swiper-wrapper{
+        @apply ml-25px
+    }
+    .semt-swiper .semt-baslik{
+        @apply text-35px m-types-baslik text-birincil-color font-bold
+    }
+    .ortaalan .semt-swiper .swiper-wrapper .swiper-slide{
+        @apply items-center bg-transparent
+    }
+    .ortaalan .semt-swiper .swiper-slide img{
+        @apply rounded
+    }
+    .semt-swiper .swiper{
+        @apply w-full h-full
+    }
+
+    .semt-swiper .swiper-slide .semt-baslik-ust{
+        @apply w-30% rounded-DEFAULT_1 h-15%
+    }
+
+    .ortaalan .ara{
+        @apply bg-ortaalan-ara-color flex items-center justify-center p-1 rounded-DEFAULT_8 mb-neg-1.5 z-1 shadow-ara w-4/5
+    }
+
+    .ortaalan .title{
+        @apply z-1 flex justify-between p-title w-full
+    }
+
+    .ortaalan .title h2 {
+        @apply text-white text-shadow-title
+    }
+    .ortaalan .title .title-text{
+        @apply text-25px font-bold mb-12px
+    }
+
+    
+    .ortaalan .title span{
+        @apply h-40px w-64px bg-birincil-color rounded-lg p-10px text-white
+    }
+    
+    .ortaalan .ara input{
+        @apply bg-transparent border-none
+    }
+/*         
+    #app {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+       */
+    .swiper {
+        @apply w-240px h-200px mb-10px;
+        overflow:visible!important
+    }
+      .swiper-wrapper{
+        @apply items-center
+      }
+    
+      
+      .kategoriler-swiper-2{
+        @apply mb-types-baslik w-full mt-types-baslik
+      } 
+      .kategoriler-swiper-2 .all-collections-container{
+        @apply mb-0
+      }
+      .kategoriler-swiper-2 .swiper-slide, .kategoriler-swiper-2 .swiper-slide a{
+        @apply flex items-center justify-center rounded text-22px font-bold text-white w-50% h-60% flex-col left-neg25 bg-birincil-color
+      }
+      .kategoriler-swiper-2 .swiper-slide .kategoriler-alt{
+        @apply bg-ikincil-color text-birincil-color text-15px font-extralight w-full absolute bottom-0 h-45px rounded-DEFAULT_9 flex justify-center items-center
+      }
+      
+      .kategoriler-swiper-2 .swiper-slide .kategoriler-ust{
+        @apply bg-birincil-color h-full w-full rounded flex justify-center items-center
+      }
+      .kategoriler-swiper-2 .swiper-slide .kategoriler-ust i{
+        margin-bottom: 35%;
+        @apply mb-35%
+    }
+
+    .haberler-swiper .swiper-slide{
+        @apply w-3/4 h-full flex items-start relative text-22px font-bold text-white m-swiper-slide bg-transparent
+      }
+      .haberler-swiper .swiper-slide .haberler-alt{
+        @apply bg-white text-birincil-color text-15px font-extralight w-full h-90% rounded flex justify-start items-end
+      }
+      
+      .haberler-swiper .swiper-slide .haberler-ust{
+        @apply bg-birincil-color text-white h-70% w-full rounded flex justify-start items-end absolute top-0 z-1000 overflow-hidden
+      }
+      .haberler-swiper .swiper-slide .haberler-ust img{
+        @apply absolute rounded h-full
+      }
+
+      .haberler-sirala{
+        @apply mt-85px flex items-center justify-evenly flex-wrap
+      }
+    
+      .haberler-sirala .haberler-container{
+        @apply w-180px h-175px flex items-start relative text-22px font-bold text-white m-haberler-container
+      }
+      .haberler-sirala .haberler-container .haberler-alt{
+        @apply bg-white text-birincil-color text-15px font-extralight w-180px absolute h-full rounded flex justify-start items-end p-12px
+      }
+
+        
+    .haberler-sirala .haberler-container .haberler-ust{
+        @apply bg-birincil-color h-3/4 w-180px rounded flex justify-start items-end z-1 mb-45px overflow-hidden
+    }
+
+
+
+    .haberler-sirala .haberler-container .haberler-ust img{
+        @apply rounded h-full
+    }
+    .haberler-sirala a{
+        @apply w-50% h-30% flex items-center justify-center
+    }
+
+    .haberler-sirala .haberler-container .haberler-ust .haberler-sirala-tarih, .haberler-swiper .haberler-swiper-tarih{
+        @apply m-10px absolute z-36
+    }
+
+    .haberler-sirala .haberler-sirala-baslik{
+        @apply overflow-hidden whitespace-nowrap block text-ellipsis
+    }
+    .haberler-swiper .haberler-swiper-baslik{
+        @apply overflow-hidden whitespace-nowrap block text-ellipsis p-10px
+    }
+
+    .haber-detay, .etkinlikler-detay{
+        @apply flex z-100 w-full h-full flex-wrap justify-center mt-neg160 bg-ortaalan-color pt-10px rounded-DEFAULT_10
+    }
+    
+    .etkinlikler-detay-ortaalan .leaflet-container{
+        @apply h-20%
+    }
+    .haberler-detay-ortaalan .detay-yazi{
+        @apply ml-10px text-black font-bold p-15px text-16px
+    }
+    .haberler-detay-tarih{
+        @apply flex items-center w-full pl-types-baslik pt-30px text-birincil-color font-bold text-15px
+    }
+    .haberler-detay-tarih svg{
+        @apply text-0.6 text-birincil-color mr-10px
+    }
+
+    
+    .haberler-detay-ortaalan{
+        @apply w-full flex flex-col items-center
+    }
+    .ortaalan .haberler-detay-cover {
+        @apply flex flex-col items-start justify-end bg-ortaalan-cover-color rounded-DEFAULT_6 w-100vw h-60vh mb-3 bg-ortaalan-cover bg-top bg-cover relative
+    }
+    .haberler-detay-ortaalan .haberler-spot{
+        @apply w-90% h-auto border-l-5px border-solid border-birincil-color
+    }
+    .haberler-detay-ortaalan .haberler-spot .haberler-spot-yazi{
+        @apply ml-10px text-birincil-color font-bold text-20px leading-1.2
+    }
+    .haberler-detay-ortaalan .haberler-mini-slider{
+        @apply w-full flex items-center justify-center
+    }
+    .haberler-detay-ortaalan .haberler-mini-slider .mini-slider{
+        @apply h-80px w-4/5 p-10px m-20px bg-birincil-color overflow-hidden rounded
+    }
+
+    .haberler-detay-ortaalan .mini-slider .swiper{
+        @apply h-auto mt-5px mb-5px
+    }
+        
+    .haberler-detay-ortaalan .iletisim .fa-primary{
+    @apply fill-birincil-color
+    }
+    .haberler-detay-ortaalan .iletisim .fa-secondary{
+        @apply fill-ikincil-color
+    }
+    .haberler-detay-ortaalan .iletisim .iletisim-bilgi{
+        @apply flex flex-col
+    }
+
+    .haberler-detay-ortaalan .iletisim .iletisim-bilgi svg{
+        @apply m-5px
+    }
+
+    .haberler-detay-ortaalan .iletisim .koyu{
+        @apply font-bold text-birincil-color
+    }
+
+
+    .haberler-detay-ortaalan .iletisim{
+        @apply p-30px bg-darkgrey-color rounded w-90%
+    }
+
+    .haberler-detay-ortaalan .iletisim .iletisim-detay{
+        @apply text-light-color
+    }
+
+    .haberler-detay-ortaalan .iletisim .iletisim-baslik{
+        @apply text-birincil-color ml-15px
+    }
+    
+    .haberler-detay-ortaalan .iletisim span{
+        @apply flex items-center mr-10px p-5px
+    }
+    
+    .haberler-detay-ortaalan .iletisim svg{
+        @apply text-1
+    }
+    
+    .haberler-detay-cover .iletisim .konum-alt-icon{
+        @apply text-0.6
+    }
+    .haber-detay-baslik, .etkinlikler-detay-baslik{
+        @apply w-4/5 text-19px text-birincil-color font-bold leading-1.2 rounded-24px shadow-baslik flex items-center justify-center p-5px mt-10px
+    }
+    .kategoriler-sirala{
+        @apply mt-85px flex items-center justify-evenly flex-wrap
+    }
+    .kategoriler-sirala .kategoriler-container{
+        @apply w-160px h-150px flex items-end justify-center relative text-22px font-bold text-white m-swiper-slide
+    }
+    .kategoriler-sirala .kategoriler-container .kategoriler-alt{
+        @apply bg-ikincil-color text-birincil-color text-15px font-extralight w-88% absolute h-60px rounded-DEFAULT_9 flex justify-center items-center
+    }
+    .kategoriler-sirala .kategoriler-container .kategoriler-ust{
+        @apply bg-birincil-color h-70% w-140px rounded flex justify-center items-center z-0 mb-30px
+    }
+    
+    .background-icon{
+        @apply absolute top-10px left-40px w-70px h-70px 
+    }
+    .background-icon svg{
+        @apply text-6 opacity-30
+    }
+    .background-icon .background-baslik{
+        @apply absolute top-40px left-50px text-birincil-color text-30px font-black
+    }
+    .iki-sira-swiper .background-icon{
+        @apply top-20px left-20px
+    }
+    .iki-sira-swiper .background-icon svg{
+        @apply text-6 opacity-30
+    }
+
+    .iki-sira-swiper .swiper-slide img{
+        @apply rounded-15px w-full absolute
+    }
+    .iki-sira-swiper .iki-sira-alt-baslik, .iki-sira-swiper .iki-sira-ust-baslik{
+        @apply z-35 leading-1.2 h-1.2 overflow-hidden text-ellipsis w-85% mt-25% whitespace-nowrap
+    }
+
+
+    .iki-sira-swiper .iki-sira-alt, .iki-sira-swiper .iki-sira-ust{
+        @apply flex items-center justify-center h-45% left-neg10% bg-ikincil-color m-10px z-35 rounded text-22px font-bold text-white w-full relative overflow-hidden
+    }
+    .iki-sira-swiper .background-baslik{
+        @apply text-40px w-max
+    }
+    .background-icon .fa-primary{
+        @apply fill-birincil-color
+    }
+    .background-icon .fa-secondary{
+        @apply fill-ikincil-color
+    }
+
+
+    .rotalar-swiper{
+        @apply mt-types-baslik pt-60px relative
+    }
+
+    .rotalar-swiper .swiper-slide img{
+        @apply rounded-15px w-full absolute
+    }
+    .rotalar-swiper .swiper-slide a{
+        @apply z-35 flex rounded text-22px font-bold text-white w-full h-full flex-nowrap flex-col relative overflow-hidden
+    }
+
+    .rotalar-swiper .swiper-slide{
+        @apply flex rounded text-22px font-bold text-white w-full h-60% flex-nowrap flex-col relative overflow-hidden
+    }
+
+    .rotalar-swiper .swiper-slide .rotalar-baslik{
+        @apply h-full w-90% flex items-end justify-start z-3 m-5% mb-10%
+    }
+
+    .yerler-swiper .yerler-swiper-kategori-icon{
+        @apply flex items-center
+    }
+     .yerler-swiper .swiper-slide{
+        @apply flex rounded mr-30px flex-wrap flex-col justify-between text-22px font-bold text-white w-60% h-full left-neg25 relative content-start
+      }
+      .yerler-swiper .swiper-slide a{
+        @apply h-full
+      }
+      .yerler-swiper .swiper-slide img{
+        @apply w-full h-full rounded z-0 absolute
+      }
+      .yerler-swiper .all-collections-container{
+        @apply mt-50px
+    }
+    .yerler-swiper .yerler-swiper-kategori, .yerler-sirala .yerler-sirala-kategori{
+        @apply flex m-swiper-slide text-birincil-color z-35 
+    }
+    
+    .yerler-swiper .yerler-swiper-kategori .yerler-swiper-kategori-icon svg, .yerler-sirala .yerler-sirala-kategori .yerler-sirala-kategori-icon svg{
+      @apply text-0.5 ml-10px
+    }
+    
+    .yerler-swiper .yerler-swiper-kategori .yerler-swiper-kategori-icon-adi, .yerler-sirala a .yerler-sirala-kategori .yerler-sirala-kategori-icon-adi{
+        @apply ml-10px text-15px
+    }
+    .yerler-swiper .yerler-swiper-baslik{
+        @apply m-15px z-3 text-17px w-4/5 
+    }
+    
+    .yerler-sirala a .yerler-sirala-baslik{
+      @apply m-15px z-1 text-20px absolute bottom-5px
+    }
+
+    .yerler-sirala .yerler-container img{
+        @apply w-full h-full rounded z-0 absolute
+    }
+    
+    .yerler-swiper .yerler-swiper-kategori-adi, .yerler-sirala a .yerler-sirala-kategori-adi{
+        @apply text-15px mt-3px ml-5px 
+    }
+    
+    .yerler-swiper .yerler-types-baslik{
+        @apply w-4/5 mt-types-baslik 
+    }
+    
+    .yerler-swiper.yerler-types .yerler-types-baslik-container{
+        @apply w-full h-25% flex content-center items-center justify-center flex-col text-25px text-birincil-color font-bold
+    }
+    .yerler-swiper.yerler-types{
+        @apply mb-30px
+    }
+    
+    .yerler-swiper.yerler-types .swiper-slide{
+        @apply content-start
+    }
+    
+    .yerler-sirala a{
+        @apply mt-types-baslik flex flex-wrap justify-around w-50%
+    }
+    
+    .yerler-sirala a .yerler-container{
+        @apply flex items-start w-full bg-ikincil-color rounded m-types-baslik flex-wrap content-between flex-col justify-between text-22px font-bold text-white h-full relative
+    }
+    
+    .yerler-sirala{
+        @apply flex flex-wrap w-full mt-70px
+    }
+        
+    .koleksiyonlar-sirala{
+        @apply mt-85px h-86% flex flex-wrap justify-around
+    }
+    .koleksiyonlar-sirala .koleksiyonlar-container{
+        @apply flex items-start justify-center rounded text-22px font-bold text-white w-90% h-50% -left-25% flex-wrap bg-ikincil-color m-swiper-slide shadow-koleksiyon
+    }
+
+    .koleksiyonlar-sirala .koleksiyon-sirala-ust{
+        @apply h-4/5 w-95% bg-light-color relative top-2% rounded 
+    }
+
+    .koleksiyonlar-sirala .koleksiyon-sirala-ust img{
+        @apply w-full h-full object-cover rounded
+    }
+
+    .koleksiyonlar-sirala .koleksiyon-sirala-alt{
+        @apply w-95% h-10% bg-light-color rounded-DEFAULT_1 flex flex-nowrap items-center justify-around 
+    }
+    .koleksiyonlar-sirala .koleksiyon-sirala-alt-baslik{
+        @apply w-75% leading-1.2 h-1.2 overflow-hidden whitespace-nowrap block text-ellipsis
+    }
+
+    .koleksiyonlar-sirala a {
+        @apply w-15% h-4/5 bg-ikincil-color rounded-DEFAULT_1 text-10px flex justify-center shadow-koleksiyon-a
+    }
+
+    .koleksiyonlar-sirala a .koleksiyon-sirala-buton .fa-primary{
+        @apply fill-birincil-color
+    }
+    .koleksiyonlar-sirala a .koleksiyon-sirala-buton .fa-secondary{
+        @apply fill-light-color 
+    }
+
+
+        .iki-sira-swiper{
+            @apply h-420px relative bg-white flex justify-evenly flex-wrap rounded-DEFAULT_7 pt-100px pb-30px pl-neg15 mt-30px ml-15px mr-15px mb-10%
+        }
+        .iki-sira-swiper .swiper{
+            @apply h-full mt-10px
+        }
+        
+        .iki-sira-swiper .swiper-slide {
+            @apply bg-transparent h-300px mt-auto
+        }
+        .iki-sira-swiper .swiper-wrapper {
+            @apply h-full
+        }
+        .iki-sira-swiper .swiper-slide .iki-sira-ust, .iki-sira-swiper .swiper-slide .iki-sira-alt{
+            @apply flex items-center justify-center rounded text-22px font-bold text-white w-full h-45% -left-10% bg-ikincil-color m-10px
+        }
+        .kategoriler-scrolling-carousel{
+            @apply mb-130px
+        }
+        
+        .kategoriler-scrolling-carousel .swiper-slide{
+            @apply flex items-end justify-start rounded text-22px font-bold text-white mt-60px h-150% overflow-hidden
+        }
+        .kategoriler-scrolling-carousel a{
+            @apply h-111%
+        }
+
+        .kategoriler-scrolling-carousel .swiper-slide img{
+            @apply rounded-15px h-full relative
+        }
+        
+        .kategoriler-scrolling-carousel .koleksiyon-swiper-baslik{
+            @apply absolute z-1000 m-types-baslik leading-1.2 h-1.2 overflow-hidden whitespace-nowrap block text-ellipsis w-85%
+        }
+        
+        .kategoriler-scrolling-carousel .anavitrin-koleksiyon-baslik-container{
+            @apply w-full h-40% mt-types-baslik mb-types-baslik flex flex-col justify-center items-center
+        }
+        .kategoriler-scrolling-carousel .anavitrin-koleksiyon-baslik{
+            @apply w-75% leading-1.2 overflow-hidden block text-ellipsis text-30px text-birincil-color font-bold mt-30px
+        }
+        .kategoriler-scrolling-carousel .anavitrin-koleksiyon-spot{
+            @apply w-75% leading-1.2 h-3.6 overflow-hidden block text-ellipsis text-gray-500
+        }
+
+        
+    .vitrin-koleksiyon{
+        @apply mb-60px
+    }
+
+    .vitrin-koleksiyon .swiper-slide{
+        @apply flex items-end justify-start rounded text-22px font-bold text-white mt-60px h-150%
+    }
+
+    .vitrin-koleksiyon .swiper-slide a{
+        @apply h-full
+    }
+
+
+    .vitrin-koleksiyon .swiper-slide img{
+        @apply rounded h-full relative
+    }
+
+    .vitrin-koleksiyon .vitrin-koleksiyon-swiper-baslik{
+        @apply absolute z-1000 m-types-baslik leading-1.2 h-1.2 overflow-hidden whitespace-nowrap block text-ellipsis w-85%
+    }
+
+    .etkinlikler{
+        @apply flex flex-wrap w-full justify-center items-center
+    }
+    .etkinlikler-sirala{
+        @apply flex flex-wrap w-full justify-center items-center mt-100px
+    }
+    .etkinlikler a, .etkinlikler-sirala a{
+        @apply w-full flex justify-center
+    }
+    .etkinlikler .all-collections-container, .etkinlikler-sirala .all-collections-container{
+        @apply w-full
+    }
+    .etkinlikler .etkinlikler-satir, .etkinlikler-sirala .etkinlikler-satir{
+        @apply relative flex items-center w-90% h-80px bg-white mb-15px rounded-DEFAULT_1
+    }
+
+
+    .etkinlikler .etkinlikler-satir .tarih, .etkinlikler-sirala .etkinlikler-satir .tarih{
+        @apply flex items-center w-115px text-birincil-color ml-10px font-bold
+    }
+    .etkinlikler .etkinlik-adi, .etkinlikler-sirala .etkinlik-adi{
+        @apply text-20px mt-0 ml-15px text-birincil-color leading-1.2 overflow-hidden whitespace-nowrap block text-ellipsis w-55% font-bold
+    }
+    .etkinlikler .tarih h2, .etkinlikler-sirala .tarih h2{
+        @apply text-51px mb-0 mr-5px ml-5px font-bold
+    }
+    .etkinlikler .tarih h3, .etkinlikler-sirala .tarih h3{
+        @apply mt-0 text-15px
+    }
+
+    .etkinlikler .tarih h4, .etkinlikler-sirala .tarih h4{
+    @apply mb-0 text-20px
+    }
+
+    .etkinlikler-detay{
+        @apply flex z-100 w-full h-full flex-wrap justify-center mt-neg160 bg-ortaalan-color pt-10px rounded-DEFAULT_10
+    }
+    .etkinlikler-detay-ortaalan .detay-yazi{
+        @apply ml-10px text-black font-bold p-15px text-16px
+    }
+    .etkinlikler-detay-tarih{
+        @apply flex items-center w-full pl-types-baslik pt-30px text-birincil-color font-bold text-15px
+    }
+    .etkinlikler-detay-tarih svg{
+        @apply text-0.6 text-birincil-color mr-10px
+    }
+    
+    .etkinlikler-detay-ortaalan{
+        @apply w-full flex flex-col items-center
+    }
+    .ortaalan .etkinlikler-detay-cover {
+        @apply flex flex-col items-start justify-end bg-ortaalan-cover-color rounded-DEFAULT_6 w-100vw h-60vh mb-3 bg-ortaalan-cover bg-top bg-cover relative
+    }
+    .etkinlikler-detay-ortaalan .etkinlikler-spot{
+        @apply w-90% h-auto border-l-5px border-solid border-birincil-color
+    }
+    .etkinlikler-detay-ortaalan .etkinlikler-spot .etkinlikler-spot-yazi{
+        @apply ml-10px text-birincil-color font-bold
+    }
+    .etkinlikler-detay-ortaalan .etkinlikler-mini-slider{
+        @apply w-full flex items-center justify-center
+    }
+    .etkinlikler-detay-ortaalan .etkinlikler-mini-slider .mini-slider{
+        @apply h-80px w-4/5 p-10px m-20px bg-birincil-color overflow-hidden rounded
+    }
+    
+    .etkinlikler-detay-ortaalan .mini-slider .swiper{
+        @apply h-auto mt-5px mb-5px
+    }
+    
+    .etkinlikler-detay-ortaalan .iletisim .fa-primary{
+        @apply fill-birincil-color
+    }
+    .etkinlikler-detay-ortaalan .iletisim .fa-secondary{
+        @apply fill-ikincil-color
+    }
+    .haberler-detay-ortaalan .iletisim .iletisim-bilgi{
+        @apply flex flex-col
+    }
+    
+    .etkinlikler-detay-ortaalan .iletisim .iletisim-bilgi svg{
+        @apply m-5px
+    }
+    
+    .etkinlikler-detay-ortaalan .iletisim .koyu{
+        @apply font-bold text-birincil-color
+    }
+    
+    
+    .etkinlikler-detay-ortaalan .iletisim{
+        @apply p-30px bg-darkgrey-color rounded w-90% mt-types-baslik mb-30px
+    }
+    
+    .etkinlikler-detay-ortaalan .iletisim .iletisim-detay{
+        @apply text-light-color
+    }
+    
+    .etkinlikler-detay-ortaalan .iletisim .iletisim-baslik{
+        @apply text-birincil-color ml-15px
+    }
+    
+    .etkinlikler-detay-ortaalan .iletisim span{
+        @apply flex items-center mr-10px p-5px
+    }
+    
+    .etkinlikler-detay-ortaalan .iletisim svg{
+        @apply text-1
+    }
+    
+    .etkinlikler-detay-cover .iletisim .konum-alt-icon{
+        @apply text-0.6
+    }
+
+    .swiper-slide{
+        @apply bg-ikincil-color
+    }
+    .all-collections-container{
+        @apply flex justify-end mr-10px mb-types-baslik mt-types-baslik
+    }
+    
+    .all-collections{
+        @apply pl-10px flex items-center h-25px w-130px bg-ortaalan-cover-color whitespace-nowrap overflow-hidden text-clip rounded-DEFAULT_8 mb-10px
+    }
+
+    .all-collections span{
+        @apply text-10px
+    }
+    .all-collections:hover{
+        @apply pl-10px flex items-center h-25px w-130px bg-birincil-color text-ortaalan-cover-color whitespace-nowrap overflow-hidden text-clip rounded-DEFAULT_8 mb-10px fill-ortaalan-cover-color
+    }
+
+    .all-collections svg{
+        /* height: inherit;  yazamadım nasıl olacak?*/
+        @apply p-2px h-full
+    }
+    
+    .hava-durumu{
+        @apply h-80px w-150px bg-birincil-color rounded-1 p-10px text-white columns-1 relative
+    }
+
+    .hava-durumu-derece{
+        @apply m-0 text-20px font-semibold
+    }
+    .hava-durumu-sehir{
+        @apply m-0 text-10px font-thin
+    }
+    .hava-durumu-durum{
+        @apply m-0 text-15px font-normal overflow-hidden whitespace-nowrap block text-ellipsis w-85%
+    }
+    .hava-durumu-icon{
+        @apply absolute top-0 right-0 w-70px h-70px opacity-50
+    }
+    
+}

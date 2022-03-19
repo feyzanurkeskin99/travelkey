@@ -1,11 +1,11 @@
-import React, {useContext, useEffect, useState} from 'react'
+import React, {useEffect, useState, useContext} from 'react'
 import ReactDOM from 'react-dom'
 import { Icon } from 'semantic-ui-react'
 import KategorilerSwiper2 from '../Swipers/KategorilerSwiper2'
 import {havaIcons, conditions} from '../icon'
 import InlineSVG from 'svg-inline-react';
 import axios from 'axios';
-
+import { getWeatherApiModels } from '../Models/ApiModels';
 import { AppContext } from './Context'
 
 const HavaDurumu =()=>{
@@ -14,21 +14,28 @@ const HavaDurumu =()=>{
     
     const [data, setData]=useState([]);
     const [dataDerece, setDataDerece]=useState([]);
-    const [dataDurum, setDataDurum]=useState("");
+    const [dataDurum, setDataDurum]=useState("default");
     var durum=conditions;
     
 
-    useEffect(()=>{
-        const fetchData = async ()=>{
-            await axios.get('https://service.kod8.app/data/hava/hava_trt.json')
-            .then(response => {
-                setData(response.data[city.city].durum[0].condition);
-                setDataDerece(response.data[city.city].durum[0]);
-                setDataDurum(durum[response.data[city.city].durum[0].condition]);
-            })
+    const getWeatherApi = async() => {
+        try{
+            const res = await getWeatherApiModels();
+            if(res.status) {
+                setData(res.data[city.city].durum[0].condition);
+                setDataDerece(res.data[city.city].durum[0]);
+                setDataDurum(durum[res.data[city.city].durum[0].condition].general);
+            }
+        }catch(e){
+            alert(e.message)
         }
-        fetchData();
-    },[]);
+    }
+
+    useEffect(() => {
+        getWeatherApi()
+    },[])
+
+
 
         return(
             <div className='hava-durumu'>
@@ -38,10 +45,8 @@ const HavaDurumu =()=>{
                     <h2 className='hava-durumu-durum'>{data}</h2>
                 </div>
                 <div className='hava-durumu-icon'>
-                {(dataDurum !== undefined || dataDurum !== null) ? (
-                    <>
-                    <InlineSVG src={[havaIcons[dataDurum.general]].icon}/>
-                    </>
+                {(dataDurum !== undefined || dataDurum !== null || dataDurum !== "default") ? (
+                    <InlineSVG src={[havaIcons[dataDurum]][0].icon}/>
                 ):(
                     <InlineSVG src={havaIcons.cloudy.icon}/>
                 )}

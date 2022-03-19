@@ -89,13 +89,19 @@ const conditions = {
     },
 }
 const havaIcons={
-    "sunny":{
+    "clear":{
         "iconID":"1",
         "durum":["Güneşli", "Açık"],
         "icon":`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><g><circle cx="32" cy="32" r="11.64" fill="#f4a71d"/><path fill="none" stroke="#f4a71d" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3" d="M32 15.71V9.5M32 54.5v-6.21M43.52 20.48l4.39-4.39M16.09 47.91l4.39-4.39M20.48 20.48l-4.39-4.39M47.91 47.91l-4.39-4.39M15.71 32H9.5M54.5 32h-6.21"/><animateTransform attributeName="transform" dur="45s" from="0 32 32" repeatCount="indefinite" to="360 32 32" type="rotate"/></g></svg>`,
         "resim":"GÜNEŞLİ RESİM LİNKİ"
         },
     "cloudy":{
+        "iconID":"2",
+        "durum":["Az Bulutlu", "Parçalı Bulutlu", "Çok Bulutlu"],
+        "icon":`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><clipPath id="a"><path fill="none" d="M10.55 34.21l-3.83-3.42-2-6 1-7 4-5 5-3h6l5 1 3 3 2.56 4.36-4.56 4.64h-5l-5 5v3l-6.17 3.42z"/></clipPath></defs><g clip-path="url(#a)"><g><circle cx="19.22" cy="24.29" r="5.95" fill="#f4a71d"/><path fill="none" stroke="#f4a71d" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M19.22 15.97v-3.18M19.22 35.79v-3.17M25.11 18.4l2.24-2.24M11.09 32.42l2.24-2.24M13.33 18.4l-2.24-2.24M27.35 32.42l-2.24-2.24M10.89 24.29H7.72M30.72 24.29h-3.17"/><animateTransform attributeName="transform" dur="45s" from="0 19.22 24.293" repeatCount="indefinite" to="360 19.22 24.293" type="rotate"/></g></g><path fill="#efefef" stroke="#efefef" stroke-miterlimit="10" stroke-width="3" d="M46.5 31.5h-.32a10.49 10.49 0 00-19.11-8 7 7 0 00-10.57 6 7.21 7.21 0 00.1 1.14A7.5 7.5 0 0018 45.5a4.19 4.19 0 00.5 0v0h28a7 7 0 000-14z"/></svg>`,
+        "resim":"GÜNEŞLİ RESİM LİNKİ"
+        },
+    "default":{
         "iconID":"2",
         "durum":["Az Bulutlu", "Parçalı Bulutlu", "Çok Bulutlu"],
         "icon":`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><clipPath id="a"><path fill="none" d="M10.55 34.21l-3.83-3.42-2-6 1-7 4-5 5-3h6l5 1 3 3 2.56 4.36-4.56 4.64h-5l-5 5v3l-6.17 3.42z"/></clipPath></defs><g clip-path="url(#a)"><g><circle cx="19.22" cy="24.29" r="5.95" fill="#f4a71d"/><path fill="none" stroke="#f4a71d" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M19.22 15.97v-3.18M19.22 35.79v-3.17M25.11 18.4l2.24-2.24M11.09 32.42l2.24-2.24M13.33 18.4l-2.24-2.24M27.35 32.42l-2.24-2.24M10.89 24.29H7.72M30.72 24.29h-3.17"/><animateTransform attributeName="transform" dur="45s" from="0 19.22 24.293" repeatCount="indefinite" to="360 19.22 24.293" type="rotate"/></g></g><path fill="#efefef" stroke="#efefef" stroke-miterlimit="10" stroke-width="3" d="M46.5 31.5h-.32a10.49 10.49 0 00-19.11-8 7 7 0 00-10.57 6 7.21 7.21 0 00.1 1.14A7.5 7.5 0 0018 45.5a4.19 4.19 0 00.5 0v0h28a7 7 0 000-14z"/></svg>`,
@@ -195,4 +201,99 @@ const havaIcons={
     const dateIcon={
         "datetime":`<svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="calendar-alt" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-calendar-alt fa-w-14 fa-fw fa-2x"><g class="fa-group"><path fill="currentColor" d="M0 192v272a48 48 0 0 0 48 48h352a48 48 0 0 0 48-48V192zm128 244a12 12 0 0 1-12 12H76a12 12 0 0 1-12-12v-40a12 12 0 0 1 12-12h40a12 12 0 0 1 12 12zm0-128a12 12 0 0 1-12 12H76a12 12 0 0 1-12-12v-40a12 12 0 0 1 12-12h40a12 12 0 0 1 12 12zm128 128a12 12 0 0 1-12 12h-40a12 12 0 0 1-12-12v-40a12 12 0 0 1 12-12h40a12 12 0 0 1 12 12zm0-128a12 12 0 0 1-12 12h-40a12 12 0 0 1-12-12v-40a12 12 0 0 1 12-12h40a12 12 0 0 1 12 12zm128 128a12 12 0 0 1-12 12h-40a12 12 0 0 1-12-12v-40a12 12 0 0 1 12-12h40a12 12 0 0 1 12 12zm0-128a12 12 0 0 1-12 12h-40a12 12 0 0 1-12-12v-40a12 12 0 0 1 12-12h40a12 12 0 0 1 12 12zm-80-180h32a16 16 0 0 0 16-16V16a16 16 0 0 0-16-16h-32a16 16 0 0 0-16 16v96a16 16 0 0 0 16 16zm-192 0h32a16 16 0 0 0 16-16V16a16 16 0 0 0-16-16h-32a16 16 0 0 0-16 16v96a16 16 0 0 0 16 16z" class="fa-secondary"></path><path fill="currentColor" d="M448 112v80H0v-80a48 48 0 0 1 48-48h48v48a16 16 0 0 0 16 16h32a16 16 0 0 0 16-16V64h128v48a16 16 0 0 0 16 16h32a16 16 0 0 0 16-16V64h48a48 48 0 0 1 48 48z" class="fa-primary"></path></g></svg>`
     }
-    export  {conditions, collectionIcons, havaIcons, navIcons,kategoriIcons,backgroundIcons,contactIcons,locationIcons, dateIcon};
+
+    const headerIcon={
+        "menu":`<svg
+        height="24px"
+        viewBox="0 0 24 24"
+        width="24px"
+        fill="#000000"
+        version="1.1"
+        id="svg6"
+        sodipodi:docname="menu_black_24dp (1).svg"
+        inkscape:version="1.1 (c68e22c387, 2021-05-23)"
+        xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+        xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:svg="http://www.w3.org/2000/svg">
+         <defs
+            id="defs10" />
+         <sodipodi:namedview
+            id="namedview8"
+            pagecolor="#505050"
+            bordercolor="#eeeeee"
+            borderopacity="1"
+            inkscape:pageshadow="0"
+            inkscape:pageopacity="0"
+            inkscape:pagecheckerboard="0"
+            showgrid="false"
+            inkscape:zoom="18.708333"
+            inkscape:cx="2.8864143"
+            inkscape:cy="9.5412027"
+            inkscape:window-width="1920"
+            inkscape:window-height="1057"
+            inkscape:window-x="-8"
+            inkscape:window-y="-8"
+            inkscape:window-maximized="1"
+            inkscape:current-layer="svg6" />
+         <path
+            d="M0 0h24v24H0V0z"
+            fill="none"
+            id="path2" />
+         <path
+            d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
+            id="path4"
+            style="fill:#004359;fill-opacity:1" />
+       </svg>`,
+       "close":`<svg
+       height="24px"
+       viewBox="0 0 24 24"
+       width="24px"
+       fill="#000000"
+       version="1.1"
+       id="svg6"
+       sodipodi:docname="close_black_24dp.svg"
+       inkscape:version="1.1 (c68e22c387, 2021-05-23)"
+       xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+       xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+       xmlns="http://www.w3.org/2000/svg"
+       xmlns:svg="http://www.w3.org/2000/svg">
+      <defs
+         id="defs10" />
+      <sodipodi:namedview
+         id="namedview8"
+         pagecolor="#505050"
+         bordercolor="#eeeeee"
+         borderopacity="1"
+         inkscape:pageshadow="0"
+         inkscape:pageopacity="0"
+         inkscape:pagecheckerboard="0"
+         showgrid="false"
+         inkscape:zoom="18.708333"
+         inkscape:cx="7.6436526"
+         inkscape:cy="13.603563"
+         inkscape:window-width="1920"
+         inkscape:window-height="1057"
+         inkscape:window-x="-8"
+         inkscape:window-y="-8"
+         inkscape:window-maximized="1"
+         inkscape:current-layer="svg6" />
+      <path
+         d="M0 0h24v24H0V0z"
+         fill="none"
+         id="path2" />
+      <g
+         style="fill:#000000"
+         id="g839">
+        <path
+           d="M 0,0 H 24 V 24 H 0 Z"
+           fill="none"
+           id="path827" />
+        <path
+           d="M 19,6.41 17.59,5 12,10.59 6.41,5 5,6.41 10.59,12 5,17.59 6.41,19 12,13.41 17.59,19 19,17.59 13.41,12 Z"
+           id="path829"
+           style="fill:#004359;fill-opacity:1" />
+      </g>
+    </svg>`
+    }
+    export  {conditions, collectionIcons, havaIcons, navIcons,kategoriIcons,backgroundIcons,contactIcons,locationIcons, dateIcon, headerIcon};

@@ -37,7 +37,7 @@ const AnaSayfa =()=>{
                 <AppContext.Provider value={{city, setCity}}>
                 <div className='cover'>
                 <div className='title'>
-                    <h2>Nereye gitmek  <br/>istiyorsun?</h2>
+                    <h2 className="title-text">Nereye gitmek  <br/>istiyorsun?</h2>
                     <HavaDurumu></HavaDurumu>
                 </div>
                 <div className='ara'>

@@ -26,7 +26,8 @@ body{
     display: none;
   }
   .side-bar{
-    width: 25%;
+    
+    width: 65%;
     height: calc(10vh*9);
     background-color: transparent;
     position: absolute;
@@ -43,18 +44,19 @@ body{
     margin-bottom: 10px;
     padding: 5px;
   }
-  .sidebar-kategori{
+  .sidebar-kategori{    
     width: 100%;
     height: 100%;
-    background-color: #dedddaff;
     background-color: var(--overlay);
     border-radius: 18px;
     display: flex;
     padding: 5px;
-    justify-content: center;
+    justify-content: flex-start;
     flex-wrap: wrap;
     font-weight: bolder;
+    color: #004359ff;
     color: var(--birincil);
+    align-items: center;
   }
   .sidebar-kategori svg{
     font-size: 3em;
@@ -84,7 +86,7 @@ body{
       border-radius: 5px!important;
   }
   a.ui.basic.label:hover{
-      color:red
+      color:rgb(255, 0, 0)
   }
   .altbar {
     display: flex;
@@ -619,14 +621,20 @@ z-index: 0;
   color: white;
   text-shadow: 4px 4px 11px #000000;
 }
+.ortaalan .title .title-text{
+  font-size: 25px!important;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
 
 .ortaalan .title span{
- height: 40px;
- width: 64xp;
- background: var(--birincil);
- border-radius: .5em;
- padding: 10px;
- color: white;
+  height: 40px;
+  width: 64xp;
+  background: var(--birincil);
+  border-radius: .5em;
+  padding: 10px;
+  color: white;
 }
 
 .ortaalan .ara input{
@@ -1059,7 +1067,6 @@ z-index: 0;
     margin-bottom: 30px;
   }
 
-
   .background-icon{
     position: absolute;
     top: 10px;
@@ -1077,6 +1084,7 @@ z-index: 0;
     left: 50px;
     color: var(--birincil);
     font-size: 30px;
+    font-weight: 900;
   }
   .iki-sira-swiper .background-icon{
     top: 20px;
