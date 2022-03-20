@@ -5,6 +5,7 @@
   "license": "MIT",
   "homepage": "https://seyyah.tk",
   "dependencies": {
+    "antd": "^4.19.2",
     "axios": "^0.25.0",
     "bootstrap": "^5.1.3",
     "dompurify": "^2.3.5",

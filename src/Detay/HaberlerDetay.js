@@ -17,6 +17,11 @@ import {useParams} from 'react-router-dom';
 import axios from 'axios';
 import { AppContext } from '../Components/Context';
 import parse from 'html-react-parser';
+import { Collapse } from 'antd';
+import { CaretRightOutlined } from '@ant-design/icons';
+
+
+const { Panel } = Collapse;
 
 SwiperCore.use([FreeMode,Navigation,Thumbs]);
 
@@ -70,9 +75,28 @@ const HaberlerDetay =()=>{
                         <div className="haberler-mini-slider">
                             <MiniSlider></MiniSlider>
                         </div>
-                        <div className="detay-yazi">
-                            {parse(dataBlogs.body)}
-                        </div>
+
+
+                        <Collapse
+                            bordered={false}
+                            defaultActiveKey={['1']}
+                            destroyInactivePanel={true}
+                            expandIcon={({ isActive }) => <CaretRightOutlined rotate={isActive ? 90 : 0} />}
+                            className="site-collapse-custom-collapse"
+                        >
+                            {/* İletişim */}
+                            
+                                {/* Detay Yazı */}
+                                {dataBlogs.body === null ? (<></>):(
+                                    <Panel header="Detay" key="2" className="site-collapse-custom-panel">
+                                        <div className="detay-yazi">
+                                            {parse(dataBlogs.body)}
+                                        </div>
+                                    </Panel>
+                                )}
+                        </Collapse>
+
+
 
                     </div>
                     </>

@@ -174,7 +174,7 @@ const Ara =()=>{
 
         {(dataYerler.length !== 0)?(
             <div className='yerler-swiper'>
-            <NavLink to='/yerler-sirala'>
+            <NavLink to='/yerler-sirala/all'>
                 <TumElemanlar name='Tüm Yerler'></TumElemanlar>
             </NavLink>
         

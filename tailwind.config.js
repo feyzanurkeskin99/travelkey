@@ -23,7 +23,11 @@ module.exports = {
         "buton-before-color": "rgba(192,216,223,.47843137254901963)",
       },
       background:{
-        "gradient": "radial-gradient(#1244588f, #124458ab);"
+        "gradient": "radial-gradient(#1244588f, #124458ab)",
+        "collapse": "linear-gradient(90deg,#12c2e9,#c471ed,#f64f59)"
+      },
+      minHeight:{
+        "200px": "200px"
       },
       spacing:{
         'neg-1.5':'-1.5em',
@@ -70,6 +74,7 @@ module.exports = {
         '70px':'70px',
         '80px':'80px',
         '85px':'85px',
+        '90px':'90px',
         '100px':'100px',
         '115px':'115px',
         '130px':'130px',
@@ -120,6 +125,9 @@ module.exports = {
         '2.4':'2.4em',
         '3.6':'3.6em',
       },
+      rotate:{
+        '270':'270deg',
+      },
       borderWidth:{
         '5px':'5px',
         '1px':'1px'
@@ -136,6 +144,7 @@ module.exports = {
         DEFAULT_8:'50px',
         DEFAULT_9:'18px 0 18px 18px',
         DEFAULT_10:'60px 60px 0 0',
+        DEFAULT_11:'30px 30px 0 0',
         '24px':'24px',
         '15px':'15px',
         '20px':'20px',
@@ -166,6 +175,7 @@ module.exports = {
         '15px':'15px',
         '16px':'16px',
         '17px':'17px',
+        '18px':'18px',
         '19px':'19px',
         '20px':'20px',
         '22px':'22px',

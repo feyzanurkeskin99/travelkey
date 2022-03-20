@@ -14,6 +14,11 @@ import axios from 'axios';
 import { AppContext } from '../Components/Context'
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import parse from 'html-react-parser';
+import { Collapse } from 'antd';
+import { CaretRightOutlined } from '@ant-design/icons';
+
+
+const { Panel } = Collapse;
 
 SwiperCore.use([FreeMode,Navigation,Thumbs]);
 
@@ -77,25 +82,51 @@ const EtkinliklerDetay =()=>{
                         <div className="etkinlikler-mini-slider">
                             <MiniSlider></MiniSlider>
                         </div>
-                        <div className="detay-yazi">
-                            <>
-                            <span>
-                                {parse(dataEvents.body)}
-                            </span>
-                            </>
-                        </div>
-                    
-                        <MapContainer center={[dataEvents.gps.split("@")[1].split(",")[0],dataEvents.gps.split("@")[1].split(",")[1]]} zoom={15} scrollWheelZoom={false} >
-                            <TileLayer
-                                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                            />
-                            <Marker position={[dataEvents.gps.split("@")[1].split(",")[0],dataEvents.gps.split("@")[1].split(",")[1]]}>
-                                <Popup>
-                                {dataEvents.name} <br /> Burada
-                                </Popup>
-                            </Marker>
-                        </MapContainer>
+
+                        <Collapse
+                            bordered={false}
+                            defaultActiveKey={['1']}
+                            destroyInactivePanel={true}
+                            expandIcon={({ isActive }) => <CaretRightOutlined rotate={isActive ? 90 : 0} />}
+                            className="site-collapse-custom-collapse"
+                        >
+                            {/* İletişim */}
+                            
+                                {/* Detay Yazı */}
+                                {dataEvents.body === null ? (<></>):(
+                                    <Panel header="Detay" key="2" className="site-collapse-custom-panel">
+                                    <div className="detay-yazi">
+                                        <>
+                                        <span>
+                                            {parse(dataEvents.body)}
+                                        </span>
+                                        </>
+                                    </div>
+                                    </Panel>
+                                )}
+
+                                 {/* Harita */}
+                                 {(dataEvents.gps === null)? (
+                                    <></>
+                                    ):(
+                                    <Panel header="Adres" key="3" className="site-collapse-custom-panel">
+                                    <MapContainer center={[dataEvents.gps.split("@")[1].split(",")[0],dataEvents.gps.split("@")[1].split(",")[1]]} zoom={15} scrollWheelZoom={false} >
+                                        <TileLayer
+                                            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                                            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                                        />
+                                        <Marker position={[dataEvents.gps.split("@")[1].split(",")[0],dataEvents.gps.split("@")[1].split(",")[1]]}>
+                                            <Popup>
+                                            {dataEvents.name} <br /> Burada
+                                            </Popup>
+                                        </Marker>
+                                    </MapContainer>
+
+                                </Panel>
+                                )}
+                        </Collapse>
+
+
 
                     </div>
                     </>

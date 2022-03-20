@@ -74,9 +74,14 @@ body{
             background: linear-gradient(0deg, #04212d, transparent);
         } 
         .haberler-sirala .haberler-container .haberler-ust:before{
-            @apply  absolute w-full h-5 rounded-DEFAULT_5 bottom-0 left-0 z-35;
+            @apply mb-45px absolute top-0 w-full flex items-end justify-start overflow-hidden rounded bg-birincil-color h-75% bottom-0 left-0 z-35;
             content:"";
             background: linear-gradient(0deg, #04212d, transparent);
+
+            --tw-text-opacity: 1;
+            color: rgb(255 255 255/var(--tw-text-opacity));
+            
+            
         } 
 /* buraya bak tekrar !!!*/ 
     .iki-sira-swiper .swiper-slide .iki-sira-alt:before, .iki-sira-swiper .swiper-slide .iki-sira-ust:before{
@@ -279,7 +284,7 @@ body{
 
 
     .yerler-detay-ortaalan .iletisim .iletisim-baslik{
-        @apply text-birincil-color ml-15px 
+        @apply text-birincil-color ml-15px font-bold text-20px
     }
     
     .yerler-detay-ortaalan .iletisim span{
@@ -309,10 +314,12 @@ body{
     
     }
     
-    .yerler-detay-cover .konum, .etkinlikler-detay-cover .konum{
+    .yerler-detay-cover .konum{
         @apply w-50px h-100px z-1 absolute right-35px bottom-60px border-1px border-solid border-white rounded-DEFAULT_7 flex flex-col items-center justify-around text-white
     }
-    
+    .etkinlikler-detay-cover .konum{
+        @apply w-150px h-50px z-1 absolute right-35px bottom-60px border-1px border-solid border-white rounded-DEFAULT_7 flex flex-row items-center justify-around text-white
+    }
     .yerler-detay-cover .konum a, .etkinlikler-detay-cover .konum a{
         @apply w-full h-full absolute
     }
@@ -323,7 +330,7 @@ body{
         @apply text-0.3
     }
     .leaflet-container{
-        @apply w-4/5 h-8% w-full rounded
+        @apply h-8% w-full rounded
     }
 
     .leaflet-control-attribution{
@@ -496,12 +503,8 @@ body{
         @apply overflow-hidden whitespace-nowrap block text-ellipsis p-10px
     }
 
-    .haber-detay, .etkinlikler-detay{
-        @apply flex z-100 w-full h-full flex-wrap justify-center mt-neg160 bg-ortaalan-color pt-10px rounded-DEFAULT_10
-    }
-    
-    .etkinlikler-detay-ortaalan .leaflet-container{
-        @apply h-20%
+    .haber-detay{
+        @apply flex z-100 w-full h-full flex-wrap justify-center mt-neg160 bg-ortaalan-color pt-10px rounded-DEFAULT_11
     }
     .haberler-detay-ortaalan .detay-yazi{
         @apply ml-10px text-black font-bold p-15px text-16px
@@ -580,7 +583,7 @@ body{
         @apply text-0.6
     }
     .haber-detay-baslik, .etkinlikler-detay-baslik{
-        @apply w-4/5 text-19px text-birincil-color font-bold leading-1.2 rounded-24px shadow-baslik flex items-center justify-center p-5px mt-10px
+        @apply w-4/5 p-10px text-19px text-birincil-color font-bold leading-1.2 rounded-24px shadow-baslik flex items-center justify-center mt-10px
     }
     .kategoriler-sirala{
         @apply mt-85px flex items-center justify-evenly flex-wrap
@@ -658,15 +661,15 @@ body{
         @apply flex items-center
     }
      .yerler-swiper .swiper-slide{
-        @apply flex rounded mr-30px flex-wrap flex-col justify-between text-22px font-bold text-white w-60% h-full left-neg25 relative content-start
-      }
-      .yerler-swiper .swiper-slide a{
-        @apply h-full
-      }
-      .yerler-swiper .swiper-slide img{
-        @apply w-full h-full rounded z-0 absolute
-      }
-      .yerler-swiper .all-collections-container{
+      @apply flex rounded mr-30px flex-wrap flex-col justify-between text-22px font-bold text-white w-60% h-full left-neg25 relative content-start
+    }
+    .yerler-swiper .swiper-slide a{
+      @apply h-full
+    }
+    .yerler-swiper .swiper-slide img{
+      @apply w-full h-full rounded z-0 absolute
+    }
+    .yerler-swiper .all-collections-container{
         @apply mt-50px
     }
     .yerler-swiper .yerler-swiper-kategori, .yerler-sirala .yerler-sirala-kategori{
@@ -861,8 +864,17 @@ body{
     }
 
     .etkinlikler-detay{
-        @apply flex z-100 w-full h-full flex-wrap justify-center mt-neg160 bg-ortaalan-color pt-10px rounded-DEFAULT_10
+        @apply flex z-100 w-full h-full flex-wrap justify-center -mt-90px bg-ortaalan-color pt-10px rounded-DEFAULT_11
     }
+    
+    .etkinlikler-detay-ortaalan .leaflet-container{
+        @apply h-20%
+    }
+
+    .etkinlikler-detay-cover .konum .konum-alt-icon{
+        @apply rotate-270 text-10px
+    }
+
     .etkinlikler-detay-ortaalan .detay-yazi{
         @apply ml-10px text-black font-bold p-15px text-16px
     }
@@ -877,7 +889,7 @@ body{
         @apply w-full flex flex-col items-center
     }
     .ortaalan .etkinlikler-detay-cover {
-        @apply flex flex-col items-start justify-end bg-ortaalan-cover-color rounded-DEFAULT_6 w-100vw h-60vh mb-3 bg-ortaalan-cover bg-top bg-cover relative
+        @apply flex flex-col items-start justify-end bg-ortaalan-cover-color w-100vw h-60vh mb-3 bg-ortaalan-cover bg-top bg-cover relative
     }
     .etkinlikler-detay-ortaalan .etkinlikler-spot{
         @apply w-90% h-auto border-l-5px border-solid border-birincil-color
@@ -978,5 +990,42 @@ body{
     .hava-durumu-icon{
         @apply absolute top-0 right-0 w-70px h-70px opacity-50
     }
-    
+    .ant-collapse-header{
+        @apply flex rounded-DEFAULT_1 border-2 border-solid border-birincil-color p-10px mb-10px text-18px font-bold;
+        background: linear-gradient(90deg,var(--ikincil),var(--birincil),var(--ikincil));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    .ant-collapse-header div{
+        @apply flex items-center;
+    }
+    .ant-collapse-header svg{
+        @apply fill-birincil-color
+    }
+    /* .yerler-detay-ortaalan .ant-collapse-item.site-collapse-custom-panel{
+        @apply rounded-DEFAULT_1 border-2 border-solid border-birincil-color p-10px;
+        background: linear-gradient(90deg,#12c2e9,#c471ed,#f64f59);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    } */
+    .ant-collapse{
+        @apply w-90%
+    }
+    .ant-collapse-content-box{
+        @apply flex justify-center
+    }
+    .leaflet-container{
+        @apply min-h-200px
+    }
+    .yerler-detay-cover, .etkinlikler-detay-cover{
+        @apply max-h-300px
+    }
+    [data-theme='compact'] .site-collapse-custom-collapse .site-collapse-custom-panel,
+        .site-collapse-custom-collapse .site-collapse-custom-panel {
+        margin-bottom: 10px;
+        overflow: hidden;
+        /* background: #f7f7f7; */
+        border: 0px;
+        border-radius: 2px;
+    }
 }
