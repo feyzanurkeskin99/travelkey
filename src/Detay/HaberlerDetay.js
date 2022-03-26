@@ -1,6 +1,5 @@
 import React, {useState,useEffect, useContext, useRef} from 'react'
 import ReactDOM from 'react-dom'
-import { Button, Icon } from 'semantic-ui-react'
 import SwiperCore, {
     FreeMode,Navigation,Thumbs
 } from 'swiper'
@@ -27,7 +26,6 @@ SwiperCore.use([FreeMode,Navigation,Thumbs]);
 
 const HaberlerDetay =()=>{
 
-    const mapRef= useRef();
 
     React.useEffect(() => {
         window.scrollTo(0, 0);

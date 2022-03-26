@@ -1,6 +1,5 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import 'semantic-ui-css/semantic.min.css'
 import {Link , NavLink} from 'react-router-dom'
 import {navIcons} from '../icon'
 import InlineSVG from 'svg-inline-react';

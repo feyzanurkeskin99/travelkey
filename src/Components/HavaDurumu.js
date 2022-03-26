@@ -1,6 +1,5 @@
 import React, {useEffect, useState, useContext} from 'react'
 import ReactDOM from 'react-dom'
-import { Icon } from 'semantic-ui-react'
 import KategorilerSwiper2 from '../Swipers/KategorilerSwiper2'
 import {havaIcons, conditions} from '../icon'
 import InlineSVG from 'svg-inline-react';

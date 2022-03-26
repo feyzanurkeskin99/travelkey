@@ -1,6 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react'
 import ReactDOM from 'react-dom'
-import { Button, Icon } from 'semantic-ui-react'
 import VitrinKoleksiyon from '../Swipers/VitrinKoleksiyon'
 import KategorilerScrollingCarousel from '../Swipers/KategorilerScrollingCarousel'
 import KategorilerSwiper2 from '../Swipers/KategorilerSwiper2'

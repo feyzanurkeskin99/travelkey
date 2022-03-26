@@ -37,6 +37,8 @@ module.exports = {
         'neg160':'-160px',
         '01em':'0 1em',
         '0.75':'0.75em',
+        '0.5':'0.5em',
+        '0.25':'0.25em',
         '1':'1em',
         '1.2':'1.2em',
         '2':'2em',
@@ -47,6 +49,7 @@ module.exports = {
         '5':'5em',
         '10':'10em',
         '8vh':'8vh',
+        '2vh':'2vh',
         '10vh':'10vh',
         '30vh':'30vh',
         '45vh':'45vh',
@@ -105,6 +108,7 @@ module.exports = {
         '65%':'65%',
         '70%':'70%',
         '75%':'75%',
+        '80%':'80%',
         '85%':'85%',
         '86%':'86%',
         '88%':'88%',
@@ -130,6 +134,7 @@ module.exports = {
       },
       borderWidth:{
         '5px':'5px',
+        '3px':'3px',
         '1px':'1px'
       },
       borderRadius:{
@@ -167,6 +172,7 @@ module.exports = {
         '1.5':'1.5em',
         '1':'1em',
         '0.6':'0.6em',
+        '0.7':'0.7em',
         '0.8':'0.8em',
         '0.5':'0.5em',
         '0.3':'0.3em',
@@ -187,6 +193,7 @@ module.exports = {
         '51px':'51px',
       },
       zIndex:{
+        '1001':1001,
         '1000':1000,
         '100':100,
         '36':36,
@@ -200,7 +207,8 @@ module.exports = {
         'ara':'0 0 16px 16px #2626267d',
         'baslik':'0 0 30px 4px black',
         'koleksiyon':'0 0 22px 4px black',
-        'koleksiyon-a':'5px 5px 22px 4px var(--birincil)'
+        'koleksiyon-a':'5px 5px 22px 4px var(--birincil)',
+        'sidebar-logo':'-3px 7px 10px var(--birincil)',
       },
       textShadow:{
         'title':'4px 4px 11px #000000'

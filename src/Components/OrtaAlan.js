@@ -1,6 +1,5 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Icon } from 'semantic-ui-react'
 
 class OrtaAlan extends React.Component{
     render(){

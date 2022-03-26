@@ -6,7 +6,6 @@ import 'swiper/swiper.min.css'
 import 'swiper/modules/effect-cards/effect-cards.js'
 import 'swiper/modules/pagination/pagination.min.css'
 import TumElemanlar from '../TumElemanlar';
-import { Icon } from 'semantic-ui-react';
 import InlineSVG from 'svg-inline-react';
 import {collectionIcons} from '../icon'
 import useFetch from 'use-http';

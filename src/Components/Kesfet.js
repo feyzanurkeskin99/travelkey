@@ -1,6 +1,5 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Icon } from 'semantic-ui-react'
 // import '../ozel.css'
 import '../Styles/output.css'
 import SwiperCore, {EffectCards,Pagination, Navigation, Scrollbar, A11y} from 'swiper'

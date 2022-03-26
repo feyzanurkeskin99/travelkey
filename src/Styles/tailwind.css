@@ -1,9 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url("/src/Fonts/gilroy/Gilroy.css"); 
 
 body{
     background-color: #ffffff!important;
+    font-family: "Gilroy";
+
 }
 
 :root{
@@ -26,7 +29,6 @@ body{
 }
 
 
-@media only screen and (max-width : 900px){
     .altbar .altbar-link.active .altbar-button, .altbar .altbar-link:hover .altbar-button {
                 @apply flex items-center justify-center rounded-DEFAULT_1 bg-altbar-hover-color fill-birincil-color;
             }
@@ -144,15 +146,49 @@ body{
     /* .hidden{
         @apply hidden
     } */
-    .side-bar{
-        @apply w-65% bg-transparent absolute mt-10vh z-1000 top-0 left-0 h-h-calc
+
+    .ustbar-button.close{
+        @apply ml-85% absolute top-1 right-1 bg-darkgrey-color p-0.5 rounded-5 
     }
+    .side-bar{
+        @apply w-65% bg-overlay-color absolute z-1000 top-0 left-0 h-full flex flex-col items-center py-5 justify-between
+    }
+
+    .sidebar-orta{
+        @apply px-1 flex flex-col justify-center
+    }
+
+    .side-bar-foot{
+        @apply text-0.7 text-center
+    }
+
+    .side-bar-foot span{
+        @apply block
+    }
+
     .side-bar-eleman{
-        @apply bg-birincil-color rounded w-full h-14% mb-10px p-5px
+        @apply bg-overlay-color rounded p-5px w-full m-0.25;
+        background: #adadad21;
+    }
+    .side-bar-eleman.logo{
+        @apply h-15% mt-10px border-none
+    }
+    .sidebar-kategori.logo{
+        @apply border-none justify-center
+    }
+    .logo img{
+        @apply w-150px
     }
     .sidebar-kategori{
-        @apply w-full h-full bg-overlay-color rounded flex p-5px justify-start flex-wrap font-bold 
+        @apply w-full bg-overlay-color rounded flex p-5px justify-start flex-wrap items-center font-bold text-18px pl-15px;
+        background: -webkit-gradient( linear, left top, right top, from(#12c2e9), color-stop(#c471ed), to(#f64f59) );
+        background: -webkit-linear-gradient(left, var(--birincil), var(--link-active-after), var(--darkgrey));
+        background: -o-linear-gradient(left, var(--birincil), var(--link-active-after), var(--darkgrey));
+        background: linear-gradient(to right, var(--birincil), var(--link-active-after), var(--darkgrey));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
     }
+
     .sidebar-kategori svg{
         @apply text-5xl opacity-50
     }
@@ -1028,4 +1064,3 @@ body{
         border: 0px;
         border-radius: 2px;
     }
-}

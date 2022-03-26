@@ -1,6 +1,5 @@
 import React, {useEffect, useState, useContext} from 'react'
 import ReactDOM from 'react-dom'
-import { Button, Icon } from 'semantic-ui-react'
 // import '../ozel.css'
 import '../Styles/output.css'
 import SwiperCore, {EffectCards} from 'swiper'

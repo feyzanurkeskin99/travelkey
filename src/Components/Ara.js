@@ -25,7 +25,7 @@ SwiperCore.use([FreeMode,Navigation,Thumbs]);
 
 const Ara =()=>{
     
-  const [thumbsSwiper, setThumbsSwiper] = useState(null);
+    const [thumbsSwiper, setThumbsSwiper] = useState(null);
     var {city, setCity} = useContext(AppContext);
     
     const [dataVitrin, setDataVitrin]=useState([]);

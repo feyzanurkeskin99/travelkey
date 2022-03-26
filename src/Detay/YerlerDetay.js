@@ -1,6 +1,5 @@
 import React, {useState,useEffect, useContext, useRef} from 'react'
 import ReactDOM, {useLocation} from 'react-dom'
-import { Button, Icon } from 'semantic-ui-react'
 import SwiperCore, {
     FreeMode,Navigation,Thumbs
 } from 'swiper'
