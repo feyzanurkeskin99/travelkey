@@ -20,7 +20,7 @@ import parse from 'html-react-parser';
 import slugify from 'react-slugify';
 import { Collapse } from 'antd';
 import { CaretRightOutlined } from '@ant-design/icons';
-
+import { List, Divider } from 'antd';
 
 
 
@@ -30,12 +30,14 @@ SwiperCore.use([FreeMode,Navigation,Thumbs]);
 
 const YerlerDetay =()=>{
 
+    
     React.useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
 
     var {city, setCity} = useContext(AppContext);
     const [data, setData]=useState([]);
+    const [googleMap, setGoogleMap]=useState("");
     const [latitude, setLatitude]=useState([]);
     const [longitude, setLongitude]=useState([]);
     useEffect(()=>{
@@ -43,18 +45,41 @@ const YerlerDetay =()=>{
             await axios.get('https://seyyahpanel.kod8.app/places?sehir.plate='+city.city)
             .then(response => {
                 setData(response.data);
+                response.data.filter(dataFilter => ""+dataFilter.id === id.split("-")[0])
+                .map((dataPlaces)=>(
+                    setGoogleMap(dataPlaces.gps)
+                ))
             })
         }
         fetchData();
+        
+
+        
     },[]);
 
-
+    //url den id'yi çekmek için
     let { id } = useParams();
     if (!id) {
         return <NotFound />;
     }
-    //url den id'yi çekmek için
-    
+
+    const deneme = [
+            { 
+                map:googleMap,
+                title:"Google Maps"
+            },
+            {
+                map:"https://yandex.com.tr/harita/103695/duzce/geo/efteni_golu/2525112965/?ll=31.049828%2C40.760052&z=15.89",
+                title:"Yandex Maps"
+            }
+        ];
+
+    const konumSec =()=>{ 
+        document.querySelector('.konum-sec').classList.toggle('hidden')
+        document.querySelector('.konum-sec-divider').classList.toggle('hidden')
+        document.querySelector('.konum-sec-list').classList.toggle('hidden')
+    }
+
         return(
             <div className='yerler-detay-ortaalan'>
             
@@ -76,15 +101,27 @@ const YerlerDetay =()=>{
                                 </NavLink>
                                 <div className="baslik">{dataPlaces.name}</div>
                             </div>
-                            <div className="konum">
-                            {(dataPlaces.gps === null)? (
+                            <div className="konum" onClick={konumSec}>
+                            {/* {(dataPlaces.gps === null)? (
                             <></>
                             ):(
                                 <a href={dataPlaces.gps}></a>
-                            )}
+                            )} */}
                                 <div className="konum-ust-icon"><InlineSVG src={contactIcons.address}></InlineSVG></div>
                                 <div>Konum</div>
                                 <div className="konum-alt-icon"><InlineSVG src={locationIcons.location}></InlineSVG></div>
+                            </div>
+                            <div className="konum-sec hidden">
+                            <Divider className='konum-sec-divider hidden' orientation="left"> <h2>HARİTALAR</h2> </Divider>
+                            <List
+                            className='konum-sec-list hidden'
+                            size="large"
+                            header={<></>}
+                            footer={<></>}
+                            bordered
+                            dataSource={deneme}
+                            renderItem={item => <a href={item.map}><List.Item> <InlineSVG src={locationIcons.choose_map}/>{item.title}</List.Item></a>}
+                            />
                             </div>
                         </div>
                         
@@ -175,10 +212,6 @@ const YerlerDetay =()=>{
                                 )}
                             
                         </Collapse>
-
-                            
-                        
-                        
                         <IkiSiraSwiper></IkiSiraSwiper>
                     </>
                     ):(

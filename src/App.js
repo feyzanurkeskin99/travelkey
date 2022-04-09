@@ -43,10 +43,6 @@ function App (){
 		navigate("/giris");
         setCity({cityName:"sehirsec"})
     }
-    function hideButton(){
-        var sideBar=document.querySelector(".side-bar")
-        sideBar.classList.toggle('hidden')
-    }
 
         if (city === "sehirsec" || city.cityName === "sehirsec") {
             return(
@@ -62,7 +58,6 @@ function App (){
             return(
                 <AppContext.Provider value={{city, setCity}}>
                     <div className="app">
-                    
                     <UstBar/>
                         <YanbBar/>
                         <div className='ortaalan'>

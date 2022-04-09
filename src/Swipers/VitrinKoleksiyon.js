@@ -41,11 +41,13 @@ const VitrinKoleksiyon =()=>{
 
 
         return(
-              <div className='vitrin-koleksiyon'>
-              <NavLink to='/koleksiyonlar-sirala'>
-                <TumElemanlar name='Tüm Koleksiyonlar'></TumElemanlar>
-              </NavLink>
-              <Swiper effect={'cards'} grabCursor={true} className="mySwiper">
+            <div className='vitrin-koleksiyon'>
+            <NavLink to='/koleksiyonlar-sirala'>
+            <div className="block-baslik-container">
+                <div className="block-baslik">Keşfet</div>
+                <TumElemanlar name='Tüm Koleksiyonlar'></TumElemanlar></div>
+            </NavLink>
+            <Swiper effect={'cards'} grabCursor={true} className="mySwiper">
                 {data
                 .map((bundles) => (
                     

@@ -41,7 +41,11 @@ const YerlerSwiper =(props)=>{
     return(
         <div className='yerler-swiper'>
             <NavLink to='/yerler-sirala/all'>
-                <TumElemanlar name='Tüm Yerler'></TumElemanlar>
+            
+            <div className="block-baslik-container">
+                <div className="block-baslik">Yerler</div>
+                <TumElemanlar name='Tüm Yerler'></TumElemanlar></div>
+                
             </NavLink>
         
         <Swiper centeredSlides={true} slidesPerView={'auto'} spaceBetween={20} grabCursor={true} className="mySwiperYerler">

@@ -1,10 +1,10 @@
-import React, {useContext} from 'react'
+import React, {useContext, useEffect} from 'react'
 import ReactDOM from 'react-dom'
-import {useNavigate} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 import { AppContext } from './Context'
 import name from '../images/name.png'
 import InlineSVG from 'svg-inline-react';
-import { headerIcon } from '../icon';
+import { headerIcon, locationIcons } from '../icon';
 
 
 function UstBar (){
@@ -20,20 +20,28 @@ function UstBar (){
     }
 
     function hideButton(){
-        var sideBar=document.querySelector(".side-bar")
+        var sideBar=document.querySelector(".sidebar")
+        var sideBarSag=document.querySelector(".sidebar-sag")
+        var sideBarOrta=document.querySelector(".sidebar-orta")
+        var sideBarFoot=document.querySelector(".sidebar-foot")
         var menu=document.querySelector(".three-line")
         var close=document.querySelector(".close")
-        sideBar.classList.toggle('hidden')
+        sideBar.classList.remove('hidden-side')
+        sideBarOrta.classList.remove('hidden')
+        sideBarFoot.classList.remove('hidden')
         menu.classList.add('hidden') 
         close.classList.remove('hidden')
+        sideBarSag.classList.remove('hidden')
 
     }
+
         return(
             <div className="ustbar">
                 <div className="ustbar-button three-line transition-all" onClick={hideButton}><InlineSVG src={headerIcon.menu}></InlineSVG></div>
-                <div className="ustbar-name"><div><img src={name}></img></div></div>
+                <NavLink to="/" className="ustbar-name"><div><img src={name}></img></div></NavLink>
                 <div basic color='black' onClick={sehirSec} content='Black' className='city-button'>
                 {/* <Icon name='map marker alternate' /> */}
+                <InlineSVG src={headerIcon.location}/>
                 {city.cityName || "sehirsec"}</div>
             </div>
         )

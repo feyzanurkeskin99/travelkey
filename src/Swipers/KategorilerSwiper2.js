@@ -34,7 +34,11 @@ const KategorilerSwiper2 =()=>{
     return(
         <div className='kategoriler-swiper-2'>
          <NavLink to='/kategoriler-sirala'>
-            <TumElemanlar name='Tüm Kategoriler'></TumElemanlar>
+         
+         <div className="block-baslik-container">
+                <div className="block-baslik">Kategoriler</div>
+                <TumElemanlar name='Tüm Kategoriler'></TumElemanlar></div>
+            
         </NavLink>
         <Swiper centeredSlides={true} slidesPerView={'auto'} spaceBetween={20} grabCursor={true} className="mySwiper3">
 

@@ -46,7 +46,7 @@ const SemtSwiper =()=>{
         return(
             <>
                 <div className='semt-swiper'>
-                <div className="semt-baslik">Semtler</div>
+                <div className="block-baslik">Semtler</div>
                 <Swiper onSwiper={setThumbsSwiper} spaceBetween={10} slidesPerView={4} freeMode={true} watchSlidesProgress={true} className="mySwiperSemt">
                     {data
                         .reduce((previous, current, index, array)=>{

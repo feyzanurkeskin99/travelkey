@@ -42,7 +42,7 @@ const YerlerTypes =(props)=>{
         (data.length !== 0)?(
             <div className='yerler-swiper yerler-types'>
         <div className="yerler-types-baslik-container">
-            <div className="yerler-types-baslik">
+            <div className="block-baslik">
                 {props.name}
             </div>
         </div>

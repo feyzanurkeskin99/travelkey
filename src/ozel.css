@@ -25,7 +25,7 @@ body{
   .hidden{
     display: none;
   }
-  .side-bar{
+  .sidebar{
     
     width: 65%;
     height: calc(10vh*9);
@@ -36,7 +36,7 @@ body{
     top: 0;
     left: 0;
   }
-  .side-bar-eleman{
+  .sidebar-eleman{
     background-color: var(--birincil);
     border-radius: 18px;
     width: 100%;

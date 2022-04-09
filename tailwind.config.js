@@ -27,7 +27,12 @@ module.exports = {
         "collapse": "linear-gradient(90deg,#12c2e9,#c471ed,#f64f59)"
       },
       minHeight:{
-        "200px": "200px"
+        "100px": "100px",
+        "200px": "200px",
+      },
+      minWidth:{
+        "100px": "100px",
+        "200px": "200px",
       },
       spacing:{
         'neg-1.5':'-1.5em',
@@ -37,6 +42,7 @@ module.exports = {
         'neg160':'-160px',
         '01em':'0 1em',
         '0.75':'0.75em',
+        '0.7':'0.7em',
         '0.5':'0.5em',
         '0.25':'0.25em',
         '1':'1em',
@@ -49,12 +55,15 @@ module.exports = {
         '5':'5em',
         '10':'10em',
         '8vh':'8vh',
+        '7vh':'7vh',
+        '6vh':'6vh',
         '2vh':'2vh',
         '10vh':'10vh',
         '30vh':'30vh',
         '45vh':'45vh',
         '60vh':'60vh',
         '80vh':'80vh',
+        '13vw':'13vw',
         '93vw':'93vw',
         '100vw':'100vw',
         '100vh':'100vh',
@@ -87,6 +96,7 @@ module.exports = {
         '175px':'175px',
         '180px':'180px',
         '200px':'200px',
+        '230px':'230px',
         '240px':'240px',
         '300px':'300px',
         '420px':'420px',
@@ -120,8 +130,10 @@ module.exports = {
         'swiper-slide':'10px 0',
         'types-baslik':'20px',
         'title':'0 2em',
-        'cover':'40px 0 50px 40px',
+        'city-choose':'10px 5px 10px 0px',
+        'cover':'40px 0 40px 40px',
         'haberler-container':'10px 0',
+        'cover-konum':'0 30px',
         'h-calc':'calc(10vh*9)',
       },
       lineHeight:{
@@ -150,12 +162,14 @@ module.exports = {
         DEFAULT_9:'18px 0 18px 18px',
         DEFAULT_10:'60px 60px 0 0',
         DEFAULT_11:'30px 30px 0 0',
+        '70px':'0 0 70px 70px',
         '24px':'24px',
         '15px':'15px',
         '20px':'20px',
         '80px':'80px',
         '1':'1em',
-        '5':'5em'
+        '5':'5em',
+        '50%':'50%'
       },
       backgroundImage: {
         'giris': "url('../images/giris.png')",
@@ -178,6 +192,7 @@ module.exports = {
         '0.3':'0.3em',
         '10px':'10px',
         '12px':'12px',
+        '13px':'13px',
         '15px':'15px',
         '16px':'16px',
         '17px':'17px',
@@ -193,8 +208,10 @@ module.exports = {
         '51px':'51px',
       },
       zIndex:{
+        '1002':1002,
         '1001':1001,
         '1000':1000,
+        '999':999,
         '100':100,
         '36':36,
         '35':35,
@@ -212,6 +229,9 @@ module.exports = {
       },
       textShadow:{
         'title':'4px 4px 11px #000000'
+      },
+      letterSpacing:{
+        '5px':'5px'
       }
     },
   },

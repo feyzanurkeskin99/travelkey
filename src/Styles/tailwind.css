@@ -30,8 +30,8 @@ body{
 
 
     .altbar .altbar-link.active .altbar-button, .altbar .altbar-link:hover .altbar-button {
-                @apply flex items-center justify-center rounded-DEFAULT_1 bg-altbar-hover-color fill-birincil-color;
-            }
+        @apply h-6vh w-13vw flex items-center justify-center rounded-DEFAULT_1 bg-altbar-hover-color fill-birincil-color;
+    }
 
     @layer components{
         .altbar .altbar-link .altbar-button:before{
@@ -65,7 +65,7 @@ body{
             background: linear-gradient(0deg, #04212d, transparent);
         } 
         .ortaalan .yerler-detay-cover:before {
-            @apply  absolute w-full h-10 rounded-80px bottom-0 left-0 z-0;
+            @apply  absolute w-full h-10 rounded-70px bottom-0 left-0 z-0;
             content:"";
             background: linear-gradient(0deg, #04212d, transparent);
         }
@@ -123,6 +123,17 @@ body{
         content:"";
         background: linear-gradient(0deg, #04212d, transparent);
     }
+    .vitrin-koleksiyon .swiper{
+        @apply w-300px
+    }
+    }
+    .block-baslik-container{
+        @apply flex mb-15px justify-between
+    }
+
+    .vitrin-koleksiyon .swiper a{
+        @apply overflow-hidden rounded
+    }
     .etkinlikler .etkinlikler-satir:before, .etkinlikler-sirala .etkinlikler-satir:before{
         @apply  absolute w-45% h-full rounded-DEFAULT_1 bottom-0 right-0 z-0;
         content:"";
@@ -134,43 +145,48 @@ body{
         content:"";
         background: linear-gradient(0deg, #04212d, transparent);
     }
-
-    }
-
+    
     .mt-20{
         @apply mt-20%
     }
     .ara-sayfasi{
         @apply mt-20%
     }
-    /* .hidden{
-        @apply hidden
-    } */
 
-    .ustbar-button.close{
-        @apply ml-85% absolute top-1 right-1 bg-darkgrey-color p-0.5 rounded-5 
+    
+    .sidebar{
+        @apply w-full absolute z-1000 top-0 left-0 h-full flex;
+        transition: all .5s
     }
-    .side-bar{
-        @apply w-65% bg-overlay-color absolute z-1000 top-0 left-0 h-full flex flex-col items-center py-5 justify-between
+    .hidden-side{
+        @apply w-0;
+        transition: all .5s;
+    }
+    .sidebar-sol{
+        @apply w-65% bg-overlay-color h-full flex flex-col items-center py-5 justify-between
     }
 
+    .sidebar-sag{
+        @apply flex-grow-2 h-full;
+        background:rgba(34, 34, 34, 0.5);
+    }
     .sidebar-orta{
         @apply px-1 flex flex-col justify-center
     }
 
-    .side-bar-foot{
+    .sidebar-foot{
         @apply text-0.7 text-center
     }
 
-    .side-bar-foot span{
+    .sidebar-foot span{
         @apply block
     }
 
-    .side-bar-eleman{
+    .sidebar-eleman{
         @apply bg-overlay-color rounded p-5px w-full m-0.25;
         background: #adadad21;
     }
-    .side-bar-eleman.logo{
+    .sidebar-eleman.logo{
         @apply h-15% mt-10px border-none
     }
     .sidebar-kategori.logo{
@@ -180,7 +196,7 @@ body{
         @apply w-150px
     }
     .sidebar-kategori{
-        @apply w-full bg-overlay-color rounded flex p-5px justify-start flex-wrap items-center font-bold text-18px pl-15px;
+        @apply w-full bg-overlay-color rounded  p-5px font-bold text-18px pl-15px;
         background: -webkit-gradient( linear, left top, right top, from(#12c2e9), color-stop(#c471ed), to(#f64f59) );
         background: -webkit-linear-gradient(left, var(--birincil), var(--link-active-after), var(--darkgrey));
         background: -o-linear-gradient(left, var(--birincil), var(--link-active-after), var(--darkgrey));
@@ -208,15 +224,15 @@ body{
         @apply bg-red-color
     }
     .altbar{
-        @apply flex justify-around bg-birincil-color w-full h-8vh rounded-DEFAULT_3 z-1000 absolute bottom-0;
+        @apply flex justify-center bg-birincil-color w-full h-7vh rounded-DEFAULT_3 z-1000 absolute bottom-0;
         background: radial-gradient(#1244588f, #124458ab);
         backdrop-filter: blur(9px);
     }
     .altbar .altbar-link{
-        @apply flex items-center grow-2 p-1
+        @apply flex items-center justify-center grow-2 p-1
     }
     .altbar .altbar-link .altbar-button{
-        @apply flex items-center justify-center fill-ikincil-color p-0.75
+        @apply w-13vw flex items-center justify-center fill-ikincil-color p-0.75
     }
     .altbar  .altbar-link .altbar-button svg{
         @apply text-1.5 w-full h-full z-1 
@@ -230,7 +246,7 @@ body{
     }
 
     .ustbar{
-        @apply flex justify-between items-center h-10vh rounded-DEFAULT_4 w-full p-01em  z-1000 absolute left-0 top-0 backdrop-blur;
+        @apply flex justify-between items-center h-7vh rounded-DEFAULT_4 w-full p-01em  z-1000 absolute left-0 top-0 backdrop-blur;
         background: linear-gradient(180deg, #0a0905, #bfb9b900);
         backdrop-filter: blur(8px);
         background: radial-gradient(#c2c2c261, #ffffff8c);
@@ -238,17 +254,17 @@ body{
     .ustbar .ustbar-button{
         @apply flex items-center pl-10px pr-10px mt-5px mb-5px
     }
-    .ustbar .ustbar-button.three-line{
-        @apply text-45px
+    .ustbar .ustbar-button.three-line svg{
+        @apply fill-birincil-color w-25px h-25px
+    }
+    .ustbar svg{
+        @apply fill-birincil-color h-15px
     }
     .ustbar .ustbar-name img{
         @apply h-25px 
     }
     .ustbar .city-button{
-        @apply p-5px h-30px text-birincil-color rounded-DEFAULT_1 border-solid border-2 border-birincil-color flex justify-center items-center font-bold
-    }
-    .ustbar .city-button i{
-        @apply mb-5px
+        @apply p-city-choose h-30px text-birincil-color rounded-DEFAULT_2 border-solid border-1px border-birincil-color flex justify-center items-center font-bold
     }
     .ortaalan { 
         @apply flex flex-col justify-start w-full h-80vh flex-grow-2 overflow-x-hidden pb-10vh bg-ortaalan-color;
@@ -290,8 +306,29 @@ body{
     .yerler-detay-ortaalan .yerler-mini-slider{
         @apply w-full flex items-center justify-center 
     }
+    /* .yerler-detay-ortaalan .mySwiperUst .swiper-slide{
+        @apply w-90% m-5%
+    }  */
+    .yerler-detay-ortaalan .mySwiperAlt .swiper-slide-active{
+        @apply scale-125
+    } 
+    .yerler-detay-ortaalan .mySwiperAlt{
+        @apply p-types-baslik left-40%
+    } 
     .yerler-detay-ortaalan .yerler-mini-slider .mini-slider{
         @apply h-80px w-4/5 p-10px m-20px bg-birincil-color overflow-hidden rounded
+    }
+    .fancybox__thumbs .carousel__slide{
+        @apply rounded
+    }
+    .fancybox__thumbs .carousel__slide .fancybox__thumb::after{
+        @apply border-2
+    }
+    .ustbar-button.close{
+        @apply ml-50% absolute top-1 bg-darkgrey-color p-0.5 rounded-5
+    }
+    .ustbar-button.close svg{
+        @apply fill-birincil-color w-25px h-25px
     }
     .yerler-detay-ortaalan .iki-sira-swiper{
         @apply w-90%
@@ -322,7 +359,7 @@ body{
     .yerler-detay-ortaalan .iletisim .iletisim-baslik{
         @apply text-birincil-color ml-15px font-bold text-20px
     }
-    
+
     .yerler-detay-ortaalan .iletisim span{
         @apply flex items-center mr-10px p-5px
     }
@@ -351,7 +388,7 @@ body{
     }
     
     .yerler-detay-cover .konum{
-        @apply w-50px h-100px z-1 absolute right-35px bottom-60px border-1px border-solid border-white rounded-DEFAULT_7 flex flex-col items-center justify-around text-white
+        @apply text-13px w-50px h-100px z-1 absolute right-35px bottom-60px border-1px border-solid border-white rounded-15px flex flex-col items-center justify-around text-white
     }
     .etkinlikler-detay-cover .konum{
         @apply w-150px h-50px z-1 absolute right-35px bottom-60px border-1px border-solid border-white rounded-DEFAULT_7 flex flex-row items-center justify-around text-white
@@ -364,6 +401,28 @@ body{
     }
     .yerler-detay-cover .konum .konum-alt-icon, .yerler-detay-cover .konum .konum-alt-icon{
         @apply text-0.3
+    }
+    .yerler-detay-cover .konum-sec{
+        @apply w-200px h-auto p-15px bg-white absolute right-35px top-240px rounded z-100;
+        transition: all .5s;
+    }
+    .yerler-detay-cover .konum-sec svg{
+        @apply fill-birincil-color
+    }
+    .yerler-detay-cover .konum-sec .ant-divider-inner-text h2{
+        background: linear-gradient(90deg,var(--birincil),var(--link-active-after),var(--darkgrey));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    .yerler-detay-cover .konum-sec .choose-map-path{
+        @apply fill-white
+    }
+    .yerler-detay-cover .konum-sec .ant-list-item {
+        @apply flex rounded border-1px border-separate border-birincil-color p-5px m-5px
+    }
+    .hidden-konum{
+        @apply w-0 !important;
+        transition: all .5s !important;
     }
     .leaflet-container{
         @apply h-8% w-full rounded
@@ -394,13 +453,14 @@ body{
     }
     
     .ortaalan .mini-slider .swiper-slide{
-        @apply rounded w-50px h-50px
+        @apply rounded h-50px;
+        width: 50px!important;
     }
     .ortaalan .mini-slider .swiper-wrapper{
         @apply items-center
     }
     .ortaalan .mini-slider .swiper-slide img{
-        @apply rounded h-full
+        @apply rounded-DEFAULT_1 h-full
     }
 
     .ortaalan .semt-swiper .swiper-slide .semt-adi-ust, .ortaalan .semt-swiper .swiper-slide .semt-adi-alt{
@@ -414,6 +474,9 @@ body{
     }
     .semt-swiper .semt-baslik{
         @apply text-35px m-types-baslik text-birincil-color font-bold
+    }
+    .block-baslik{
+        @apply text-35px m-types-baslik ml-60px text-birincil-color font-bold
     }
     .ortaalan .semt-swiper .swiper-wrapper .swiper-slide{
         @apply items-center bg-transparent
@@ -478,7 +541,7 @@ body{
         @apply flex items-center justify-center rounded text-22px font-bold text-white w-50% h-60% flex-col left-neg25 bg-birincil-color
       }
       .kategoriler-swiper-2 .swiper-slide .kategoriler-alt{
-        @apply bg-ikincil-color text-birincil-color text-15px font-extralight w-full absolute bottom-0 h-45px rounded-DEFAULT_9 flex justify-center items-center
+        @apply bg-ikincil-color text-birincil-color text-15px font-medium w-full absolute bottom-0 h-45px rounded-DEFAULT_9 flex justify-center items-center
       }
       
       .kategoriler-swiper-2 .swiper-slide .kategoriler-ust{
@@ -533,10 +596,10 @@ body{
     }
 
     .haberler-sirala .haberler-sirala-baslik{
-        @apply overflow-hidden whitespace-nowrap block text-ellipsis
+        @apply font-medium overflow-hidden whitespace-nowrap block text-ellipsis
     }
     .haberler-swiper .haberler-swiper-baslik{
-        @apply overflow-hidden whitespace-nowrap block text-ellipsis p-10px
+        @apply font-medium overflow-hidden whitespace-nowrap block text-ellipsis p-10px
     }
 
     .haber-detay{
@@ -628,7 +691,7 @@ body{
         @apply w-160px h-150px flex items-end justify-center relative text-22px font-bold text-white m-swiper-slide
     }
     .kategoriler-sirala .kategoriler-container .kategoriler-alt{
-        @apply bg-ikincil-color text-birincil-color text-15px font-extralight w-88% absolute h-60px rounded-DEFAULT_9 flex justify-center items-center
+        @apply bg-ikincil-color text-birincil-color text-15px font-medium w-88% absolute h-60px rounded-DEFAULT_9 flex justify-center items-center
     }
     .kategoriler-sirala .kategoriler-container .kategoriler-ust{
         @apply bg-birincil-color h-70% w-140px rounded flex justify-center items-center z-0 mb-30px
@@ -661,8 +724,8 @@ body{
     .iki-sira-swiper .iki-sira-alt, .iki-sira-swiper .iki-sira-ust{
         @apply flex items-center justify-center h-45% left-neg10% bg-ikincil-color m-10px z-35 rounded text-22px font-bold text-white w-full relative overflow-hidden
     }
-    .iki-sira-swiper .background-baslik{
-        @apply text-40px w-max
+    .iki-sira-swiper .background-baslik{    
+        @apply text-40px w-max uppercase tracking-5px
     }
     .background-icon .fa-primary{
         @apply fill-birincil-color
@@ -705,9 +768,6 @@ body{
     .yerler-swiper .swiper-slide img{
       @apply w-full h-full rounded z-0 absolute
     }
-    .yerler-swiper .all-collections-container{
-        @apply mt-50px
-    }
     .yerler-swiper .yerler-swiper-kategori, .yerler-sirala .yerler-sirala-kategori{
         @apply flex m-swiper-slide text-birincil-color z-35 
     }
@@ -742,7 +802,7 @@ body{
     }
     
     .yerler-swiper.yerler-types .yerler-types-baslik-container{
-        @apply w-full h-25% flex content-center items-center justify-center flex-col text-25px text-birincil-color font-bold
+        @apply w-full h-25% flex content-center justify-center flex-col text-25px text-birincil-color font-bold
     }
     .yerler-swiper.yerler-types{
         @apply mb-30px
@@ -858,7 +918,7 @@ body{
 
 
     .vitrin-koleksiyon .swiper-slide img{
-        @apply rounded h-full relative
+        @apply rounded w-full relative
     }
 
     .vitrin-koleksiyon .vitrin-koleksiyon-swiper-baslik{
@@ -991,15 +1051,15 @@ body{
         @apply bg-ikincil-color
     }
     .all-collections-container{
-        @apply flex justify-end mr-10px mb-types-baslik mt-types-baslik
+        @apply flex justify-end mr-10px mt-types-baslik items-center text-birincil-color
     }
     
     .all-collections{
-        @apply pl-10px flex items-center h-25px w-130px bg-ortaalan-cover-color whitespace-nowrap overflow-hidden text-clip rounded-DEFAULT_8 mb-10px
+        @apply pl-10px flex items-center justify-end h-25px w-130px whitespace-nowrap overflow-hidden text-clip rounded-DEFAULT_8 mb-10px
     }
 
     .all-collections span{
-        @apply text-10px
+        @apply text-12px font-semibold
     }
     .all-collections:hover{
         @apply pl-10px flex items-center h-25px w-130px bg-birincil-color text-ortaalan-cover-color whitespace-nowrap overflow-hidden text-clip rounded-DEFAULT_8 mb-10px fill-ortaalan-cover-color
@@ -1007,7 +1067,7 @@ body{
 
     .all-collections svg{
         /* height: inherit;  yazamadım nasıl olacak?*/
-        @apply p-2px h-full
+        @apply p-2px h-full fill-birincil-color
     }
     
     .hava-durumu{
@@ -1018,10 +1078,10 @@ body{
         @apply m-0 text-20px font-semibold
     }
     .hava-durumu-sehir{
-        @apply m-0 text-10px font-thin
+        @apply m-0 text-10px font-bold
     }
     .hava-durumu-durum{
-        @apply m-0 text-15px font-normal overflow-hidden whitespace-nowrap block text-ellipsis w-85%
+        @apply m-0 font-normal overflow-hidden whitespace-nowrap block text-ellipsis w-85% absolute left-10px text-13px
     }
     .hava-durumu-icon{
         @apply absolute top-0 right-0 w-70px h-70px opacity-50

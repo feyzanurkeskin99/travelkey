@@ -55,9 +55,19 @@
       }(window.location))
     </script>
     <!-- End Single Page Apps for GitHub Pages -->
+
+    <script>   //Transition sonlanınca yapılması için
+      
+      document.querySelector('.yerler-detay-cover')?.addEventListener('transitionend', function(e) {
+                document.querySelector('.konum-sec').classList.remove('hidden')
+                }, {
+                capture: false,
+                once: true,
+                passive: false
+            });
+    </script>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     
   </body>

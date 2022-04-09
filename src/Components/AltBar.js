@@ -22,11 +22,11 @@ const AltBar  =()=>{
                         <InlineSVG src={navIcons.categories}/>
                     </div>
                 </NavLink>
-                <NavLink to="/etkinlikler-sirala" className="altbar-link location">
+                {/* <NavLink to="/etkinlikler-sirala" className="altbar-link location">
                     <div className="altbar-button location-border">
                         <InlineSVG src={navIcons.events}/>
                     </div>
-                </NavLink>
+                </NavLink> */}
                 <NavLink to="/kaydedilenler" className="altbar-link location">
                     <div className="altbar-button location-border">
                         <InlineSVG src={navIcons.saved}/>
