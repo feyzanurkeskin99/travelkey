@@ -10,25 +10,30 @@ import { NavLink } from 'react-router-dom';
 import InlineSVG from 'svg-inline-react';
 import {backgroundIcons, kategoriIcons} from '../icon'
 import { getApiModels } from '../Models/ApiModels';
+import slugify from 'react-slugify';
+import { useQuery, gql } from '@apollo/client' 
 
 
 const KategorilerSwiper2 =()=>{
-    const [data, setData]=useState([""]);
-    
-    const getCategoriesApi = async() => {
-        try{
-            const res = await getApiModels("categories");
-            if(res.status) {
-                setData(res.data)
-            }
-        }catch(e){
-            alert(e.message)
-        }
-    }
 
-    useEffect(() => {
-        getCategoriesApi()
-    },[])
+    const KATEGORILERSWİPER = gql`
+    query kategorilerSwiper {
+        yerlertypes:
+            categories(
+                pagination:{page:1, pageSize:100}
+            ) {
+                data {
+                    id
+                    attributes {
+                        name
+                        iconname
+                    }
+                }
+            }
+        }`
+    const {loading, error, data} = useQuery(KATEGORILERSWİPER)
+    if (loading) return <p>Loading...</p>
+    if (error) return <p>Error...</p>
 
 
     return(
@@ -42,15 +47,16 @@ const KategorilerSwiper2 =()=>{
         </NavLink>
         <Swiper centeredSlides={true} slidesPerView={'auto'} spaceBetween={20} grabCursor={true} className="mySwiper3">
 
-            {data.map((categories) => (
-                
+            {data.yerlertypes.data.map((categories) => (
                     <SwiperSlide key={categories.id}>
+                        <NavLink to={"/yerler-sirala/"+categories.id+"-"+slugify(categories.attributes.iconname)}>
                             <div className='kategoriler-ust'>
-                                <InlineSVG src={kategoriIcons[categories.iconname]}></InlineSVG>
+                                <InlineSVG src={kategoriIcons[categories.attributes.iconname]}></InlineSVG>
                             </div>
-                        <div className='kategoriler-alt'>{categories.name}</div>
+                            <div className='kategoriler-alt'>{categories.attributes.name}</div>
+                        </NavLink>
+
                     </SwiperSlide>
-                
             ))}
         </Swiper>
         </div>

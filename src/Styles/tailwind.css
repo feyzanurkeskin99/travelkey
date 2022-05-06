@@ -290,7 +290,12 @@ body{
     .yerler-detay-ortaalan .leaflet-container{
         @apply h-15% 
     }
-
+    .yerler-detay-ortaalan .ant-tabs > .ant-tabs-nav .ant-tabs-nav-wrap, .ant-tabs > div > .ant-tabs-nav .ant-tabs-nav-wrap, .yerler-detay-ortaalan .ant-tabs-tabpane{
+        @apply justify-center
+    }
+    .yerler-detay-ortaalan .ant-tabs{
+        @apply w-90%
+    }
     .yerler-detay-ortaalan{
         @apply w-full flex flex-col items-center
     }
@@ -349,12 +354,20 @@ body{
         @apply font-bold text-birincil-color
     }
     .yerler-detay-ortaalan .iletisim{
-        @apply p-30px bg-darkgrey-color rounded w-90%
+        @apply p-30px bg-darkgrey-color rounded w-full
+    }
+    .yerler-detay-ortaalan .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn{
+        @apply text-17px
+    }
+    .yerler-detay-ortaalan .ant-tabs-tab.ant-tabs-tab .ant-tabs-tab-btn{
+        @apply text-birincil-color
+    }
+    .yerler-detay-ortaalan .ant-tabs-top > .ant-tabs-nav::before{
+        @apply border-b-overlay-color
     }
     .yerler-detay-ortaalan .iletisim .iletisim-detay{
         @apply text-light-color
     }
-
 
     .yerler-detay-ortaalan .iletisim .iletisim-baslik{
         @apply text-birincil-color ml-15px font-bold text-20px
@@ -407,7 +420,8 @@ body{
         transition: all .5s;
     }
     .yerler-detay-cover .konum-sec svg{
-        @apply fill-birincil-color
+        @apply fill-birincil-color w-15px mr-5px ml-5px;
+        transform: rotate(45deg);
     }
     .yerler-detay-cover .konum-sec .ant-divider-inner-text h2{
         background: linear-gradient(90deg,var(--birincil),var(--link-active-after),var(--darkgrey));
@@ -418,8 +432,15 @@ body{
         @apply fill-white
     }
     .yerler-detay-cover .konum-sec .ant-list-item {
-        @apply flex rounded border-1px border-separate border-birincil-color p-5px m-5px
+        @apply flex rounded-DEFAULT_1 border-1px border-separate border-birincil-color p-5px m-5px text-birincil-color ml-0
     }
+    /* .ant-collapse-borderless{
+        @apply flex
+    }
+    .ant-collapse-header{
+        @apply absolute
+    } */
+
     .hidden-konum{
         @apply w-0 !important;
         transition: all .5s !important;
@@ -694,7 +715,7 @@ body{
         @apply bg-ikincil-color text-birincil-color text-15px font-medium w-88% absolute h-60px rounded-DEFAULT_9 flex justify-center items-center
     }
     .kategoriler-sirala .kategoriler-container .kategoriler-ust{
-        @apply bg-birincil-color h-70% w-140px rounded flex justify-center items-center z-0 mb-30px
+        @apply bg-birincil-color h-70% w-140px rounded flex justify-center items-center z-0 mb-40px
     }
     
     .background-icon{
@@ -766,7 +787,7 @@ body{
       @apply h-full
     }
     .yerler-swiper .swiper-slide img{
-      @apply w-full h-full rounded z-0 absolute
+      @apply w-full h-full rounded z-0 absolute object-cover
     }
     .yerler-swiper .yerler-swiper-kategori, .yerler-sirala .yerler-sirala-kategori{
         @apply flex m-swiper-slide text-birincil-color z-35 
@@ -918,7 +939,7 @@ body{
 
 
     .vitrin-koleksiyon .swiper-slide img{
-        @apply rounded w-full relative
+        @apply rounded w-300px h-300px relative object-cover
     }
 
     .vitrin-koleksiyon .vitrin-koleksiyon-swiper-baslik{
@@ -1078,7 +1099,7 @@ body{
         @apply m-0 text-20px font-semibold
     }
     .hava-durumu-sehir{
-        @apply m-0 text-10px font-bold
+        @apply m-0 text-10px font-bold text-white
     }
     .hava-durumu-durum{
         @apply m-0 font-normal overflow-hidden whitespace-nowrap block text-ellipsis w-85% absolute left-10px text-13px

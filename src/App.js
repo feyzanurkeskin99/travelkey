@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import ReactDOM from 'react-dom'
 import AltBar from './Components/AltBar'
 import OrtaAlan from './Components/OrtaAlan'
@@ -8,6 +8,7 @@ import iconLogo from './images/logo.jpeg'
 import {BrowserRouter , Routes, Route, useLocation, NavLink,useNavigate} from 'react-router-dom'
 // import './ozel.css'
 import '../src/Styles/output.css'
+import 'antd/dist/antd.css';
 
 import AnaSayfa from './Components/AnaSayfa'
 import Kategoriler from './Components/Kategoriler'
@@ -29,9 +30,17 @@ import HaberlerDetay from './Detay/HaberlerDetay'
 import EtkinliklerDetay from './Detay/EtkinliklerDetay'
 import Ara from './Components/Ara'
 import YanbBar from './Components/YanBar'
+import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client"
+
+
+const client = new ApolloClient({
+  uri: 'https://gezgit.kod8.app/graphql',
+  cache: new InMemoryCache()
+})
 
 function App (){
-    const [city, setCity] = useLocalStorageState("city",  "sehirsec");     
+    const [city, setCity] = useLocalStorageState("city",  "sehirsec");    
+    const [scroll, setScroll]=useState() 
     const location = useLocation()
     React.useEffect((location) => {
         console.log('Location changed'+location);
@@ -44,49 +53,65 @@ function App (){
         setCity({cityName:"sehirsec"})
     }
 
+    window.addEventListener("scroll", () => {
+        setScroll(window.pageYOffset)
+        console.log(document.pageYOffset)
+    })
+
+    useEffect(()=>{
+        localStorage.setItem("scroll", scroll)
+    },[scroll])
+    
+
+
         if (city === "sehirsec" || city.cityName === "sehirsec") {
             return(
                 <AppContext.Provider value={{city, setCity}}>
+                <ApolloProvider client={client}>
                 <div className="app">
                     <Routes>
                         <Route path='*' element={ <GirisEkrani /> } />
                     </Routes>
                 </div>
+                </ApolloProvider>
                 </AppContext.Provider>  
                 )
         } else {
             return(
                 <AppContext.Provider value={{city, setCity}}>
-                    <div className="app">
-                    <UstBar/>
-                        <YanbBar/>
-                        <div className='ortaalan'>
-                        
-                        <Routes>
-                            <Route path='/' element={ <AnaSayfa />} />
-                            <Route path='/travelkey' element={<AnaSayfa />} />
-                            <Route path='/kategoriler' element={<Kategoriler />} />
-                            <Route path='/kesfet' element={<Kesfet />} />
-                            <Route path='/giris' element={ <GirisEkrani/>} />
-                            <Route path='/kaydedilenler' element={<Kaydedilenler />} />
-                            <Route path='/etkinlikler' element={ <Etkinlikler/>} />
-                            <Route path='/ara' element={ <Ara/>} />
-                            <Route path='/yerler-detay' element={ <YerlerDetay/>} />
-                            <Route path='/places/:id' element={ <YerlerDetay/>} />
-                            <Route path='/yerler-sirala/:id' element={ <YerlerSirala/>} />
-                            <Route path='/bundles/:id' element={ <BundlesYerlerSirala/>} />
-                            <Route path='/etkinlikler-sirala' element={ <EtkinliklerSirala/>} />
-                            <Route path='/events/:id' element={ <EtkinliklerDetay/>} />
-                            <Route path='/haberler-sirala' element={ <HaberlerSirala/>} />
-                            <Route path='/blogs/:id' element={ <HaberlerDetay/>} />
-                            <Route path='/kategoriler-sirala' element={ <KategoriSirala/>} />
-                            <Route path='/koleksiyonlar-sirala' element={ <KoleksiyonSirala/>} />
-                            <Route path='/ara/:id' element={ <Ara/>} />
-                            <Route path='*' element={<NotFound/>} />
-                        </Routes>
+                    <ApolloProvider client={client}>
+                        <div className="app">
+                            <UstBar/>
+                                <YanbBar/>
+                                <div className='ortaalan'>
+                                
+                                <Routes>
+                                    <Route path='/' element={ <AnaSayfa />} />
+                                    <Route path='/travelkey' element={<AnaSayfa />} />
+                                    <Route path='/kategoriler' element={<Kategoriler />} />
+                                    <Route path='/kesfet' element={<Kesfet />} />
+                                    <Route path='/giris' element={ <GirisEkrani/>} />
+                                    <Route path='/kaydedilenler' element={<Kaydedilenler />} />
+                                    <Route path='/etkinlikler' element={ <Etkinlikler/>} />
+                                    <Route path='/ara' element={ <Ara/>} />
+                                    <Route path='/yerler-detay' element={ <YerlerDetay/>} />
+                                    <Route path='/places/:id' element={ <YerlerDetay/>} />
+                                    <Route path='/yerler-sirala/:id' element={ <YerlerSirala/>} />
+                                    <Route path='/bundles/:id' element={ <BundlesYerlerSirala/>} />
+                                    <Route path='/etkinlikler-sirala' element={ <EtkinliklerSirala/>} />
+                                    <Route path='/events/:id' element={ <EtkinliklerDetay/>} />
+                                    <Route path='/haberler-sirala' element={ <HaberlerSirala/>} />
+                                    <Route path='/blogs/:id' element={ <HaberlerDetay/>} />
+                                    <Route path='/kategoriler-sirala' element={ <KategoriSirala/>} />
+                                    <Route path='/koleksiyonlar-sirala' element={ <KoleksiyonSirala/>} />
+                                    <Route path='/ara/:id' element={ <Ara/>} />
+                                    <Route path='*' element={<NotFound/>} />
+                                </Routes>
+                                </div>
+                            <AltBar />
                         </div>
-                    <AltBar />
-                    </div>
+                    </ApolloProvider>
+                    
                 </AppContext.Provider>  
             )
         }

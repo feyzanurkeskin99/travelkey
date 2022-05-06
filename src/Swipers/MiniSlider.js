@@ -55,7 +55,7 @@ const MiniSlider =()=>{
                 <div className='mini-slider'>
                 <Fancybox>
                     <p>
-                    <Swiper spaceBetween={10} slidesPerView={2} className="mySwiper">
+                    <Swiper spaceBetween={10} slidesPerView={2} className="mySwiper" >
                     {images?.map((element, index)=>(
                         <SwiperSlide className='mini-slider-element'>
                             <a data-fancybox="gallery" href={element}>

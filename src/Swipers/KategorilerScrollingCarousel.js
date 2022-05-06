@@ -11,6 +11,7 @@ import useFetch from 'use-http';
 import { AppContext } from '../Components/Context'
 import slugify from 'react-slugify';
 import { getApiModels } from '../Models/ApiModels';
+import { useQuery, gql } from '@apollo/client' 
 
 
 SwiperCore.use([EffectCoverflow]);
@@ -18,63 +19,104 @@ SwiperCore.use([EffectCoverflow]);
 const KategorilerScrollingCarousel =()=>{
     var {city, setCity} = useContext(AppContext);
 
-    const [data, setData]=useState([]);
-    const url="bundles?city.plate="+city.city+"&anavitrin=true&isDistrict=false"
-    const getAnaVitrinApi = async() => {
-        try{
-            const res = await getApiModels(url);
-            if(res.status) {
-                setData(res.data)
+    // const [data, setData]=useState([]);
+    // const url="bundles?city.plate="+city.city+"&anavitrin=true&isDistrict=false"
+    // const getAnaVitrinApi = async() => {
+    //     try{
+    //         const res = await getApiModels(url);
+    //         if(res.status) {
+    //             setData(res.data)
+    //         }
+    //     }catch(e){
+    //         alert(e.message)
+    //     }
+    // }
+
+    // useEffect(() => {
+    //     getAnaVitrinApi()
+    // },[])
+
+
+    const KATEGORILERSCROLLING = gql`
+    query kategroilerScrolling($city:String!) {
+        kategorilerscrolling: bundles(
+            filters:{
+                isDistrict:{eq:false}
+                anavitrin:{eq:true}
+                city:{plate:{eq:$city}}
             }
-        }catch(e){
-            alert(e.message)
+        ){
+            data{
+                id
+                attributes {
+                    name
+                    places{
+                        data{
+                            id
+                            attributes{
+                            name
+                            image{
+                                data{
+                                    id
+                                    attributes{
+                                    url
+                                    }
+                                }
+                            }
+                            }
+                        }
+                    }
+                    image{
+                        data
+                        {
+                            id
+                            attributes{
+                                url
+                            }
+                        }
+                    }
+                }
+            }
         }
-    }
-
-    useEffect(() => {
-        getAnaVitrinApi()
-    },[])
-
+    }`
+    const {loading, error, data} = useQuery(KATEGORILERSCROLLING, {
+        variables:{city: city.city}
+    })
+    if (loading) return <p>Loading...</p>
+    if (error) return <p>Error...</p>
 
     return(
-        data === [] ? (<></>):(
-            data.map((bundles) => (
-                (bundles.places.length !== 0) ? 
-                (<div className='kategoriler-scrolling-carousel'>
-                    <div className="anavitrin-koleksiyon-baslik-container">
-                        <div className="anavitrin-koleksiyon-baslik">{bundles.name}</div>
-                        <div className="anavitrin-koleksiyon-spot">{bundles.name} görülmeden gidilmemesi gereken güzelliklerden.</div>
-                    </div>
-                    <Swiper effect={'coverflow'} grabCursor={true} centeredSlides={true} slidesPerView={'auto'} coverflowEffect={{
-                        "rotate": 50,
-                        "stretch": 0,
-                        "depth": 100,
-                        "modifier": 1,
-                        "slideShadows": true
-                    }} className="mySwiper2">
-                            {bundles["places"].map((placess)=>(
-                                <SwiperSlide key={placess.id}>
-                                <NavLink to={"/places/"+placess.id+"-"+slugify(placess.name)}>
-                                {(placess.image === null ) ? (
-                                    <>
-                                    <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />
-                                    </>
-                                ):(
-                                        <>
-                                        <img src={"https://seyyahpanel.kod8.app"+placess.image.url} />
-                                        </>
-                                )}
-                                    </NavLink>
-                                    <div className="koleksiyon-swiper-baslik">
-                                        {placess.name}
-                                    </div>
-                                </SwiperSlide>
-                            ))}
-                    </Swiper>
-                </div>
-                ):(<></>)
+        (data.kategorilerscrolling.data) === [] ? (<></>):(
+            <></>
+            // data.kategorilerscrolling.data.map((bundles) => (
+            //     (bundles.attributes.places.data.length !== 0) ? 
+            //     (<div className='kategoriler-scrolling-carousel'>
+            //         <div className="anavitrin-koleksiyon-baslik-container">
+            //             <div className="anavitrin-koleksiyon-baslik">{bundles.attributes.name}</div>
+            //             <div className="anavitrin-koleksiyon-spot">{bundles.attributes.name} görülmeden gidilmemesi gereken güzelliklerden.</div>
+            //         </div>
+            //         <Swiper effect={'coverflow'} grabCursor={true} centeredSlides={true} slidesPerView={'auto'} coverflowEffect={{
+            //             "rotate": 50,
+            //             "stretch": 0,
+            //             "depth": 100,
+            //             "modifier": 1,
+            //             "slideShadows": true
+            //         }} className="mySwiper2">
+            //             {bundles.attributes.places.data.map((placess)=>(
+            //                 <SwiperSlide key={placess.id}>
+            //                 <NavLink to={"/places/" + placess.id + "-" + slugify(placess.attributes.name)}>
+            //                     {console.log(placess.attributes.image.data[0].attributes.url)}
+            //                     </NavLink>
+            //                     <div className="koleksiyon-swiper-baslik">
+            //                         {placess.attributes.name}
+            //                     </div>
+            //                 </SwiperSlide>
+            //             ))}
+            //         </Swiper>
+            //     </div>
+            //     ):(<></>)
 
-                ))
+            //     ))
         )
         
     )

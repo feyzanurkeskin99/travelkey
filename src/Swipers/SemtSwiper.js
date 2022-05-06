@@ -12,6 +12,7 @@ import { AppContext } from '../Components/Context'
 import slugify from 'react-slugify';
 import {useParams} from 'react-router-dom'
 import { getApiModels } from '../Models/ApiModels';
+import { useQuery, gql } from '@apollo/client' 
 
 
 SwiperCore.use([FreeMode,Navigation,Thumbs]);
@@ -24,52 +25,69 @@ const SemtSwiper =()=>{
 
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
     var {city, setCity} = useContext(AppContext);
-    const [data, setData]=useState([]);
 
-    const url="bundles?city.plate="+city.city+"&isDistrict=true"//semt olan koleksiyonlar
-    const getSemtApi = async() => {
-        try{
-            const res = await getApiModels(url);
-            if(res.status) {
-                setData(res.data)
+
+    
+    const SEMTSWIPER = gql`
+    query semtSwiper($city:String!) {
+        semtswiper: bundles(
+            pagination:{page:1, pageSize:100}
+            filters:{
+                city:{plate:{eq:$city}}
+                isDistrict:{eq:true}
             }
-        }catch(e){
-            alert(e.message)
+        ){
+            data{
+                id
+                attributes{
+                  name
+                  isDistrict
+                  city {
+                    data {
+                      id
+                      attributes {
+                        plate
+                      }
+                    }
+                  }
+                }
+              }
         }
-    }
-
-    useEffect(() => {
-        getSemtApi()
-    },[])
-
+    }`
+    const {loading, error, data} = useQuery(SEMTSWIPER, {
+        variables:{city: city.city}
+    })
+    if (loading) return <p>Loading...</p>
+    if (error) return <p>Error...</p>
 
         return(
             <>
                 <div className='semt-swiper'>
                 <div className="block-baslik">Semtler</div>
                 <Swiper onSwiper={setThumbsSwiper} spaceBetween={10} slidesPerView={4} freeMode={true} watchSlidesProgress={true} className="mySwiperSemt">
-                    {data
+                    
+                    {data.semtswiper.data
                         .reduce((previous, current, index, array)=>{
                         return index %2 === 0 ? [...previous, array.slice(index,index+2)] : previous},[])
                         .filter(diziFilter => diziFilter.length===2)
                         .map((placess) => (
-                            <SwiperSlide key={placess.id}>
-                                    <NavLink to={"/bundles/"+placess[0].id+"-"+slugify(placess[0].name)}>
-                                        <div className="semt-adi-alt">{placess[0].name}</div>
+                            <SwiperSlide key={Math.random()*1000}>
+                                    <NavLink to={"/bundles/"+placess[0].id+"-"+slugify(placess[0].attributes.name)}>
+                                        <div className="semt-adi-alt">{placess[0].attributes.name}</div>
                                     </NavLink>
-                                    <NavLink to={"/bundles/"+placess[1].id+"-"+slugify(placess[1].name)}>
-                                        <div className="semt-adi-alt">{placess[1].name}</div>
+                                    <NavLink to={"/bundles/"+placess[1].id+"-"+slugify(placess[1].attributes.name)}>
+                                        <div className="semt-adi-alt">{placess[1].attributes.name}</div>
                                     </NavLink>
                             </SwiperSlide>
                         ))}
-                        {data
+                        {data.semtswiper.data
                         .reduce((previous, current, index, array)=>{
                         return index %2 === 0 ? [...previous, array.slice(index,index+2)] : previous},[])
                         .filter(diziFilter => diziFilter.length===1)
                         .map((placess) => (
-                            <SwiperSlide key={placess.id}>
+                            <SwiperSlide key={Math.random()*1000}>
                                     <NavLink to={"/bundles/"+placess[0].id+"/"}>
-                                        <div className="semt-adi-alt">{placess[0].name}</div>
+                                        <div className="semt-adi-alt">{placess[0].attributes.name}</div>
                                     </NavLink>
                             </SwiperSlide>
                         ))}

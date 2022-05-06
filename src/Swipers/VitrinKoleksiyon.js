@@ -13,32 +13,44 @@ import useFetch from 'use-http';
 import { AppContext } from '../Components/Context'
 import slugify from 'react-slugify';
 import { getApiModels } from '../Models/ApiModels';
+import { useQuery, gql } from '@apollo/client' 
 
 SwiperCore.use([EffectCards]);
 
 const VitrinKoleksiyon =()=>{
   var {city, setCity} = useContext(AppContext);
 
-  const [data, setData]=useState([]);
-
-  const url="bundles?city.plate="+city.city+"&isDistrict=false&vitrin=true"//semt olan koleksiyonlar
-  const getVitrinApi = async() => {
-      try{
-          const res = await getApiModels(url);
-          if(res.status) {
-              setData(res.data)
-          }
-      }catch(e){
-          alert(e.message)
-      }
-  }
-
-  useEffect(() => {
-      getVitrinApi()
-  },[])
-
-
-
+    const VITTRINBUNDLES = gql`
+    query vitrinBundles($city:String!) {
+        vitrinbundles: bundles(
+            filters:{
+                isDistrict:{eq:false}
+                vitrin:{eq:true}
+                city:{plate:{eq:$city}}
+            }
+        ){
+            data{
+                id
+                attributes {
+                    name
+                    image{
+                        data
+                        {
+                            id
+                            attributes{
+                                url
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }`
+    const {loading, error, data} = useQuery(VITTRINBUNDLES, {
+        variables:{city: city.city}
+    })
+    if (loading) return <p>Loading...</p>
+    if (error) return <p>Error...</p>
 
         return(
             <div className='vitrin-koleksiyon'>
@@ -48,31 +60,28 @@ const VitrinKoleksiyon =()=>{
                 <TumElemanlar name='Tüm Koleksiyonlar'></TumElemanlar></div>
             </NavLink>
             <Swiper effect={'cards'} grabCursor={true} className="mySwiper">
-                {data
+                {data.vitrinbundles.data
                 .map((bundles) => (
-                    
                         <SwiperSlide key={bundles.id}>
-                            <NavLink to={"/bundles/"+bundles.id+"-"+slugify(bundles.name)}>
-                            {(bundles.image === null ) ? (
+                            <NavLink to={"/bundles/"+bundles.id+"-"+slugify(bundles.attributes.name)}>
+                            {(!bundles.attributes.image.data.length ) ? (
                         <>
                         <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />
                         </>
                         ):(
                             <>
-                            <img src={"https://seyyahpanel.kod8.app"+bundles.image.url} />
+                            <img src={process.env.REACT_APP_IMG_URL+bundles.attributes.image.data[0].attributes.url} />
                             </>
                         )}
 
                             </NavLink>
                             <div className="vitrin-koleksiyon-swiper-baslik">
-                                {bundles.name}
+                                {bundles.attributes.name}
                             </div>
-                          
                         </SwiperSlide>
-                    
                 ))}
-              </Swiper>
-              </div>
+            </Swiper>
+            </div>
         
         )
 }

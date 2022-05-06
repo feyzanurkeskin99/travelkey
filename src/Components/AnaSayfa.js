@@ -51,8 +51,8 @@ const AnaSayfa =()=>{
                 <SemtSwiper></SemtSwiper>
                 <YerlerSwiper kategoriIcon={kategoriIcons.historical} name="Tarih"></YerlerSwiper>
                 <RotalarSwiper></RotalarSwiper>
-                <YerlerTypes name="Aktiviteler" type="activity"></YerlerTypes>
-                <YerlerTypes name="Neyi Meşhur?" type="iconic"></YerlerTypes>
+                <YerlerTypes name="Aktiviteler" Type="activity"></YerlerTypes>
+                <YerlerTypes name="Neyi Meşhur?" Type="iconic"></YerlerTypes>
                 <KategorilerScrollingCarousel></KategorilerScrollingCarousel>
                 <IkiSiraSwiper></IkiSiraSwiper>
                 {/* <Etkinlikler></Etkinlikler>

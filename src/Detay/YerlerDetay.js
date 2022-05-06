@@ -21,7 +21,11 @@ import slugify from 'react-slugify';
 import { Collapse } from 'antd';
 import { CaretRightOutlined } from '@ant-design/icons';
 import { List, Divider } from 'antd';
+import { Tabs } from 'antd';
+import { getApiModels } from '../Models/ApiModels';
+import { useQuery, gql } from '@apollo/client' 
 
+const { TabPane } = Tabs;
 
 
 const { Panel } = Collapse;
@@ -30,41 +34,69 @@ SwiperCore.use([FreeMode,Navigation,Thumbs]);
 
 const YerlerDetay =()=>{
 
-    
+
     React.useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
-
+    //url den id'yi çekmek için
+    let { id } = useParams();
     var {city, setCity} = useContext(AppContext);
-    const [data, setData]=useState([]);
     const [googleMap, setGoogleMap]=useState("");
     const [latitude, setLatitude]=useState([]);
     const [longitude, setLongitude]=useState([]);
-    useEffect(()=>{
-        const fetchData = async ()=>{
-            await axios.get('https://seyyahpanel.kod8.app/places?sehir.plate='+city.city)
-            .then(response => {
-                setData(response.data);
-                response.data.filter(dataFilter => ""+dataFilter.id === id.split("-")[0])
-                .map((dataPlaces)=>(
-                    setGoogleMap(dataPlaces.gps)
-                ))
-            })
+
+    const YERLERDETAY = gql`
+    query yerlerDetay($id:ID!) {
+        yerlerdetay: places(
+            filters:{
+                id:{eq:$id}
+            }
+        ){
+            data {
+                id
+                attributes {
+                    name
+                    image{
+                        data{
+                            id
+                            attributes{
+                            url
+                            }
+                        }
+                    }
+                    address
+                    email
+                    website
+                    phone
+                    ymapsurl
+                    gmapsurl
+                    spot
+                    body
+                    gps
+                    category{
+                        data{
+                            id
+                            attributes{
+                            name
+                            iconname
+                            }
+                        }
+                    }
+            }
         }
-        fetchData();
-        
-
-        
-    },[]);
-
-    //url den id'yi çekmek için
-    let { id } = useParams();
-    if (!id) {
-        return <NotFound />;
     }
+}`
+    const {loading, error, data} = useQuery(YERLERDETAY, {
+        variables:{id : id.split("-")[0]}
+    })
+    if (loading) return <p>Loading...</p>
+    if (error) return <p>Error...</p>
+
+
+
 
     const deneme = [
-            { 
+            {
                 map:googleMap,
                 title:"Google Maps"
             },
@@ -74,32 +106,37 @@ const YerlerDetay =()=>{
             }
         ];
 
-    const konumSec =()=>{ 
+    const konumSec =()=>{
         document.querySelector('.konum-sec').classList.toggle('hidden')
         document.querySelector('.konum-sec-divider').classList.toggle('hidden')
         document.querySelector('.konum-sec-list').classList.toggle('hidden')
     }
 
+
+
+
+
         return(
             <div className='yerler-detay-ortaalan'>
-            
-                {
-                data
-                .filter(dataFilter => ""+dataFilter.id === id.split("-")[0])
+            {console.log(data.yerlerdetay.data)}
+            {console.log(id.split("-")[0])}
+
+            {data.yerlerdetay.data.filter(dataFilter => ""+dataFilter.id === id.split("-")[0])
                 .map((dataPlaces)=>(
                     (dataPlaces.length !== 0) ? (
-                        <>
+                        <>            
+
                         <div className='yerler-detay-cover'>
                             <div className="cover-baslik">
-                                <NavLink to={"/yerler-sirala/categorie-"+dataPlaces.category.name}>
+                                <NavLink to={"/yerler-sirala/categorie-"+dataPlaces.attributes.category.data.attributes.name}>
                                 <div className="kategori">
 
-                                    <div className="kategori-icon"><InlineSVG src={kategoriIcons[dataPlaces.category.iconname]}></InlineSVG></div>
+                                    <div className="kategori-icon"><InlineSVG src={kategoriIcons[dataPlaces.attributes.category.data.attributes.iconname]}></InlineSVG></div>
 
-                                    <div className="kategori-adi">{dataPlaces.category.name}</div>
+                                    <div className="kategori-adi">{dataPlaces.attributes.category.data.attributes.name}</div>
                                 </div>
                                 </NavLink>
-                                <div className="baslik">{dataPlaces.name}</div>
+                                <div className="baslik">{dataPlaces.attributes.name}</div>
                             </div>
                             <div className="konum" onClick={konumSec}>
                             {/* {(dataPlaces.gps === null)? (
@@ -111,6 +148,7 @@ const YerlerDetay =()=>{
                                 <div>Konum</div>
                                 <div className="konum-alt-icon"><InlineSVG src={locationIcons.location}></InlineSVG></div>
                             </div>
+                            <div className="konum-sec-container">
                             <div className="konum-sec hidden">
                             <Divider className='konum-sec-divider hidden' orientation="left"> <h2>HARİTALAR</h2> </Divider>
                             <List
@@ -120,20 +158,103 @@ const YerlerDetay =()=>{
                             footer={<></>}
                             bordered
                             dataSource={deneme}
-                            renderItem={item => <a href={item.map}><List.Item> <InlineSVG src={locationIcons.choose_map}/>{item.title}</List.Item></a>}
+                            renderItem={item => item.map ? (<a href={item.map}><List.Item> <InlineSVG src={locationIcons.choose_map}/>{item.title}</List.Item></a>):(<></>)}
                             />
                             </div>
+                            </div>
                         </div>
-                        
+
                         <div className="yerler-spot">
                             <div className="yerler-spot-yazi">
-                                {dataPlaces.spot}
+                                {dataPlaces.attributes.spot}
                             </div>
                         </div>
 
                         <div className="yerler-mini-slider">
                             <MiniSlider></MiniSlider>
                         </div>
+                        <Tabs defaultActiveKey="1">
+
+                                    {/* İletişim */}
+
+                                    {(dataPlaces.attributes.email=== null & dataPlaces.attributes.website=== null & dataPlaces.attributes.phone=== null & dataPlaces.attributes.address=== null) ? (<></>):(
+
+                                    <TabPane tab="İletişim" key="1">
+                                        <div className="iletisim">
+                                        <h2 className='iletisim-baslik'>İletişim Bilgileri</h2>
+                                        <div className="iletisim-bilgi">
+
+                                        {dataPlaces.attributes.email === null ? (<></>) :
+                                        (
+                                        <span className='iletisim-eposta'>
+                                            <InlineSVG src={contactIcons.email}></InlineSVG>
+                                            <span className="koyu">Mail:</span><span className="iletisim-detay">{dataPlaces.attributes.email}</span>
+                                        </span>)}
+
+                                        {dataPlaces.attributes.website === null ? (<></>) :
+                                        (
+                                        <span className='iletisim-eposta'>
+                                            <InlineSVG src={contactIcons.web}></InlineSVG>
+                                            <span className="koyu">Web:</span><span className="iletisim-detay">{dataPlaces.attributes.website}</span>
+                                        </span>)}
+
+                                        {dataPlaces.attributes.phone === null ? (<></>) :
+                                        (
+                                        <span className='iletisim-eposta'>
+                                            <InlineSVG src={contactIcons.phone}></InlineSVG>
+                                            <span className="koyu">Telefon:</span><span className="iletisim-detay">{dataPlaces.attributes.phone}</span>
+                                        </span>)}
+
+                                        {dataPlaces.attributes.address === null ? (<></>) :
+                                        (
+                                        <span className='iletisim-eposta'>
+                                            <InlineSVG src={contactIcons.address}></InlineSVG>
+                                            <span className="koyu">Adres:</span><span className="iletisim-detay">{dataPlaces.attributes.address}</span>
+                                        </span>)}
+                                        </div>
+                                        </div>
+                                    </TabPane>
+
+                                    )}
+
+
+
+                                    {/* Detay Yazı */}
+                                    {dataPlaces.attributes.body === null ? (<></>):(     
+                                        <TabPane tab="Detay" key="2">
+                                        <div className="detay-yazi">
+                                                {parse(dataPlaces.attributes.body)}
+                                            </div>
+                                        </TabPane>
+                                    )}
+
+
+
+
+                                    {/* Harita */}
+                                    {(dataPlaces.attributes.gps === null)? (
+                                    <></>
+                                    ):(
+                                        <TabPane tab="Harita" key="3">
+                                        <MapContainer center={[dataPlaces.attributes.gps.split(",")[0],dataPlaces.attributes.gps.split(",")[1]]} zoom={15} scrollWheelZoom={true} >
+                                    <TileLayer
+                                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                                    />
+
+                                    <Marker position={[dataPlaces.attributes.gps.split(",")[0],dataPlaces.attributes.gps.split(",")[1]]} >
+
+                                        <Popup>
+                                        {dataPlaces.attributes.name} <br /> Burada
+                                        </Popup>
+                                    </Marker>
+                                </MapContainer>
+                                        </TabPane>
+                                )}
+
+                        </Tabs>
+
+{/* 
                         <Collapse
                             bordered={false}
                             defaultActiveKey={['1']}
@@ -141,77 +262,74 @@ const YerlerDetay =()=>{
                             expandIcon={({ isActive }) => <CaretRightOutlined rotate={isActive ? 90 : 0} />}
                             className="site-collapse-custom-collapse"
                         >
-                            {/* İletişim */}
-                            
-                            {(dataPlaces.email=== null & dataPlaces.website=== null & dataPlaces.phone=== null & dataPlaces.address=== null) ? (<></>):(
+
+                            {(dataPlaces.attributes.email=== null & dataPlaces.attributes.website=== null & dataPlaces.attributes.phone=== null & dataPlaces.attributes.address=== null) ? (<></>):(
                                 <Panel header="İletişim" key="1" className="site-collapse-custom-panel">
                                     <div className="iletisim">
                                     <h2 className='iletisim-baslik'>İletişim Bilgileri</h2>
                                     <div className="iletisim-bilgi">
 
-                                    {dataPlaces.email === null ? (<></>) :
+                                    {dataPlaces.attributes.email === null ? (<></>) :
                                     (
                                     <span className='iletisim-eposta'>
                                         <InlineSVG src={contactIcons.email}></InlineSVG>
-                                        <span className="koyu">Mail:</span><span className="iletisim-detay">{dataPlaces.email}</span>
+                                        <span className="koyu">Mail:</span><span className="iletisim-detay">{dataPlaces.attributes.email}</span>
                                     </span>)}
-                                        
-                                    {dataPlaces.website === null ? (<></>) :
+
+                                    {dataPlaces.attributes.website === null ? (<></>) :
                                     (
                                     <span className='iletisim-eposta'>
                                         <InlineSVG src={contactIcons.web}></InlineSVG>
-                                        <span className="koyu">Web:</span><span className="iletisim-detay">{dataPlaces.website}</span>
+                                        <span className="koyu">Web:</span><span className="iletisim-detay">{dataPlaces.attributes.website}</span>
                                     </span>)}
-                                        
-                                    {dataPlaces.phone === null ? (<></>) :
+
+                                    {dataPlaces.attributes.phone === null ? (<></>) :
                                     (
                                     <span className='iletisim-eposta'>
                                         <InlineSVG src={contactIcons.phone}></InlineSVG>
-                                        <span className="koyu">Telefon:</span><span className="iletisim-detay">{dataPlaces.phone}</span>
+                                        <span className="koyu">Telefon:</span><span className="iletisim-detay">{dataPlaces.attributes.phone}</span>
                                     </span>)}
 
-                                    {dataPlaces.address === null ? (<></>) :
+                                    {dataPlaces.attributes.address === null ? (<></>) :
                                     (
                                     <span className='iletisim-eposta'>
                                         <InlineSVG src={contactIcons.address}></InlineSVG>
-                                        <span className="koyu">Adres:</span><span className="iletisim-detay">{dataPlaces.address}</span>
+                                        <span className="koyu">Adres:</span><span className="iletisim-detay">{dataPlaces.attributes.address}</span>
                                     </span>)}
                                     </div>
                                     </div>
                                 </Panel>
                                 )}
-                                    
 
-                                    {/* Detay Yazı */}
-                                    {dataPlaces.body === null ? (<></>):(
+
+                                    {dataPlaces.attributes.body === null ? (<></>):(
                                         <Panel header="Detay" key="2" className="site-collapse-custom-panel">
                                             <div className="detay-yazi">
-                                                {parse(dataPlaces.body)}
+                                                {parse(dataPlaces.attributes.body)}
                                             </div>
                                         </Panel>
                                     )}
-                                    {/* Harita */}
-                                    {(dataPlaces.gps === null)? (
+                                    {(dataPlaces.attributes.gps === null)? (
                                     <></>
                                     ):(
                                     <Panel header="Adres" key="3" className="site-collapse-custom-panel">
-                                    <MapContainer center={[dataPlaces.gps.split("@")[1].split(",")[0],dataPlaces.gps.split("@")[1].split(",")[1]]} zoom={15} scrollWheelZoom={true} >
+                                    <MapContainer center={[dataPlaces.attributes.gps.split(",")[0],dataPlaces.attributes.gps.split(",")[1]]} zoom={15} scrollWheelZoom={true} >
                                     <TileLayer
                                         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                                     />
-                                    
-                                    <Marker position={[dataPlaces.gps.split("@")[1].split(",")[0],dataPlaces.gps.split("@")[1].split(",")[1]]} >
-                                        
+
+                                    <Marker position={[dataPlaces.attributes.gps.split(",")[0],dataPlaces.attributes.gps.split(",")[1]]} >
+
                                         <Popup>
-                                        {dataPlaces.name} <br /> Burada
+                                        {dataPlaces.attributes.name} <br /> Burada
                                         </Popup>
                                     </Marker>
                                 </MapContainer>
                                 </Panel>
                                 )}
-                            
-                        </Collapse>
+
+                        </Collapse> */}
                         <IkiSiraSwiper></IkiSiraSwiper>
                     </>
                     ):(
@@ -220,7 +338,7 @@ const YerlerDetay =()=>{
                 ))}
             </div>
         )
-    
+
 }
 
 export default YerlerDetay;

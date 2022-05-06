@@ -13,51 +13,68 @@ import { NavLink } from 'react-router-dom';
 import { AppContext } from '../Components/Context'
 import slugify from 'react-slugify';
 import { getApiModels } from '../Models/ApiModels';
+import { useQuery, gql } from '@apollo/client' 
 
 const KoleksiyonSirala =()=>{
     var {city, setCity} = useContext(AppContext);
 
-    const [data, setData]=useState([]);
 
-    const url="bundles?city.plate="+city.city+"&isDistrict=false"
-    const getBundlesApi = async() => {
-        try{
-            const res = await getApiModels(url);
-            if(res.status) {
-                setData(res.data)
+
+
+    const BUNDLES = gql`
+    query Bundles($city:String!) {
+        bundles: bundles(
+            pagination:{page:1, pageSize:100}
+            filters:{
+                isDistrict:{eq:false}
+                city:{plate:{eq:$city}}
             }
-        }catch(e){
-            alert(e.message)
+        ){
+            data{
+                id
+                attributes {
+                    name
+                    image{
+                        data
+                        {
+                            id
+                            attributes{
+                                url
+                            }
+                        }
+                    }
+                }
+            }
         }
-    }
-
-    useEffect(() => {
-        getBundlesApi()
-    },[])
-
+    }`
+    const {loading, error, data} = useQuery(BUNDLES, {
+        variables:{city: city.city}
+    })
+    if (loading) return <p>Loading...</p>
+    if (error) return <p>Error...</p>
 
 
     return(
         <div className='koleksiyonlar-sirala'>
-            {data.map((bundles) => (
+            {data.bundles.data.map((bundles) => (
                 
                     <div className="koleksiyonlar-container">
                         <div className="koleksiyon-sirala-ust">
-                        {(bundles.image === null ) ? (
+                        {(!bundles.attributes.image.data.length ) ? (
                         <>
                         <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />
                         </>
-                ):(
-                        <>
-                        <img src={"https://seyyahpanel.kod8.app"+bundles.image.url} />
-                        </>
-                )}
+                        ):(
+                            <>
+                            <img src={process.env.REACT_APP_IMG_URL+bundles.attributes.image.data[0].attributes.url} />
+                            </>
+                        )}
                         </div>
                         <div className="koleksiyon-sirala-alt">
                             <div className="koleksiyon-sirala-alt-baslik">
-                                {bundles.name}
+                                {bundles.attributes.name}
                             </div>
-                            <NavLink to={"/bundles/"+bundles.id+"-"+slugify(bundles.name)}>
+                            <NavLink to={"/bundles/"+bundles.id+"-"+slugify(bundles.attributes.name)}>
                             <div className="koleksiyon-sirala-buton">
                                 <InlineSVG src={collectionIcons.arrow}></InlineSVG>
                             </div>

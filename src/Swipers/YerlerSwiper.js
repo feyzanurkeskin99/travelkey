@@ -12,29 +12,63 @@ import useFetch from 'use-http';
 import { kategoriIcons } from '../icon';
 import { AppContext } from '../Components/Context'
 import slugify from 'react-slugify';
-import { getApiModels } from '../Models/ApiModels';
+import { useQuery, gql } from '@apollo/client' 
 
 const YerlerSwiper =(props)=>{    
 
     var {city, setCity} = useContext(AppContext);
-    const [data, setData]=useState([]);
 
     const url="places?sehir.plate="+city.city+"&vitrin=true&type=place"//semt olan koleksiyonlar
-    const getYerlerApi = async() => {
-        try{
-            const res = await getApiModels(url);
-            if(res.status) {
-                setData(res.data)
+
+    const YERLERSWIPER = gql`
+    query yerlerSwiper($sehir:String!) {
+        yerlerswiper: places(
+            pagination:{page:1, pageSize:100}
+            filters:{
+                sehir:{plate:{eq:$sehir}}
+                vitrin:{eq:true}
+                type:{eq:"place"}
             }
-        }catch(e){
-            alert(e.message)
+        ){
+            data {
+                id
+                attributes {
+                    name
+                    image{
+                        data{
+                            id
+                            attributes{
+                            url
+                            }
+                        }
+                    }
+                    address
+                    email
+                    website
+                    phone
+                    ymapsurl
+                    gmapsurl
+                    spot
+                    body
+                    gps
+                    category{
+                        data{
+                            id
+                            attributes{
+                            name
+                            iconname
+                            }
+                        }
+                    }
+                }
+            }
         }
-    }
-
-    useEffect(() => {
-        getYerlerApi()
-    },[])
-
+    }`
+    const {loading, error, data} = useQuery(YERLERSWIPER, {
+        variables:{sehir: city.city}
+    })
+    if (loading) return <p>Loading...</p>
+    if (error) return <p>Error...</p>
 
 
 
@@ -49,31 +83,33 @@ const YerlerSwiper =(props)=>{
             </NavLink>
         
         <Swiper centeredSlides={true} slidesPerView={'auto'} spaceBetween={20} grabCursor={true} className="mySwiperYerler">
-            {data.map((places) => (
+            {data.yerlerswiper.data.map((places) => (
                 
-                    <SwiperSlide key={places.id}>
-                    <NavLink to={"/places/"+places.id+"-"+slugify(places.name)}>
-                    {(places.image === null ) ? (
+                    <SwiperSlide key={places.id}>            
+                    {/* {console.log(places.attributes.image.data[0].attributes)} */}
+
+                    <NavLink to={"/places/"+places.id+"-"+slugify(places.attributes.name)}>
+                    {(places.attributes.image.data[0].attributes.url === null || places.attributes.image.data[0].attributes.url === undefined || places.attributes.image.data===[]) ? (
                         <>
                         <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />
                         </>
                     ):(
                         <>
-                        <img src={"https://seyyahpanel.kod8.app"+places.image.url} />
+                        <img src={"https://gezgit.kod8.app/"+places.attributes.image.data[0].attributes.url} />
                         </>
                     )}
                     
                     </NavLink>
                     <div className="yerler-swiper-kategori">
                                 <div className="yerler-swiper-kategori-icon">
-                                    <InlineSVG src={kategoriIcons[places.category.iconname]}></InlineSVG>
+                                    <InlineSVG src={kategoriIcons[places.attributes.category.data.attributes.iconname]}></InlineSVG>
                                 </div>
                                 
                                 <div className="yerler-swiper-kategori-adi">
-                                    {places.category.name}
+                                    {places.attributes.category.data.attributes.name}
                                 </div>
                     </div>
-                    <div className="yerler-swiper-baslik">{places.name}</div>
+                    <div className="yerler-swiper-baslik">{places.attributes.name}</div>
                     </SwiperSlide>
                 
             ))}
