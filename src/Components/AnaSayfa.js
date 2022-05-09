@@ -54,7 +54,7 @@ const AnaSayfa =()=>{
                 <YerlerTypes name="Aktiviteler" Type="activity"></YerlerTypes>
                 <YerlerTypes name="Neyi Meşhur?" Type="iconic"></YerlerTypes>
                 <KategorilerScrollingCarousel></KategorilerScrollingCarousel>
-                <IkiSiraSwiper></IkiSiraSwiper>
+                {/* <IkiSiraSwiper></IkiSiraSwiper> */}
                 {/* <Etkinlikler></Etkinlikler>
                 <Haberler></Haberler> */}
                 </AppContext.Provider>  

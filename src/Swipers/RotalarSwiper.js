@@ -76,7 +76,7 @@ if (error) return <p>Error...</p>
                         : 
                         (bundles.attributes.image.data.url)} />
                         
-                        <NavLink to={"/bundles/"+bundles.id+"-"+slugify(bundles.attributes.name)}>
+                        <NavLink to={"/bundles/"+bundles.id+"+"+slugify(bundles.attributes.name)}>
                         <div className="rotalar-baslik">
                             {bundles.attributes.name}
                         </div>

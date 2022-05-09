@@ -64,6 +64,7 @@ const YerlerSirala =memo(()=>{
                 id
                 attributes {
                     name
+                    type
                     image{
                         data{
                             id
@@ -104,25 +105,26 @@ const YerlerSirala =memo(()=>{
 
     return(
         <div className='yerler-sirala'>
-        {console.log(data.yerlertypes.data[5].attributes.category.data.attributes.iconname)}
-        {id.split("-")[0] === "all" ? (
-            data.yerlertypes.data.map((places) => {
+        {console.log(data.yerlertypes.data)}
+        {id.split("-")[0] ? (
+            id.split("-")[0] === "all" ? (
+            data.yerlertypes.data.filter(place => { return place.attributes ? "place" === place.attributes.type : false;}).map((places) => (                    
+                <Yerler place={places} id={places.id}>
+                    {console.log(places.id)}
+                </Yerler>                
+                ))
+            ):(
+            data.yerlertypes.data.filter(place => { return place.attributes.category.data ? id.split("-")[1] === place.attributes.category.data.attributes.iconname : false;}).map((places) => {
                 return (
                     
-                <Yerler place={places} id={id.split("-")[0]}>
-                    {console.log("deneme")}
+                <Yerler place={places} id={places.id}>
+                    {console.log(places.id)}
                 </Yerler>
                 )
             })
-        ):(
-            data.yerlertypes.data.filter(filter => id.split("-")[1] === filter.attributes.category.data.attributes.iconname).map((places) => {
-                return (
-                    
-                <Yerler place={places} id={id.split("-")[1]}>
-                    {console.log("deneme")}
-                </Yerler>
-                )
-            })
+        )
+        ) : (
+            <></>
         )}
         
 

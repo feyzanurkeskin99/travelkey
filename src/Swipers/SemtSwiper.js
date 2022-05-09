@@ -72,10 +72,10 @@ const SemtSwiper =()=>{
                         .filter(diziFilter => diziFilter.length===2)
                         .map((placess) => (
                             <SwiperSlide key={Math.random()*1000}>
-                                    <NavLink to={"/bundles/"+placess[0].id+"-"+slugify(placess[0].attributes.name)}>
+                                    <NavLink to={"/bundles/"+placess[0].id+"+"+slugify(placess[0].attributes.name)}>
                                         <div className="semt-adi-alt">{placess[0].attributes.name}</div>
                                     </NavLink>
-                                    <NavLink to={"/bundles/"+placess[1].id+"-"+slugify(placess[1].attributes.name)}>
+                                    <NavLink to={"/bundles/"+placess[1].id+"+"+slugify(placess[1].attributes.name)}>
                                         <div className="semt-adi-alt">{placess[1].attributes.name}</div>
                                     </NavLink>
                             </SwiperSlide>

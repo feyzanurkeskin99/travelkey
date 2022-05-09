@@ -16,82 +16,122 @@ import {useParams} from 'react-router-dom'
 import { AppContext } from '../Components/Context'
 import slugify from 'react-slugify';
 import { getApiModels } from '../Models/ApiModels';
+import { useQuery, gql } from '@apollo/client' 
+import { DataNode } from 'html-react-parser/node_modules/domhandler';
 
 
 
 const BundlesYerlerSirala =()=>{
     
     var {city, setCity} = useContext(AppContext);
-    const [dataPlace, setDataPlace]=useState([]);
-    const [dataCat, setDataCat]=useState([]);
-
-
-    const getApi = async() => {
-        try{
-            const resCat = await getApiModels("places?sehir.plate="+city.city);
-            const resPlace = await getApiModels("bundles?city.plate="+city.city);
-            
-            if(resCat.status && resPlace.status) {
-                setDataCat(resCat.data)
-                setDataPlace(resPlace.data)
-            }
-        }catch(e){
-            alert(e.message)
-        }
-    }
-
-    useEffect(() => {
-        getApi()
-    },[])
-
-
-
     let { id } = useParams();
-    if (!id) {
-        return <NotFound />;
-    }
+
+    const VITRINBUNDLES = gql`
+    query vitrinBundles($city:String!) {
+        vitrinbundles: bundles(
+            pagination:{page:1, pageSize:100}
+            filters:{
+                city:{plate:{eq:$city}}
+            }
+        ){
+            data{
+                id
+                attributes {
+                    name
+                    places{
+                        data{
+                            id
+                            attributes{
+                                name
+                                category{
+                                        data{
+                                        id
+                                        attributes{
+                                            name
+                                            iconname
+                                        }
+                                        }
+                                    }
+                                image{
+                                data{
+                                    id
+                                    attributes{
+                                    url
+                                    }
+                                }
+                                }
+                            }
+                            }
+                        }
+                    image{
+                        data
+                        {
+                            id
+                            attributes{
+                                url
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }`
+    const {loading, error, data} = useQuery(VITRINBUNDLES, {
+        variables:{city: city.city}
+    })
+    if (loading) return <p>Loading...</p>
+    if (error) return <p>Error...</p>
+
+
+
 
     
     return(
         <div className='yerler-sirala'>
-        {dataPlace
-        .filter(dataFilter => ""+dataFilter.id=== id.split("-")[0])
-        .map((places) => (
-        places["places"].map((placess)=>(
-                
-                <NavLink to={"/places/"+placess.id+"-"+slugify(placess.name)}>
-                <div className="yerler-container">
-                {(placess.image === null ) ? (
-                        <>
-                        <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />
-                        </>
-                ):(
-                        <>
-                        <img src={"https://seyyahpanel.kod8.app"+placess.image.url} />
-                        </>
-                )}
-                <div className="yerler-sirala-kategori">
-                {dataCat
-                .filter(dataCatFilter => dataCatFilter.id=== placess.id)
-                .map((categories)=>(
-                    <>
-                    <div className="yerler-sirala-kategori-icon">
-                                <InlineSVG src={kategoriIcons[categories.category.iconname]}></InlineSVG>
-                    </div>
-                    <div className="yerler-sirala-kategori-adi">
-                        {categories.category.name}
+        {
+            data.vitrinbundles.data ? (
+                data.vitrinbundles.data
+                .filter(dataFilter => slugify(dataFilter.attributes.name) === id.split("+")[1])
+                .map((place) => (
+                    
+                place.attributes.places.data.map((placess)=>(
+                    placess.attributes.category.data ? (
+                        <NavLink to={"/places/"+placess.id+"-"+slugify(placess.attributes.name)}>
+                        <div className="yerler-container">
+                        {!placess.attributes.image.data[0] ? (
+                                <>
+                                <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />
+                                </>
+                        ):(
+                                <>
+                                <img src={process.env.REACT_APP_IMG_URL+placess.attributes.image.data[0].attributes.url} />
+                                </>
+                        )}
+                        <div className="yerler-sirala-kategori">
+                        <div className="yerler-sirala-kategori-icon">
+                            <InlineSVG src={kategoriIcons[placess.attributes.category.data.attributes.iconname]}></InlineSVG>
+                        </div>
+                        <div className="yerler-sirala-kategori-adi">
+                            {placess.attributes.category.data.attributes.name}
+                            
+                        </div>
+                        </div>
                         
-                    </div>
-                    </>
-                ))}
-                </div>
-                
-                <div className="yerler-sirala-baslik">{placess.name}</div>
-                </div>
-            </NavLink>
-            ))
-            
-        ))}
+                        <div className="yerler-sirala-baslik">{placess.attributes.name}</div>
+                        </div>
+                    </NavLink>
+                    ):(
+                        <>                        
+                        {console.log(placess)}
+                        </>
+                    )
+                    ))
+                    
+                ))
+            ) : (
+                <>{console.log(data.vitrinbundles.data ? true : false)}</>
+            )
+        }
         </div>
     )
 }

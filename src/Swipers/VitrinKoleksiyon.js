@@ -63,7 +63,7 @@ const VitrinKoleksiyon =()=>{
                 {data.vitrinbundles.data
                 .map((bundles) => (
                         <SwiperSlide key={bundles.id}>
-                            <NavLink to={"/bundles/"+bundles.id+"-"+slugify(bundles.attributes.name)}>
+                            <NavLink to={"/bundles/"+bundles.id+"+"+slugify(bundles.attributes.name)}>
                             {(!bundles.attributes.image.data.length ) ? (
                         <>
                         <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />

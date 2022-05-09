@@ -35,15 +35,20 @@ SwiperCore.use([FreeMode,Navigation,Thumbs]);
 const YerlerDetay =()=>{
 
 
-    React.useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
+
     //url den id'yi çekmek için
     let { id } = useParams();
     var {city, setCity} = useContext(AppContext);
-    const [googleMap, setGoogleMap]=useState("");
+    let arr=[];
+    const [gps, setGps]=useState([]);
     const [latitude, setLatitude]=useState([]);
     const [longitude, setLongitude]=useState([]);
+
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
 
     const YERLERDETAY = gql`
     query yerlerDetay($id:ID!) {
@@ -93,20 +98,19 @@ const YerlerDetay =()=>{
     if (error) return <p>Error...</p>
 
 
-
-
     const deneme = [
             {
-                map:googleMap,
+                map:data.yerlerdetay.data[0].attributes.gmapsurl,
                 title:"Google Maps"
             },
             {
-                map:"https://yandex.com.tr/harita/103695/duzce/geo/efteni_golu/2525112965/?ll=31.049828%2C40.760052&z=15.89",
+                map:data.yerlerdetay.data[0].attributes.ymapsurl,
                 title:"Yandex Maps"
             }
         ];
 
     const konumSec =()=>{
+
         document.querySelector('.konum-sec').classList.toggle('hidden')
         document.querySelector('.konum-sec-divider').classList.toggle('hidden')
         document.querySelector('.konum-sec-list').classList.toggle('hidden')
@@ -128,7 +132,7 @@ const YerlerDetay =()=>{
 
                         <div className='yerler-detay-cover'>
                             <div className="cover-baslik">
-                                <NavLink to={"/yerler-sirala/categorie-"+dataPlaces.attributes.category.data.attributes.name}>
+                                <NavLink to={"/yerler-sirala/"+ dataPlaces.id+"-"+dataPlaces.attributes.category.data.attributes.iconname}>
                                 <div className="kategori">
 
                                     <div className="kategori-icon"><InlineSVG src={kategoriIcons[dataPlaces.attributes.category.data.attributes.iconname]}></InlineSVG></div>

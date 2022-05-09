@@ -74,7 +74,7 @@ const KoleksiyonSirala =()=>{
                             <div className="koleksiyon-sirala-alt-baslik">
                                 {bundles.attributes.name}
                             </div>
-                            <NavLink to={"/bundles/"+bundles.id+"-"+slugify(bundles.attributes.name)}>
+                            <NavLink to={"/bundles/"+bundles.id+"+"+slugify(bundles.attributes.name)}>
                             <div className="koleksiyon-sirala-buton">
                                 <InlineSVG src={collectionIcons.arrow}></InlineSVG>
                             </div>

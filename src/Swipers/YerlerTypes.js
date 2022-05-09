@@ -24,13 +24,13 @@ const YerlerTypes =({Type, name})=>{
             filters:{
                 sehir:{plate:{eq:$sehir}}
                 vitrin:{eq:true}
-                type: {eq: Type}
             }
         ){
             data {
                 id
                 attributes {
                     name
+                    type
                     image{
                         data{
                             id
@@ -69,7 +69,7 @@ const YerlerTypes =({Type, name})=>{
 
  
     return(
-        (data.yerlertypes.data.length !== 0)?(
+        (data.yerlertypes.data)?(
             <div className='yerler-swiper yerler-types'>
         <div className="yerler-types-baslik-container">
             <div className="block-baslik">
@@ -77,11 +77,13 @@ const YerlerTypes =({Type, name})=>{
             </div>
         </div>
         <Swiper centeredSlides={true} slidesPerView={'auto'} spaceBetween={30} grabCursor={true} className="mySwiperYerler">
-            {data.yerlertypes.data.map((places) => (
+            {data.yerlertypes.data.filter(filterData => filterData.attributes.type === Type).map((places) => (
                 
                     <SwiperSlide key={places.id}>
+                    
+                    {console.log(places)}
                     <NavLink to={"/places/"+places.id+"-"+slugify(places.attributes.name)}>
-                    {(places.attributes.image.data === undefined ) ? (
+                    {(!places.attributes.image.data ) ? (
                         <>
                         <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />
                         </>

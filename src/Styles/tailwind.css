@@ -399,7 +399,20 @@ body{
         @apply text-30px w-full h-2.4 leading-1.2 font-bold mt-10px
     
     }
+    .yerler-detay-cover .ant-list-header, .yerler-detay-cover .ant-list-footer{
+        @apply hidden
+    }
+    .yerler-detay-cover .ant-list-bordered{
+        border:none
+    }
+    .yerler-detay-cover .ant-list-bordered.ant-list-lg .ant-list-item{
+        @apply p-5px
+    }
+    .yerler-detay-cover .ant-list-split .ant-list-item:last-child{
+        border-bottom: inset;
+        border-color: var(--birincil);
     
+    }
     .yerler-detay-cover .konum{
         @apply text-13px w-50px h-100px z-1 absolute right-35px bottom-60px border-1px border-solid border-white rounded-15px flex flex-col items-center justify-around text-white
     }
@@ -432,7 +445,16 @@ body{
         @apply fill-white
     }
     .yerler-detay-cover .konum-sec .ant-list-item {
-        @apply flex rounded-DEFAULT_1 border-1px border-separate border-birincil-color p-5px m-5px text-birincil-color ml-0
+        @apply flex justify-between rounded-DEFAULT_1 border-1px border-separate border-birincil-color p-5px m-5px text-birincil-color ml-0 text-15px
+    }
+    .yerler-detay-cover .konum-sec li{
+        @apply pr-types-baslik !important
+    }
+    .yerler-detay-cover .ant-divider-horizontal.ant-divider-with-text{
+        @apply m-0
+    }
+    .yerler-detay-cover .ant-divider-inner-text{
+        @apply p-0
     }
     /* .ant-collapse-borderless{
         @apply flex
@@ -1092,7 +1114,7 @@ body{
     }
     
     .hava-durumu{
-        @apply h-80px w-150px bg-birincil-color rounded-1 p-10px text-white columns-1 relative
+        @apply h-80px w-150px bg-birincil-color rounded-1 pt-5px p-10px text-white columns-1 relative
     }
 
     .hava-durumu-derece{
