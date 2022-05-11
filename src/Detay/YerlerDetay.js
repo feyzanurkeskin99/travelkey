@@ -61,6 +61,15 @@ const YerlerDetay =()=>{
                 id
                 attributes {
                     name
+                    gallery{
+                        data
+                            {
+                            id
+                            attributes{
+                            url
+                            }
+                            }
+                        }
                     image{
                         data{
                             id
@@ -116,13 +125,15 @@ const YerlerDetay =()=>{
         document.querySelector('.konum-sec-list').classList.toggle('hidden')
     }
 
-
+    // window.onclick = function() {
+    //     document.querySelector('.konum-sec').classList.toggle('hidden')
+    // }
 
 
 
         return(
             <div className='yerler-detay-ortaalan'>
-            {console.log(data.yerlerdetay.data)}
+            {console.log(data.yerlerdetay.data[0].attributes?.gallery.data)}
             {console.log(id.split("-")[0])}
 
             {data.yerlerdetay.data.filter(dataFilter => ""+dataFilter.id === id.split("-")[0])
@@ -175,7 +186,7 @@ const YerlerDetay =()=>{
                         </div>
 
                         <div className="yerler-mini-slider">
-                            <MiniSlider></MiniSlider>
+                            <MiniSlider gallery={(data.yerlerdetay.data[0].attributes?.gallery.data)}></MiniSlider>
                         </div>
                         <Tabs defaultActiveKey="1">
 

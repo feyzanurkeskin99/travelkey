@@ -136,3 +136,144 @@ const IkiSiraSwiper =()=>{
 }
 
 export default IkiSiraSwiper;
+
+
+
+
+
+import React, {useEffect, useState, useContext} from 'react'
+import ReactDOM from 'react-dom'
+import SwiperCore, {Pagination} from 'swiper'
+import { Swiper, SwiperSlide } from 'swiper/react/swiper-react.js';
+import 'swiper/swiper.min.css'
+import 'swiper/modules/effect-cards/effect-cards.js'
+import 'swiper/modules/pagination/pagination.min.css'
+import TumElemanlar from '../TumElemanlar';
+import {NavLink, useParams} from 'react-router-dom';
+import NotFound from '../Components/NotFound';
+import InlineSVG from 'svg-inline-react';
+import useFetch from 'use-http';
+import { kategoriIcons } from '../icon';
+import slugify from 'react-slugify';
+import { getApiModels } from '../Models/ApiModels';
+import { useQuery, gql } from '@apollo/client' 
+
+import { AppContext } from '../Components/Context'
+
+
+
+const YerlerSirala =()=>{
+    
+    var {city, setCity} = useContext(AppContext);
+    let { id } = useParams();
+    var {city, setCity} = useContext(AppContext);
+
+    const YERLERSIRALA = gql`
+    query yerlerTypes($sehir:String!) {
+        yerlertypes: places(
+            pagination:{page:1, pageSize:200}
+            filters:{
+                sehir:{plate:{eq:$sehir}}
+            }
+        ){
+            data {
+                id
+                attributes {
+                    name
+                    image{
+                        data{
+                            id
+                            attributes{
+                            url
+                            }
+                        }
+                    }
+                    address
+                    email
+                    website
+                    phone
+                    ymapsurl
+                    gmapsurl
+                    spot
+                    body
+                    gps
+                    category{
+                        data{
+                            id
+                            attributes{
+                            name
+                            iconname
+                            }
+                        }
+                    }
+            }
+        }
+    }
+    }`
+    const {loading, error, data} = useQuery(YERLERSIRALA, {
+        variables:{sehir: city.city}
+    })
+    if (loading) return <p>Loading...</p>
+    if (error) return <p>Error...</p>
+
+
+    return(
+        <div className='yerler-sirala'>
+        {console.log(id.split("-")[0])} 
+        {console.log(data.yerlertypes.data)}
+        {id.split("-")[0] === "all" ? (
+            data.yerlertypes.data.map((places) => (
+                <NavLink to={"/places/"+places.id+"-"+slugify(places.attributes.name)}>
+                    <div className="yerler-container">
+                    {(!places.attributes.image.data.length) ? (
+                            <>
+                            <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />
+                            </>
+                    ):(
+                            <>
+                            </>
+                    )}
+                    <div className="yerler-sirala-kategori">
+                        <div className="yerler-sirala-kategori-icon">
+                            <InlineSVG src={kategoriIcons[places.attributes.category.data.attributes.iconname]}></InlineSVG>
+                        </div>
+                        <div className="yerler-sirala-kategori-adi">
+                            {places.attributes.category.data.attributes.name}
+                        </div>
+                    </div>
+                    <div className="yerler-sirala-baslik">{places.attributes.name}</div>
+                    </div>
+                </NavLink>
+            ))
+        ):(
+            data.yerlertypes.data.filter(filter => filter.attributes.category.iconname === id.split("-")[1]).map((places) => (
+                <NavLink to={"/places/"+places.id+"-"+slugify(places.attributes.name)}>
+                    <div className="yerler-container">
+                    {(!places.attributes.image.data.length) ? (
+                            <>
+                            <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />
+                            </>
+                    ):(
+                            <>
+                            <img src={process.env.REACT_APP_IMG_URL+places.attributes.image.data[0].attributes.url} />
+                            </>
+                    )}
+                    <div className="yerler-sirala-kategori">
+                        <div className="yerler-sirala-kategori-icon">
+                            <InlineSVG src={kategoriIcons[places.attributes.category.data.attributes.iconname]}></InlineSVG>
+                        </div>
+                        <div className="yerler-sirala-kategori-adi">
+                            {places.attributes.category.data.attributes.name}
+                        </div>
+                    </div>
+                    <div className="yerler-sirala-baslik">{places.attributes.name}</div>
+                    </div>
+                </NavLink>
+            ))
+        )}
+        
+
+        </div>
+    )
+}
+export default YerlerSirala;

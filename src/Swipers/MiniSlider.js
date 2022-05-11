@@ -16,7 +16,7 @@ import Fancybox from "../Components/fancybox";
 
 SwiperCore.use([FreeMode,Navigation,Thumbs]);
 
-const MiniSlider =()=>{
+const MiniSlider =({gallery})=>{
     
     const [objectUst, setObjectUst]=useState({})
     const [objectAlt, setObjectAlt]=useState({})
@@ -52,11 +52,12 @@ const MiniSlider =()=>{
         return(
             <>
             {/* Mini slider kısmı */}
+            {gallery ? (
                 <div className='mini-slider'>
                 <Fancybox>
                     <p>
                     <Swiper spaceBetween={10} slidesPerView={2} className="mySwiper" >
-                    {images?.map((element, index)=>(
+                    {gallery?.map((element, index)=>(
                         <SwiperSlide className='mini-slider-element'>
                             <a data-fancybox="gallery" href={element}>
                                 <img alt="" src={element} />
@@ -67,6 +68,10 @@ const MiniSlider =()=>{
                     </p>
                 </Fancybox>
                 </div>
+            ) : (
+                <></>
+            )}
+                
                 
             </>
         )

@@ -114,7 +114,7 @@ const IkiSiraSwiper =()=>{
             <>
                 {
                     categories.attributes.anavitrin_categories.data.map((anavitrin)=>{
-            <div className='iki-sira-swiper' key={index}>     
+            return (<div className='iki-sira-swiper' key={index}>     
                 <div className='background-icon'>
                     <InlineSVG src={backgroundIcons[anavitrin.attributes.iconname]}></InlineSVG>
                     <h2 className='background-baslik'>{anavitrin.attributes.name}</h2>
@@ -130,7 +130,7 @@ const IkiSiraSwiper =()=>{
                                 {console.log(anavitrin.attributes.places.data)}
                                     <NavLink to={"/places/"+placess[0].id+"-"+slugify(placess[0].attributes.name)}>
                                          <div className="iki-sira-ust">
-                                        {(!placess[0].attributes.image.data.length) ? (
+                                        {(!placess[0].attributes.image.data) ? (
                                                 <>
                                                 <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />
                                                 </>
@@ -147,7 +147,7 @@ const IkiSiraSwiper =()=>{
                                     </NavLink>
                                     <NavLink to={"/places/"+placess[1].id+"-"+slugify(placess[1].attributes.name)}>
                                         <div className="iki-sira-ust">
-                                        {(!placess[1].attributes.image.data.length) ? (
+                                        {(!placess[1].attributes.image.data) ? (
                                                 <>
                                                 <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />
                                                 </>
@@ -171,7 +171,7 @@ const IkiSiraSwiper =()=>{
                             <SwiperSlide key={placess[0].id}>
                                     <NavLink to={"/places/"+placess[0].id+"-"+slugify(placess[0].attributes.name)}>
                                         <div className="iki-sira-ust">
-                                        {(!placess[0].attributes.image.data.length) ? (
+                                        {(!placess[0].attributes.image.data) ? (
                                                 <>
                                                 <img src="https://www.yoloykuleri.com/wp-content/uploads/2018/04/efteni-go%CC%88lu%CC%88-480x600.jpg" />
                                                 </>
@@ -190,7 +190,7 @@ const IkiSiraSwiper =()=>{
                         ))}
                         </div>
                     </Swiper>
-        </div>
+        </div>)
 
         })
                 }

@@ -1,0 +1,26 @@
+name: Deploy GH Pages
+
+on: push
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+
+      - name: Install 🔧
+        run: npm install
+
+      - name: Build 🏗️
+        run: CI=false npm run build && echo seyyah.tk > ./build/CNAME 
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: build
