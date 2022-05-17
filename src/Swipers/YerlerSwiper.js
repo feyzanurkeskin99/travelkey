@@ -83,11 +83,11 @@ const YerlerSwiper =(props)=>{
             </NavLink>
         
         <Swiper centeredSlides={true} slidesPerView={'auto'} spaceBetween={20} grabCursor={true} className="mySwiperYerler">
-            {data.yerlerswiper.data.map((places) => (
+            {data.yerlerswiper.data.map((places, index) => (
                 
                     <SwiperSlide key={places.id}>            
                     {/* {console.log(places.attributes.image.data[0].attributes)} */}
-
+                    
                     <NavLink to={"/places/"+places.id+"-"+slugify(places.attributes.name)}>
                     {(places.attributes.image.data[0].attributes.url === null || places.attributes.image.data[0].attributes.url === undefined || places.attributes.image.data===[]) ? (
                         <>

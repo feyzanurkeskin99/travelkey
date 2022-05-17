@@ -114,7 +114,7 @@ const IkiSiraSwiper =()=>{
             <>
                 {
                     categories.attributes.anavitrin_categories.data.map((anavitrin)=>{
-            return (<div className='iki-sira-swiper' key={index}>     
+            return (<div className='iki-sira-swiper' key={Math.random()*1000}>     
                 <div className='background-icon'>
                     <InlineSVG src={backgroundIcons[anavitrin.attributes.iconname]}></InlineSVG>
                     <h2 className='background-baslik'>{anavitrin.attributes.name}</h2>

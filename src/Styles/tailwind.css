@@ -267,7 +267,7 @@ body{
         @apply p-city-choose h-30px text-birincil-color rounded-DEFAULT_2 border-solid border-1px border-birincil-color flex justify-center items-center font-bold
     }
     .ortaalan { 
-        @apply flex flex-col justify-start w-full h-80vh flex-grow-2 overflow-x-hidden pb-10vh bg-ortaalan-color;
+        @apply flex flex-col justify-start w-full h-80vh flex-grow-2 overflow-x-hidden pb-6vh bg-ortaalan-color;
         overflow-y: overlay;
     }
     .ortaalan .ortaalanText{
@@ -757,7 +757,8 @@ body{
     }
 
     .iki-sira-swiper .swiper-slide img{
-        @apply rounded-15px w-full absolute
+        @apply rounded-15px w-full absolute;
+        height: -webkit-fill-available;
     }
     .iki-sira-swiper .iki-sira-alt-baslik, .iki-sira-swiper .iki-sira-ust-baslik{
         @apply z-35 leading-1.2 h-1.2 overflow-hidden text-ellipsis w-85% mt-25% whitespace-nowrap
@@ -768,7 +769,7 @@ body{
         @apply flex items-center justify-center h-45% left-neg10% bg-ikincil-color m-10px z-35 rounded text-22px font-bold text-white w-full relative overflow-hidden
     }
     .iki-sira-swiper .background-baslik{    
-        @apply text-40px w-max uppercase tracking-5px
+        @apply text-35px w-max uppercase tracking-5px
     }
     .background-icon .fa-primary{
         @apply fill-birincil-color
@@ -864,7 +865,7 @@ body{
     }
     
     .yerler-sirala{
-        @apply flex flex-wrap w-full mt-70px
+        @apply flex flex-wrap w-full mt-30px
     }
         
     .koleksiyonlar-sirala{

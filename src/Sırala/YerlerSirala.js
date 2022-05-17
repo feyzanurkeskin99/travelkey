@@ -1,4 +1,4 @@
-import React, { memo, useContext} from 'react'
+import React, { memo, useContext, useState} from 'react'
 import ReactDOM from 'react-dom'
 import SwiperCore, {Pagination} from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react/swiper-react.js';
@@ -20,7 +20,7 @@ import { AppContext } from '../Components/Context'
 const Yerler =({place, id})=>{
     return(
         <NavLink to={"/places/"+id+"-"+slugify(place.attributes.name)}>
-        {console.log(place.attributes.category.data.attributes.name)}
+        {/* {console.log(place.attributes.category.data.attributes.name)} */}
     
             <div className="yerler-container">
             {(!place.attributes.image.data.length) ? (
@@ -45,12 +45,18 @@ const Yerler =({place, id})=>{
         </NavLink>
     )
 }
-
+// const loopPlaces=({places})=>{
+//     return(
+//         for(let i=0 ; i < places.length ; i++){
+//             console.log(i)
+//         }
+//     )
+// }
 const YerlerSirala =memo(()=>{
     
     var {city, setCity} = useContext(AppContext);
     let { id } = useParams();
-    var {city, setCity} = useContext(AppContext);
+    const [sayac, setSayac]=useState(10);
 
     const YERLERSIRALA = gql`
     query yerlerTypes($sehir:String!) {
@@ -101,32 +107,60 @@ const YerlerSirala =memo(()=>{
     if (loading) return <p>Loading...</p>
     if (error) return <p>Error...</p>
 
+    const ShowMore =()=>{
+        if(sayac+10 < data.yerlertypes.data.length){
+            setSayac(sayac+10)
+        }else{
+            if(sayac+5 < data.yerlertypes.data.length){
+                setSayac(sayac+5)
+            }else{
+                if(sayac+1 < data.yerlertypes.data.length){
+                    setSayac(sayac+1)
+                }else{
+                    setSayac(sayac)
+                }
+            }
+        }
+    }
 
 
     return(
         <div className='yerler-sirala'>
-        {console.log(data.yerlertypes.data)}
+        {console.log(sayac)}
         {id.split("-")[0] ? (
             id.split("-")[0] === "all" ? (
-            data.yerlertypes.data.filter(place => { return place.attributes ? "place" === place.attributes.type : false;}).map((places) => (                    
-                <Yerler place={places} id={places.id}>
-                    {console.log(places.id)}
-                </Yerler>                
+            data.yerlertypes.data?.filter(place => { return place.attributes ? "place" === place.attributes.type : false;})?.map((places, index) => (                    
+                (index < sayac) ? (
+                    <Yerler place={places} id={places.id}>
+                {/* {console.log(index)} */}
+                    {/* {console.log(places.id)} */}
+                    {/* <loopPlaces places={places}></loopPlaces> */}
+                </Yerler> 
+                ):(
+                    <></>
+                )            
                 ))
             ):(
-            data.yerlertypes.data.filter(place => { return place.attributes.category.data ? id.split("-")[1] === place.attributes.category.data.attributes.iconname : false;}).map((places) => {
+            data.yerlertypes.data?.filter(place => { return place.attributes.category.data ? id.split("-")[1] === place.attributes.category.data.attributes.iconname : false;})?.map((places, index) => {
                 return (
-                    
-                <Yerler place={places} id={places.id}>
-                    {console.log(places.id)}
-                </Yerler>
+                    (index < sayac) ? (
+                    <Yerler place={places} id={places.id}>
+                {/* {console.log(index)} */}
+                    {/* {console.log(places.id)} */}
+                    {/* <loopPlaces places={places}></loopPlaces> */}
+                </Yerler> 
+                ):(
+                    <></>
+                )  
                 )
             })
         )
         ) : (
             <></>
         )}
-        
+        <div className="show-more-container w-full m-15px py-50px pb-0 flex items-center justify-center">
+        <div className="show-more p-15px bg-darkgrey-color rounded text-birincil-color" onClick={ShowMore}>Daha Fazla Göster</div>
+        </div>
 
         </div>
     )
