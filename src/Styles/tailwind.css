@@ -267,7 +267,7 @@ body{
         @apply p-city-choose h-30px text-birincil-color rounded-DEFAULT_2 border-solid border-1px border-birincil-color flex justify-center items-center font-bold
     }
     .ortaalan { 
-        @apply flex flex-col justify-start w-full h-80vh flex-grow-2 overflow-x-hidden pb-6vh bg-ortaalan-color;
+        @apply flex flex-col justify-start w-full h-80vh flex-grow-2 overflow-x-hidden pb-8vh bg-ortaalan-color;
         overflow-y: overlay;
     }
     .ortaalan .ortaalanText{

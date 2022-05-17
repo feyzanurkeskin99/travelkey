@@ -139,7 +139,8 @@ const YerlerSirala =memo(()=>{
                 ):(
                     <></>
                 )            
-                ))
+            ))
+            
             ):(
             data.yerlertypes.data?.filter(place => { return place.attributes.category.data ? id.split("-")[1] === place.attributes.category.data.attributes.iconname : false;})?.map((places, index) => {
                 return (
@@ -158,7 +159,8 @@ const YerlerSirala =memo(()=>{
         ) : (
             <></>
         )}
-        <div className="show-more-container w-full m-15px py-50px pb-0 flex items-center justify-center">
+        
+        <div className="show-more-container w-full m-15px py-30px pb-0 flex items-center justify-center">
         <div className="show-more p-15px bg-darkgrey-color rounded text-birincil-color" onClick={ShowMore}>Daha Fazla Göster</div>
         </div>
 
