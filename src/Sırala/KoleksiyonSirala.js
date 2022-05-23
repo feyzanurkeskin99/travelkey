@@ -7,7 +7,7 @@ import 'swiper/modules/effect-cards/effect-cards.js'
 import 'swiper/modules/pagination/pagination.min.css'
 import TumElemanlar from '../TumElemanlar';
 import InlineSVG from 'svg-inline-react';
-import {collectionIcons} from '../icon'
+import {collectionIcons, bookMarkIcon} from '../icon'
 import useFetch from 'use-http';
 import { NavLink } from 'react-router-dom';
 import { AppContext } from '../Components/Context'
@@ -17,6 +17,7 @@ import { useQuery, gql } from '@apollo/client'
 
 const KoleksiyonSirala =()=>{
     var {city, setCity} = useContext(AppContext);
+    const [sayac, setSayac]=useState(10);
 
 
 
@@ -53,12 +54,27 @@ const KoleksiyonSirala =()=>{
     if (loading) return <p>Loading...</p>
     if (error) return <p>Error...</p>
 
+    const ShowMore =()=>{
+        if(sayac+10 < data.bundles.data.length){
+            setSayac(sayac+10)
+        }else{
+            if(sayac+5 < data.bundles.data.length){
+                setSayac(sayac+5)
+            }else{
+                if(sayac+1 < data.bundles.data.length){
+                    setSayac(sayac+1)
+                }else{
+                    setSayac(sayac)
+                }
+            }
+        }
+    }
 
     return(
-        <div className='koleksiyonlar-sirala'>
-            {data.bundles.data.map((bundles) => (
-                
-                    <div className="koleksiyonlar-container">
+        <div className='koleksiyonlar-sirala mt-70px'>
+            {data.bundles.data.map((bundles, index) => (
+                (index < sayac) ? (
+                    <div className="koleksiyonlar-container sticky">
                         <div className="koleksiyon-sirala-ust">
                         {(!bundles.attributes.image.data.length ) ? (
                         <>
@@ -70,6 +86,8 @@ const KoleksiyonSirala =()=>{
                             </>
                         )}
                         </div>
+                        <InlineSVG className='absolute right-types-baslik top-15px fill-birincil-color bg-link-active-before-color rounded-50% flex items-center p-2px' src={bookMarkIcon.bookMark}></InlineSVG>
+
                         <div className="koleksiyon-sirala-alt">
                             <div className="koleksiyon-sirala-alt-baslik">
                                 {bundles.attributes.name}
@@ -81,9 +99,13 @@ const KoleksiyonSirala =()=>{
                             </NavLink>
                         </div>
                     </div>
+                ):(<></>)
                 
             ))}
 
+            <div className="show-more-container w-full m-15px pb-30px mb-200px flex items-center justify-center">
+        <div className="show-more p-15px mb-40px bg-darkgrey-color rounded text-birincil-color font-bold" onClick={ShowMore}>Daha Fazla Göster</div>
+        </div>
         </div>
     )
 }

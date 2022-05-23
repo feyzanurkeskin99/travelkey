@@ -10,7 +10,7 @@ import {NavLink, useParams} from 'react-router-dom';
 import NotFound from '../Components/NotFound';
 import InlineSVG from 'svg-inline-react';
 import useFetch from 'use-http';
-import { kategoriIcons } from '../icon';
+import { kategoriIcons, bookMarkIcon} from '../icon';
 import slugify from 'react-slugify';
 import { getApiModels } from '../Models/ApiModels';
 import { useQuery, gql } from '@apollo/client' 
@@ -32,13 +32,17 @@ const Yerler =({place, id})=>{
                     <img src={process.env.REACT_APP_IMG_URL+place.attributes.image.data[0].attributes.url} />
                     </>
             )}
-            <div className="yerler-sirala-kategori">
+            <div className="yerler-sirala-kategori justify-between px-5px">
+                <div className="flex">
                 <div className="yerler-sirala-kategori-icon">
                     <InlineSVG src={kategoriIcons[place.attributes.category.data.attributes.iconname]}></InlineSVG>
                 </div>
                 <div className="yerler-sirala-kategori-adi">
                     {place.attributes.category.data.attributes.name}
                 </div>
+                </div>
+                <InlineSVG className='fill-birincil-color bg-link-active-before-color rounded-50% flex items-center p-2px' src={bookMarkIcon.bookMark}></InlineSVG>
+
             </div>
             <div className="yerler-sirala-baslik">{place.attributes.name}</div>
             </div>
@@ -161,7 +165,7 @@ const YerlerSirala =memo(()=>{
         )}
         
         <div className="show-more-container w-full m-15px py-30px pb-0 flex items-center justify-center">
-        <div className="show-more p-15px bg-darkgrey-color rounded text-birincil-color" onClick={ShowMore}>Daha Fazla Göster</div>
+        <div className="show-more p-15px bg-darkgrey-color rounded text-birincil-color font-bold" onClick={ShowMore}>Daha Fazla Göster</div>
         </div>
 
         </div>

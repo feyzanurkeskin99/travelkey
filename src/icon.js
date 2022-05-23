@@ -208,4 +208,8 @@ const havaIcons={
       "close":`<svg xmlns="http://www.w3.org/2000/svg" height="36px" viewBox="0 0 24 24" width="36px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M18.3 5.71c-.39-.39-1.02-.39-1.41 0L12 10.59 7.11 5.7c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41L10.59 12 5.7 16.89c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0L12 13.41l4.89 4.89c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41L13.41 12l4.89-4.89c.38-.38.38-1.02 0-1.4z"/></svg>`,
       "location": `<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>`
    }
-   export  {conditions, collectionIcons, havaIcons, navIcons,kategoriIcons,backgroundIcons,contactIcons,locationIcons, dateIcon, headerIcon};
+   const bookMarkIcon={
+      "bookMark":`<svg xmlns="http://www.w3.org/2000/svg" height="24" width="24"><path d="M7 17.95 12 15.8 17 17.95V5.3Q17 5.2 16.9 5.1Q16.8 5 16.7 5H7.3Q7.2 5 7.1 5.1Q7 5.2 7 5.3ZM5.5 20.25V5.3Q5.5 4.55 6.025 4.025Q6.55 3.5 7.3 3.5H16.7Q17.45 3.5 17.975 4.025Q18.5 4.55 18.5 5.3V20.25L12 17.45ZM17 5H12H7Q7 5 7.1 5Q7.2 5 7.3 5H16.7Q16.8 5 16.9 5Q17 5 17 5Z"/></svg>`,
+      "bookMarkFill":`<svg xmlns="http://www.w3.org/2000/svg" height="24" width="24"><path d="M5.5 20.25V5.3Q5.5 4.55 6.025 4.025Q6.55 3.5 7.3 3.5H16.7Q17.45 3.5 17.975 4.025Q18.5 4.55 18.5 5.3V20.25L12 17.45Z"/></svg>`,
+      }
+   export  {conditions, collectionIcons, havaIcons, navIcons,kategoriIcons,backgroundIcons,contactIcons,locationIcons, dateIcon, headerIcon, bookMarkIcon};

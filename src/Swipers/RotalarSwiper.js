@@ -9,7 +9,7 @@ import TumElemanlar from '../TumElemanlar';
 import InlineSVG from 'svg-inline-react';
 import { NavLink } from 'react-router-dom';
 import useFetch from 'use-http';
-import { kategoriIcons, backgroundIcons } from '../icon';
+import { bookMarkIcon, backgroundIcons } from '../icon';
 import { AppContext } from '../Components/Context'
 import slugify from 'react-slugify';
 import { getApiModels } from '../Models/ApiModels';
@@ -79,6 +79,9 @@ if (error) return <p>Error...</p>
                         <NavLink to={"/bundles/"+bundles.id+"+"+slugify(bundles.attributes.name)}>
                         <div className="rotalar-baslik">
                             {bundles.attributes.name}
+                        </div>
+                        <div className="rotalar-swiper-bookMark w-full absolute flex top-5px right-5px justify-end">
+                        <InlineSVG className='fill-birincil-color bg-link-active-before-color rounded-50% flex items-center p-2px' src={bookMarkIcon.bookMark}></InlineSVG>
                         </div>
                         </NavLink>
                     </SwiperSlide>

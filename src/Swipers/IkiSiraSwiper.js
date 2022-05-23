@@ -10,7 +10,7 @@ import InlineSVG from 'svg-inline-react';
 import useFetch from 'use-http';
 import { NavLink } from 'react-router-dom';
 import { AppContext } from '../Components/Context'
-import {backgroundIcons} from '../icon'
+import {backgroundIcons, bookMarkIcon} from '../icon'
 import axios from 'axios';
 import slugify from 'react-slugify';
 import { getApiModels } from '../Models/ApiModels';
@@ -142,6 +142,8 @@ const IkiSiraSwiper =()=>{
                                             <div className="iki-sira-ust-baslik">
                                                 {placess[0].attributes.name}
                                             </div>
+                                            <InlineSVG className='absolute top-5px right-5px fill-birincil-color bg-link-active-before-color rounded-50% flex items-center p-2px' src={bookMarkIcon.bookMark}></InlineSVG>
+
                                             
                                         </div>
                                     </NavLink>
@@ -159,6 +161,8 @@ const IkiSiraSwiper =()=>{
                                             <div className="iki-sira-alt-baslik">
                                                 {placess[1].attributes.name}
                                             </div>
+                                            <InlineSVG className='absolute top-5px right-5px fill-birincil-color bg-link-active-before-color rounded-50% flex items-center p-2px' src={bookMarkIcon.bookMark}></InlineSVG>
+
                                         </div>
                                     </NavLink>
                             </SwiperSlide>
@@ -183,6 +187,8 @@ const IkiSiraSwiper =()=>{
                                             <div className="iki-sira-ust-baslik">
                                                 {placess[0].attributes.name}
                                             </div>
+                                            <InlineSVG className='absolute top-5px right-5px fill-birincil-color bg-link-active-before-color rounded-50% flex items-center p-2px' src={bookMarkIcon.bookMark}></InlineSVG>
+
                                             
                                         </div>
                                     </NavLink>

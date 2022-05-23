@@ -9,7 +9,7 @@ body{
 
 }
 
-:root{
+body{
     --birincil:#004359ff;
     --light:#008dbdff;
     --ikincil:#24c7ffff;
@@ -24,6 +24,30 @@ body{
     --link-active-after: #4cc6fb;
     --link-border: #8be1fe;
 }   
+body.dark{
+    --birincil:rgb(87, 94, 97);
+    --light:rgb(1, 64, 85);
+    --ikincil:#24c7ffff;
+    --overlay:rgb(66, 66, 66);
+    --red:rgb(255, 0, 0);
+    --altbar-hover: #00202a;
+    --ortaalan: #282828;
+    --ortaalan-cover: #74E2FF;
+    --darkgrey: #a9a9a9;
+    --ortaalan-ara: #BBDADF;
+    --link-active-before: #c0d8df7a;
+    --link-active-after: #4cc6fb;
+    --link-border: #8be1fe;
+}   
+html[theme='dark-mode'] {
+    filter: invert(1) hue-rotate(180deg);
+}
+html[theme='dark-mode'] img{
+    filter: invert(1) hue-rotate(180deg);
+}
+html[theme='dark-mode'] .ortaalan .cover{
+    filter: invert(1) hue-rotate(180deg);
+}
 .app{
     @apply flex flex-col items-center justify-around h-100vh
 }

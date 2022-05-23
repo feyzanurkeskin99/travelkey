@@ -14,6 +14,8 @@ import { AppContext } from '../Components/Context'
 import slugify from 'react-slugify';
 import { getApiModels } from '../Models/ApiModels';
 import { useQuery, gql } from '@apollo/client' 
+import InlineSVG from 'svg-inline-react';
+import { bookMarkIcon } from '../icon';
 
 SwiperCore.use([EffectCards]);
 
@@ -73,11 +75,15 @@ const VitrinKoleksiyon =()=>{
                             <img src={process.env.REACT_APP_IMG_URL+bundles.attributes.image.data[0].attributes.url} />
                             </>
                         )}
+                                
+
 
                             </NavLink>
                             <div className="vitrin-koleksiyon-swiper-baslik">
                                 {bundles.attributes.name}
-                            </div>
+                            </div>                        
+                            <InlineSVG className='fill-birincil-color bg-link-active-before-color rounded-50% flex items-center p-2px absolute right-10px top-10px' src={bookMarkIcon.bookMark}></InlineSVG>
+
                         </SwiperSlide>
                 ))}
             </Swiper>

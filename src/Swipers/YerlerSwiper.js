@@ -9,7 +9,7 @@ import TumElemanlar from '../TumElemanlar';
 import { NavLink } from 'react-router-dom';
 import InlineSVG from 'svg-inline-react';
 import useFetch from 'use-http';
-import { kategoriIcons } from '../icon';
+import { bookMarkIcon, kategoriIcons } from '../icon';
 import { AppContext } from '../Components/Context'
 import slugify from 'react-slugify';
 import { useQuery, gql } from '@apollo/client' 
@@ -100,7 +100,8 @@ const YerlerSwiper =(props)=>{
                     )}
                     
                     </NavLink>
-                    <div className="yerler-swiper-kategori">
+                    <div className="yerler-swiper-kategori justify-between px-5px">
+                                <div className='flex'>
                                 <div className="yerler-swiper-kategori-icon">
                                     <InlineSVG src={kategoriIcons[places.attributes.category.data.attributes.iconname]}></InlineSVG>
                                 </div>
@@ -108,6 +109,8 @@ const YerlerSwiper =(props)=>{
                                 <div className="yerler-swiper-kategori-adi">
                                     {places.attributes.category.data.attributes.name}
                                 </div>
+                                </div>
+                                <InlineSVG className='fill-birincil-color bg-link-active-before-color rounded-50% flex items-center p-2px' src={bookMarkIcon.bookMark}></InlineSVG>
                     </div>
                     <div className="yerler-swiper-baslik">{places.attributes.name}</div>
                     </SwiperSlide>
