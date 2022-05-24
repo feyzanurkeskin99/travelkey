@@ -32,7 +32,7 @@ const Yerler =({place, id})=>{
                     <img src={process.env.REACT_APP_IMG_URL+place.attributes.image.data[0].attributes.url} />
                     </>
             )}
-            <div className="yerler-sirala-kategori justify-between px-5px">
+            <div className="yerler-sirala-kategori w-full justify-between px-5px">
                 <div className="flex">
                 <div className="yerler-sirala-kategori-icon">
                     <InlineSVG src={kategoriIcons[place.attributes.category.data.attributes.iconname]}></InlineSVG>

@@ -288,7 +288,10 @@ html[theme='dark-mode'] .ortaalan .cover{
         @apply h-25px 
     }
     .ustbar .city-button{
-        @apply p-city-choose h-30px text-birincil-color rounded-DEFAULT_2 border-solid border-1px border-birincil-color flex justify-center items-center font-bold
+        @apply p-city-choose h-30px text-birincil-color rounded-8px border-solid border-1px border-birincil-color flex justify-center items-center font-bold
+    }
+    .ustbar button svg{
+        @apply w-60% ml-40px !important;
     }
     .ortaalan { 
         @apply flex flex-col justify-start w-full h-80vh flex-grow-2 overflow-x-hidden pb-8vh bg-ortaalan-color;

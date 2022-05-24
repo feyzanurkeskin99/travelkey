@@ -1,17 +1,18 @@
-import React, {useContext, useEffect} from 'react'
+import React, {useContext, useState, useEffect} from 'react'
 import ReactDOM from 'react-dom'
 import {NavLink, useNavigate} from "react-router-dom";
 import { AppContext } from './Context'
 import name from '../images/name.png'
 import InlineSVG from 'svg-inline-react';
 import { headerIcon, locationIcons } from '../icon';
+import DarkModeToggle from "react-dark-mode-toggle";
 
 
 function UstBar (){
 
     const navigate = useNavigate();
 	var {city, setCity} = useContext(AppContext);
-
+    const [isDarkMode, setIsDarkMode] = useState(() => false);
     function sehirSec(){
         localStorage.removeItem("city")
         localStorage.removeItem("cityName")
@@ -34,11 +35,25 @@ function UstBar (){
         sideBarSag.classList.remove('hidden')
 
     }
+    useEffect(() => {
+        isDarkMode ? (
+            document.body.classList.add("dark")
+        ):(
+            document.body.classList.remove("dark")
+        )
+    },[isDarkMode])
+
+
 
         return(
             <div className="ustbar">
                 <div className="ustbar-button three-line transition-all" onClick={hideButton}><InlineSVG src={headerIcon.menu}></InlineSVG></div>
                 <NavLink to="/" className="ustbar-name"><div><img src={name}></img></div></NavLink>
+                <DarkModeToggle
+                    onChange={setIsDarkMode}
+                    checked={isDarkMode}
+                    size={80}
+                />
                 <div basic color='black' onClick={sehirSec} content='Black' className='city-button'>
                 {/* <Icon name='map marker alternate' /> */}
                 <InlineSVG src={headerIcon.location}/>
